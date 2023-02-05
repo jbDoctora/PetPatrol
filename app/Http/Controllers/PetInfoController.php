@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\PetInfo;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Symfony\Component\Console\Input\Input;
+
+class PetInfoController extends Controller
+{
+    //
+    // public function index(){
+    //     $petinfo = PetInfo::paginate(9);
+    //     return view('owner.pet-info-index',[
+    //         'petinfo' => $petinfo
+    //     ]);
+    // }
+    // public function index(){
+    //     return view('owner.pet-info-index',[
+    //         'petinfo' => PetInfo::paginate(9)
+    //     ]);
+    // }
+    public function index(){
+        $petinfo = PetInfo::where('owner_id', auth()->id())->paginate(9);
+        return view('owner.pet-info-index', compact('petinfo'));
+    }
+    public function create(){
+        return view('owner.pet-info-create');
+    }
+
+    public function store(Request $request){
+        $formFields = $request->validate([
+            'name' => 'required',
+            'years' => 'required',
+            'months' => 'required',
+            'breed' => 'required',
+        ]);
+
+        if($request->hasFile('image')){
+            $formFields['image'] = $request->file('image')->store('image','public');
+        }
+        $formFields['type'] = $request->input('type');
+        $formFields['weight'] = $request->input('weight');
+        $formFields['owner_id'] = auth()->id() ?? null;
+
+        PetInfo::create($formFields);
+        // $pet = new PetInfo($formFields);
+        // $pet->save();
+
+        return redirect('/pet-info')->with('message', 'Pet added successfully!');
+    }
+}
