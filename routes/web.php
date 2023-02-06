@@ -50,19 +50,15 @@ Route::get('/book-trainer', [OwnerController::class, 'create'])->middleware('aut
 
 Route::post('/book-trainer/add', [RequestTrainerController::class, 'store']);
 
+Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('auth', 'isOwner');
 
 /******************************************************************* */
 //TRAINER
 Route::get('/trainer', [TrainerController::class, 'index'])->middleware('auth', 'isTrainer');
 /******************************************************************* */
+
 // DEFAULT
 Route::get('/', [UserController::class, 'index']);
 /******************************************************************* */
 
-//E change ni once maka create nag RequestController for "index"
-Route::get('/request', function(){
-    return view('owner.request');
-});
-
-//end of deletion
 

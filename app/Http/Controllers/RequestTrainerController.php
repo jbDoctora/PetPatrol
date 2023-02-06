@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class RequestTrainerController extends Controller
 {
+    public function index(){
+        return view('owner.request',[
+            'requestinfo' => RequestTrainer::paginate(5)
+        ]);
+    }
+
     public function store(Request $request){
         $formFields = $request->validate([
             'pet' => 'required',

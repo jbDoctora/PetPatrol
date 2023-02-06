@@ -15,8 +15,9 @@
       <div class="card card-side bg-base-100 shadow-xl drop-shadow-xl">
         <figure class="w-32 h-32"><img src="{{$petinfos->image ? asset('storage/' .$petinfos->image) : asset('/images/no-image.png')}}"/></figure>
         <div class="card-body">
-          <h2 class="card-title">{{$petinfos->name}}</h2>
-          <p>{{$petinfos->years}}</p>
+          <h2 class="card-title font-normal text-base">Pet name: <span class="font-bold">{{$petinfos->name}}</span></h2>
+          <p class="font-normal">Pet type: <span class="font-bold">{{$petinfos->type}}</span></p>
+          <p class="font-normal">Pet breed: <span class="font-bold">{{$petinfos->breed}}</span></p>
           <div class="card-actions justify-end">
             <button class="btn btn-primary">Watch</button>
           </div>

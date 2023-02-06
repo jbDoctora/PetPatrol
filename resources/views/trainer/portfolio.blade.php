@@ -1,0 +1,2 @@
+<x-noNavFoot>
+</x-noNavFoot>
