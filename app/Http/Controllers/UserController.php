@@ -18,6 +18,9 @@ class UserController extends Controller
         return view('users.register-trainer');
     }
     
+    public function showProfile(){
+        return view('users.user-profile');
+    }
 
     public function index(){
         return view('users.index');
@@ -26,6 +29,12 @@ class UserController extends Controller
     public function store(Request $request){
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
+            'birthday' => 'required',
+            'age' => 'required',
+            'sex' => 'required',
+            'address' => 'required',
+            'phone_number' => 'required',
+            'id_verify' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'role' => 'required'

@@ -35,6 +35,8 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+Route::get('/profile', [UserController::class, 'showProfile'])->middleware('auth');
 /******************************************************************* */
 //OWNER_PET_INFO
 Route::get('/pet-info', [PetInfoController::class, 'index'])->middleware('auth','isOwner');
@@ -59,6 +61,8 @@ Route::get('/trainer', [TrainerController::class, 'index'])->middleware('auth', 
 Route::get('/trainer/portfolio', [TrainerController::class, 'show'])->middleware('auth', 'isTrainer');
 
 Route::get('/trainer/portfolio/create', [TrainerController::class, 'create'])->middleware('auth', 'isTrainer');
+
+Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
 /******************************************************************* */
 
 // DEFAULT

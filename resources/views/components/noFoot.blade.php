@@ -79,7 +79,7 @@ iframe{
                   <img src="/images/avatar/Avatar-9.png" />
                 </div>
                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="">Profile</a></li>
+                    <li><a href="/profile">Profile</a></li>
                     <li>
                       <form method="POST" action="/logout">
                         @csrf
@@ -105,4 +105,9 @@ iframe{
     </main>
         <x-toast />
         </body>
+        <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+          <div>
+            <p>Copyright © 2023 - All right reserved by Pet Patrol</p>
+          </div>
+        </footer>
     </html>

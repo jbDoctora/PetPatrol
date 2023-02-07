@@ -27,9 +27,12 @@
           </div>
         </div>
       </div>
+  </div>
       @empty
-      <div>No Pet Added!</div>
-      @endforelse
+    <div class="">
+        No pet added yet, click the button above to add!
+    </div>
+    @endforelse
 
 
 </div>

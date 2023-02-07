@@ -11,7 +11,7 @@
          </div> 
          <div class="drawer-side text-base">
            <label for="my-drawer-2" class="drawer-overlay"></label> 
-           <ul class="menu p-2 w-52 bg-secondary text-base-content bg-secondary">
+           <ul class="menu p-2 w-52 bg-secondary text-sm-content bg-secondary">
             <div class="m-4 text-center font-extrabold">Dashboard</div>
              <li class="m-4"><a href="/trainer/portfolio" target="myFrame"><i class="fa-sharp fa-solid fa-record-vinyl"></i>My Portfolio</a></li>
              <li class="m-4"><a target="myFrame"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
