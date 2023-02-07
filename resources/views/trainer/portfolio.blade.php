@@ -3,7 +3,7 @@
     <section class="container mx-auto py-10 p-2">
 <div class="flex justify-center mb-3">
       <div class="avatar">
-        <div class="w-24 rounded-full border-2 border-black">
+        <div class="w-24 rounded-full border-2 border-primary">
           <img src="{{asset('images/no-image.png')}}" />
         </div>
       </div>

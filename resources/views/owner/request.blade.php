@@ -1,6 +1,6 @@
 <x-noNavFoot>
     <!-- Hero -->
-    <div class="hero min-h-10 bg-base-200 mb-4">
+    <div class="hero min-h-10 bg-base-200 mb-4" style="background-image: url(/images/animal-shelter.png); background-position: right center; background-repeat: no-repeat; background-size: contain;">
         <div class="hero-content text-center">
           <div class="max-w-md">
             <h1 class="text-4xl font-bold">Hello there</h1>

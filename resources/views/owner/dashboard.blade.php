@@ -1,4 +1,4 @@
-<x-layout>
+<x-noFoot>
    <div class="flex flex-row">
         <div class="drawer drawer-mobile h-screen drop-shadow-2xl">
           <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -11,7 +11,7 @@
           </div> 
           <div class="drawer-side text-base">
             <label for="my-drawer-2" class="drawer-overlay"></label> 
-            <ul class="menu p-2 w-52 bg-neutral-content text-base-content">
+            <ul class="menu p-2 w-52 bg-secondary text-base-content">
          
               <li class="m-4 text-center"><span class="font-extrabold">My Dashboard</span></li>
               <li class="m-4"><a href="/request" target="myFrame"><i class="fa-solid fa-book"></i>My Request</a></li>
@@ -19,4 +19,5 @@
               <li class="m-4"><a><i class="fa-solid fa-user"></i>My Profile</a></li>
               <li class="m-4"><a><i class="fa-solid fa-gears"></i>Privacy Settings</a></li>
             </ul>
-</x-layout>
+          </div>
+</x-noFoot>
