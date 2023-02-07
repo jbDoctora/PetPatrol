@@ -9,10 +9,10 @@
       </div>
     </div>
   </div>
-  
+  <p class="text-lg font-bold ml-4 p-2">Your Pets</p>
   <div class="grid grid-rows-4 md:grid-cols-3 gap-2 px-5">
     @forelse($petinfo as $petinfos)
-      <div class="card card-side bg-base-100 shadow-xl drop-shadow-xl">
+      <div class="card card-side bg-white shadow-xl drop-shadow-xl">
         <figure class="w-32 h-32"><img src="{{$petinfos->image ? asset('storage/' .$petinfos->image) : asset('/images/no-image.png')}}"/></figure>
         <div class="card-body">
           <h2 class="card-title font-normal text-base">Pet name: <span class="font-bold">{{$petinfos->name}}</span></h2>

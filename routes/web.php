@@ -55,6 +55,10 @@ Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('
 /******************************************************************* */
 //TRAINER
 Route::get('/trainer', [TrainerController::class, 'index'])->middleware('auth', 'isTrainer');
+
+Route::get('/trainer/portfolio', [TrainerController::class, 'show'])->middleware('auth', 'isTrainer');
+
+Route::get('/trainer/portfolio/create', [TrainerController::class, 'create'])->middleware('auth', 'isTrainer');
 /******************************************************************* */
 
 // DEFAULT

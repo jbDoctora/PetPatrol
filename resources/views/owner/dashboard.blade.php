@@ -9,7 +9,7 @@
             </svg></label>
             <div class="w-full h-96"><iframe name="myFrame" src="/request" frameborder="0" class="w-full h-screen"></iframe></div>
           </div> 
-          <div class="drawer-side text-base font-semibold">
+          <div class="drawer-side text-base">
             <label for="my-drawer-2" class="drawer-overlay"></label> 
             <ul class="menu p-2 w-52 bg-neutral-content text-base-content">
          
