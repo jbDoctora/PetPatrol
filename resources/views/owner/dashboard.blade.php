@@ -17,7 +17,7 @@
               <li class="m-4"><a href="/request" target="myFrame"><i class="fa-solid fa-book"></i>My Request</a></li>
               <li class="m-4"><a href="/pet-info" target="myFrame"><i class="fa-solid fa-paw"></i>Pet Profile</a></li>
               <li class="m-4"><a><i class="fa-solid fa-user"></i>My Profile</a></li>
-              <li class="m-4"><a><i class="fa-solid fa-gears"></i>Privacy Settings</a></li>
+              <li class="m-4"><a href="/profile" target="__parent"><i class="fa-solid fa-gears"></i>Profile settings</a></li>
             </ul>
           </div>
 </x-noFoot>

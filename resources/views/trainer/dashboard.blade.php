@@ -17,6 +17,6 @@
              <li class="m-4"><a target="myFrame"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
              <li class="m-4"><a target="myFrame"><i class="fa-solid fa-bell-concierge"></i>My Services</a></li>
              <li class="m-4"><a><i class="fa-solid fa-user"></i>My Profile</a></li>
-             <li class="m-4"><a><i class="fa-solid fa-gears"></i>Privacy Settings</a></li>
+             <li class="m-4"><a href="/profile"><i class="fa-solid fa-gears"></i>Profile Settings</a></li>
            </ul>
 </x-noFoot>

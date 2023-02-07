@@ -36,7 +36,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::get('/profile', [UserController::class, 'showProfile'])->middleware('auth');
+Route::get('/profile', [UserController::class, 'edit'])->middleware('auth');
 /******************************************************************* */
 //OWNER_PET_INFO
 Route::get('/pet-info', [PetInfoController::class, 'index'])->middleware('auth','isOwner');
