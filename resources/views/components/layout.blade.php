@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="retro">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
 <style>
   body::-webkit-scrollbar {
     display: none;
@@ -51,7 +51,8 @@ iframe{
         <!-- NavBar -->
             <div class="navbar border-b-black-200">
               <div class="flex-1 bg-fixed">
-                <img style="aspect-ratio: 4/2; object-fit: contain; mix-blend-mode: color-burn; margin-left: 4px; margin-right: 4px;" src="images/apple-touch-icon-76x76.png"><span class="font-semibold text-md tracking-wide" style="font-family: 'Fredoka One', cursive;">PET PATROL</span>
+                {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
+                <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 4px; margin-right: 4px;" src="images/apple-touch-icon-76x76.png"><span class="font-semibold text-md tracking-wide" style="font-family: 'Fredoka One', cursive;">PET PATROL</span>
               </div>
 
               <div class="navbar-start hidden lg:flex px-5">

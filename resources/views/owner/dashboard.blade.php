@@ -11,13 +11,13 @@
           </div> 
           <div class="drawer-side text-base">
             <label for="my-drawer-2" class="drawer-overlay"></label> 
-            <ul class="menu p-2 w-52 bg-secondary text-base-content">
+            <ul class="menu p-2 w-52 bg-base-300 text-base-content">
          
               <li class="m-4 text-center"><span class="font-extrabold">My Dashboard</span></li>
               <li class="m-4"><a href="/request" target="myFrame"><i class="fa-solid fa-book"></i>My Request</a></li>
               <li class="m-4"><a href="/pet-info" target="myFrame"><i class="fa-solid fa-paw"></i>Pet Profile</a></li>
-              <li class="m-4"><a><i class="fa-solid fa-user"></i>My Profile</a></li>
-              <li class="m-4"><a href="/profile" target="__parent"><i class="fa-solid fa-gears"></i>Profile settings</a></li>
+              <li class="m-4"><a href="/profile" target="__parent"><i class="fa-solid fa-user"></i>My Profile</a></li>
+              {{-- <li class="m-4"><a href="/profile" target="__parent"><i class="fa-solid fa-gears"></i>Profile settings</a></li> --}}
             </ul>
           </div>
 </x-noFoot>

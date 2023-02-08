@@ -9,7 +9,8 @@
           </div>
         </div>
       </div>
-<div class="font-bold mb-4 ml-4 text-lg">Recommended Pet Trainers</div>
+      <x-searchbar/>
+<div class="font-bold m-4 text-lg">Recommended Pet Trainers</div>
 <div class="grid grid-rows-3 md:grid-cols-4 gaps-5 px-5">
  
     {{-- <div class="card md:card-compact w-90 bg-base-100 shadow-xl m-2">
