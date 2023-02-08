@@ -239,7 +239,7 @@
               <input type="hidden" name="location" id="location" x-model="location"/>
             </div>
           <div class="flex justify-center items-center">
-              <button type="submit" class="btn btn-primary mx-2">Confirm</button>
+              <button type="submit" class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">Confirm</button>
             </div>
   
         </form>

@@ -49,17 +49,33 @@ class UserController extends Controller
 
         if(auth()->attempt($formFields)){
             $request->session()->regenerate();
-            $user = auth()->user();
+
+            // $user = auth()->user();
+            // if($user->role == 0){
+            //     auth()->login($user);
+            //     return redirect('/owner')->with('message', 'You are now logged in as an owner!');
+            // }elseif($user->role == 1){
+            //     auth()->login($user);
+            //     return redirect('/trainer')->with('message', 'You are now logged in as a trainer!');
+            // }else{
+            //     auth()->login($user);
+            //     return redirect('/')->with('message', 'You are now logged in!');
+            // }
+            // return redirect('/')->with('message', 'You are now logged in!');
+        }
+         $user = auth()->user();
             if($user->role == 0){
+                auth()->login($user);
                 return redirect('/owner')->with('message', 'You are now logged in as an owner!');
             }elseif($user->role == 1){
+                auth()->login($user);
                 return redirect('/trainer')->with('message', 'You are now logged in as a trainer!');
             }else{
+                auth()->login($user);
                 return redirect('/')->with('message', 'You are now logged in!');
             }
-        }
-
-        // return redirect('/')->with('message','User created and logged in!');  
+            return redirect('/')->with('message', 'You are now logged in!');
+         //return redirect('/')->with('message','User created and logged in!');  
     }
     public function login(){
         return view('users.login');

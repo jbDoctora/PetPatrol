@@ -28,7 +28,7 @@
             dolorum aliquam, quibusdam aperiam voluptatum.
           </p>
   
-          <form method="POST" action="/users" class="mt-5 grid grid-rows-7 gap-4">
+          <form method="POST" action="/users" class="mt-5 grid grid-rows-7 gap-4" enctype="multipart/form-data">
             @csrf
            <div class="col-span-5">
               <label

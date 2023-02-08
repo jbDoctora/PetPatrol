@@ -28,7 +28,7 @@
             dolorum aliquam, quibusdam aperiam voluptatum.
           </p>
   
-          <form method="POST" action="/users" class="mt-5 grid grid-rows-7 gap-4">
+          <form method="POST" action="/users" class="mt-5 grid grid-rows-7 gap-4" enctype="multipart/form-data">
             @csrf
            <div class="col-span-5">
               <label
@@ -269,7 +269,6 @@
             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
               <button
                 type="submit"
-
                 class="inline-block rounded border border-rose-400 bg-rose-400 px-12 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500"
               >
                 Create an account

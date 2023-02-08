@@ -6,7 +6,7 @@
                 <label class="font-bold text-md sm:text-sm">I am looking for a service for my:</label>
             </div>
             <div> 
-                <input type="radio" value="Dog" name="type" class="radio radio-primary ml-5" required/>
+                <input type="radio" value="Dog" name="type" class="radio radio-primary ml-5 " required/>
                 <label for="">Dog</label>
             </div>
             <div>
@@ -26,7 +26,7 @@
         <div class="flex flex-col p-2 border-2 border-black w-full m-9 p-4">
             <label for="" class="font-extrabold text-3xl">Add your favorite picture of your pet!</label>
             <input type="file" name="image" class="file-input w-full max-w-xs m-3" />
-            <input type="text" name="name" placeholder="Pet name" name="petName" class="input w-full max-w-xs m-3 bg-white" />
+            <input type="text" name="name" placeholder="Pet name" name="petName" class="input input-bordered w-full max-w-xs m-3 bg-white" />
             @error('name')
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
@@ -39,12 +39,12 @@
             <div class="grid grid-cols-2">
                 <div class="m-5">
                     <div class="m-2"><label for="" class="">Age</label></div>
-                    <input type="text" name="years" class="input w-12 max-w-xs bg-white ml-4" />
+                    <input type="text" name="years" class="input input-bordered w-12 max-w-xs bg-white ml-4" />
                     @error('years')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                     <label for="" class="ml-3">years</label>
-                    <input type="text" name="months" class="input w-12 max-w-xs bg-white ml-4" />
+                    <input type="text" name="months" class="input input-bordered w-12 max-w-xs bg-white ml-4" />
                     @error('months')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -53,7 +53,7 @@
                 <div class="m-5">
                     <div class="m-2"><label for="" class="">Name of the breed</label></div>
                     <div>
-                        <input type="text" name="breed" class="input w-full max-w-xs bg-white" />
+                        <input type="text" name="breed" class="input input-bordered w-full max-w-xs bg-white" />
                         @error('breed')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
@@ -86,7 +86,7 @@
              </div>
         </div>
     </div>
-    <button class="btn btn-primary" type="submit">
+    <button class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500" type="submit">
         Submit
     </button>
 </form>

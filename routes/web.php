@@ -24,6 +24,8 @@ use App\Http\Controllers\RequestTrainerController;
 */
 
 // ALL USERS
+
+
 Route::get('/register-owner', [UserController::class, 'create'])->middleware('guest');
 
 Route::get('/register-trainer', [UserController::class, 'createNew'])->middleware('guest');

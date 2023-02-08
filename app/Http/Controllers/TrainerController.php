@@ -48,6 +48,6 @@ class TrainerController extends Controller
         TrainerModel::create($formFields);
 
 
-        return redirect('/trainer')->with('message', 'Portfolio added successfully!');
+        return redirect('/trainer/portfolio')->with('message', 'Portfolio added successfully!');
     }
 }

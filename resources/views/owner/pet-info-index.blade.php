@@ -4,12 +4,12 @@
     <div class="hero-content text-center">
       <div class="max-w-md">
         <h1 class="text-4xl font-bold">Hello there</h1>
-        <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
         <a href="/pet/add-info"><button class="btn btn-primary">Add Pet<i class="fa-solid fa-circle-plus mx-2"></i></button></a>
       </div>
     </div>
   </div>
   <p class="text-lg font-bold ml-4 p-2">Your Pets</p>
+  <x-searchbar/>
   <div class="grid grid-rows-4 md:grid-cols-3 gap-2 px-5">
     @forelse($petinfo as $petinfos)
       <div class="card card-side bg-white shadow-xl drop-shadow-xl">
@@ -27,12 +27,13 @@
           </div>
         </div>
       </div>
-  </div>
       @empty
     <div class="">
         No pet added yet, click the button above to add!
     </div>
     @endforelse
+  </div>
+      
 
 
 </div>

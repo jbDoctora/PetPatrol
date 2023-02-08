@@ -45,6 +45,7 @@ iframe{
         {{-- <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet"> --}}
         {{-- ALPINE JS --}}
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
     <body>
 
@@ -70,8 +71,8 @@ iframe{
                   <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
                 </div>
                 <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                  <li><a href="">jagssdjagsdkjas</a></li>
-                  <li><a href="">iuywieyiuqwyeiuqw</a></li>
+                  <li><a href="">--upcoming features--</a></li>
+                  <li><a href="">--upcoming features--</a></li>
                 </ul>
               </div>
 
