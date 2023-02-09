@@ -49,7 +49,7 @@ iframe{
     <body>
 
         <!-- NavBar -->
-            <div class="navbar border-b-black-200">
+            <div class="navbar border-b-black-200 sticky top-0 z-50">
               <div class="flex-1 bg-fixed">
                 <label for="my-drawer" class="btn btn-square btn-md drawer-button ml-3">
                   <i class="fa-solid fa-bars fa-lg"></i>

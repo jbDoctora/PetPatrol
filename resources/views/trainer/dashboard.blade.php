@@ -49,9 +49,9 @@ iframe{
     <body>
 
         <!-- NavBar -->
-            <div class="navbar border-b-black-200">
+            <div class="navbar border-b-black-200 sticky top-0 z-50 bg-primary-content">
               <div class="flex-1 bg-fixed">
-                <label for="my-drawer" class="btn btn-square btn-primary drawer-button ml-3">
+                <label for="my-drawer" class="btn btn-square btn-md drawer-button ml-3">
                   <i class="fa-solid fa-bars fa-lg"></i>
                 </label>
                 {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
@@ -107,7 +107,7 @@ iframe{
   <div class="drawer">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
-    <div class="w-full h-96"><iframe name="myFrame" src="/request" frameborder="0" class="w-full h-screen"></iframe></div>
+    <div class="w-full h-96"><iframe name="myFrame" src="/trainer/portfolio" frameborder="0" class="w-full h-screen"></iframe></div>
     </div> 
     <div class="drawer-side">
       <label for="my-drawer" class="drawer-overlay"></label>
