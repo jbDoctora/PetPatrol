@@ -18,7 +18,7 @@ class isTrainer
     {
         $user = auth()->user();
         if ($user->role !== 1){
-            return redirect('/');
+            return redirect('/owner');
         }
 
         return $next($request);

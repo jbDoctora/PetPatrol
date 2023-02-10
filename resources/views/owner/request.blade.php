@@ -9,7 +9,6 @@
           </div>
         </div>
       </div>
-      <x-searchbar/>
 <div class="font-bold m-4 text-lg">Recommended Pet Trainers</div>
 <div class="grid grid-rows-3 md:grid-cols-4 gaps-5 px-5">
  

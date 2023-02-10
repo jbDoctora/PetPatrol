@@ -37,7 +37,6 @@ iframe{
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <!-- FAVICON -->
         <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
@@ -53,7 +52,7 @@ iframe{
             <div class="navbar border-b-black-200">
               <div class="flex-1 bg-fixed">
                 {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
-                <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 4px; margin-right: 4px;" src="images/apple-touch-icon-76x76.png"><span class="font-semibold text-md tracking-wide" style="font-family: 'Fredoka One', cursive;">PET PATROL</span>
+               <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;" src="images/apple-touch-icon-76x76.png"><span class="font-semibold text-md tracking-wide" style="font-family: 'Baby Panda', cursive;">PET PATROL</span>
               </div>
 
               <div class="navbar-start hidden lg:flex px-5">

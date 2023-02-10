@@ -5,9 +5,9 @@
         <div class="w-24 h-24 mt-5 rounded-full border-2 border-primary bg-white">
           <img src="{{$portfolios->profile_photo ? asset('storage/' .$portfolios->profile_photo) : asset('/images/no-image.png')}}" />
         </div>
-        <div class="flex flex-col ml-9 my-4 text-white">
+        <div class="flex flex-col ml-9 my-6 text-white">
           <p class="text-4xl font-bold">{{auth()->user()->name}}</p>
-          <p class="text-md">{{auth()->user()->email}}</p>
+          <p class="link link-hover text-md"><a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to={{auth()->user()->email}}" target="_blank">{{auth()->user()->email}}</a></p>
         </div>
 </div>
 {{-- <div class="flex justify-center mb-6 p-2 font-bold">
@@ -27,14 +27,14 @@
         </ul>
 </div>
 
-<div class="container bg-base-200 p-6 rounded-md">
+<div class="container bg-base-200 p-6 my-4 rounded-md">
         <h2 class="text-2xl font-bold mb-6">Pet Trained</h2>
         <ul class="text-lg">
           <li class="mb-4">{{$portfolios->type}}</li>
         </ul>
 </div>
 
-<div class="container bg-base-200 p-6 rounded-md">
+<div class="container bg-base-200 p-6 my-4 rounded-md">
         <h2 class="text-2xl font-bold mb-6">Certificates</h2>
       <div class="flex flex-row gap-2 mb-6">
         <div class="card bg-white">
@@ -45,12 +45,12 @@
       </div>
 </div>
 
-<div class="container bg-base-200 p-6 rounded-md">
+<div class="container bg-base-200 p-6 my-4 rounded-md">
       <h2 class="text-2xl font-bold mb-6">Pet Training Experience</h2>
       <p class="text-lg mb-6">{{$portfolios->experience}}</p>
 </div>
 
-<div class="container bg-base-200 p-6 rounded-md">
+<div class="container bg-base-200 p-6 my-4 rounded-md">
       <h2 class="text-2xl font-bold mb-6">Journey Photos</h2>
       <div class="flex flex-row gap-2 mb-6">
         <div class="card bg-white">

@@ -49,7 +49,7 @@ iframe{
     <body>
 
         <!-- NavBar -->
-            <div class="navbar border-b-black-200 sticky top-0 z-50">
+            <div class="navbar border-b-black-200 sticky top-0 z-50 bg-primary-content">
               <div class="flex-1 bg-fixed">
                 <label for="my-drawer" class="btn btn-square btn-md drawer-button ml-3">
                   <i class="fa-solid fa-bars fa-lg"></i>
@@ -114,9 +114,9 @@ iframe{
       <ul class="menu p-4 w-56 bg-base-100 text-base-content">
         <!-- Sidebar content here -->
         <li class="m-4 text-center"><span class="font-extrabold">My Dashboard</span></li>
-        <li class="m-4"><a href="/request" target="myFrame"><i class="fa-solid fa-book"></i>My Request</a></li>
-        <li class="m-4"><a href="/pet-info" target="myFrame"><i class="fa-solid fa-paw"></i>Pet Profile</a></li>
-        <li class="m-4"><a href="/profile" target="myFrame"><i class="fa-solid fa-user"></i>My Profile</a></li>
+        <li class="m-4"><a href="/request" target="myFrame"><i class="fa-solid fa-book fa-xl"></i>My Request</a></li>
+        <li class="m-4"><a href="/pet-info" target="myFrame"><i class="fa-solid fa-paw fa-xl"></i>Pet Profile</a></li>
+        <li class="m-4"><a href="/profile" target="myFrame"><i class="fa-solid fa-user fa-xl"></i>My Profile</a></li>
       </ul>
     </div>
   </div>

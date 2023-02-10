@@ -4,7 +4,7 @@
     <div class="hero-overlay bg-opacity-20 bg-cover"></div>
     <div class="hero-content text-center text-black">
       <div class="max-w-md">
-        <h1 class="mb-5 text-6xl font-bold"><span class="font-semibold text-md tracking-wide" style="font-family: 'Fredoka One', cursive;">Take good care of your pets</span></h1>
+        <h1 class="mb-5 text-6xl font-bold"><span class="font-semibold text-md tracking-wide" style="font-family: 'Baby Panda', cursive;">Take good care of your pets</span></h1>
         <button class="btn btn-primary mt-4"><a href="/book-trainer">Book Appointment</a></button>
       </div>
     </div>

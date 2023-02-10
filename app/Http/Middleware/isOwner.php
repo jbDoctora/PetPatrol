@@ -18,7 +18,7 @@ class isOwner
     {
         $user = auth()->user();
         if ($user->role !== 0){
-            return redirect('/');
+            return redirect('/trainer');
         }
 
         return $next($request);

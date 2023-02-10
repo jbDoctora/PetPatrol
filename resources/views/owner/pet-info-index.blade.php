@@ -9,7 +9,6 @@
     </div>
   </div>
   <p class="text-lg font-bold ml-4 p-2">Your Pets</p>
-  <x-searchbar/>
   <div class="grid grid-rows-4 md:grid-cols-3 gap-2 px-5">
     @forelse($petinfo as $petinfos)
       <div class="card card-side bg-white shadow-xl drop-shadow-xl">

@@ -55,7 +55,7 @@ iframe{
                   <i class="fa-solid fa-bars fa-lg"></i>
                 </label>
                 {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
-                <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 4px; margin-right: 4px;" src="images/apple-touch-icon-76x76.png"><span class="font-semibold text-md tracking-wide" style="font-family: 'Fredoka One', cursive;">PET PATROL</span>
+                <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 2px;" src="images/apple-touch-icon-76x76.png"><span class="font-semibold text-md tracking-wide" style="font-family: 'Fredoka One', cursive;">PET PATROL</span>
               </div>
 
               <div class="navbar-start hidden lg:flex px-5">
@@ -113,10 +113,10 @@ iframe{
       <label for="my-drawer" class="drawer-overlay"></label>
       <ul class="menu p-4 w-56 bg-base-100 text-base-content">
         <!-- Sidebar content here -->
-        <li class="m-4"><a href="/trainer/portfolio" target="myFrame"><i class="fa-sharp fa-solid fa-record-vinyl"></i>My Portfolio</a></li>
-        <li class="m-4"><a target="myFrame"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
-        <li class="m-4"><a target="myFrame"><i class="fa-solid fa-bell-concierge"></i>My Services</a></li>
-        <li class="m-4"><a href="/profile" target="myFrame"><i class="fa-solid fa-user"></i>My Profile</a></li>
+        <li class="m-4"><a href="/trainer/portfolio" target="myFrame"><i class="fa-sharp fa-solid fa-record-vinyl fa-xl"></i>My Portfolio</a></li>
+        <li class="m-4"><a target="myFrame"><i class="fa-solid fa-calendar-check fa-xl"></i>My Bookings</a></li>
+        <li class="m-4"><a target="myFrame"><i class="fa-solid fa-bell-concierge fa-xl"></i>My Services</a></li>
+        <li class="m-4"><a href="/profile" target="myFrame"><i class="fa-solid fa-user fa-xl"></i>My Profile</a></li>
       </ul>
     </div>
   </div>
