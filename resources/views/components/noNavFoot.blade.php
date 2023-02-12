@@ -8,6 +8,9 @@ iframe{
     float:left;
     clear: both;
 }
+.class-name {
+  white-space: pre-wrap;
+}
 </style>    
 <head>
         <meta charset="UTF-8">

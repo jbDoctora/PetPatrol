@@ -47,7 +47,7 @@
 
 <div class="container bg-base-200 p-6 my-4 rounded-md">
       <h2 class="text-2xl font-bold mb-6">Pet Training Experience</h2>
-      <p class="text-lg mb-6">{{$portfolios->experience}}</p>
+      <p class="text-lg mb-6 class-name">{{$portfolios->experience}}</p>
 </div>
 
 <div class="container bg-base-200 p-6 my-4 rounded-md">
