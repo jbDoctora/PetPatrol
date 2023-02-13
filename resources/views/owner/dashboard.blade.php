@@ -111,7 +111,7 @@ iframe{
     </div> 
     <div class="drawer-side">
       <label for="my-drawer" class="drawer-overlay"></label>
-      <ul class="menu p-4 w-56 bg-base-100 text-base-content">
+      <ul class="menu p-4 w-56 bg-base-100 text-base-content fixed">
         <!-- Sidebar content here -->
         <li class="m-4 text-center"><span class="font-extrabold">My Dashboard</span></li>
         <li class="m-4"><a href="/request" target="myFrame"><i class="fa-solid fa-book fa-xl"></i>My Request</a></li>

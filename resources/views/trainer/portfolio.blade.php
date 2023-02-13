@@ -15,7 +15,7 @@
 </div> --}}
 <div class="container bg-base-200 p-6 mb-4 rounded-md">
         <h2 class="text-2xl font-bold mb-6">About Me</h2>
-        <p class="text-lg mb-6">
+        <p class="text-lg mb-6 class-name">
           {{$portfolios->about_me}}
         </p>
 </div>
