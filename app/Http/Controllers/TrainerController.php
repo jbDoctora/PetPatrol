@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
 use App\Models\TrainingDetails;
@@ -22,7 +23,8 @@ class TrainerController extends Controller
 
     public function showService(){
         return view('trainer.create-service',[
-            'service' => TrainingDetails::all()
+            'service' => TrainingDetails::all(),
+            'training' => Service::all()
         ]);
     }
 

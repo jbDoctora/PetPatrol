@@ -9,6 +9,7 @@ use App\Http\Controllers\PetInfoController;
 use App\Http\Controllers\TrainerController;
 use Symfony\Component\Routing\RequestContext;
 use App\Http\Controllers\RequestTrainerController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TrainingDetailsController;
 
 //use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -69,7 +70,12 @@ Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
 
 Route::get('/trainer/service/add', [TrainerController::class, 'showService'])->middleware('auth', 'isTrainer');
 
-Route::post('/trainer/service/add-service', [TrainingDetailsController::class, 'store']);
+Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
+
+Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create'])->middleware('auth', 'isTrainer');
+
+Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
+
 /******************************************************************* */
 
 // DEFAULT

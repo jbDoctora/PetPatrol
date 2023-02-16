@@ -107,11 +107,11 @@ iframe{
   <div class="drawer">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
-    <div class="w-full h-96"><iframe name="myFrame" src="/request" frameborder="0" class="w-full h-screen"></iframe></div>
+      <iframe name="myFrame" src="/request" frameborder="0" class="w-full h-screen"></iframe>
     </div> 
     <div class="drawer-side">
       <label for="my-drawer" class="drawer-overlay"></label>
-      <ul class="menu p-4 w-56 bg-base-100 text-base-content fixed">
+      <ul class="menu p-2 w-56 h-screen bg-base-100 text-base-content fixed">
         <!-- Sidebar content here -->
         <li class="m-4 text-center"><span class="font-extrabold">My Dashboard</span></li>
         <li class="m-4"><a href="/request" target="myFrame"><i class="fa-solid fa-book fa-xl"></i>My Request</a></li>

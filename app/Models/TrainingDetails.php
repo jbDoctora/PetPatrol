@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class TrainingDetails extends Model
 {
-    protected $fillable = ['title', 'description', 'duration'];
+    protected $fillable = ['service_id', 'day', 'lesson', 'start_time', 'end_time'];
 
     protected $table = 'training_details';
     public $timestamps = false;
+
+    public function service(){
+        return $this->belongsTo(Service::class, 'service_id');
+    }
 }

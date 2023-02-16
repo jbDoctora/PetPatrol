@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('training_details', function (Blueprint $table) {
-            $table->id('training_id');
-            $table->foreignId('service_id')->onDelete('cascade');
-            $table->string('day');
-            $table->string('lesson');
-            $table->time('start_time');
-            $table->time('end_time');
+        Schema::create('service', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->onDelete('cascade');
+            $table->string('course');
+            $table->string('pet_type');
+            $table->string('availability');
+            $table->integer('weeks');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('training_details');
+        Schema::dropIfExists('service');
     }
 };
