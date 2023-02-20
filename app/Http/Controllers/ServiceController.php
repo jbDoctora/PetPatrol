@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 class ServiceController extends Controller
 {
      public function store(Request $request){
-        // $formFields = $request->validate();
         $formFields['course'] = $request->input('course');
         $formFields['pet_type'] = $request->input('pet_type');
         $formFields['availability'] = $request->input('availability');

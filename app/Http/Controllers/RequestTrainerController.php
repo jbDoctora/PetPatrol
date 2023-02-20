@@ -2,19 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PetInfo;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\RequestTrainer;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class RequestTrainerController extends Controller
 {
-    public function index(){
-        return view('owner.request',[
-            'requestinfo' => RequestTrainer::paginate(5)
+    // public function index()
+    // {
+    //     return view('owner.request', [
+    //         'requestinfo' => RequestTrainer::where('user_id', auth()->id())->get(),
+    //     ]);
+    // }
+
+    public function index()
+    {
+        $requestinfo = RequestTrainer::where('user_id', auth()->id())->get();
+
+        return view('owner.request', [
+            'requestinfo' => $requestinfo,
+
         ]);
     }
 
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
         $formFields = $request->validate([
             'pet' => 'required',
             'vaccinated' => 'required',
@@ -24,9 +40,10 @@ class RequestTrainerController extends Controller
             'date' => 'required',
             'location' => 'required',
         ]);
-
+        $formFields['user_id'] = $request->input('user_id');
+        $formFields['pet_type'] = $request->input('pet_type');
         RequestTrainer::create($formFields);
 
-        return redirect('/')->with('message', 'Request added successfully!');
+        return redirect('/owner')->with('message', 'Request added successfully!');
     }
 }

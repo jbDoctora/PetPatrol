@@ -9,9 +9,7 @@
     <p class="mt-2 text-gray-600">{{$trainings->weeks}}</p>
   </div>
   <div class="w-1/2 flex justify-end">
-    {{-- @foreach($service as $services) --}}
     <button class="px-4 py-2 text-white bg-blue-500 rounded-md mr-2"><a href="/trainer/service/add-service/{{$trainings->id}}">Create training plan</a></button>
-    {{-- @endforeach --}}
     <button class="px-4 py-2 text-white bg-green-500 rounded-md mr-2">Button 2</button>
     <button class="px-4 py-2 text-white bg-red-500 rounded-md">Button 3</button>
   </div>

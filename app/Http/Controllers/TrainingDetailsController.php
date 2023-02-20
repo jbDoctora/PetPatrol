@@ -25,10 +25,7 @@ class TrainingDetailsController extends Controller
         $formFields['start_time'] = $request->input('start_time');
         $formFields['end_time'] = $request->input('end_time');
         $formFields['service_id'] = $request->input('service_id');
-        // $formFields['service_id'] = TrainingDetails::class('service_id') ?? null;
-
-
-        // $formFields['service_id'] = Service::pluck('service_id')->first() ?? null;
+        
         TrainingDetails::create($formFields);
 
         return redirect()->back();

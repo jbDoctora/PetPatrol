@@ -14,7 +14,8 @@ class PetInfo extends Model
     public $timestamps = false;
 
     //Relationship sa petInfo ug sa client
-    public function owner(){
+    public function owner()
+    {
         return $this->belongsTo(User::class, 'owner_id');
     }
 }

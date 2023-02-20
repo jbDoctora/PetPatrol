@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class RequestTrainer extends Model
 {
     protected $fillable = [
-        'pet', 'vaccinated', 'course', 'info', 'sessions', 'date', 'location' 
+        'pet', 'vaccinated', 'course', 'info', 'sessions', 'date', 'location', 'user_id', 'pet_type'
     ];
     protected $table = "request";
     public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

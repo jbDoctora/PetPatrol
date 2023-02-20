@@ -57,4 +57,8 @@ class User extends Authenticatable
     public function service(){
         return $this->hasMany(Service::class, 'user_id');
     }
+
+    public function request(){
+        return $this->hasMany(RequestTrainer::class, 'user_id');
+    }
 }

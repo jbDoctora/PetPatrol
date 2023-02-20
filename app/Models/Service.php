@@ -12,12 +12,14 @@ class Service extends Model
     protected $table = 'service';
     public $timestamps = false;
 
-    public function training(){
+    public function training()
+    {
         return $this->hasMany(TrainingDetails::class, 'service_id');
     }
-    
+
     // If mo error ang relationship, e change ang function name
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 }

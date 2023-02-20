@@ -43,7 +43,7 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 Route::get('/profile', [UserController::class, 'edit'])->middleware('auth');
 /******************************************************************* */
 //OWNER_PET_INFO
-Route::get('/pet-info', [PetInfoController::class, 'index'])->middleware('auth','isOwner');
+Route::get('/pet-info', [PetInfoController::class, 'index'])->middleware('auth', 'isOwner');
 
 Route::get('/pet/add-info', [PetInfoController::class, 'create'])->middleware('auth', 'isOwner');
 
@@ -57,6 +57,8 @@ Route::get('/book-trainer', [OwnerController::class, 'create'])->middleware('aut
 Route::post('/book-trainer/add', [RequestTrainerController::class, 'store']);
 
 Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('auth', 'isOwner');
+
+Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'isOwner')->name('show-matched');
 
 /******************************************************************* */
 //TRAINER
@@ -81,5 +83,3 @@ Route::post('/trainer/service/add-service/addService', [ServiceController::class
 // DEFAULT
 Route::get('/', [UserController::class, 'index']);
 /******************************************************************* */
-
-

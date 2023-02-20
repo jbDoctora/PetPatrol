@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('request', function (Blueprint $table) {
             $table->id('request_id');
+            $table->foreignId('user_id')->onDelete('cascade');
+            $table->string('pet_type');
             $table->string('pet');
             $table->string('vaccinated');
             $table->string('course');
