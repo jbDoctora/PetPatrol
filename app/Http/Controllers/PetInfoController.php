@@ -21,24 +21,29 @@ class PetInfoController extends Controller
     //         'petinfo' => PetInfo::paginate(9)
     //     ]);
     // }
-    public function index(){
+    public function index()
+    {
         $petinfo = PetInfo::where('owner_id', auth()->id())->paginate(9);
         return view('owner.pet-info-index', compact('petinfo'));
     }
-    public function create(){
+    public function create()
+    {
         return view('owner.pet-info-create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $formFields = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:pet_info,name,NULL,id,owner_id,' . auth()->id(),
             'years' => 'required',
             'months' => 'required',
             'breed' => 'required',
+        ], [
+            'name.unique' => 'The pet name already exists on your end.',
         ]);
 
-        if($request->hasFile('image')){
-            $formFields['image'] = $request->file('image')->store('image','public');
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('image', 'public');
         }
         $formFields['type'] = $request->input('type');
         $formFields['weight'] = $request->input('weight');

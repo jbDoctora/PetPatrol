@@ -6,6 +6,7 @@ use App\Models\PetInfo;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\RequestTrainer;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -32,7 +33,13 @@ class RequestTrainerController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'pet' => 'required',
+            // 'pet' => 'required',
+            'pet' => [
+                'required',
+                Rule::unique('request')->where(function ($query) use ($request) {
+                    return $query->where('user_id', $request->input('user_id'));
+                }),
+            ],
             'vaccinated' => 'required',
             'course' => 'required',
             'info' => 'required',

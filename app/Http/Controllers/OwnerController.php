@@ -52,7 +52,8 @@ class OwnerController extends Controller
     public function create()
     {
         $petinfo = PetInfo::where('owner_id', auth()->id())->paginate(9);
+        $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet')->toArray();
         // dd($petinfo);
-        return view('owner.book-trainer', compact('petinfo'));
+        return view('owner.book-trainer', compact('petinfo', 'requestedPetNames'));
     }
 }
