@@ -11,7 +11,7 @@
         </div>
     </div>
     <p class="ml-4 p-2 text-lg font-bold">Your Pets</p>
-    <div class="grid grid-rows-4 gap-2 px-5 md:grid-cols-3">
+    <div class="grid grid-rows-3 gap-2 px-3 md:grid-cols-3">
         @forelse($petinfo as $petinfos)
             <div class="card card-side bg-white shadow-xl drop-shadow-xl">
                 <figure class="h-32 w-32"><img
@@ -32,13 +32,12 @@
                 </div>
             </div>
         @empty
-            <div class="">
+            <div>
                 No pet added yet, click the button above to add!
             </div>
         @endforelse
     </div>
 
-    </div>
     <div class="pagination m-4 mb-9 justify-center">
         {{ $petinfo->links() }}
     </div>

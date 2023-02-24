@@ -14,9 +14,7 @@
                             target="_blank">{{ auth()->user()->email }}</a></p>
                 </div>
             </div>
-            {{-- <div class="flex justify-center mb-6 p-2 font-bold">
-<p>{{auth()->user()->name}}</p>
-</div> --}}
+
             <div class="bg-base-200 container mb-4 rounded-md p-6">
                 <h2 class="mb-6 text-2xl font-bold">About Me</h2>
                 <p class="class-name mb-6 text-lg">

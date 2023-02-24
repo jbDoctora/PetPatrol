@@ -1,7 +1,7 @@
 <x-layout>
 
     <div class="hero min-h-screen"
-        style=" background-image: url(/images/woman-holding-a-dog.png); background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill;">
+        style=" background-image: url(/images/test.png); background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill;">
         <div class="hero-overlay bg-opacity-20 bg-cover"></div>
         <div class="hero-content text-center text-black">
             <div class="max-w-md">

@@ -1,4 +1,4 @@
-<x-noNavBar>
+<x-noNav>
     <section class="bg-inherit">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
@@ -27,7 +27,7 @@
                                 Name
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
 
                             @error('name')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -41,7 +41,7 @@
                             </label>
 
                             <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="mt-1 h-10 w-full rounded-md border-solid border-slate-400 bg-white text-sm text-gray-700 shadow-sm" />
 
                             @error('birthday')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -55,7 +55,7 @@
                             </label>
 
                             <input type="number" name="age" value="{{ old('age') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
 
                             @error('age')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -87,7 +87,7 @@
                             </label>
 
                             <input type="text" name="address" value="{{ old('address') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
                             @error('address')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -100,7 +100,7 @@
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
                             @error('phone_number')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -127,7 +127,7 @@
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
 
                             @error('email')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -141,7 +141,7 @@
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
 
                             @error('password')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -155,8 +155,7 @@
                             </label>
 
                             <input type="password" name="password_confirmation"
-                                value="{{ old('password_confirmation') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                value="{{ old('password_confirmation') }}" class="input input-bordered w-full" />
 
                             @error('password_confirmation')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -206,4 +205,4 @@
         </div>
     </section>
     </div>
-</x-noNavBar>
+</x-noNav>

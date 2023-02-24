@@ -17,7 +17,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
+                        'sans': ['Roboto', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -31,6 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -75,7 +76,7 @@
                     </button>
                     <div class="flex-1 bg-fixed">
                         {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
-                        <img style="aspect-ratio: 4/2; object-fit: contain;"
+                        <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
                             src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
                             style="font-family: 'Baby Panda', cursive;">PET PATROL</span>
                     </div>
