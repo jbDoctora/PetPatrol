@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\RequestTrainer;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\TrainingDetails;
 
 class OwnerController extends Controller
 {
@@ -47,6 +48,14 @@ class OwnerController extends Controller
                 'request' => $request
             ]);
         }
+    }
+
+    public function showTraining($service_id)
+    {
+        return view('owner.service-plan', [
+            'trainingDet' => TrainingDetails::where('service_id', $service_id)->get(),
+            'service' => Service::find($service_id)
+        ]);
     }
 
     public function create()

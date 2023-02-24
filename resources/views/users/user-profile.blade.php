@@ -1,4 +1,4 @@
-<x-noNavFoot>
+<x-noNav>
     <h1 class="mb-9 mt-4 ml-4 text-3xl font-bold">User Profile</h1>
     <form class="m-7">
         <div class="mb-4">
@@ -69,4 +69,4 @@
                 </button>
             </div>
     </form>
-</x-noNavFoot>
+</x-noNav>

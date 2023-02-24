@@ -8,7 +8,10 @@
                 <p>{{ $match->pet_type }}</p>
                 <p>{{ $match->availability }}</p>
                 <div class="row flex flex justify-center gap-4">
-                    <button class="btn btn-primary">View Training Info</button>
+                    <button class="btn btn-primary"><a href="/show-matched/training-plan/{{ $match->id }}"
+                            target="_blank">View
+                            Training
+                            Info</a></button>
                     <button class="btn btn-primary">Book</button>
                 </div>
                 <!-- Display other columns from the 'service' table as needed -->

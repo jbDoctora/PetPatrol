@@ -1,4 +1,4 @@
-<x-layout>
+<x-dash-layout>
     <div class="mx-auto mb-6 h-full max-w-screen-sm py-10 sm:px-6 lg:px-8" x-data="{ step: 1, percentComplete: 0, pet: '', vaccinated: '', course: [], info: '', sessions: '', date: '', location: '', date: '', time: '', pet_type: '' }">
 
         <div class="mx-auto mb-5 flex max-w-screen-xl items-center justify-center px-4">
@@ -156,7 +156,7 @@
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
                     <input type="radio" name="radio-8" class="radio radio-primary" value="Saturday/Sunday"
                         x-model="sessions" />
-                    <label for="" class="ml-2 text-sm font-medium">Saturday/Sunday</label>
+                    <label for="" class="ml-2 text-sm font-medium">Weekends</label>
                 </div>
 
                 <div class="flex items-center justify-center">
@@ -273,4 +273,4 @@
         </div>
     </div>
 
-</x-layout>
+</x-dash-layout>

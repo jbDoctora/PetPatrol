@@ -1,4 +1,4 @@
-<x-noNavFoot>
+<x-dash-layout>
     <!-- Hero -->
     <div class="hero min-h-10 bg-base-200 mb-4"
         style="background-image: url(/images/walking-dog.png); background-position: right center; background-repeat: no-repeat; background-size: contain;">
@@ -42,4 +42,4 @@
     <div class="pagination m-4 mb-9 justify-center">
         {{ $petinfo->links() }}
     </div>
-</x-noNavFoot>
+</x-dash-layout>

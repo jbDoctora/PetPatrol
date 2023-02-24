@@ -60,6 +60,8 @@ Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('
 
 Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'isOwner')->name('show-matched');
 
+Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining'])->middleware('auth', 'isOwner');
+
 /******************************************************************* */
 //TRAINER
 Route::get('/trainer', [TrainerController::class, 'index'])->middleware('auth', 'isTrainer');

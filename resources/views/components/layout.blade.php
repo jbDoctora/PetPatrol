@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
 <style>
-    body::-webkit-scrollbar {
-        display: none;
-    }
-
-    iframe {
-        float: left;
-        clear: both;
-    }
-
     .class-name {
         white-space: pre-wrap;
     }

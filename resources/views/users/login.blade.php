@@ -1,4 +1,4 @@
-<x-noNavBar>
+<x-noNav>
     <section class="bg-inherit">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
@@ -31,7 +31,7 @@
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
                             @error('email')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -43,7 +43,7 @@
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="input input-bordered w-full" />
                             @error('password')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -65,4 +65,4 @@
             </main>
         </div>
     </section>
-</x-noNavBar>
+</x-noNav>

@@ -1,4 +1,4 @@
-<x-NoNavFoot>
+<x-dash-layout>
     <form method="POST" action="/pet/add-info/add" class="m-6 mx-auto flex flex-col items-center justify-center px-4"
         enctype="multipart/form-data">
         @csrf
@@ -95,4 +95,4 @@
             Submit
         </button>
     </form>
-</x-NoNavFoot>
+</x-dash-layout>
