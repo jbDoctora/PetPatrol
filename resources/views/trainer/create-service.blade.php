@@ -10,7 +10,8 @@
                 </div>
                 <div class="flex w-1/2 justify-end">
                     <button class="mr-2 rounded-md bg-blue-500 px-4 py-2 text-white"><a
-                            href="/trainer/service/add-service/{{ $trainings->id }}">Create training plan</a></button>
+                            href="/trainer/service/add-service/{{ $trainings->id }}">Create training
+                            plan</a></button>
                     <button class="mr-2 rounded-md bg-green-500 px-4 py-2 text-white">Button 2</button>
                     <button class="rounded-md bg-red-500 px-4 py-2 text-white">Button 3</button>
                 </div>

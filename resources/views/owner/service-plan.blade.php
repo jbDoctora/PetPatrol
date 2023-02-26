@@ -1,4 +1,4 @@
-<x-NoNavFoot>
+<x-NoNav>
     <div class="m-4 overflow-x-auto">
         <table class="table w-full">
             <!-- head -->
@@ -30,4 +30,4 @@
             @endforelse
         </table>
     </div>
-</x-NoNavFoot>
+</x-NoNav>

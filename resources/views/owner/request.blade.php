@@ -25,7 +25,7 @@
                 </div>
                 <div class="flex w-1/2 justify-end">
                     <label class="mr-2 rounded-md bg-blue-500 px-4 py-2 text-white"><a
-                            href="/show-matched/{{ $info->request_id }}" target="_blank">View Matched
+                            href="/show-matched/{{ $info->request_id }}">View Matched
                             trainers</a></label>
                     <button class="mr-2 rounded-md bg-green-500 px-4 py-2 text-white">Button 2</button>
                     <button class="rounded-md bg-red-500 px-4 py-2 text-white">Button 3</button>

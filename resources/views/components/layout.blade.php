@@ -19,7 +19,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
+                        'sans': ['Roboto', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -34,7 +34,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <!-- Tailwind Forms -->
@@ -47,7 +49,7 @@
 <body class="flex min-h-screen flex-col">
 
     <!-- NavBar -->
-    <div class="navbar border-b-black-200">
+    <div class="navbar sticky top-0 z-50 bg-transparent bg-yellow-400 text-white">
         <div class="flex-1 bg-fixed">
             {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
             <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
@@ -68,21 +70,20 @@
         @auth
             <div class="dropdown dropdown-end">
                 <div class="indicator">
-                    <span class="indicator-item badge badge-primary">99+</span>
+                    <span class="indicator-item badge bg-rose-400 outline-0">99+</span>
                     <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
                 </div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 bg-yellow-400 p-2 shadow">
                     <li><a href="">--upcoming features--</a></li>
                     <li><a href="">--upcoming features--</a></li>
                 </ul>
             </div>
 
             <div class="avatar dropdown dropdown-end">
-                <div tabindex="0"
-                    class="ring-primary ring-offset-base-100 mr-4 ml-8 h-9 w-9 rounded-full ring ring-offset-2">
+                <div tabindex="0" class="mr-4 ml-8 h-9 w-9 rounded-full ring-2 ring-rose-400 ring-offset-2">
                     <img src="/images/avatar/Avatar-9.png" />
                 </div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                <ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-yellow-400 p-2 shadow">
                     <li><a>Profile</a></li>
                     <li>
                         <form method="POST" action="/logout">
@@ -97,7 +98,9 @@
             </div>
         @else
             <button class="btn btn-outline mx-1"><a href="/login"><span class="normal-case">Sign in</span></a></button>
-            <button class="btn btn-primary mx-2"><a href="/register-owner"><span class="normal-case">Sign
+            <button
+                class="inline-block rounded-lg border border-rose-400 bg-rose-400 px-4 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500"><a
+                    href="/register-owner"><span class="normal-case">Sign
                         up</span></a></button>
 
         @endauth
@@ -106,7 +109,6 @@
     <main>
         {{ $slot }}
     </main>
-
     <!-- FOOTER -->
     <footer class="footer bg-neutral text-neutral-content mt-auto p-10">
         <div>

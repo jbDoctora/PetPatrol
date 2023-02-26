@@ -12,16 +12,20 @@
                         <p> Choose your pet that you want to train.</p>
                     </label>
                 </div>
+
                 @forelse($petinfo as $petinfos)
                     @if (in_array($petinfos->name, $requestedPetNames))
                         @continue
                     @endif
+
                     <div class="mb-4 flex items-center bg-slate-300 p-5">
                         <input type="radio" name="radio-1" class="radio radio-primary"
                             value="{{ $petinfos->name }},{{ $petinfos->type }}" x-model="pet" required />
                         <label for="" class="ml-2 text-sm font-medium">{{ $petinfos->name }}</label>
                     </div>
+
                 @empty
+
                     <p>No Pet record</p>
                 @endforelse
 

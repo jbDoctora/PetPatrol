@@ -30,7 +30,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -47,6 +46,7 @@
             <nav class="flex flex-1 flex-col bg-white">
                 <a href="/owner" class="m-7"><i class="fa-solid fa-house mr-5"></i>Dashboard</a>
                 <a href="/request" class="m-7"><i class="fa-solid fa-book fa-xl mr-5"></i>My Request</a>
+                <a href="/bookings" class="m-7"><i class="fa-solid fa-calendar-check mr-5"></i>My Bookings</a>
                 <a href="/pet-info" class="m-7"><i class="fa-solid fa-paw fa-xl mr-5"></i>Pet Profile</a>
                 <a href="/profile" class="m-7" target="_parent"><i class="fa-solid fa-user fa-xl mr-5"></i>User
                     Profile</a>

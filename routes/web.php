@@ -2,6 +2,7 @@
 
 //use Illuminate\Http\Request;
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OwnerController;
@@ -58,7 +59,13 @@ Route::post('/book-trainer/add', [RequestTrainerController::class, 'store']);
 
 Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('auth', 'isOwner');
 
+Route::get('/show-matched/trainerInfo/{user_id}', [OwnerController::class, "showTrainerInfo"])->middleware('auth', 'isOwner');
+
 Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'isOwner')->name('show-matched');
+
+Route::post('/show-matched/book', [BookingController::class, 'store']);
+
+Route::get('/bookings', [BookingController::class, "show"])->middleware('auth', 'isOwner');
 
 Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining'])->middleware('auth', 'isOwner');
 
