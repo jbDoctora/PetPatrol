@@ -34,7 +34,7 @@ class TrainerController extends Controller
         ]);
     }
 
-    public function create($user_id)
+    public function create()
     {
         return view('trainer.create-portfolio');
     }

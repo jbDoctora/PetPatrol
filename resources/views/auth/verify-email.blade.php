@@ -1,4 +1,10 @@
 <x-noNav>
+    <div class="flex justify-end p-4">
+        <form method="POST" action="/logout">
+            @csrf
+            <button type="submit"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
+        </form>
+    </div>
     <div class="flex min-h-screen flex-col justify-center bg-gray-100 py-12 sm:px-6 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
             <img class="mx-auto h-12 w-auto" src="{{ asset('images/apple-touch-icon-72x72.png') }}" alt="Logo">
@@ -6,8 +12,8 @@
                 Verify Your Email Address
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
-                {{ __('Before proceeding, please check your email for a verification link.') }}
-                {{-- {{ __('If you did not receive the email') }},
+            <p class="text-center font-bold">Hi, {{ auth()->user()->name }}</p>
+            {{-- {{ __('If you did not receive the email') }},
                 <form class="inline" method="POST" action="{{ route('verification.send') }}">
                 @csrf
                 <button type="submit" class="font-medium text-indigo-600 hover:text-indigo-500">
@@ -34,7 +40,7 @@
 
                     <form class="ml-3" method="POST" action="{{ route('verification.send') }}">
                         @csrf
-                        <button type="submit" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <button type="submit" class="font-medium text-blue-600 hover:text-blue-500">
                             {{ __('Resend Verification Email') }}
                         </button>
                     </form>

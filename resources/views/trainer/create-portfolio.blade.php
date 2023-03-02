@@ -9,7 +9,7 @@
             @csrf
             <input type="hidden" value="{{ auth()->id() }}" name="user_id">
             <h2 class="mb-6 text-2xl font-bold">About Me</h2>
-            <textarea class="mb-6 w-full rounded-lg bg-white p-4 shadow-md" name="about_me" rows="5"></textarea>
+            <textarea id="myeditorinstance" name="about_me" rows="5"></textarea>
             @error('about_me')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
@@ -74,7 +74,7 @@
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
             <h2 class="mb-6 text-2xl font-bold">Pet Training Experience</h2>
-            <textarea class="mb-6 w-full rounded-lg bg-white p-4 shadow-md" name="experience" rows="5"></textarea>
+            <textarea id="myeditorinstance" class="h-64 w-64" name="experience" rows="5"></textarea>
             @error('experience')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror

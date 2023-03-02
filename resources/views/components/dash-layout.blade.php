@@ -72,8 +72,8 @@
         </aside>
         <div class="flex-1">
             <header class="flex items-center">
-                <div class="navbar bg-yellow-300 text-black shadow-xl">
-                    <button class="btn mr-4 border-0 bg-blue-600 p-2"
+                <div class="navbar bg-yellow-300 text-black shadow-lg">
+                    <button class="btn mr-4 border-0 bg-blue-600 p-2 hover:bg-blue-700"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"

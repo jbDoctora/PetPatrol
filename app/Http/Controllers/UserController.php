@@ -42,7 +42,7 @@ class UserController extends Controller
             'sex' => 'required',
             'address' => 'required',
             'phone_number' => 'required',
-            'id_verify' => 'required',
+            'id_verify' => 'nullable',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'role' => 'required'

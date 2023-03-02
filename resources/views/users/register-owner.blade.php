@@ -10,24 +10,18 @@
                 class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
                 <div class="max-w-xl lg:max-w-3xl">
 
-                    <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                        Welcome to Pet Patrol
+                    <h1 class="mt-6 text-2xl font-bold text-yellow-300 sm:text-3xl md:text-4xl">
+                        Sign Up
                     </h1>
 
-                    <p class="mt-4 leading-relaxed text-gray-500">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam
-                        dolorum aliquam, quibusdam aperiam voluptatum.
-                    </p>
-
-                    <form method="POST" action="/users" class="grid-rows-7 mt-5 grid gap-4"
-                        enctype="multipart/form-data">
+                    <form method="POST" action="/users" class="mt-5 flex flex-col gap-4" enctype="multipart/form-data">
                         @csrf
-                        <div class="col-span-5">
+                        <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">
-                                Name
+                                Full Name
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
-                                class="input input-bordered w-full" />
+                                class="input input-bordered w-96" />
 
                             @error('name')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -35,53 +29,13 @@
 
                         </div>
 
-                        <div class="col-span-1">
-                            <label for="name" class="block text-sm font-medium text-gray-700">
-                                Birthday
-                            </label>
+                        <input type="hidden" name="birthday" value="01/01/2022"
+                            class="mt-1 h-10 w-full rounded-md border-solid border-slate-400 bg-white text-sm text-gray-700 shadow-sm" />
+                        <input type="hidden" name="age" value="00" class="input input-bordered w-full" />
+                        <input type="hidden" class="w-full rounded-lg border border-gray-400 p-2" id="sex"
+                            name="sex" value="transgender" />
 
-                            <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
-                                class="mt-1 h-10 w-full rounded-md border-solid border-slate-400 bg-white text-sm text-gray-700 shadow-sm" />
-
-                            @error('birthday')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-
-                        </div>
-
-                        <div class="col-span-3">
-                            <label for="age" class="block text-sm font-medium text-gray-700">
-                                Age
-                            </label>
-
-                            <input type="number" name="age" value="{{ old('age') }}"
-                                class="input input-bordered w-full" />
-
-                            @error('age')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-
-                        </div>
-
-                        <div class="col-span-3">
-                            <label for="sex" class="block text-sm font-medium text-gray-700">
-                                Sex
-                            </label>
-                            <select class="w-full rounded-lg border border-gray-400 p-2" id="sex" name="sex"
-                                required>
-                                <option value="">Select a gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
-                            </select>
-
-                            @error('sex')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-
-                        </div>
-
-                        <div class="col-span-6">
+                        <div>
                             <label for="address" class="block text-sm font-medium text-gray-700">
                                 Address
                             </label>
@@ -94,7 +48,7 @@
 
                         </div>
 
-                        <div class="col-span-6">
+                        <div>
                             <label for="phone_number" class="block text-sm font-medium text-gray-700">
                                 Phone number
                             </label>
@@ -107,21 +61,7 @@
 
                         </div>
 
-                        <div class="col-span-6">
-                            <label for="id_verify" class="block text-sm font-medium text-gray-700">
-                                Please upload ID for verification (back and front):
-                            </label>
-
-                            <input type="file" name="id_verify" value="{{ old('id_verify') }}"
-                                class="file-input file-input-bordered w-full max-w-xs" />
-
-                            @error('id_verify')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-
-                        </div>
-
-                        <div class="col-span-6">
+                        <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">
                                 Email
                             </label>
@@ -135,7 +75,7 @@
 
                         </div>
 
-                        <div class="col-span-6">
+                        <div>
                             <label for="password" class="block text-sm font-medium text-gray-700">
                                 Password
                             </label>
@@ -149,7 +89,7 @@
 
                         </div>
 
-                        <div class="col-span-6">
+                        <div>
                             <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
                                 Password Confirmation
                             </label>
@@ -163,34 +103,11 @@
 
                         </div>
 
-                        <div class="col-span-6">
-                            <label for="MarketingAccept" class="flex gap-4">
-                                <input type="checkbox" id="MarketingAccept" name="marketing_accept"
-                                    class="h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm" />
-
-                                <span class="mt-2 mb-2 text-sm text-gray-700">
-                                    I want to receive emails about events, product updates and
-                                    company announcements.
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="col-span-6">
-                            <p class="text-sm text-gray-500">
-                                By creating an account, you agree to our
-                                <a href="#" class="text-gray-700 underline">
-                                    terms and conditions
-                                </a>
-                                and
-                                <a href="#" class="text-gray-700 underline">privacy policy</a>.
-                            </p>
-                        </div>
-
                         <input type="hidden" name="role" value="0" />
 
-                        <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+                        <div class="flex flex-col items-center justify-center">
                             <button type="submit"
-                                class="inline-block rounded border border-rose-400 bg-rose-400 px-12 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500">
+                                class="inline-block w-full rounded border border-rose-400 bg-rose-400 px-12 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500">
                                 Create an account
                             </button>
 

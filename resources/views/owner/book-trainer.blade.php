@@ -73,38 +73,37 @@
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Potty Training"
+                    <input type="radio" class="radio radio-primary checkbox-md" value="Potty Training"
                         x-model="course" required />
                     <label for="" class="ml-2 text-sm font-medium">Potty Training</label>
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Obedience Training"
+                    <input type="radio" class="radio radio-primary checkbox-md" value="Obedience Training"
                         x-model="course">
                     <label for="" class="ml-2 text-sm font-medium">Obedience Training</label>
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Behavioral Training"
+                    <input type="radio" class="radio radio-primary checkbox-md" value="Behavioral Training"
                         x-model="course" />
                     <label for="" class="ml-2 text-sm font-medium">Behavioral Training</label>
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Agility Training"
+                    <input type="radio" class="radio radio-primary checkbox-md" value="Agility Training"
                         x-model="course" />
                     <label for="" class="ml-2 text-sm font-medium">Agility Training</label>
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Tricks Training"
+                    <input type="radio" class="radio radio-primary checkbox-md" value="Tricks Training"
                         x-model="course" />
                     <label for="" class="ml-2 text-sm font-medium">Tricks Training</label>
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Theraphy"
-                        x-model="course" />
+                    <input type="radio" class="radio radio-primary checkbox-md" value="Theraphy" x-model="course" />
                     <label for="" class="ml-2 text-sm font-medium">Theraphy</label>
                 </div>
 
