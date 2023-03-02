@@ -25,15 +25,12 @@ class RequestTrainerController extends Controller
 
         return view('owner.request', [
             'requestinfo' => $requestinfo,
-
         ]);
     }
-
 
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            // 'pet' => 'required',
             'pet' => [
                 'required',
                 Rule::unique('request')->where(function ($query) use ($request) {

@@ -61,14 +61,10 @@
                                     48
                                     hours
                                     prior to the scheduled training session without penalty.</li>
-                                <li class="p-2 tracking-wider">2. After the pet trainer's approve training request,
-                                    cancellation within
-                                    48 hours of
-                                    the
-                                    scheduled training session will result in a penalty fee equivalent to 50% of the
-                                    total
-                                    cost
-                                    of the session.</li>
+                                <li class="p-2 tracking-wider">2. Cancellation within 48 hours of the scheduled training
+                                    session will result in a penalty fee equivalent to 50% of the total cost of the
+                                    session. If the penalty fee is not paid within 7 days, we reserve the right to take
+                                    appropriate action, which may include legal action or suspension of services.</li>
                                 <li class="p-2 tracking-wider">3. After the pet trainer's approve training request,
                                     cancellation within
                                     24 hours of

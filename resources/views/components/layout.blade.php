@@ -19,7 +19,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Roboto', 'sans-serif'],
+                        'sans': ['Epilogue', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -35,8 +35,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Rampart+One&display=swap"
+        rel="stylesheet">
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <!-- Tailwind Forms -->
@@ -49,7 +50,7 @@
 <body class="flex min-h-screen flex-col">
 
     <!-- NavBar -->
-    <div class="navbar sticky top-0 z-50 bg-transparent bg-yellow-400 text-white">
+    <div class="navbar sticky top-0 z-50 text-black">
         <div class="flex-1 bg-fixed">
             {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
             <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
@@ -73,7 +74,7 @@
                     <span class="indicator-item badge bg-rose-400 outline-0">99+</span>
                     <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
                 </div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 bg-yellow-400 p-2 shadow">
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
                     <li><a href="">--upcoming features--</a></li>
                     <li><a href="">--upcoming features--</a></li>
                 </ul>
@@ -97,9 +98,9 @@
                 <p class="font-bold">Hi, {{ auth()->user()->name }}</p>
             </div>
         @else
-            <button class="btn btn-outline mx-1"><a href="/login"><span class="normal-case">Sign in</span></a></button>
+            <button class="btn btn-outline mx-2"><a href="/login"><span class="normal-case">Sign in</span></a></button>
             <button
-                class="inline-block rounded-lg border border-rose-400 bg-rose-400 px-4 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500"><a
+                class="inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-4 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500"><a
                     href="/register-owner"><span class="normal-case">Sign
                         up</span></a></button>
 

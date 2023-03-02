@@ -17,8 +17,9 @@ class TrainerController extends Controller
 
     public function show()
     {
+
         return view('trainer.portfolio', [
-            'portfolio' => TrainerModel::all()
+            'portfolio' => TrainerModel::where('user_id', auth()->id())->get()
         ]);
     }
 
@@ -33,7 +34,7 @@ class TrainerController extends Controller
         ]);
     }
 
-    public function create()
+    public function create($user_id)
     {
         return view('trainer.create-portfolio');
     }
@@ -60,10 +61,11 @@ class TrainerController extends Controller
 
         $formFields['services'] = $request->input('services');
         $formFields['type'] = $request->input('type');
+        $formFields['user_id'] = $request->input('user_id');
 
         TrainerModel::create($formFields);
 
 
-        return redirect('/trainer/portfolio')->with('message', 'Portfolio added successfully!');
+        return redirect('/trainer')->with('message', 'Portfolio added successfully!');
     }
 }

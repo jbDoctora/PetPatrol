@@ -3,12 +3,14 @@
 namespace App\Models;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail; 
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -50,15 +52,22 @@ class User extends Authenticatable
     ];
 
     //Relationship sa client ug sa petinfo
-    public function petInfo(){
+    public function petInfo()
+    {
         return $this->hasMany(PetInfo::class, 'owner_id');
     }
 
-    public function service(){
+    public function service()
+    {
         return $this->hasMany(Service::class, 'user_id');
     }
 
-    public function request(){
+    public function request()
+    {
         return $this->hasMany(RequestTrainer::class, 'user_id');
+    }
+    public function portfolio()
+    {
+        return $this->hasOne(TrainerModel::class);
     }
 }

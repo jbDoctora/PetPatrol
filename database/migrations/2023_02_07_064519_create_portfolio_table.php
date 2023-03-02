@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('portfolio', function (Blueprint $table) {
             $table->id('portfolio_id');
+            $table->foreignId('user_id')->onDelete('cascade');
             $table->longText('about_me');
             $table->string('services');
             $table->string('type');

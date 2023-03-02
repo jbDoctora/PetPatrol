@@ -76,7 +76,8 @@
                     No Portfolio yet!, Add now to for client to view
                 </div>
                 <div class="flex justify-center">
-                    <button class="btn btn-primary"><a href="/trainer/portfolio/create">Create a portfolio</a></button>
+                    <button class="btn btn-primary"><a href="/trainer/portfolio/create">Create a
+                            portfolio</a></button>
                 </div>
             </div>
     @endforelse

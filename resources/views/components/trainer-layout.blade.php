@@ -17,7 +17,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Roboto', 'sans-serif'],
+                        'sans': ['Epilogue', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -32,6 +32,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Rampart+One&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />

@@ -1,30 +1,20 @@
 <x-layout>
 
-    {{-- <div class="hero min-h-screen"
-        style=" background-image:  url(/images/test.png); background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill;">
-        <div class="hero-overlay bg-opacity-20 bg-cover"></div>
-        <div class="hero-content text-center text-black">
-            <div class="max-w-md">
-                <h1 class="mb-5 text-6xl font-bold"><span class="text-md font-semibold tracking-wide"
-                        style="font-family: 'Baby Panda', cursive;">Take good care of your pets</span></h1>
-                <button class="btn btn-primary mt-4"><a href="/book-trainer">Book Appointment</a></button>
-            </div>
-        </div>
-    </div> --}}
-    <div class="hero min-h-screen bg-yellow-400">
+    <div class="hero min-h-screen">
         <div class="hero-content m-3 flex-col lg:flex-row-reverse">
             <img src="/images/test.png"
                 style="background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill; width: 600px; height:600px;" />
-            <div class="mr-8 ml-7">
-                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-6xl"><span
-                        style="font-family: 'Sniglet', cursive;" class="text-white">MAKE YOUR APPOINTMENT<span
-                            class="text-white-400 text-8xl xl:text-7xl"><br>PAWESOME!</span></span></h1>
-                <p class="py-6 text-2xl tracking-wide text-white">Unlock Your Pet's Full Potential with Our Expert
+            <div class="mr-8 ml-5 text-center">
+                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-5xl"><span class="text-black"
+                        style="font-family: 'Rampart One', cursive;">MAKE YOUR
+                        APPOINTMENT<span class="text-8xl text-black xl:text-6xl"><br>PAWESOME!</span></span></h1>
+                <p class="py-6 text-xl tracking-wide text-black xl:text-lg">Unlock Your Pet's Full Potential with Our
+                    Expert
                     Training Services
                 </p>
                 <button
-                    class="inline-block rounded-lg border border-rose-400 bg-rose-400 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500"><a
-                        href="/book-trainer">Get Started</a></button>
+                    class="text-md inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-9 py-3 font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500"><a
+                        href="/register-owner">Get Started<i class="fa-solid fa-paper-plane ml-3"></i></a></button>
             </div>
         </div>
     </div>

@@ -41,9 +41,6 @@ class OwnerController extends Controller
                 })
                 ->join('users', 'service.user_id', '=', 'users.id')
                 ->join('pet_info', 'request.user_id', '=', 'pet_info.owner_id')
-                // ->join('training_details', 'service.id', '=', 'training_details.service_id')
-                // ->select('service.*', 'users.name as user_name', 'pet_info.name as pet_name')
-                // ->join('training_details', 'service.id', '=', 'training_details.service_id')
                 ->where('request.user_id', auth()->id())
                 ->get();
 

@@ -1,7 +1,8 @@
 <?php
 
-//use Illuminate\Http\Request;
-
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Foundation\Auth\User;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -42,32 +43,49 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/profile', [UserController::class, 'edit'])->middleware('auth');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 /******************************************************************* */
 //OWNER_PET_INFO
-Route::get('/pet-info', [PetInfoController::class, 'index'])->middleware('auth', 'isOwner');
+Route::get('/pet-info', [PetInfoController::class, 'index'])->middleware('auth', 'verified', 'isOwner');
 
-Route::get('/pet/add-info', [PetInfoController::class, 'create'])->middleware('auth', 'isOwner');
+Route::get('/pet/add-info', [PetInfoController::class, 'create'])->middleware('auth', 'verified', 'isOwner');
 
 Route::post('/pet/add-info/add', [PetInfoController::class, 'store']);
 
 //OWNER
-Route::get('/owner', [OwnerController::class, 'index'])->middleware('auth', 'isOwner');
+Route::get('/owner', [OwnerController::class, 'index'])->middleware('auth', 'verified', 'isOwner');
 
-Route::get('/book-trainer', [OwnerController::class, 'create'])->middleware('auth', 'isOwner');
+Route::get('/book-trainer', [OwnerController::class, 'create'])->middleware('auth', 'verified', 'isOwner');
 
 Route::post('/book-trainer/add', [RequestTrainerController::class, 'store']);
 
-Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('auth', 'isOwner');
+Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('auth', 'verified', 'isOwner');
 
-Route::get('/show-matched/trainerInfo/{user_id}', [OwnerController::class, "showTrainerInfo"])->middleware('auth', 'isOwner');
+Route::get('/show-matched/trainerInfo/{user_id}', [OwnerController::class, "showTrainerInfo"])->middleware('auth', 'verified', 'isOwner');
 
-Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'isOwner')->name('show-matched');
+Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'verified', 'isOwner')->name('show-matched');
 
 Route::post('/show-matched/book', [BookingController::class, 'store']);
 
-Route::get('/bookings', [BookingController::class, "show"])->middleware('auth', 'isOwner');
+Route::get('/bookings', [BookingController::class, "show"])->middleware('auth', 'verified', 'isOwner');
 
-Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining'])->middleware('auth', 'isOwner');
+Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining'])->middleware('auth', 'verified', 'isOwner');
 
 /******************************************************************* */
 //TRAINER

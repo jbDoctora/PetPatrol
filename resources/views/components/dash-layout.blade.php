@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
-<style>
-    .class-name {
-        white-space: pre-wrap;
-    }
-</style>
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +12,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Roboto', 'sans-serif'],
+                        'sans': ['Poppins', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -26,36 +21,59 @@
             },
         };
     </script>
+    <style>
+        .class-name {
+            white-space: pre-wrap;
+        }
+
+        .navbar {
+            height: 10px;
+            margin: 0px;
+        }
+    </style>
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
-<body class="flex min-h-screen flex-col">
+<body class="bg-base-200 flex min-h-screen flex-col">
 
-    <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }" x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }" class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
-            <div class="h-56 bg-gray-900"></div>
-            <nav class="flex flex-1 flex-col bg-white">
-                <a href="/owner" class="m-7"><i class="fa-solid fa-house mr-5"></i>Dashboard</a>
-                <a href="/request" class="m-7"><i class="fa-solid fa-book fa-xl mr-5"></i>My Request</a>
-                <a href="/bookings" class="m-7"><i class="fa-solid fa-calendar-check mr-5"></i>My Bookings</a>
-                <a href="/pet-info" class="m-7"><i class="fa-solid fa-paw fa-xl mr-5"></i>Pet Profile</a>
-                <a href="/profile" class="m-7" target="_parent"><i class="fa-solid fa-user fa-xl mr-5"></i>User
+            <div class="flex h-28 flex-row items-center justify-center bg-slate-900 text-white">
+                <div>
+                    {{-- <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 5px; margin-right: 5px; width:50px; height:50px"
+                        src="images/apple-touch-icon-72x72.png"> --}}
+                    <span class="font-bold">Hi, {{ auth()->user()->name }}</span>
+                </div>
+                <div>
+                    {{-- <span class="text-xl font-semibold tracking-wide" style="font-family: 'Baby Panda', cursive;">PET
+                        PATROL</span> --}}
+                </div>
+            </div>
+            <nav class="text-md flex h-screen flex-1 flex-col bg-yellow-300 text-black">
+                <a href="/owner" class="p-5"><i class="fa-solid fa-house fa-lg mr-8"></i>Dashboard</a>
+                <a href="/request" class="p-5"><i class="fa-solid fa-book fa-lg mr-8"></i>My Request</a>
+                <a href="/bookings" class="p-5"><i class="fa-solid fa-calendar-check fa-lg mr-8"></i>My Bookings</a>
+                <a href="/pet-info" class="p-5"><i class="fa-solid fa-paw fa-lg mr-8"></i>Pet Profile</a>
+                <a href="/profile" class="p-5 hover:text-cyan-400" target="_parent"><i
+                        class="fa-solid fa-user fa-xl mr-8"></i>User
                     Profile</a>
             </nav>
         </aside>
         <div class="flex-1">
             <header class="flex items-center">
-                <div class="navbar">
-                    <button class="mr-4 p-1"
+                <div class="navbar bg-yellow-300 text-black shadow-xl">
+                    <button class="btn mr-4 border-0 bg-blue-600 p-2"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -67,18 +85,14 @@
                         </svg>
                     </button>
                     <div class="flex-1 bg-fixed">
-                        {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
-                        <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
-                            src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
-                            style="font-family: 'Baby Panda', cursive;">PET PATROL</span>
                     </div>
 
-                    <div class="navbar-start hidden px-5 lg:flex">
-                        <ul class="menu menu-horizontal px-5 text-sm font-bold">
-                            <li class="px-5">About Us</li>
-                            <li class="px-5">Need Help?</li>
+                    <div class="navbar-start hidden lg:flex">
+                        <ul class="menu menu-horizontal text-sm font-bold">
+                            <li class="pr-3">About Us</li>
+                            <li class="px-3">Need Help?</li>
                             <a href="/register-trainer">
-                                <li class="px-5">Be A Pet Patroller</li>
+                                <li class="pl-3">Be A Pet Patroller</li>
                             </a>
                         </ul>
                     </div>
@@ -86,19 +100,19 @@
                     @auth
                         <div class="dropdown dropdown-end">
                             <div class="indicator">
-                                <span class="indicator-item badge badge-primary">99+</span>
-                                <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
+                                <span class="indicator-item badge border-0 bg-blue-600">1</span>
+                                <button tabindex="0" class="fa-solid fa-bell fa-lg m-3"></button>
                             </div>
-                            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                            <ul tabindex="0"
+                                class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
                                 <li><a href="">--upcoming features--</a></li>
                                 <li><a href="">--upcoming features--</a></li>
                             </ul>
                         </div>
 
-                        <div class="avatar dropdown dropdown-end">
-                            <div tabindex="0"
-                                class="ring-primary ring-offset-base-100 mr-4 ml-8 h-9 w-9 rounded-full ring ring-offset-2">
-                                <img src="/images/avatar/Avatar-9.png" />
+                        <div class="avatar dropdown dropdown-end text-black">
+                            <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
+                                <img src="/images/placeholder.png" />
                             </div>
                             <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
                                 <li><a>Profile</a></li>
@@ -111,7 +125,7 @@
                             </ul>
                         </div>
                         <div class="mr-3">
-                            <p class="font-bold">Hi, {{ auth()->user()->name }}</p>
+                            {{-- <p class="text-xs font-bold">Hi, {{ auth()->user()->name }}</p> --}}
                         </div>
                     @else
                         <button class="btn btn-outline mx-1"><a href="/login"><span class="normal-case">Sign
@@ -128,13 +142,13 @@
         </div>
     </div>
     {{-- FOOTER --}}
-    <footer class="footer footer-center bg-base-300 text-base-content p-4 text-xs">
+    {{-- <footer class="footer footer-center bg-base-300 text-base-content static p-4 text-xs">
         <div>
             <p><i class="fa-solid fa-paw mr-8"></i>Copyright © 2023 - All right reserved by Pet Patrol<i
                     class="fa-solid fa-paw ml-8"></i></p>
 
         </div>
-    </footer>
+    </footer> --}}
     <x-toast />
 </body>
 

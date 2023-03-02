@@ -1,63 +1,61 @@
 <x-dash-layout>
-    <h1 class="pl-3">My Bookings</h1>
-    {{-- @foreach ($request as $requests)
-        @php
-            $pet_info = DB::table('pet_info')
-                ->where('pet_id', $requests->pet_id)
-                ->value('name');
-        @endphp
-        <div class="mx-auto flex w-full max-w-screen-xl items-center rounded-lg bg-white px-4 py-6 shadow-md">
-            <div class="w-1/2 pr-8">
-                <h2 class="text-3xl font-semibold text-gray-800">{{ $pet_info }}</h2>
-                <p class="mt-2 text-gray-600">{{ $requests->name }}</p>
-
-            </div>
-            <div class="flex w-1/2 justify-end">
-                <p class="mt-14 mr-6">Status: <span class="text-yellow-500">{{ $requests->status }}</span></p>
-                <button><i class="fa-solid fa-rectangle-xmark fa-xl mb-20" style="color: red"></i></button>
-            </div>
+    <div class="mx-9 my-5 flex flex-row justify-between">
+        <div>
+            <h1 class="text-4xl font-bold">My Bookings</h1>
         </div>
-    @endforeach --}}
-
-    <div class="overflow-x-auto px-4">
-        <table class="table w-full">
-            <thead>
-                <tr>
-                    <th>Pet name</th>
-                    <th>Pet Trainer</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            @foreach ($request as $requests)
-                @php
-                    $pet_info = DB::table('pet_info')
-                        ->where('pet_id', $requests->pet_id)
-                        ->value('name');
-                @endphp
-                <tbody>
-
-                    <tr>
-
-                        <th>{{ $pet_info }}</th>
-                        <td>{{ $requests->name }}</td>
-                        <td><span class="text-yellow-400">{{ $requests->status }}</span></td>
-                        <td>
-                            <div class="flex flex-row gap-4">
-                                <button>
-                                    <i class="fa-solid fa-circle-xmark fa-lg" style="color: red"></i>
-                                </button>
-                                <button>
-                                    <i class="fa-solid fa-eye fa-lg" style="color: blue"></i>
-                                </button>
-                            </div>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-            @endforeach
-        </table>
+        <div>
+            <a href="#"
+                class="inline-flex items-center justify-center rounded-md border border-transparent bg-cyan-400 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">New
+                Booking</a>
+        </div>
     </div>
-
+    <div class="overflow-x-auto px-4">
+        <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+            <table class="min-w-full leading-normal">
+                <thead>
+                    <tr>
+                        <th
+                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                            Pet Name</th>
+                        <th
+                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                            Trainer Name</th>
+                        <th
+                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                            Status</th>
+                        <th class="bg-gray-50 px-6 py-3"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($request as $requests)
+                        @php
+                            $pet_info = DB::table('pet_info')
+                                ->where('pet_id', $requests->pet_id)
+                                ->value('name');
+                        @endphp
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4">{{ $pet_info }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">{{ $requests->name }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">
+                                @if ($requests->status == 'Under review')
+                                    <span
+                                        class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{ $requests->status }}</span>
+                                @elseif ($requests->status == 'Approved')
+                                    <span
+                                        class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{{ $requests->status }}</span>
+                                @elseif ($requests->status == 'Declined')
+                                    <span
+                                        class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">{{ $requests->status }}</span>
+                                @endif
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
+                                <a href="#" class="ml-4 text-red-600 hover:text-red-900">Cancel</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </x-dash-layout>

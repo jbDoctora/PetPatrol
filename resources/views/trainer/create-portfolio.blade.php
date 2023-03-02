@@ -7,6 +7,7 @@
     <section class="container mx-auto py-10">
         <form method="POST" action="/trainer/portfolio/add" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" value="{{ auth()->id() }}" name="user_id">
             <h2 class="mb-6 text-2xl font-bold">About Me</h2>
             <textarea class="mb-6 w-full rounded-lg bg-white p-4 shadow-md" name="about_me" rows="5"></textarea>
             @error('about_me')
