@@ -30,9 +30,14 @@
             height: 10px;
             margin: 0px;
         }
+
+        ul {
+            list-style-type: disc;
+        }
     </style>
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -51,29 +56,33 @@
             :class="{ '-ml-64': !sidebarOpen }">
             <div class="flex h-28 flex-row items-center justify-center bg-slate-900 text-white">
                 <div>
-                    {{-- <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 5px; margin-right: 5px; width:50px; height:50px"
-                        src="images/apple-touch-icon-72x72.png"> --}}
-                    <span class="font-bold">Hi, {{ auth()->user()->name }}</span>
+                    <img src="/images/vector.jpg" class="h-full w-full" alt="">
+                    {{-- <span class="font-bold">Hi, {{ auth()->user()->name }}</span> --}}
                 </div>
                 <div>
                     {{-- <span class="text-xl font-semibold tracking-wide" style="font-family: 'Baby Panda', cursive;">PET
                         PATROL</span> --}}
                 </div>
             </div>
-            <nav class="text-md flex h-screen flex-1 flex-col bg-yellow-300 text-black">
-                <a href="/owner" class="p-5"><i class="fa-solid fa-house fa-lg mr-8"></i>Dashboard</a>
-                <a href="/request" class="p-5"><i class="fa-solid fa-book fa-lg mr-8"></i>My Request</a>
-                <a href="/bookings" class="p-5"><i class="fa-solid fa-calendar-check fa-lg mr-8"></i>My Bookings</a>
-                <a href="/pet-info" class="p-5"><i class="fa-solid fa-paw fa-lg mr-8"></i>Pet Profile</a>
-                <a href="/profile" class="p-5 hover:text-cyan-400" target="_parent"><i
-                        class="fa-solid fa-user fa-xl mr-8"></i>User
-                    Profile</a>
+            <nav class="flex h-full flex-col bg-yellow-300 p-2 text-black">
+                <a href="/owner" class="flex items-center p-5 hover:bg-gray-200"><i
+                        class="fa-solid fa-house fa-lg mr-8"></i><span class="font-semibold">Dashboard</span></a>
+                <a href="/request" class="flex items-center p-5 hover:bg-gray-200"><i
+                        class="fa-solid fa-book fa-lg mr-8"></i><span class="font-semibold">My Request</span></a>
+                <a href="/bookings" class="flex items-center p-5 hover:bg-gray-200"><i
+                        class="fa-solid fa-calendar-check fa-lg mr-8"></i><span class="font-semibold">My
+                        Bookings</span></a>
+                <a href="/pet-info" class="flex items-center p-5 hover:bg-gray-200"><i
+                        class="fa-solid fa-paw fa-lg mr-8"></i><span class="font-semibold">Pet Profile</span></a>
+                <a href="/profile" class="flex items-center p-5 hover:bg-gray-200" target="_parent"><i
+                        class="fa-solid fa-user fa-xl mr-8"></i><span class="font-semibold">User
+                        Profile</span></a>
             </nav>
         </aside>
         <div class="flex-1">
             <header class="flex items-center">
-                <div class="navbar bg-yellow-300 text-black shadow-lg">
-                    <button class="btn mr-4 border-0 bg-blue-600 p-2 hover:bg-blue-700"
+                <div class="navbar bg-white shadow-lg">
+                    <button class="btn mr-4 border-0 bg-blue-600 py-3 hover:bg-blue-700"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -87,7 +96,7 @@
                     <div class="flex-1 bg-fixed">
                     </div>
 
-                    <div class="navbar-start hidden lg:flex">
+                    {{-- <div class="navbar-start hidden lg:flex">
                         <ul class="menu menu-horizontal text-sm font-bold">
                             <li class="pr-3">About Us</li>
                             <li class="px-3">Need Help?</li>
@@ -95,7 +104,7 @@
                                 <li class="pl-3">Be A Pet Patroller</li>
                             </a>
                         </ul>
-                    </div>
+                    </div> --}}
 
                     @auth
                         <div class="dropdown dropdown-end">

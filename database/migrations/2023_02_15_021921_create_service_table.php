@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id');
             $table->foreignId('user_id')->onDelete('cascade');
             $table->string('course');
+            $table->integer('price');
             $table->string('pet_type');
             $table->string('availability');
             $table->integer('weeks');

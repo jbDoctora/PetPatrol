@@ -19,7 +19,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Epilogue', 'sans-serif'],
+                        'sans': ['Poppins', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -35,8 +35,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Rampart+One&display=swap"
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
         rel="stylesheet">
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
@@ -50,7 +51,7 @@
 <body class="flex min-h-screen flex-col">
 
     <!-- NavBar -->
-    <div class="navbar sticky top-0 z-50 text-black">
+    <div class="navbar sticky top-0 z-50 bg-white text-black">
         <div class="flex-1 bg-fixed">
             {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
             <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"

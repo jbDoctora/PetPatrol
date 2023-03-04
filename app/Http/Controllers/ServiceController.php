@@ -8,11 +8,13 @@ use App\Http\Controllers\Controller;
 
 class ServiceController extends Controller
 {
-     public function store(Request $request){
+    public function store(Request $request)
+    {
         $formFields['course'] = $request->input('course');
         $formFields['pet_type'] = $request->input('pet_type');
         $formFields['availability'] = $request->input('availability');
         $formFields['weeks'] = $request->input('weeks');
+        $formFields['price'] = $request->input('price');
         $formFields['user_id'] = auth()->id() ?? null;
 
         Service::create($formFields);

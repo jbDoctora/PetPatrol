@@ -4,6 +4,8 @@
         <div class="hero-content m-3 flex-col lg:flex-row-reverse">
             <img src="/images/test.png"
                 style="background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill; width: 600px; height:600px;" />
+            {{-- <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_o1JRaPxx1E.json" background="transparent"
+                speed="1" style="width: 600px; height: 600px; margin-bottom: 5px;" loop autoplay></lottie-player> --}}
             <div class="mr-8 ml-5 text-center">
                 <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-5xl"><span class="text-black"
                         style="font-family: 'Rampart One', cursive;">MAKE YOUR

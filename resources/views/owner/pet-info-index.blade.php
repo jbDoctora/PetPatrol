@@ -1,18 +1,15 @@
 <x-dash-layout>
 
-    <div class="mx-3 my-5 flex flex-row items-center justify-between rounded-md bg-white p-2">
-        <div>
-            <h1 class="align-middle text-lg font-bold">Your Request</h1>
-        </div>
+    <div class="mx-3 my-5 p-2">
         <div>
             <a href="/pet/add-info"><button
-                    class="inline-block rounded-full border border-cyan-400 bg-cyan-400 px-2 py-1 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500 md:px-4 md:py-3">Add
+                    class="inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-2 py-1 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500 md:px-4 md:py-3">Add
                     Pet<i class="fa-solid fa-circle-plus mx-2"></i></button></a>
         </div>
     </div>
 
-    <p class="ml-4 p-2 text-lg font-bold">Your Pets</p>
-    <div class="grid grid-cols-1 gap-6 px-3 md:grid-cols-3">
+    {{-- <p class="ml-4 p-2 text-lg font-bold">Your Pets</p> --}}
+    <div class="grid grid-flow-col px-3 md:grid-flow-row">
         @forelse($petinfo as $petinfos)
             <div class="overflow-hidden rounded-md bg-white shadow-md">
                 <figure class="h-48">
@@ -29,10 +26,12 @@
                 </div>
             </div>
         @empty
-            <div class="text-center">
-                <p class="text-lg font-bold">No pet added yet</p>
-                <p class="mt-2 text-gray-500">Click the button above to add!</p>
+            <div class="mx-auto grid grid-cols-none">
+                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_pkkire0h.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                </lottie-player>
             </div>
+            <p class="mt-4 text-center text-lg font-bold">Your pet is excited, Request a trainer now.</p>
         @endforelse
     </div>
 
