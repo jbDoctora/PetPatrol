@@ -34,6 +34,7 @@
                         <input type="hidden" name="age" value="00" class="input input-bordered w-full" />
                         <input type="hidden" class="w-full rounded-lg border border-gray-400 p-2" id="sex"
                             name="sex" value="transgender" />
+                        <input type="hidden" name="id_verify" value="null">
 
                         <div>
                             <label for="address" class="block text-sm font-medium text-gray-700">
