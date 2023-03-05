@@ -61,24 +61,36 @@
                 </div>
             </div>
             <nav class="flex h-full flex-col bg-yellow-300 p-2 text-black">
-                <a href="/owner" class="flex items-center p-5 hover:bg-gray-200"><i
-                        class="fa-solid fa-house fa-lg mr-8"></i><span class="font-semibold">Dashboard</span></a>
-                <a href="/request" class="flex items-center p-5 hover:bg-gray-200"><i
-                        class="fa-solid fa-book fa-lg mr-8"></i><span class="font-semibold">My Request</span></a>
-                <a href="/bookings" class="flex items-center p-5 hover:bg-gray-200"><i
-                        class="fa-solid fa-calendar-check fa-lg mr-8"></i><span class="font-semibold">My
-                        Bookings</span></a>
-                <a href="/pet-info" class="flex items-center p-5 hover:bg-gray-200"><i
-                        class="fa-solid fa-paw fa-lg mr-8"></i><span class="font-semibold">Pet Profile</span></a>
-                <a href="/profile" class="flex items-center p-5 hover:bg-gray-200" target="_parent"><i
-                        class="fa-solid fa-user fa-xl mr-8"></i><span class="font-semibold">User
-                        Profile</span></a>
+                <a href="/owner" class="flex items-center p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-house fa-lg mr-8"></i>
+                    <span class="font-semibold">Dashboard</span>
+                </a>
+
+                <a href="/request" class="flex items-center p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-book fa-lg mr-8"></i>
+                    <span class="font-semibold">My Request</span>
+                </a>
+
+                <a href="/bookings" class="flex items-center p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-calendar-check fa-lg mr-8"></i>
+                    <span class="font-semibold">My Bookings</span>
+                </a>
+
+                <a href="/pet-info" class="flex items-center p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-paw fa-lg mr-8"></i>
+                    <span class="font-semibold">Pet Profile</span>
+                </a>
+
+                <a href="/profile" class="flex items-center p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-user fa-xl mr-8"></i>
+                    <span class="font-semibold">User Profile</span>
+                </a>
             </nav>
         </aside>
         <div class="flex-1">
             <header class="flex items-center">
                 <div class="navbar bg-white shadow-lg">
-                    <button class="btn mr-4 border-0 bg-blue-600 py-3 hover:bg-blue-700"
+                    <button class="bg-base-300 mr-4 rounded-lg border-0 py-3 px-4 hover:bg-yellow-300"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -90,6 +102,7 @@
                         </svg>
                     </button>
                     <div class="flex-1 bg-fixed">
+
                     </div>
 
                     {{-- <div class="navbar-start hidden lg:flex">

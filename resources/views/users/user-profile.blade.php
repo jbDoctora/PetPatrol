@@ -1,4 +1,4 @@
-<x-noNav>
+<x-dash-layout>
     <h1 class="mb-9 mt-4 ml-4 text-3xl font-bold">User Profile</h1>
     <form class="m-7">
         <div class="mb-4">
@@ -7,18 +7,7 @@
                 class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                 id="name" type="text" placeholder="Enter your name" value="{{ $user->name }}">
         </div>
-        <div class="mb-4">
-            <label class="mb-2 block font-medium text-gray-700" for="age">Age</label>
-            <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                id="age" type="number" value="{{ $user->age }}" placeholder="Enter your age">
-        </div>
-        <div class="mb-4">
-            <label class="mb-2 block font-medium text-gray-700" for="birthday">Birthday</label>
-            <input
-                class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                id="birthday" value="{{ $user->birthday }}" type="date">
-        </div>
+
         <div class="mb-4">
             <label class="mb-2 block font-medium text-gray-700" for="sex">Sex</label>
             <div class="relative inline-block w-64">
@@ -56,7 +45,7 @@
                     class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     id="email" type="email" placeholder="Enter your email" value="{{ $user->email }}">
             </div>
-            <div class="mb-6 flex justify-center gap-3">
+            <div class="flex justify-center gap-3 p-5">
                 <button
                     class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-medium text-white hover:bg-blue-700 focus:outline-none"
                     type="submit">
@@ -69,4 +58,4 @@
                 </button>
             </div>
     </form>
-</x-noNav>
+</x-dash-layout>

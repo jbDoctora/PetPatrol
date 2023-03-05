@@ -38,7 +38,7 @@
             border: 1px solid #928d8d;
         }
 
-        ul {
+        /* ul {
             list-style-type: disc;
             margin: 0;
             padding: 0;
@@ -51,7 +51,7 @@
             display: inline-block;
             width: 1em;
             margin-left: -1em;
-        }
+        } */
     </style>
     <x-head.tinymce-config />
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
@@ -96,7 +96,7 @@
                     <i class="fa-solid fa-bell-concierge fa-xl mr-5"></i>
                     <span class="font-semibold">My Service</span>
                 </a>
-                <a href="/profile" class="flex items-center p-5 hover:bg-gray-200" target="_blank">
+                <a href="/trainer/profile" class="flex items-center p-5 hover:bg-gray-200">
                     <i class="fa-solid fa-user fa-xl mr-5"></i>
                     <span class="font-semibold">User Profile</span>
                 </a>
@@ -105,7 +105,7 @@
         <div class="flex-1">
             <header class="flex items-center">
                 <div class="navbar bg-white text-black shadow-lg">
-                    <button class="mr-4 border-0 py-3"
+                    <button class="bg-base-300 mr-4 rounded-lg border-0 py-3 px-4 hover:bg-yellow-300"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -148,8 +148,8 @@
 
                         <div class="avatar dropdown dropdown-end text-black">
                             <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
-                                <img
-                                    src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}">
+                                <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+                                    class="bg-base-300">
                                 {{-- <img src="/images/placeholder.png" /> --}}
                             </div>
                             <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">

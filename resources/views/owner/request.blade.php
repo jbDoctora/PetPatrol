@@ -18,6 +18,7 @@
             <button class="btn ml-3 h-full border-blue-600 bg-blue-600 text-white hover:border-0 hover:bg-blue-700"><i
                     class="fa-solid fa-magnifying-glass"></i></button>
         </div>
+        <div x-show="header"><i class="fa-solid fa-house fa-lg mr-8"></i> Request</div>
         <div class="grid grid-cols-1 gap-6 rounded px-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($requestinfo as $info)
                 <div class="overflow-hidden rounded border border-slate-300 shadow-lg">

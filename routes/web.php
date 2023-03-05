@@ -95,6 +95,10 @@ Route::get('/trainer/bookings', [TrainerController::class, 'showBooking'])->midd
 
 Route::get('/trainer/portfolio', [TrainerController::class, 'show'])->middleware('auth', 'isTrainer');
 
+Route::get('/trainer/profile', [TrainerController::class, 'showProfile'])->middleware('auth', 'isTrainer');
+
+Route::put('/trainer/{user}/update-profile', [TrainerController::class, 'updateProfile']);
+
 Route::get('/trainer/portfolio/create', [TrainerController::class, 'create'])->middleware('auth', 'isTrainer');
 
 Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);

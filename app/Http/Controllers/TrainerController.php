@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Booking;
 use App\Models\Service;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
 use App\Models\TrainingDetails;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
 class TrainerController extends Controller
@@ -14,6 +16,12 @@ class TrainerController extends Controller
     public function index()
     {
         return view('trainer.dashboard');
+    }
+
+    public function showProfile(User $user)
+    {
+        $user = auth()->user();
+        return view('trainer.trainer-profile', ['user' => $user]);
     }
 
     public function showBooking()
@@ -26,6 +34,32 @@ class TrainerController extends Controller
         return view('trainer.show-bookings', [
             'request' => $request
         ]);
+    }
+
+    public function updateProfile(Request $request, User $id)
+    {
+        $formFields = $request->validate([
+            'name' => ['required', 'min:3'],
+            'birthday' => 'required',
+            'age' => 'required',
+            'address' => 'required',
+            'phone_number' => 'required',
+            'email' => 'nullable',
+            'password' => 'nullable', //|confirmed|min:6
+        ]);
+        $formFields['sex'] = $request->input('sex');
+        if ($request->hasFile('profile_photo')) {
+            $formFields['profile_photo'] = $request->file('profile_photo')->store('profile_photo', 'public');
+        }
+        if (!empty($formFields['password'])) {
+            $formFields['password'] = bcrypt($formFields['password']);
+        } else {
+            unset($formFields['password']);
+        }
+        // dd($formFields);
+        $id->update($formFields);
+
+        return back()->with('message', 'Profile updated successfully!');
     }
 
     public function show()
