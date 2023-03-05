@@ -69,7 +69,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
-<body class="bg-base-200 flex min-h-screen flex-col">
+<body class="bg-base-300 flex min-h-screen flex-col">
     <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }" x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }" class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
@@ -81,24 +81,24 @@
             </div>
             <nav class="flex h-full flex-col bg-yellow-300 p-2 text-black">
                 <a href="/trainer" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-house fa-xl mr-5"></i>
+                    <i class="fa-solid fa-chart-pie fa-lg mr-9"></i>
                     <span class="font-semibold">Dashboard</span>
                 </a>
                 <a href="/trainer/portfolio" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-sharp fa-solid fa-record-vinyl fa-xl mr-5"></i>
-                    <span class="font-semibold">My Portfolio</span>
+                    <i class="fa-sharp fa-solid fa-record-vinyl fa-lg mr-9"></i>
+                    <span class="font-semibold">Portfolio</span>
                 </a>
                 <a href="/trainer/bookings" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-calendar-check fa-xl mr-5"></i>
-                    <span class="font-semibold">My Bookings</span>
+                    <i class="fa-solid fa-calendar-check fa-lg mr-9"></i>
+                    <span class="font-semibold">Bookings</span>
                 </a>
                 <a href="/trainer/service/add" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-bell-concierge fa-xl mr-5"></i>
-                    <span class="font-semibold">My Service</span>
+                    <i class="fa-solid fa-bell-concierge fa-lg mr-9"></i>
+                    <span class="font-semibold">Service</span>
                 </a>
                 <a href="/trainer/profile" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-user fa-xl mr-5"></i>
-                    <span class="font-semibold">User Profile</span>
+                    <i class="fa-solid fa-user fa-lg mr-9"></i>
+                    <span class="font-semibold">Profile</span>
                 </a>
             </nav>
         </aside>
@@ -122,16 +122,6 @@
                             src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
                             style="font-family: 'Baby Panda', cursive;">PET PATROL</span> --}}
                     </div>
-
-                    {{-- <div class="navbar-start hidden lg:flex">
-                        <ul class="menu menu-horizontal text-sm font-bold">
-                            <li class="pr-3">About Us</li>
-                            <li class="px-3">Need Help?</li>
-                            <a href="/register-trainer">
-                                <li class="pl-3">Be A Pet Patroller</li>
-                            </a>
-                        </ul>
-                    </div> --}}
 
                     @auth
                         <div class="dropdown dropdown-end">

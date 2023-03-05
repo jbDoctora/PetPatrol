@@ -1,27 +1,23 @@
 <x-dash-layout>
-    <div class="mx-3 my-5 flex flex-row items-center justify-between rounded-md bg-white p-2">
-        <div>
-            <h1 class="align-middle text-lg font-bold">Your Request</h1>
-        </div>
-        <div>
-            <button
-                class="inline-block rounded-full border border-blue-600 bg-blue-600 px-2 py-1 text-sm font-medium text-white hover:bg-transparent hover:text-blue-700 focus:outline-none focus:ring active:text-blue-700 md:px-4 md:py-3">
-                <a href="/book-trainer" target="_parent"><span class="hidden md:inline-block">Create Appointment</span></a>
-                <i class="fa-solid fa-circle-plus mx-2"></i>
-            </button>
-        </div>
-    </div>
 
-    <div class="mx-3 bg-white">
-        <div class="flex items-center rounded-sm p-3">
+    <div class="flex items-center justify-between rounded-sm p-5">
+        <div>
             <input type="text" class="input input-bordered w-96" placeholder="Search">
             <button class="btn ml-3 h-full border-blue-600 bg-blue-600 text-white hover:border-0 hover:bg-blue-700"><i
                     class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-        <div x-show="header"><i class="fa-solid fa-house fa-lg mr-8"></i> Request</div>
+        <div>
+            <button class="rounded-md bg-blue-500 px-4 py-3 font-bold text-white hover:bg-blue-600">
+                <a href="/book-trainer" target="_parent"><span class="hidden md:inline-block">Create
+                        Appointment</span></a>
+                <i class="fa-solid fa-circle-plus mx-2"></i>
+            </button>
+        </div>
+    </div>
+    <div class="m-5 h-screen rounded-lg bg-white">
         <div class="grid grid-cols-1 gap-6 rounded px-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($requestinfo as $info)
-                <div class="overflow-hidden rounded border border-slate-300 shadow-lg">
+                <div class="m-5 overflow-hidden rounded border border-slate-300 shadow-lg">
                     <div class="p-6">
                         <div class="mb-4 flex items-center justify-between">
                             <h1 class="text-sm font-semibold text-gray-700">Your Request</h1>

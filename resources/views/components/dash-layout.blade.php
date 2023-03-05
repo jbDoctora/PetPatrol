@@ -25,11 +25,6 @@
         .class-name {
             white-space: pre-wrap;
         }
-
-        .navbar {
-            height: 40px;
-            margin: 0px;
-        }
     </style>
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +40,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
-<body class="bg-base-200 flex min-h-screen flex-col">
+<body class="bg-base-300 flex min-h-screen flex-col">
 
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }" x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }" class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
@@ -60,30 +55,30 @@
                         PATROL</span> --}}
                 </div>
             </div>
-            <nav class="flex h-full flex-col bg-yellow-300 p-2 text-black">
-                <a href="/owner" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-house fa-lg mr-8"></i>
+            <nav class="flex h-full flex-col bg-yellow-300 text-black">
+                <a href="/owner" class="flex items-center justify-start p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-chart-pie fa-lg mr-10"></i>
                     <span class="font-semibold">Dashboard</span>
                 </a>
 
-                <a href="/request" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-book fa-lg mr-8"></i>
-                    <span class="font-semibold">My Request</span>
+                <a href="/request" class="flex items-center justify-start p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-book fa-lg mr-10"></i>
+                    <span class="font-semibold">Request</span>
                 </a>
 
-                <a href="/bookings" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-calendar-check fa-lg mr-8"></i>
-                    <span class="font-semibold">My Bookings</span>
+                <a href="/bookings" class="flex items-center justify-start p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-calendar-check fa-lg mr-10"></i>
+                    <span class="font-semibold">Bookings</span>
                 </a>
 
-                <a href="/pet-info" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-paw fa-lg mr-8"></i>
+                <a href="/pet-info" class="flex items-center justify-start p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-paw fa-lg mr-10"></i>
                     <span class="font-semibold">Pet Profile</span>
                 </a>
 
-                <a href="/profile" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-user fa-xl mr-8"></i>
-                    <span class="font-semibold">User Profile</span>
+                <a href="/profile" class="flex items-center justify-start p-5 hover:bg-gray-200">
+                    <i class="fa-solid fa-user fa-lg mr-10"></i>
+                    <span class="font-semibold">Profile</span>
                 </a>
             </nav>
         </aside>

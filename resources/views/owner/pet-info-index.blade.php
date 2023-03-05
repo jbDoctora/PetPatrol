@@ -1,17 +1,31 @@
 <x-dash-layout>
 
-    <div class="mx-3 my-5 p-2">
+    {{-- <div class="mx-3 my-5 p-2">
         <div>
             <a href="/pet/add-info"><button
                     class="inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-2 py-1 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500 md:px-4 md:py-3">Add
                     Pet<i class="fa-solid fa-circle-plus mx-2"></i></button></a>
         </div>
+    </div> --}}
+    <div class="flex items-center justify-between rounded-sm p-5">
+        <div>
+            <input type="text" class="input input-bordered w-96" placeholder="Search">
+            <button class="btn ml-3 h-full border-blue-600 bg-blue-600 text-white hover:border-0 hover:bg-blue-700"><i
+                    class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div>
+            <button class="rounded-md bg-blue-500 px-4 py-3 font-bold text-white hover:bg-blue-600">
+                <a href="/pet/add-info" target="_parent"><span class="hidden md:inline-block">Add
+                        Pet</span></a>
+                <i class="fa-solid fa-circle-plus mx-2"></i>
+            </button>
+        </div>
     </div>
 
     {{-- <p class="ml-4 p-2 text-lg font-bold">Your Pets</p> --}}
-    <div class="grid grid-flow-col px-3 md:grid-flow-row">
+    <div class="mx-5 grid grid-cols-3 gap-3 rounded-lg bg-white px-3 md:grid-flow-row">
         @forelse($petinfo as $petinfos)
-            <div class="overflow-hidden rounded-md bg-white shadow-md">
+            <div class="bg-base-200 m-5 overflow-hidden rounded-md shadow-md">
                 <figure class="h-48">
                     <img src="{{ $petinfos->image ? asset('storage/' . $petinfos->image) : asset('/images/no-image.png') }}"
                         alt="Pet image" class="h-full w-full object-cover">

@@ -1,30 +1,31 @@
 <x-dash-layout>
-    <div class="mx-9 my-5 flex flex-row justify-between">
+    <div class="m-5 flex justify-end gap-3">
         <div>
-            <h1 class="text-4xl font-bold">My Bookings</h1>
+            <p>Status</p>
+            <select class="select w-full max-w-xs">
+                <option disabled selected>Normal</option>
+                <option>Normal Apple</option>
+                <option>Normal Orange</option>
+                <option>Normal Tomato</option>
+            </select>
         </div>
         <div>
-            <a href="#"
-                class="inline-flex items-center justify-center rounded-md border border-transparent bg-cyan-400 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">New
-                Booking</a>
+            <p>Date</p>
+            <input type="date" class="h-12 rounded-lg border border-gray-200 px-3">
         </div>
     </div>
-    <div class="overflow-x-auto px-4">
-        <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+    <div class="m-5 h-screen overflow-x-auto rounded-lg bg-white px-4">
+        <div class="mx-auto mt-5 inline-block min-w-full overflow-hidden rounded-lg shadow-lg">
             <table class="min-w-full leading-normal">
                 <thead>
                     <tr>
-                        <th
-                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                        <th class="bg-gray-50 px-6 py-3 text-left text-xs font-bold tracking-wider text-gray-500">
                             Pet Name</th>
-                        <th
-                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                        <th class="bg-gray-50 px-6 py-3 text-left text-xs font-bold tracking-wider text-gray-500">
                             Trainer Name</th>
-                        <th
-                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                        <th class="bg-gray-50 px-6 py-3 text-left text-xs font-bold tracking-wider text-gray-500">
                             Status</th>
-                        <th
-                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                        <th class="bg-gray-50 px-6 py-3 text-left text-xs font-bold tracking-wider text-gray-500">
                             Payment Status</th>
                         <th class="bg-gray-50 px-6 py-3"></th>
                     </tr>

@@ -1,6 +1,17 @@
 <x-dash-layout>
-    <h1 class="mb-9 mt-4 ml-4 text-3xl font-bold">User Profile</h1>
-    <form class="m-7">
+
+    <form class="m-5 rounded-lg bg-white p-5">
+        <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+            class="mx-auto h-24 w-24 rounded-full bg-white">
+        <div class="mt-4 flex flex-row items-center justify-center gap-3">
+            <div>
+                <input type="file" name="profile_photo" class="file-input file-input-bordered mx-auto w-full max-w-xs"
+                    value="{{ $user->profile_photo }}" />
+            </div>
+            <div class="tooltip" data-tip="You can put your profile photo here">
+                <i class="fa-solid fa-circle-info fa-xl" class="hover:text-yellow-500"></i>
+            </div>
+        </div>
         <div class="mb-4">
             <label class="mb-2 block font-medium text-gray-700" for="name">Name</label>
             <input
@@ -45,16 +56,23 @@
                     class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     id="email" type="email" placeholder="Enter your email" value="{{ $user->email }}">
             </div>
+            <div class="mb-4">
+                <label class="mb-2 block font-medium text-gray-700" for="email">New password</label>
+                <input
+                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                    id="email" type="email" placeholder="Enter your new password">
+            </div>
+            <div class="mb-4">
+                <label class="mb-2 block font-medium text-gray-700" for="email">Confirm new password</label>
+                <input
+                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                    id="email" type="email" placeholder="Confirm new password">
+            </div>
             <div class="flex justify-center gap-3 p-5">
                 <button
                     class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-medium text-white hover:bg-blue-700 focus:outline-none"
                     type="submit">
                     Update
-                </button>
-                <button
-                    class="focus:shadow-outline rounded bg-red-500 py-2 px-4 font-medium text-white hover:bg-red-700 focus:outline-none"
-                    type="submit">
-                    Change Password
                 </button>
             </div>
     </form>
