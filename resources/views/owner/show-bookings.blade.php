@@ -23,6 +23,9 @@
                         <th
                             class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                             Status</th>
+                        <th
+                            class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                            Payment Status</th>
                         <th class="bg-gray-50 px-6 py-3"></th>
                     </tr>
                 </thead>
@@ -37,7 +40,7 @@
                             <td class="whitespace-nowrap px-6 py-4">{{ $pet_info }}</td>
                             <td class="whitespace-nowrap px-6 py-4">{{ $requests->name }}</td>
                             <td class="whitespace-nowrap px-6 py-4">
-                                @if ($requests->status == 'Under review')
+                                @if ($requests->status == 'on going')
                                     <span
                                         class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{ $requests->status }}</span>
                                 @elseif ($requests->status == 'Approved')
@@ -46,6 +49,15 @@
                                 @elseif ($requests->status == 'Declined')
                                     <span
                                         class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">{{ $requests->status }}</span>
+                                @endif
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4">
+                                @if ($requests->payment == 'unpaid')
+                                    <span
+                                        class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{ $requests->payment }}</span>
+                                @elseif ($requests->payment == 'paid')
+                                    <span
+                                        class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{{ $requests->payment }}</span>
                                 @endif
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $fillable = [
-        'pet_id', 'client_id', 'trainer_id', 'status', 'date',
+        'pet_id', 'client_id', 'trainer_id', 'status', 'date', 'payment'
     ];
     protected $table = 'booking';
     public $timestamps = false;

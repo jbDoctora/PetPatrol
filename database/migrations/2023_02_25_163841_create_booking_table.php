@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('client_id');
             $table->integer('trainer_id');
             $table->string('status');
+            $table->string('payment');
             $table->string('date');
         });
     }

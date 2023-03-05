@@ -16,9 +16,10 @@ class BookingController extends Controller
         $formFields['trainer_id'] = $request->input('trainer_id');
         $formFields['status'] = $request->input('status');
         $formFields['date'] = $request->input('date');
+        $formFields['payment'] = $request->input('payment');
 
-        dd($formFields);
-        // Booking::create($formFields);
+        // dd($formFields);
+        Booking::create($formFields);
 
         return redirect()->back()->with('message', 'Booking is now placed!');
     }

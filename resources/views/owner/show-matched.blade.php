@@ -51,6 +51,7 @@
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
                         <input type="hidden" name="status" value="on going">
                         <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
+                        <input type="hidden" name="payment" value="unpaid">
 
                         <div>
                             <ol type="1" style="font-size: 13.5px">

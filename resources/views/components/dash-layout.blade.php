@@ -27,12 +27,8 @@
         }
 
         .navbar {
-            height: 10px;
+            height: 40px;
             margin: 0px;
-        }
-
-        ul {
-            list-style-type: disc;
         }
     </style>
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
