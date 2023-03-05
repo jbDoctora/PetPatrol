@@ -121,7 +121,9 @@
 
                         <div class="avatar dropdown dropdown-end text-black">
                             <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
-                                <img src="/images/placeholder.png" />
+                                <img
+                                    src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}">
+                                {{-- <img src="/images/placeholder.png" /> --}}
                             </div>
                             <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
                                 <li><a>Profile</a></li>
