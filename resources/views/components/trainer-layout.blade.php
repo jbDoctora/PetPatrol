@@ -88,7 +88,7 @@
                     <i class="fa-sharp fa-solid fa-record-vinyl fa-xl mr-5"></i>
                     <span class="font-semibold">My Portfolio</span>
                 </a>
-                <a href="#" class="flex items-center p-5 hover:bg-gray-200">
+                <a href="/trainer/bookings" class="flex items-center p-5 hover:bg-gray-200">
                     <i class="fa-solid fa-calendar-check fa-xl mr-5"></i>
                     <span class="font-semibold">My Bookings</span>
                 </a>

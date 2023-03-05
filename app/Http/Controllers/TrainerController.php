@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Service;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
@@ -13,6 +14,18 @@ class TrainerController extends Controller
     public function index()
     {
         return view('trainer.dashboard');
+    }
+
+    public function showBooking()
+    {
+        $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+            ->join('service', 'service.user_id', '=', 'booking.trainer_id')
+            ->join('users', 'users.id', '=', 'service.user_id')
+            ->get();
+
+        return view('trainer.show-bookings', [
+            'request' => $request
+        ]);
     }
 
     public function show()

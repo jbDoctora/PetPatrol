@@ -91,6 +91,8 @@ Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 
 //TRAINER
 Route::get('/trainer', [TrainerController::class, 'index'])->middleware('auth', 'isTrainer');
 
+Route::get('/trainer/bookings', [TrainerController::class, 'showBooking'])->middleware('auth', 'isTrainer');
+
 Route::get('/trainer/portfolio', [TrainerController::class, 'show'])->middleware('auth', 'isTrainer');
 
 Route::get('/trainer/portfolio/create', [TrainerController::class, 'create'])->middleware('auth', 'isTrainer');
