@@ -37,21 +37,6 @@
             padding: 5px;
             border: 1px solid #928d8d;
         }
-
-        /* ul {
-            list-style-type: disc;
-            margin: 0;
-            padding: 0;
-        }
-
-        ul li::before {
-            content: "\2022";
-            color: black;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        } */
     </style>
     <x-head.tinymce-config />
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
@@ -66,12 +51,13 @@
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="bg-base-300 flex min-h-screen flex-col">
     <!-- NavBar -->
-    <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }" x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }" class="flex h-screen overflow-x-hidden">
+    <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
+        x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
+        class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
             <div class="flex h-32 flex-row items-center justify-center bg-slate-900 text-white">
@@ -79,26 +65,26 @@
                     <img src="/images/vector.jpg" alt="">
                 </div>
             </div>
-            <nav class="flex h-full flex-col bg-yellow-300 p-2 text-black">
-                <a href="/trainer" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-chart-pie fa-lg mr-9"></i>
-                    <span class="font-semibold">Dashboard</span>
+            <nav class="flex flex-col items-start w-full h-full bg-yellow-300 p-2 text-black">
+                <a href="/trainer" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-chart-pie fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Dashboard</span>
                 </a>
-                <a href="/trainer/portfolio" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-sharp fa-solid fa-record-vinyl fa-lg mr-9"></i>
-                    <span class="font-semibold">Portfolio</span>
+                <a href="/trainer/portfolio" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-sharp fa-solid fa-record-vinyl fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Portfolio</span>
                 </a>
-                <a href="/trainer/bookings" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-calendar-check fa-lg mr-9"></i>
-                    <span class="font-semibold">Bookings</span>
+                <a href="/trainer/service/add" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-bell-concierge fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Add Service</span>
                 </a>
-                <a href="/trainer/service/add" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-bell-concierge fa-lg mr-9"></i>
-                    <span class="font-semibold">Service</span>
+                <a href="/trainer/bookings" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-calendar-check fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Bookings</span>
                 </a>
-                <a href="/trainer/profile" class="flex items-center p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-user fa-lg mr-9"></i>
-                    <span class="font-semibold">Profile</span>
+                <a href="/trainer/profile" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-user fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Profile</span>
                 </a>
             </nav>
         </aside>
@@ -117,49 +103,46 @@
                         </svg>
                     </button>
                     <div class="flex-1 bg-fixed">
-                        {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
-                        {{-- <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
-                            src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
-                            style="font-family: 'Baby Panda', cursive;">PET PATROL</span> --}}
+                        {{-- EMPTY --}}
                     </div>
 
                     @auth
-                        <div class="dropdown dropdown-end">
-                            <div class="indicator">
-                                <span class="indicator-item badge border-0 bg-blue-600">1</span>
-                                <button tabindex="0" class="fa-solid fa-bell fa-lg m-3"></button>
-                            </div>
-                            <ul tabindex="0"
-                                class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
-                                <li><a href="">--upcoming features--</a></li>
-                                <li><a href="">--upcoming features--</a></li>
-                            </ul>
+                    <div class="dropdown dropdown-end">
+                        <div class="indicator">
+                            <span class="indicator-item badge border-0 bg-blue-600">1</span>
+                            <button tabindex="0" class="fa-solid fa-bell fa-lg m-3"></button>
                         </div>
+                        <ul tabindex="0"
+                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
+                            <li><a href="">--upcoming features--</a></li>
+                            <li><a href="">--upcoming features--</a></li>
+                        </ul>
+                    </div>
 
-                        <div class="avatar dropdown dropdown-end text-black">
-                            <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
-                                <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
-                                    class="bg-base-300">
-                                {{-- <img src="/images/placeholder.png" /> --}}
-                            </div>
-                            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
-                                <li><a>Profile</a></li>
-                                <li>
-                                    <form method="POST" action="/logout">
-                                        @csrf
-                                        <button type="submit">Logout</button>
-                                    </form>
-                                </li>
-                            </ul>
+                    <div class="avatar dropdown dropdown-end text-black">
+                        <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
+                            <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+                                class="bg-base-300">
+                            {{-- <img src="/images/placeholder.png" /> --}}
                         </div>
-                        <div class="mr-3">
-                            {{-- <p class="text-xs font-bold">Hi, {{ auth()->user()->name }}</p> --}}
-                        </div>
+                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                            <li><a>Profile</a></li>
+                            <li>
+                                <form method="POST" action="/logout">
+                                    @csrf
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mr-3">
+                        {{-- <p class="text-xs font-bold">Hi, {{ auth()->user()->name }}</p> --}}
+                    </div>
                     @else
-                        <button class="btn btn-outline mx-1"><a href="/login"><span class="normal-case">Sign
-                                    in</span></a></button>
-                        <button class="btn btn-primary mx-2"><a href="/register-owner"><span class="normal-case">Sign
-                                    up</span></a></button>
+                    <button class="btn btn-outline mx-1"><a href="/login"><span class="normal-case">Sign
+                                in</span></a></button>
+                    <button class="btn btn-primary mx-2"><a href="/register-owner"><span class="normal-case">Sign
+                                up</span></a></button>
 
                     @endauth
                 </div>

@@ -1,12 +1,5 @@
 <x-dash-layout>
 
-    {{-- <div class="mx-3 my-5 p-2">
-        <div>
-            <a href="/pet/add-info"><button
-                    class="inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-2 py-1 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500 md:px-4 md:py-3">Add
-                    Pet<i class="fa-solid fa-circle-plus mx-2"></i></button></a>
-        </div>
-    </div> --}}
     <div class="flex items-center justify-between rounded-sm p-5">
         <div>
             <input type="text" class="input input-bordered w-96" placeholder="Search">

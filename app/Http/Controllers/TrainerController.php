@@ -29,6 +29,7 @@ class TrainerController extends Controller
         $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('service', 'service.user_id', '=', 'booking.trainer_id')
             ->join('users', 'users.id', '=', 'service.user_id')
+            ->join('request', 'request.user_id', '=', 'booking.client_id')
             ->get();
 
         return view('trainer.show-bookings', [

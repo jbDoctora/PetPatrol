@@ -3,6 +3,7 @@
     <div class="grid grid-cols-3 grid-rows-3 gap-2 px-1">
 
         @forelse ($matchedservices as $match)
+        <div class="card-container">
             <div class="card bg-base-100 w-96 shadow-xl">
                 <div class="avatar">
                     <div class="mx-auto w-24 rounded-full">
@@ -12,9 +13,9 @@
                 </div>
                 <div class="card-body items-center text-center">
                     @php
-                        $matchName = DB::table('users')
-                            ->where('id', $match->user_id)
-                            ->value('name');
+                    $matchName = DB::table('users')
+                    ->where('id', $match->user_id)
+                    ->value('name');
                     @endphp
                     <h2 class="card-title">{{ $matchName }}</h2>
                     <p class="text-xs">{{ $match->email }}</p>
@@ -52,7 +53,7 @@
                         <input type="hidden" name="status" value="on going">
                         <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
                         <input type="hidden" name="payment" value="unpaid">
-
+                        <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
                         <div>
                             <ol type="1" style="font-size: 13.5px">
                                 <li class="p-2 tracking-wider">1. After the pet trainer's approve
@@ -81,15 +82,17 @@
 
                                 <label for="my-modal-{{ $match->id }}" class="btn mr-4">Cancel</label>
                                 <button type="submit" class="btn">Confirm</button>
+                            </div>
             </form>
+        </div>
+        {{-- <label for="my-modal-{{ $match->id }}" class="modal-close"></label> --}}
+
+
+        @empty
+        <p>No matched trainers yet!</p>
+        @endforelse
     </div>
-    <label for="my-modal-{{ $match->id }}" class="modal-close"></label>
-    </div>
-    </div>
-@empty
-    <p>No matched trainers yet!</p>
-    @endforelse
-    </div>
+
     <script>
         const today = new Date();
         const yyyy = today.getFullYear();

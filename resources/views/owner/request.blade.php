@@ -17,7 +17,7 @@
     <div class="m-5 h-screen rounded-lg bg-white">
         <div class="grid grid-cols-1 gap-6 rounded px-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($requestinfo as $info)
-                <div class="m-5 overflow-hidden rounded border border-slate-300 shadow-lg">
+                <div class="m-5 overflow-hidden rounded-lg border border-slate-200 shadow-lg">
                     <div class="p-6">
                         <div class="mb-4 flex items-center justify-between">
                             <h1 class="text-sm font-semibold text-gray-700">Your Request</h1>

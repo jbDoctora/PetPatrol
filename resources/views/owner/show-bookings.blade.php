@@ -3,10 +3,11 @@
         <div>
             <p>Status</p>
             <select class="select w-full max-w-xs">
-                <option disabled selected>Normal</option>
-                <option>Normal Apple</option>
-                <option>Normal Orange</option>
-                <option>Normal Tomato</option>
+                <option disabled selected></option>
+                <option>On Going</option>
+                <option>Approved</option>
+                <option>Declined</option>
+                <option>Completed</option>
             </select>
         </div>
         <div>

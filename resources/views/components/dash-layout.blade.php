@@ -42,17 +42,17 @@
 
 <body class="bg-base-300 flex min-h-screen flex-col">
 
-    <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }" x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }" class="flex h-screen overflow-x-hidden">
+    <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
+        x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
+        class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
             <div class="flex h-28 flex-row items-center justify-center bg-slate-900 text-white">
                 <div>
-                    <img src="/images/vector.jpg" class="h-full w-full" alt="">
-                    {{-- <span class="font-bold">Hi, {{ auth()->user()->name }}</span> --}}
+                    <img src="/images/vector.jpg" class="h-full w-full rounded-lg" alt="">
                 </div>
                 <div>
-                    {{-- <span class="text-xl font-semibold tracking-wide" style="font-family: 'Baby Panda', cursive;">PET
-                        PATROL</span> --}}
+
                 </div>
             </div>
             <nav class="flex h-full flex-col bg-yellow-300 text-black">
@@ -111,42 +111,42 @@
                     </div> --}}
 
                     @auth
-                        <div class="dropdown dropdown-end">
-                            <div class="indicator">
-                                <span class="indicator-item badge border-0 bg-blue-600">1</span>
-                                <button tabindex="0" class="fa-solid fa-bell fa-lg m-3"></button>
-                            </div>
-                            <ul tabindex="0"
-                                class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
-                                <li><a href="">--upcoming features--</a></li>
-                                <li><a href="">--upcoming features--</a></li>
-                            </ul>
+                    <div class="dropdown dropdown-end">
+                        <div class="indicator">
+                            <span class="indicator-item badge border-0 bg-blue-600">1</span>
+                            <button tabindex="0" class="fa-solid fa-bell fa-lg m-3"></button>
                         </div>
+                        <ul tabindex="0"
+                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
+                            <li><a href="">--upcoming features--</a></li>
+                            <li><a href="">--upcoming features--</a></li>
+                        </ul>
+                    </div>
 
-                        <div class="avatar dropdown dropdown-end text-black">
-                            <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
-                                <img
-                                    src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}">
-                                {{-- <img src="/images/placeholder.png" /> --}}
-                            </div>
-                            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
-                                <li><a>Profile</a></li>
-                                <li>
-                                    <form method="POST" action="/logout">
-                                        @csrf
-                                        <button type="submit">Logout</button>
-                                    </form>
-                                </li>
-                            </ul>
+                    <div class="avatar dropdown dropdown-end text-black">
+                        <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
+                            <img
+                                src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}">
+                            {{-- <img src="/images/placeholder.png" /> --}}
                         </div>
-                        <div class="mr-3">
-                            {{-- <p class="text-xs font-bold">Hi, {{ auth()->user()->name }}</p> --}}
-                        </div>
+                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                            <li><a>Profile</a></li>
+                            <li>
+                                <form method="POST" action="/logout">
+                                    @csrf
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mr-3">
+                        {{-- <p class="text-xs font-bold">Hi, {{ auth()->user()->name }}</p> --}}
+                    </div>
                     @else
-                        <button class="btn btn-outline mx-1"><a href="/login"><span class="normal-case">Sign
-                                    in</span></a></button>
-                        <button class="btn btn-primary mx-2"><a href="/register-owner"><span class="normal-case">Sign
-                                    up</span></a></button>
+                    <button class="btn btn-outline mx-1"><a href="/login"><span class="normal-case">Sign
+                                in</span></a></button>
+                    <button class="btn btn-primary mx-2"><a href="/register-owner"><span class="normal-case">Sign
+                                up</span></a></button>
 
                     @endauth
                 </div>
