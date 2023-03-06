@@ -12,7 +12,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
+                        'sans': ['Euclid Circular A', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -37,7 +37,8 @@
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
+        type="text/css" />
 </head>
 
 <body class="bg-base-300 flex min-h-screen flex-col">
@@ -55,30 +56,30 @@
 
                 </div>
             </div>
-            <nav class="flex h-full flex-col bg-yellow-300 text-black">
-                <a href="/owner" class="flex items-center justify-start p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-chart-pie fa-lg mr-10"></i>
-                    <span class="font-semibold">Dashboard</span>
+            <nav class="flex flex-col items-start w-full h-full bg-yellow-300 p-2 text-black">
+                <a href="/owner" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-chart-pie fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Dashboard</span>
                 </a>
 
-                <a href="/request" class="flex items-center justify-start p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-book fa-lg mr-10"></i>
-                    <span class="font-semibold">Request</span>
+                <a href="/request" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-book fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Request</span>
                 </a>
 
-                <a href="/bookings" class="flex items-center justify-start p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-calendar-check fa-lg mr-10"></i>
-                    <span class="font-semibold">Bookings</span>
+                <a href="/bookings" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-calendar-check fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Bookings</span>
                 </a>
 
-                <a href="/pet-info" class="flex items-center justify-start p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-paw fa-lg mr-10"></i>
-                    <span class="font-semibold">Pet Profile</span>
+                <a href="/pet-info" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-paw fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Pet Profile</span>
                 </a>
 
-                <a href="/profile" class="flex items-center justify-start p-5 hover:bg-gray-200">
-                    <i class="fa-solid fa-user fa-lg mr-10"></i>
-                    <span class="font-semibold">Profile</span>
+                <a href="/profile" class="flex items-center w-full p-2 hover:bg-gray-200">
+                    <i class="fa-solid fa-user fa-lg p-4"></i>
+                    <span class="font-semibold ml-5">Profile</span>
                 </a>
             </nav>
         </aside>

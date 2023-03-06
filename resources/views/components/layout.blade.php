@@ -19,7 +19,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
+                        'sans': ['Euclid Circular A'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -33,6 +33,8 @@
     <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
+        type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -42,7 +44,8 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <!-- Tailwind Forms -->
-    {{-- <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet"> --}}
+    {{--
+    <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet"> --}}
     {{-- ALPINE JS --}}
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -70,40 +73,40 @@
         </div>
 
         @auth
-            <div class="dropdown dropdown-end">
-                <div class="indicator">
-                    <span class="indicator-item badge bg-rose-400 outline-0">99+</span>
-                    <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
-                </div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
-                    <li><a href="">--upcoming features--</a></li>
-                    <li><a href="">--upcoming features--</a></li>
-                </ul>
+        <div class="dropdown dropdown-end">
+            <div class="indicator">
+                <span class="indicator-item badge bg-rose-400 outline-0">99+</span>
+                <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
             </div>
+            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                <li><a href="">--upcoming features--</a></li>
+                <li><a href="">--upcoming features--</a></li>
+            </ul>
+        </div>
 
-            <div class="avatar dropdown dropdown-end">
-                <div tabindex="0" class="mr-4 ml-8 h-9 w-9 rounded-full ring-2 ring-rose-400 ring-offset-2">
-                    <img src="/images/avatar/Avatar-9.png" />
-                </div>
-                <ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-yellow-400 p-2 shadow">
-                    <li><a>Profile</a></li>
-                    <li>
-                        <form method="POST" action="/logout">
-                            @csrf
-                            <button type="submit">Logout</button>
-                        </form>
-                    </li>
-                </ul>
+        <div class="avatar dropdown dropdown-end">
+            <div tabindex="0" class="mr-4 ml-8 h-9 w-9 rounded-full ring-2 ring-rose-400 ring-offset-2">
+                <img src="/images/avatar/Avatar-9.png" />
             </div>
-            <div class="mr-3">
-                <p class="font-bold">Hi, {{ auth()->user()->name }}</p>
-            </div>
+            <ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-yellow-400 p-2 shadow">
+                <li><a>Profile</a></li>
+                <li>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="mr-3">
+            <p class="font-bold">Hi, {{ auth()->user()->name }}</p>
+        </div>
         @else
-            <button class="btn btn-outline mx-2"><a href="/login"><span class="normal-case">Sign in</span></a></button>
-            <button
-                class="inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-4 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500"><a
-                    href="/register-owner"><span class="normal-case">Sign
-                        up</span></a></button>
+        <button class="btn btn-outline mx-2"><a href="/login"><span class="normal-case">Sign in</span></a></button>
+        <button
+            class="inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-4 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500"><a
+                href="/register-owner"><span class="normal-case">Sign
+                    up</span></a></button>
 
         @endauth
     </div>

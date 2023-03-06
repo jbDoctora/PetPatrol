@@ -54,35 +54,37 @@
                         <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
                         <input type="hidden" name="payment" value="unpaid">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
-                        <div>
-                            <ol type="1" style="font-size: 13.5px">
-                                <li class="p-2 tracking-wider">1. After the pet trainer's approve
-                                    training request,
-                                    cancellation is
-                                    allowed up to
-                                    48
-                                    hours
-                                    prior to the scheduled training session without penalty.</li>
-                                <li class="p-2 tracking-wider">2. Cancellation within 48 hours of the scheduled training
-                                    session will result in a penalty fee equivalent to 50% of the total cost of the
-                                    session. If the penalty fee is not paid within 7 days, we reserve the right to take
-                                    appropriate action, which may include legal action or suspension of services.</li>
-                                <li class="p-2 tracking-wider">3. After the pet trainer's approve training request,
-                                    cancellation within
-                                    24 hours of
-                                    the
-                                    scheduled training session will not be permitted, and the full cost of the
-                                    session
-                                    will
-                                    be
-                                    charged.</li>
-                            </ol>
 
-                            <div class="modal-action flex justify-center">
+                        <ol type="1" style="font-size: 13.5px">
+                            <li class="p-2 tracking-wider">1. After the pet trainer's approve
+                                training request,
+                                cancellation is
+                                allowed up to
+                                48
+                                hours
+                                prior to the scheduled training session without penalty.</li>
+                            <li class="p-2 tracking-wider">2. Cancellation within 48 hours of the scheduled training
+                                session will result in a penalty fee equivalent to 50% of the total cost of the
+                                session. If the penalty fee is not paid within 7 days, we reserve the right to take
+                                appropriate action, which may include legal action or suspension of services.</li>
+                            <li class="p-2 tracking-wider">3. After the pet trainer's approve training request,
+                                cancellation within
+                                24 hours of
+                                the
+                                scheduled training session will not be permitted, and the full cost of the
+                                session
+                                will
+                                be
+                                charged.</li>
+                        </ol>
 
-                                <label for="my-modal-{{ $match->id }}" class="btn mr-4">Cancel</label>
-                                <button type="submit" class="btn">Confirm</button>
-                            </div>
+                        <div class="modal-action flex justify-center">
+
+                            <label for="my-modal-{{ $match->id }}" class="btn mr-4">Cancel</label>
+                            <button type="submit" class="btn">Confirm</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         {{-- <label for="my-modal-{{ $match->id }}" class="modal-close"></label> --}}
