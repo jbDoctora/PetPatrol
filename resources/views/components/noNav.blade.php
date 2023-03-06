@@ -19,7 +19,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
+                        'sans': ['Euclid Circular A'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -33,12 +33,15 @@
     <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
+        type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <!-- Tailwind Forms -->
-    {{-- <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet"> --}}
+    {{--
+    <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet"> --}}
     {{-- ALPINE JS --}}
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />

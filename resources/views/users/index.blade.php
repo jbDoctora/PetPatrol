@@ -4,8 +4,9 @@
         <div class="hero-content m-3 flex-col lg:flex-row-reverse">
             <img src="/images/test.png"
                 style="background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill; width: 600px; height:600px;" />
-            {{-- <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_o1JRaPxx1E.json" background="transparent"
-                speed="1" style="width: 600px; height: 600px; margin-bottom: 5px;" loop autoplay></lottie-player> --}}
+            {{-- <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_o1JRaPxx1E.json"
+                background="transparent" speed="1" style="width: 600px; height: 600px; margin-bottom: 5px;" loop
+                autoplay></lottie-player> --}}
             <div class="mr-8 ml-5 text-center">
                 <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-5xl"><span class="text-black"
                         style="font-family: 'Rampart One', cursive;">MAKE YOUR
@@ -15,7 +16,7 @@
                     Training Services
                 </p>
                 <button
-                    class="text-md inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-9 py-3 font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500"><a
+                    class="tracking-wide rounded-md px-8 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl"><a
                         href="/register-owner">Get Started<i class="fa-solid fa-paper-plane ml-3"></i></a></button>
             </div>
         </div>
@@ -142,9 +143,10 @@
                             disrupt butcher paleo intelligentsia pabst before they sold out four loko. 3 wolf moon
                             brooklyn.</p>
                         <a class="inline-flex items-center text-indigo-500">Learn More
-                            {{-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg> --}}
+                            {{-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg> --}}
                         </a>
                     </div>
                 </div>

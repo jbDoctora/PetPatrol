@@ -11,10 +11,11 @@
 
                     <div class="mb-4 flex justify-center">
                         <a href="/"><img src="images/apple-touch-icon-76x76.png"></a>
-                        {{-- <div><span class="font-semibold text-md tracking-wide" style="font-family: 'Fredoka One', cursive;">PET PATROL</span></div> --}}
+                        {{-- <div><span class="font-semibold text-md tracking-wide"
+                                style="font-family: 'Fredoka One', cursive;">PET PATROL</span></div> --}}
                     </div>
 
-                    <h1 class="mt-6 text-2xl font-bold text-yellow-500 text-gray-900 sm:text-3xl md:text-4xl">
+                    <h1 class="mt-6 text-2xl font-bold text-yellow-400 text-gray-900 sm:text-3xl md:text-4xl">
                         Sign in
                     </h1>
 
@@ -28,7 +29,7 @@
                             <input type="email" name="email" value="{{ old('email') }}"
                                 class="input input-bordered w-full" />
                             @error('email')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -40,13 +41,13 @@
                             <input type="password" name="password" value="{{ old('password') }}"
                                 class="input input-bordered w-full" />
                             @error('password')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                             <button type="submit" {{-- class="btn btn-primary" --}}
-                                class="inline-block rounded border border-yellow-500 bg-yellow-500 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-yellow-600 focus:outline-none focus:ring active:text-yellow-500">
+                                class="tracking-wide rounded-md px-7 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl">
                                 Login
                             </button>
 

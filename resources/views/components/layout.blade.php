@@ -41,14 +41,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
         rel="stylesheet">
-    <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
-    <!-- Tailwind Forms -->
-    {{--
-    <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet"> --}}
-    {{-- ALPINE JS --}}
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body class="flex min-h-screen flex-col">
@@ -75,7 +69,7 @@
         @auth
         <div class="dropdown dropdown-end">
             <div class="indicator">
-                <span class="indicator-item badge bg-rose-400 outline-0">99+</span>
+                <span class="indicator-item badge bg-yellow-400 outline-0 text-black font-bold">99+</span>
                 <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
             </div>
             <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
@@ -85,10 +79,10 @@
         </div>
 
         <div class="avatar dropdown dropdown-end">
-            <div tabindex="0" class="mr-4 ml-8 h-9 w-9 rounded-full ring-2 ring-rose-400 ring-offset-2">
+            <div tabindex="0" class="mr-4 ml-8 h-9 w-9 rounded-full ring-2 ring-yellow-400 ring-offset-2">
                 <img src="/images/avatar/Avatar-9.png" />
             </div>
-            <ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-yellow-400 p-2 shadow">
+            <ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-base-200 p-2 shadow">
                 <li><a>Profile</a></li>
                 <li>
                     <form method="POST" action="/logout">
@@ -102,12 +96,15 @@
             <p class="font-bold">Hi, {{ auth()->user()->name }}</p>
         </div>
         @else
-        <button class="btn btn-outline mx-2"><a href="/login"><span class="normal-case">Sign in</span></a></button>
-        <button
-            class="inline-block rounded-lg border border-cyan-400 bg-cyan-400 px-4 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-cyan-400 focus:outline-none focus:ring active:text-cyan-500"><a
-                href="/register-owner"><span class="normal-case">Sign
-                    up</span></a></button>
-
+        <div class="flex gap-3">
+            <button
+                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl"><a
+                    href="/login"><span class="normal-case">Sign in</span></a></button>
+            <button
+                class="tracking-wide rounded-md px-5 py-4 bg-white text-black text-sm font-bold border border-black hover:rounded-3xl"><a
+                    href="/register-owner"><span class="normal-case">Sign
+                        up</span></a></button>
+        </div>
         @endauth
     </div>
 
