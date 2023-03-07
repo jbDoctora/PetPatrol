@@ -1,9 +1,8 @@
 <x-dash-layout>
     <h1 class="my-7 ml-5 text-xl font-bold">Your Matched Trainers</h1>
-    <div class="grid grid-cols-3 grid-rows-3 gap-2 px-1">
-
+    <div class="grid grid-cols-3 px-1 bg-base-300 mx-5 rounded-lg" x-data="{checked: false}">
         @forelse ($matchedservices as $match)
-        <div class="card-container">
+        <div class="card-container m-3">
             <div class="card bg-base-100 w-96 shadow-xl">
                 <div class="avatar">
                     <div class="mx-auto w-24 rounded-full">
@@ -22,11 +21,11 @@
                     <p class="text-xs">{{ $match->address }}</p>
                     <div class="card-actions">
                         <button
-                            class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl"><a
+                            class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
                                 href="/show-matched/training-plan/{{ $match->id }}" target="_blank">View Training
                                 Info</a></button>
                         <label for="my-modal-{{ $match->id }}"
-                            class="tracking-wide rounded-md px-5 py-4 text-black text-sm font-bold border border-black hover:rounded-3xl">Book
+                            class="tracking-wide rounded-md px-5 py-4 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Book
                             now<i class="fa-solid fa-arrow-right ml-2"></i></label>
                     </div>
                 </div>
@@ -37,7 +36,7 @@
                 <div class="modal">
                     <div class="modal-box w-5/6" x-data="{ today: '' }">
                         <div class="flex justify-center">
-                            <h1 class="text-lg font-bold">Confirm Booking</h1>
+                            <h3 class="font-bold text-2xl tracking-wide p-2">Confirm Booking</h3>
                         </div>
                         <div class="flex flex-col">
                             <div class="bg-base-200 rounded-xl p-3">
@@ -81,11 +80,18 @@
                                 be
                                 charged.</li>
                         </ol>
-
+                        <div class="flex flex-row">
+                            <label class="cursor-pointer label">
+                                <input type="checkbox" class="checkbox checkbox-warning" x-model="checked" />
+                                <span class="label-text ml-5">I agree to the cancellation policy</span>
+                            </label>
+                        </div>
                         <div class="modal-action flex justify-center">
 
-                            <label for="my-modal-{{ $match->id }}" class="btn mr-4">Cancel</label>
-                            <button type="submit" class="btn">Confirm</button>
+                            <label for="my-modal-{{ $match->id }}" class="tracking-wide rounded-md px-5 py-4 hover:rounded-3xl border border-black text-sm text-black font-bold
+                            transition-all duration-400">Cancel</label>
+                            <button type="submit" :disabled="!checked" :class="{'bg-gray-400': !checked}"
+                                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Confirm</button>
                         </div>
                     </div>
                 </div>

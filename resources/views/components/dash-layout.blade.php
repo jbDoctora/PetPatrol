@@ -2,6 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
 
 <head>
+    <!-- Buttonizer -->
+    <script type="text/javascript">
+        (function(n,t,c,d){if (t.getElementById(d)){return;};var o=t.createElement("script");o.id=d;o.async=!0,o.src="https://cdn.buttonizer.io/embed.js",o.onload=function(){window.Buttonizer.init(c)},t.head.appendChild(o)})(window,document,"5b0db0ef-0d14-4350-9180-63ea88f9a988", "buttonizer_script");
+    </script>
+    <!-- End Buttonizer -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +52,7 @@
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
             <div
-                class="flex h-32 flex-row items-center justify-center bg-yellow-400 text-white border-b-2 border-zinc-400">
+                class="flex h-32 flex-row items-center justify-center bg-yellow-400 text-white border-b-2 border-gray-400">
                 <div>
                     {{-- <img src="/images/vector.jpg" class="h-full w-full rounded-lg" alt=""> --}}
                     <div class="bg-blue-600 px-4 py-3 rounded-lg border border-black">
