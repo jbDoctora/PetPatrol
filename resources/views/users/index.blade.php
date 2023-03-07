@@ -16,7 +16,7 @@
                     Training Services
                 </p>
                 <button
-                    class="tracking-wide rounded-md px-8 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl"><a
+                    class="tracking-wide rounded-md px-8 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
                         href="/register-owner">Get Started<i class="fa-solid fa-paper-plane ml-3"></i></a></button>
             </div>
         </div>
@@ -57,10 +57,11 @@
                     </h1>
                     <div class="h-1 w-20 rounded bg-indigo-500"></div>
                 </div>
-                <p class="w-full font-medium leading-relaxed text-gray-600 lg:w-1/2">"Welcome to Pet Patrol! Are you a
+                <p class="w-full font-bold leading-relaxed text-gray-600 lg:w-1/2 text-justify">Welcome to Pet
+                    Patrol! Are you a
                     pet owner looking for a skilled and reliable trainer to help your furry friend reach their full
                     potential? Or are you a professional pet trainer seeking new clients in your area? Look no further,
-                    because our system is here to connect you with the perfect match.</p>
+                    because our system is here to connect you with the perfect match</p>
             </div>
             <div class="-m-4 flex flex-wrap">
                 <div class="p-4 md:w-1/2 xl:w-1/4">

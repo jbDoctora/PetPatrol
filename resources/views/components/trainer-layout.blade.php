@@ -39,7 +39,8 @@
         }
     </style>
     <x-head.tinymce-config />
-    <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -67,26 +68,36 @@
                     <img src="/images/vector.jpg" alt="">
                 </div>
             </div>
-            <nav class="flex flex-col items-start w-full h-full bg-yellow-300 p-2 text-black">
-                <a href="/trainer" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-chart-pie fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Dashboard</span>
+            <nav class="flex flex-col items-start w-full h-full bg-yellow-300 text-black">
+                <a href="/trainer" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        donut_small
+                    </span>
+                    <span class="font-semibold ml-7">Dashboard</span>
                 </a>
-                <a href="/trainer/portfolio" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-sharp fa-solid fa-record-vinyl fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Portfolio</span>
+                <a href="/trainer/portfolio" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        contact_page
+                    </span>
+                    <span class="font-semibold ml-7">Portfolio</span>
                 </a>
-                <a href="/trainer/service/add" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-bell-concierge fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Add Service</span>
+                <a href="/trainer/service/add" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        home_repair_service
+                    </span>
+                    <span class="font-semibold ml-7">Service</span>
                 </a>
-                <a href="/trainer/bookings" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-calendar-check fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Bookings</span>
+                <a href="/trainer/bookings" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        event
+                    </span>
+                    <span class="font-semibold ml-7">Bookings</span>
                 </a>
-                <a href="/trainer/profile" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-user fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Profile</span>
+                <a href="/trainer/profile" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined md-36" style="font-size: 27px;">
+                        person_outline
+                    </span>
+                    <span class="font-semibold ml-7">Profile</span>
                 </a>
             </nav>
         </aside>
@@ -109,15 +120,30 @@
                     </div>
 
                     @auth
-                    <div class="dropdown dropdown-end">
+                    <div class="dropdown dropdown-end mx-2">
                         <div class="indicator">
-                            <span class="indicator-item badge border-0 bg-blue-600">1</span>
-                            <button tabindex="0" class="fa-solid fa-bell fa-lg m-3"></button>
+                            <span class="indicator-item badge border-0 bg-yellow-400 text-black font-bold">1</span>
+                            <button tabindex="0" class="hover:text-yellow-400"><span class="material-icons-outlined"
+                                    style="font-size: 27px;">
+                                    notifications
+                                </span></button>
                         </div>
                         <ul tabindex="0"
                             class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
                             <li><a href="">--upcoming features--</a></li>
                             <li><a href="">--upcoming features--</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown dropdown-end mx-2">
+                        <button tabindex="0" class="hover:text-yellow-400"><span class="material-icons-outlined"
+                                style="font-size: 27px;">
+                                help_outline
+                            </span></button>
+                        <ul tabindex="0"
+                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
+                            <li><a href="">About us</a></li>
+                            <li><a href="">Need Help?</a></li>
+                            <li><a href="">Be a Pet Patroller</a></li>
                         </ul>
                     </div>
 

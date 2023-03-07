@@ -31,12 +31,11 @@
     <!-- FONTAWESOME -->
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <!-- GOOGLE FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
         type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
@@ -53,7 +52,7 @@
             {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
             <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
                 src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
-                style="font-family: 'Baby Panda', cursive;">PET PATROL</span>
+                style="font-family: 'Climate Crisis', cursive;">PET PATROL</span>
         </div>
 
         <div class="navbar-start hidden px-5 lg:flex">
@@ -98,10 +97,10 @@
         @else
         <div class="flex gap-3">
             <button
-                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl"><a
+                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
                     href="/login"><span class="normal-case">Sign in</span></a></button>
             <button
-                class="tracking-wide rounded-md px-5 py-4 bg-white text-black text-sm font-bold border border-black hover:rounded-3xl"><a
+                class="tracking-wide rounded-md px-5 py-4 bg-white text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
                     href="/register-owner"><span class="normal-case">Sign
                         up</span></a></button>
         </div>

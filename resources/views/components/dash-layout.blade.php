@@ -26,60 +26,69 @@
             white-space: pre-wrap;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
         type="text/css" />
 </head>
 
-<body class="bg-base-300 flex min-h-screen flex-col">
+<body class="flex min-h-screen flex-col">
 
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
         class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
-            <div class="flex h-28 flex-row items-center justify-center bg-slate-900 text-white">
+            <div
+                class="flex h-32 flex-row items-center justify-center bg-yellow-400 text-white border-b-2 border-zinc-400">
                 <div>
-                    <img src="/images/vector.jpg" class="h-full w-full rounded-lg" alt="">
-                </div>
-                <div>
-
+                    {{-- <img src="/images/vector.jpg" class="h-full w-full rounded-lg" alt=""> --}}
+                    <div class="bg-blue-600 px-4 py-3 rounded-lg border border-black">
+                        <p style="font-family: 'Climate Crisis', cursive;" class="text-black">PET PATROL</p>
+                    </div>
                 </div>
             </div>
-            <nav class="flex flex-col items-start w-full h-full bg-yellow-300 p-2 text-black">
-                <a href="/owner" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-chart-pie fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Dashboard</span>
+            <nav class="flex flex-col items-start w-full h-full bg-yellow-400 text-black">
+                <a href="/owner" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        donut_small
+                    </span>
+                    <span class="font-semibold ml-7">Dashboard</span>
                 </a>
 
-                <a href="/request" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-book fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Request</span>
+                <a href="/request" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        build
+                    </span>
+                    <span class="font-semibold ml-7">Request</span>
                 </a>
 
-                <a href="/bookings" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-calendar-check fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Bookings</span>
+                <a href="/bookings" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        event
+                    </span>
+                    <span class="font-semibold ml-7">Bookings</span>
                 </a>
 
-                <a href="/pet-info" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-paw fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Pet Profile</span>
+                <a href="/pet-info" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined" style="font-size: 27px;">
+                        pets
+                    </span>
+                    <span class="font-semibold ml-7">Pet Profile</span>
                 </a>
 
-                <a href="/profile" class="flex items-center w-full p-2 hover:bg-gray-200">
-                    <i class="fa-solid fa-user fa-lg p-4"></i>
-                    <span class="font-semibold ml-5">Profile</span>
+                <a href="/profile" class="flex items-center w-full p-5 hover:bg-gray-200">
+                    <span class="material-icons-outlined md-36" style="font-size: 27px;">
+                        person_outline
+                    </span>
+                    <span class="font-semibold ml-7">Profile</span>
                 </a>
             </nav>
         </aside>
@@ -101,26 +110,31 @@
 
                     </div>
 
-                    {{-- <div class="navbar-start hidden lg:flex">
-                        <ul class="menu menu-horizontal text-sm font-bold">
-                            <li class="pr-3">About Us</li>
-                            <li class="px-3">Need Help?</li>
-                            <a href="/register-trainer">
-                                <li class="pl-3">Be A Pet Patroller</li>
-                            </a>
-                        </ul>
-                    </div> --}}
-
                     @auth
-                    <div class="dropdown dropdown-end">
+                    <div class="dropdown dropdown-end mx-2">
                         <div class="indicator">
-                            <span class="indicator-item badge border-0 bg-blue-600">1</span>
-                            <button tabindex="0" class="fa-solid fa-bell fa-lg m-3"></button>
+                            <span class="indicator-item badge border-0 bg-yellow-400 text-black font-bold">1</span>
+                            <button tabindex="0" class="hover:text-yellow-400"><span class="material-icons-outlined"
+                                    style="font-size: 27px;">
+                                    notifications
+                                </span></button>
                         </div>
                         <ul tabindex="0"
-                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
+                            class="dropdown-content menu bg-base-300 rounded-box w-52 p-2 text-black shadow">
                             <li><a href="">--upcoming features--</a></li>
                             <li><a href="">--upcoming features--</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown dropdown-end mx-2">
+                        <button tabindex="0" class="hover:text-yellow-400"><span class="material-icons-outlined"
+                                style="font-size: 27px;">
+                                help_outline
+                            </span></button>
+                        <ul tabindex="0"
+                            class="dropdown-content menu bg-base-300 rounded-box w-52 p-2 text-black shadow">
+                            <li><a href="">About us</a></li>
+                            <li><a href="">Need Help?</a></li>
+                            <li><a href="">Be a Pet Patroller</a></li>
                         </ul>
                     </div>
 
@@ -130,7 +144,7 @@
                                 src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}">
                             {{-- <img src="/images/placeholder.png" /> --}}
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                        <ul tabindex="0" class="dropdown-content menu bg-base-300 rounded-box w-52 p-2 shadow">
                             <li><a>Profile</a></li>
                             <li>
                                 <form method="POST" action="/logout">

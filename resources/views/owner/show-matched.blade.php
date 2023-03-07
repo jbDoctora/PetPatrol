@@ -21,9 +21,13 @@
                     <p class="text-xs">{{ $match->email }}</p>
                     <p class="text-xs">{{ $match->address }}</p>
                     <div class="card-actions">
-                        <button class="btn btn-primary"><a href="/show-matched/training-plan/{{ $match->id }}"
-                                target="_blank">View Training Info</a></button>
-                        <label for="my-modal-{{ $match->id }}" class="btn btn-primary">Book now</label>
+                        <button
+                            class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl"><a
+                                href="/show-matched/training-plan/{{ $match->id }}" target="_blank">View Training
+                                Info</a></button>
+                        <label for="my-modal-{{ $match->id }}"
+                            class="tracking-wide rounded-md px-5 py-4 text-black text-sm font-bold border border-black hover:rounded-3xl">Book
+                            now<i class="fa-solid fa-arrow-right ml-2"></i></label>
                     </div>
                 </div>
             </div>

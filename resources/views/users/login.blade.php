@@ -47,7 +47,7 @@
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                             <button type="submit" {{-- class="btn btn-primary" --}}
-                                class="tracking-wide rounded-md px-7 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl">
+                                class="transition-all duration-400 tracking-wide rounded-md px-7 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl">
                                 Login
                             </button>
 
