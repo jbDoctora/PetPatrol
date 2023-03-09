@@ -22,8 +22,8 @@
                     <div class="card-actions">
                         <button
                             class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
-                                href="/show-matched/training-plan/{{ $match->id }}" target="_blank">View Training
-                                Info</a></button>
+                                href="/show-matched/training-plan/{{ $match->id }}" target="_blank">View
+                                Training Plan</a></button>
                         <label for="my-modal-{{ $match->id }}"
                             class="tracking-wide rounded-md px-5 py-4 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Book
                             now<i class="fa-solid fa-arrow-right ml-2"></i></label>

@@ -49,7 +49,7 @@
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
         class="flex h-screen overflow-x-hidden">
-        <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
+        <aside class="flex h-full w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
             <div
                 class="flex h-32 flex-row items-center justify-center bg-yellow-400 text-white border-b-2 border-gray-400">

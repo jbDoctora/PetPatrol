@@ -5,24 +5,24 @@
                 <h1 class="text-4xl font-bold">My Bookings</h1>
             </div>
         </div>
-        <div class="overflow-x-auto px-4">
-            <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-                <table class="min-w-full leading-normal">
+        <div class="m-5 h-screen overflow-x-auto rounded-lg bg-white px-4">
+            <div class="mx-auto mt-5 inline-block min-w-full overflow-hidden rounded-lg shadow-lg">
+                <table class="min-w-full leading-normal bg-base-300">
                     <thead>
                         <tr>
                             <th
-                                class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                class="bg-yellow-400 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black">
                                 Pet Name</th>
                             <th
-                                class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                class="bg-yellow-400 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black">
                                 Client Name</th>
                             <th
-                                class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                class="bg-yellow-400 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black">
                                 Status</th>
                             <th
-                                class="bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                class="bg-yellow-400 px-6 py-3 text-left text-xs font-medium uppercase tracking-widertext-black">
                                 Payment Status</th>
-                            <th class="bg-gray-50 px-6 py-3"></th>
+                            <th class="bg-yellow-400 px-6 py-3"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,9 +33,10 @@
                         ->value('name');
                         @endphp
                         <tr>
-                            <td class="whitespace-nowrap px-6 py-4">{{ $pet_info }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">{{ $requests->client_name }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $pet_info }}</td>
+                            <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->client_name }}
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 border-b border-black">
                                 @if ($requests->status == 'on going')
                                 <span
                                     class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{
@@ -50,7 +51,7 @@
                                     $requests->status }}</span>
                                 @endif
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4">
+                            <td class="whitespace-nowrap px-6 py-4 border-b border-black">
                                 @if ($requests->payment == 'unpaid')
                                 <span
                                     class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{
@@ -61,7 +62,8 @@
                                     $requests->payment }}</span>
                                 @endif
                             </td>
-                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                            <td
+                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium border-b border-black">
                                 <a href="#" class="text-indigo-600 hover:text-indigo-900"
                                     x-on:click="showModal = !showModal">View</a>
                                 <a href="#" class="ml-4 text-red-600 hover:text-red-900">Cancel</a>
@@ -71,40 +73,55 @@
                         <div x-cloak x-show="showModal" x-transition.opacity class="fixed inset-0 bg-slate-900/75">
                         </div>
                         <div x-cloak x-show="showModal" x-transition
-                            class="fixed inset-0 z-50 flex items-center justify-center h-auto">
+                            class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
                             <div x-on:click.away="showModal = false"
-                                class="w-screen max-w-xl mx-auto bg-white rounded-lg h-auto">
-                                <p class="text-center font-bold">Client Information</p>
-                                <div class="grid grid-cols-2 grid-rows-3 p-5">
-                                    <p>Client name:</p>
-                                    <p>{{$requests->client_name}}</p>
-                                    <p>Additional info about pet: </p>
-                                    <p>{{$requests->info}}</p>
-                                    <p>Pet type: </p>
-                                    <p>{{$requests->pet_type}}</p>
-                                </div>
-                                <p class="pl-3">Update Status:</p>
-                                <div class="flex flex-col p-5 gap-3">
-                                    <div class="flex px-3">
-                                        <input type="radio" name="status" class="radio radio-primary" />
-                                        <p class="px-5">Approve</p>
+                                class="w-full max-w-md bg-white rounded-lg shadow-lg">
+                                <div class="px-6 py-4">
+                                    <h2 class="text-2xl font-bold mb-2">Client Information</h2>
+                                    <div class="grid grid-cols-2 gap-4 mb-4 bg-base-300 rounded-lg p-5">
+                                        <div class="font-bold">Client name:</div>
+                                        <div>{{$requests->client_name}}</div>
+                                        <div class="font-bold">Pet type:</div>
+                                        <div>{{$requests->pet_type}}</div>
+                                        <div class="font-bold">Additional info about pet:</div>
+                                        <div>{{$requests->info}}</div>
                                     </div>
-                                    <div class="flex px-3">
-                                        <input type="radio" name="status" class="radio radio-primary" />
-                                        <p class="px-5">Decline</p>
-                                    </div>
-                                </div>
-                                <p class="p-4">Payment Status</p>
-                                <div class="flex flex-col p-5 gap-3">
-                                    <div class="flex px-3">
-                                        <input type="radio" name="payment" class="radio radio-primary" />
-                                        <p class="px-5">Paid</p>
-                                    </div>
-                                    <div class="flex px-3">
-                                        <input type="radio" name="payment" class="radio radio-primary" checked />
-                                        <p class="px-5">Unpaid</p>
-                                    </div>
-                                    <button class="mx-auto btn">Update</button>
+                                    <form>
+                                        <div class="mb-4">
+                                            <h3 class="text-lg font-bold mb-2">Update Status:</h3>
+                                            <div>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="status" value="approve"
+                                                        class="radio radio-primary">
+                                                    <span class="ml-2">Approve</span>
+                                                </label>
+                                                <label class="inline-flex items-center ml-6">
+                                                    <input type="radio" name="status" value="decline"
+                                                        class="radio radio-primary">
+                                                    <span class="ml-2">Decline</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <h3 class="text-lg font-bold mb-2">Payment Status:</h3>
+                                            <div>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="payment" value="paid"
+                                                        class="radio radio-primary">
+                                                    <span class="ml-2">Paid</span>
+                                                </label>
+                                                <label class="inline-flex items-center ml-6">
+                                                    <input type="radio" name="payment" value="unpaid"
+                                                        class="radio radio-primary" checked>
+                                                    <span class="ml-2">Unpaid</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button type="submit"
+                                                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Update</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

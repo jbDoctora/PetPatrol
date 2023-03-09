@@ -1,9 +1,9 @@
 <x-dash-layout>
-    <div class="mx-auto mb-6 h-full max-w-screen-sm py-10 sm:px-6 lg:px-8" x-data="{ step: 1, percentComplete: 0, pet: '', vaccinated: '', course: [], info: '', sessions: '', date: '', location: '', date: '', time: '', pet_type: '' }">
+    <div class="mx-auto mb-6 h-full max-w-screen-sm py-10 sm:px-6 lg:px-8"
+        x-data="{ step: 1, percentComplete: 0, pet: '', vaccinated: '', course: [], info: '', sessions: '', date: '', location: '', date: '', time: '', pet_type: '' }">
 
         <div class="mx-auto mb-5 flex max-w-screen-xl items-center justify-center px-4">
-            <progress class="progress progress-primary w-56" value="0" :value="percentComplete"
-                max="100"></progress>
+            <progress class="progress progress-primary w-56" value="0" :value="percentComplete" max="100"></progress>
         </div>
         <div x-show="step === 1">
             <form class="mt-2 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
@@ -14,23 +14,23 @@
                 </div>
 
                 @forelse($petinfo as $petinfos)
-                    @if (in_array($petinfos->name, $requestedPetNames))
-                        @continue
-                    @endif
+                @if (in_array($petinfos->name, $requestedPetNames))
+                @continue
+                @endif
 
-                    <div class="mb-4 flex items-center bg-slate-300 p-5">
-                        <input type="radio" name="radio-1" class="radio radio-primary"
-                            value="{{ $petinfos->name }},{{ $petinfos->type }}" x-model="pet" required />
-                        <label for="" class="ml-2 text-sm font-medium">{{ $petinfos->name }}</label>
-                    </div>
+                <div class="mb-4 flex items-center bg-slate-300 p-5">
+                    <input type="radio" name="radio-1" class="radio radio-primary"
+                        value="{{ $petinfos->name }},{{ $petinfos->type }}" x-model="pet" required />
+                    <label for="" class="ml-2 text-sm font-medium">{{ $petinfos->name }}</label>
+                </div>
 
                 @empty
 
-                    <p>No Pet record</p>
+                <p>No Pet record</p>
                 @endforelse
 
                 <div class="flex items-center justify-center">
-                    <button class="btn btn-primary mx-2" @click.prevent="step++, percentComplete = 15"
+                    <button class="btn btn-primary mx-2 bg-yellow-400" @click.prevent="step++, percentComplete = 15"
                         x-bind:disabled="!pet">Next</button>
                 </div>
             </form>
@@ -51,8 +51,7 @@
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="radio" name="radio-5" class="radio radio-primary" value="No"
-                        x-model="vaccinated" />
+                    <input type="radio" name="radio-5" class="radio radio-primary" value="No" x-model="vaccinated" />
                     <label for="" class="ml-2 text-sm font-medium">No</label>
                 </div>
 
@@ -73,8 +72,8 @@
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="radio" class="radio radio-primary checkbox-md" value="Potty Training"
-                        x-model="course" required />
+                    <input type="radio" class="radio radio-primary checkbox-md" value="Potty Training" x-model="course"
+                        required />
                     <label for="" class="ml-2 text-sm font-medium">Potty Training</label>
                 </div>
 
@@ -125,7 +124,8 @@
 
                 <div class="mb-4 flex items-center justify-center bg-slate-300 p-5">
                     <textarea placeholder="(optional)" type="text" name="petInformation"
-                        class="textarea textarea-bordered textarea-lg w-full max-w-xs bg-white" x-model="info"></textarea>
+                        class="textarea textarea-bordered textarea-lg w-full max-w-xs bg-white"
+                        x-model="info"></textarea>
                 </div>
 
                 <div class="flex items-center justify-center">
@@ -202,8 +202,8 @@
                 </div>
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
-                    <input type="radio" name="radio-10" class="radio radio-primary" value="At home"
-                        x-model="location" required />
+                    <input type="radio" name="radio-10" class="radio radio-primary" value="At home" x-model="location"
+                        required />
                     <label for="" class="ml-2 text-sm font-medium">At home</label>
                 </div>
 

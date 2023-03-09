@@ -24,7 +24,7 @@
                                 class="input input-bordered w-96" />
 
                             @error('name')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -32,8 +32,8 @@
                         <input type="hidden" name="birthday" value="01/01/2022"
                             class="mt-1 h-10 w-full rounded-md border-solid border-slate-400 bg-white text-sm text-gray-700 shadow-sm" />
                         <input type="hidden" name="age" value="00" class="input input-bordered w-full" />
-                        <input type="hidden" class="w-full rounded-lg border border-gray-400 p-2" id="sex"
-                            name="sex" value="transgender" />
+                        <input type="hidden" class="w-full rounded-lg border border-gray-400 p-2" id="sex" name="sex"
+                            value="null" />
                         <input type="hidden" name="id_verify" value="null">
 
                         <div>
@@ -44,7 +44,7 @@
                             <input type="text" name="address" value="{{ old('address') }}"
                                 class="input input-bordered w-full" />
                             @error('address')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -57,7 +57,7 @@
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
                                 class="input input-bordered w-full" />
                             @error('phone_number')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -71,7 +71,7 @@
                                 class="input input-bordered w-full" />
 
                             @error('email')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -85,7 +85,7 @@
                                 class="input input-bordered w-full" />
 
                             @error('password')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -99,7 +99,7 @@
                                 value="{{ old('password_confirmation') }}" class="input input-bordered w-full" />
 
                             @error('password_confirmation')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>

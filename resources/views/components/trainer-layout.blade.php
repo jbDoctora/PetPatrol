@@ -39,16 +39,12 @@
         }
     </style>
     <x-head.tinymce-config />
+    <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
         type="text/css" />
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
@@ -56,19 +52,23 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
-<body class="bg-base-300 flex min-h-screen flex-col">
+<body class="flex min-h-screen flex-col">
     <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
         class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
-            <div class="flex h-32 flex-row items-center justify-center bg-slate-900 text-white">
+            <div
+                class="flex h-32 flex-row items-center justify-center bg-yellow-400 text-white border-b-2 border-gray-400">
                 <div>
-                    <img src="/images/vector.jpg" alt="">
+                    {{-- <img src="/images/vector.jpg" class="h-full w-full rounded-lg" alt=""> --}}
+                    <div class="bg-blue-600 px-4 py-3 rounded-lg border border-black">
+                        <p style="font-family: 'Climate Crisis', cursive;" class="text-black">PET PATROL</p>
+                    </div>
                 </div>
             </div>
-            <nav class="flex flex-col items-start w-full h-full bg-yellow-300 text-black">
+            <nav class="flex flex-col items-start w-full h-full bg-yellow-400 text-black">
                 <a href="/trainer" class="flex items-center w-full p-5 hover:bg-gray-200">
                     <span class="material-icons-outlined" style="font-size: 27px;">
                         donut_small
