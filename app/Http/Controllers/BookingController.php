@@ -27,9 +27,12 @@ class BookingController extends Controller
 
     public function show()
     {
+        $clientId = auth()->id();
+
         $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('service', 'service.user_id', '=', 'booking.trainer_id')
             ->join('users', 'users.id', '=', 'service.user_id')
+            ->where('booking.client_id', $clientId)
             ->get();
 
         return view('owner.show-bookings', [

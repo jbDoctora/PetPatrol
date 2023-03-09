@@ -7,7 +7,7 @@
         </div>
         <div class="m-5 h-screen overflow-x-auto rounded-lg bg-white px-4">
             <div class="mx-auto mt-5 inline-block min-w-full overflow-hidden rounded-lg shadow-lg">
-                <table class="min-w-full leading-normal bg-base-300">
+                <table id="myTable" class="min-w-full leading-normal bg-base-300">
                     <thead>
                         <tr>
                             <th

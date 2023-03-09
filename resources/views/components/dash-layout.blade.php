@@ -2,11 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
 
 <head>
-    <!-- Buttonizer -->
-    <script type="text/javascript">
-        (function(n,t,c,d){if (t.getElementById(d)){return;};var o=t.createElement("script");o.id=d;o.async=!0,o.src="https://cdn.buttonizer.io/embed.js",o.onload=function(){window.Buttonizer.init(c)},t.head.appendChild(o)})(window,document,"5b0db0ef-0d14-4350-9180-63ea88f9a988", "buttonizer_script");
-    </script>
-    <!-- End Buttonizer -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +26,9 @@
             white-space: pre-wrap;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
@@ -60,36 +58,36 @@
                     </div>
                 </div>
             </div>
-            <nav class="flex flex-col items-start w-full h-full bg-yellow-400 text-black">
-                <a href="/owner" class="flex items-center w-full p-5 hover:bg-gray-200">
+            <nav class="flex flex-col items-start w-full h-full bg-slate-900 text-white">
+                <a href="/owner" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
                     <span class="material-icons-outlined" style="font-size: 27px;">
                         donut_small
                     </span>
                     <span class="font-semibold ml-7">Dashboard</span>
                 </a>
 
-                <a href="/request" class="flex items-center w-full p-5 hover:bg-gray-200">
+                <a href="/request" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
                     <span class="material-icons-outlined" style="font-size: 27px;">
                         build
                     </span>
                     <span class="font-semibold ml-7">Request</span>
                 </a>
 
-                <a href="/bookings" class="flex items-center w-full p-5 hover:bg-gray-200">
+                <a href="/bookings" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
                     <span class="material-icons-outlined" style="font-size: 27px;">
                         event
                     </span>
                     <span class="font-semibold ml-7">Bookings</span>
                 </a>
 
-                <a href="/pet-info" class="flex items-center w-full p-5 hover:bg-gray-200">
+                <a href="/pet-info" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
                     <span class="material-icons-outlined" style="font-size: 27px;">
                         pets
                     </span>
                     <span class="font-semibold ml-7">Pet Profile</span>
                 </a>
 
-                <a href="/profile" class="flex items-center w-full p-5 hover:bg-gray-200">
+                <a href="/profile" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
                     <span class="material-icons-outlined md-36" style="font-size: 27px;">
                         person_outline
                     </span>
@@ -176,14 +174,7 @@
             </main>
         </div>
     </div>
-    {{-- FOOTER --}}
-    {{-- <footer class="footer footer-center bg-base-300 text-base-content static p-4 text-xs">
-        <div>
-            <p><i class="fa-solid fa-paw mr-8"></i>Copyright © 2023 - All right reserved by Pet Patrol<i
-                    class="fa-solid fa-paw ml-8"></i></p>
 
-        </div>
-    </footer> --}}
     <x-toast />
 </body>
 

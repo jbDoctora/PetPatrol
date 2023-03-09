@@ -37,8 +37,16 @@
             padding: 5px;
             border: 1px solid #928d8d;
         }
+
+        .dataTables_filter input,
+        .dataTables_length select {
+            padding: 50px;
+        }
     </style>
     <x-head.tinymce-config />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
         rel="stylesheet">
@@ -180,15 +188,13 @@
             </main>
         </div>
     </div>
-    {{-- FOOTER --}}
-    {{-- <footer class="footer footer-center bg-base-300 text-base-content p-4 text-xs">
-        <div>
-            <p><i class="fa-solid fa-paw mr-8"></i>Copyright © 2023 - All right reserved by Pet Patrol<i
-                    class="fa-solid fa-paw ml-8"></i></p>
 
-        </div>
-    </footer> --}}
     <x-toast />
+    <script type="text/javascript">
+        $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+    </script>
 </body>
 
 </html>

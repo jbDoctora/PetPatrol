@@ -10,19 +10,14 @@
                 class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
                 <div class="max-w-xl lg:max-w-3xl">
 
-                    <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                        Welcome to Pet Patrol
+                    <h1 class="mt-6 text-2xl font-bold text-yellow-400 sm:text-3xl md:text-4xl">
+                        Sign up
                     </h1>
-
-                    <p class="mt-4 leading-relaxed text-gray-500">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam
-                        dolorum aliquam, quibusdam aperiam voluptatum.
-                    </p>
 
                     <form method="POST" action="/users" class="grid-rows-7 mt-5 grid gap-4"
                         enctype="multipart/form-data">
                         @csrf
-                        <div class="col-span-5">
+                        <div class="col-span-6">
                             <label for="name" class="block text-sm font-medium text-gray-700">
                                 Name
                             </label>
@@ -30,35 +25,21 @@
                                 class="input input-bordered w-full" />
 
                             @error('name')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-
-                        </div>
-
-                        <div class="col-span-1">
-                            <label for="name" class="block text-sm font-medium text-gray-700">
-                                Birthday
-                            </label>
-
-                            <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
-                                class="mt-1 h-10 w-full rounded-md border-solid border-slate-400 bg-white text-sm text-gray-700 shadow-sm" />
-
-                            @error('birthday')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
 
                         <div class="col-span-3">
-                            <label for="age" class="block text-sm font-medium text-gray-700">
-                                Age
+                            <label for="name" class="block text-sm font-medium text-gray-700">
+                                Birthday
                             </label>
 
-                            <input type="number" name="age" value="{{ old('age') }}"
-                                class="input input-bordered w-full" />
+                            <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
+                                class="mt-1 h-10 w-full rounded-md border border-gray-400 bg-white text-sm text-gray-700 shadow-sm" />
 
-                            @error('age')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            @error('birthday')
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -67,8 +48,7 @@
                             <label for="sex" class="block text-sm font-medium text-gray-700">
                                 Sex
                             </label>
-                            <select class="w-full rounded-lg border border-gray-400 p-2" id="sex" name="sex"
-                                required>
+                            <select class="w-full rounded-lg border border-gray-400 py-3" id="sex" name="sex" required>
                                 <option value="">Select a gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -76,7 +56,7 @@
                             </select>
 
                             @error('sex')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -89,7 +69,7 @@
                             <input type="text" name="address" value="{{ old('address') }}"
                                 class="input input-bordered w-full" />
                             @error('address')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -102,7 +82,7 @@
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
                                 class="input input-bordered w-full" />
                             @error('phone_number')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -116,7 +96,7 @@
                                 class="file-input file-input-bordered w-full max-w-xs" />
 
                             @error('id_verify')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -130,7 +110,7 @@
                                 class="input input-bordered w-full" />
 
                             @error('email')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -144,7 +124,7 @@
                                 class="input input-bordered w-full" />
 
                             @error('password')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>
@@ -158,7 +138,7 @@
                                 value="{{ old('password_confirmation') }}" class="input input-bordered w-full" />
 
                             @error('password_confirmation')
-                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
                         </div>

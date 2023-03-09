@@ -34,7 +34,6 @@ class OwnerController extends Controller
                     $join->on('request.course', '=', 'service.course')
                         ->on('request.sessions', '=', 'service.availability')
                         ->on('request.pet_type', '=', 'service.pet_type')
-                        // ->on('request.user_id', '=', 'service.user_id')
                         ->where('request.course', $course)
                         ->where('request.sessions', $availability)
                         ->where('request.pet_type', $type);

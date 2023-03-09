@@ -16,22 +16,22 @@
                     </tr>
                 </thead>
                 @forelse($trainingDet as $trainings)
-                    <tbody>
-                        <tr>
-                            <th>{{ $trainings->day }}</th>
-                            <td>{{ $trainings->lesson }}</td>
-                            <td>{{ $trainings->start_time }}</td>
-                            <td>{{ $trainings->end_time }}</td>
-                        </tr>
-                    </tbody>
-                @empty
+                <tbody>
                     <tr>
-                        <th>empty</th>
-                        <td>empty</td>
-                        <td>empty</td>
-                        <td>empty</td>
+                        <th>{{ $trainings->day }}</th>
+                        <td>{{ $trainings->lesson }}</td>
+                        <td>{{ $trainings->start_time }}</td>
+                        <td>{{ $trainings->end_time }}</td>
                     </tr>
-                    </tbody>
+                </tbody>
+                @empty
+                <tr>
+                    <th>empty</th>
+                    <td>empty</td>
+                    <td>empty</td>
+                    <td>empty</td>
+                </tr>
+                </tbody>
                 @endforelse
             </table>
         </div>
@@ -53,7 +53,9 @@
         </div>
 
         <div class="flex justify-center">
-            <button class="btn btn-primary mx-auto mt-5" type="submit">Add</button>
+            <button
+                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400 m-5"
+                type="submit">Add</button>
         </div>
     </form>
 </x-trainer-layout>

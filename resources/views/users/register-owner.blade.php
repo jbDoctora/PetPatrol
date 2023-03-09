@@ -108,8 +108,8 @@
 
                         <div class="flex flex-col items-center justify-center">
                             <button type="submit"
-                                class="inline-block w-full rounded border border-rose-400 bg-rose-400 px-12 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500">
-                                Create an account
+                                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">
+                                Create account
                             </button>
 
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0">
