@@ -26,7 +26,7 @@ class TrainerController extends Controller
 
     public function showBooking()
     {
-        $trainerId = auth()->id(); // assuming you want to filter by the currently authenticated trainer's id
+        $trainerId = auth()->id();
 
         $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('users', 'users.id', '=', 'booking.client_id')
