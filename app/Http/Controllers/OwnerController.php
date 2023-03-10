@@ -36,12 +36,14 @@ class OwnerController extends Controller
                         ->on('request.pet_type', '=', 'service.pet_type')
                         ->where('request.course', $course)
                         ->where('request.sessions', $availability)
-                        ->where('request.pet_type', $type);
+                        ->where('request.pet_type', $type)
+                        ->where('service.status', 'active');
                 })
                 ->join('users', 'service.user_id', '=', 'users.id')
                 ->join('pet_info', 'request.user_id', '=', 'pet_info.owner_id')
                 ->where('request.user_id', auth()->id())
                 ->get();
+
 
             // dd($matched_services);
             return view('owner.show-matched', [

@@ -65,8 +65,13 @@
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
                         <input type="hidden" name="status" value="pending">
                         <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
-                        <input type="hidden" name="payment_status" value="unpaid">
+                        <input type="hidden" name="payment" value="unpaid">
+                        @php
+                        $service_id = DB::table('service')->where('user_id', $match->user_id)->value('id');
+                        @endphp
+                        <input type="hidden" name="service_id" value="{{$service_id}}">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
+                        <input type="hidden" name="status" value="pending">
 
 
                         <ol type="1" style="font-size: 13.5px">

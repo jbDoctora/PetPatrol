@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,17 +11,21 @@ class BookingController extends Controller
 {
     public function store(Request $request)
     {
-
         $formFields['pet_id'] = $request->input('pet_id');
         $formFields['client_id'] = $request->input('client_id');
         $formFields['trainer_id'] = $request->input('trainer_id');
         $formFields['status'] = $request->input('status');
         $formFields['date'] = $request->input('date');
-        $formFields['payment_status'] = $request->input('payment');
+        $formFields['payment'] = $request->input('payment');
+        $formFields['service_id'] = $request->input('service_id');
         $formFields['client_name'] = $request->input('client_name');
 
-        // dd($formFields);
         Booking::create($formFields);
+
+        $service_id = $request->input('service_id');
+        $service = Service::find($service_id);
+        $service->status = $request->input('status');
+        $service->save();
 
         return redirect()->back()->with('message', 'Booking is now placed!');
     }

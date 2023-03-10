@@ -29,9 +29,7 @@
                         <th>{{$trainings->availability}}</th>
                         <th>{{$trainings->weeks}}</th>
                         <th>{{$trainings->price}}</th>
-                        <th class="text-center">
-                            <button class="text-green-500 font-bolds">Active</button>
-                        </th>
+                        <th>{{$trainings->status}}</th>
                         <th class="flex justify-between">
                             <button
                                 class="tracking-wide w-full py-2 bg-yellow-400 text-black text-xs font-bold border border-black"><a
