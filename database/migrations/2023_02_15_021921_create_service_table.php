@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('pet_type');
             $table->string('availability');
             $table->integer('weeks');
+            $table->string('status');
         });
     }
 

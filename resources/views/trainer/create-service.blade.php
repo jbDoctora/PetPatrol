@@ -93,6 +93,7 @@
                             <option>4</option>
                         </select>
                     </div>
+                    <input type="hidden" name="status" value="active">
                     <div class="modal-action flex items-center justify-center">
                         <button type="submit"
                             class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Create</button>

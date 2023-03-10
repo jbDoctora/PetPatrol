@@ -16,7 +16,7 @@ class BookingController extends Controller
         $formFields['trainer_id'] = $request->input('trainer_id');
         $formFields['status'] = $request->input('status');
         $formFields['date'] = $request->input('date');
-        $formFields['payment'] = $request->input('payment');
+        $formFields['payment_status'] = $request->input('payment');
         $formFields['client_name'] = $request->input('client_name');
 
         // dd($formFields);

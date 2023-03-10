@@ -15,6 +15,7 @@ class ServiceController extends Controller
         $formFields['availability'] = $request->input('availability');
         $formFields['weeks'] = $request->input('weeks');
         $formFields['price'] = $request->input('price');
+        $formFields['status'] = $request->input('status');
         $formFields['user_id'] = auth()->id() ?? null;
 
         Service::create($formFields);

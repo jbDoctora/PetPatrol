@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('certificates');
             $table->longText('experience');
             $table->string('journey_photos')->nullable();
-            $table->string('profile_photo');
         });
     }
 

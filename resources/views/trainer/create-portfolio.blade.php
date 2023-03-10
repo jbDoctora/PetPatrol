@@ -7,12 +7,20 @@
         </header>
         <form method="POST" action="/trainer/portfolio/add" enctype="multipart/form-data">
             @csrf
+            {{-- <div class="m-3 rounded-xl bg-white">
+                <h2 class="p-5 text-xl font-bold">Profile Photo</h2>
+                <input type="file" class="file-input file-input-bordered name= m-5 w-96" name="profile_photo">
+                @error('profile_photo')
+                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                @enderror
+            </div> --}}
+
             <div class="m-3 rounded-xl bg-white">
                 <input type="hidden" value="{{ auth()->id() }}" name="user_id">
                 <h2 class="p-5 text-xl font-bold">About Me</h2>
                 <textarea id="myeditorinstance" name="about_me" rows="5"></textarea>
                 @error('about_me')
-                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -53,13 +61,11 @@
             <div class="m-3 rounded-xl bg-white">
                 <h2 class="p-5 text-xl font-bold">Pet that I train</h2>
                 <div class="mb-4 flex items-center p-2 pl-4">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Dog"
-                        x-model="type" />
+                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Dog" x-model="type" />
                     <label for="" class="ml-2 text-sm font-medium">Dog</label>
                 </div>
                 <div class="mb-4 flex items-center p-2 pl-4">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Cat"
-                        x-model="type" />
+                    <input type="checkbox" class="checkbox checkbox-primary checkbox-md" value="Cat" x-model="type" />
                     <label for="" class="ml-2 text-sm font-medium">Cat</label>
                 </div>
 
@@ -82,7 +88,7 @@
                 <h2 class="p-5 text-xl font-bold">Certificates</h2>
                 <input type="file" class="file-input file-input-bordered m-5 w-96" name="certificates">
                 @error('certificates')
-                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -90,7 +96,7 @@
                 <h2 class="p-5 text-xl font-bold">Pet Training Experience</h2>
                 <textarea id="myeditorinstance" class="h-64 w-64" name="experience" rows="5"></textarea>
                 @error('experience')
-                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -98,17 +104,10 @@
                 <h2 class="p-5 text-xl font-bold">Journey Photos</h2>
                 <input type="file" class="file-input file-input-bordered name= m-5 w-96" name="journey_photos">
                 @error('journey_photos')
-                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="m-3 rounded-xl bg-white">
-                <h2 class="p-5 text-xl font-bold">Profile Photo</h2>
-                <input type="file" class="file-input file-input-bordered name= m-5 w-96" name="profile_photo">
-                @error('profile_photo')
-                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
             <div class="p-4 text-center">
                 <button class="btn btn-primary">
                     Submit

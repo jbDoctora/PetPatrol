@@ -3,33 +3,43 @@
     <div class="grid grid-cols-3 px-1 bg-base-300 mx-5 rounded-lg" x-data="{checked: false}">
         @forelse ($matchedservices as $match)
         <div class="card-container m-3">
-            <div class="card bg-base-100 w-96 shadow-xl">
-                <div class="avatar">
-                    <div class="mx-auto w-24 rounded-full">
-                        <a href="/show-matched/trainerInfo/{{ $match->user_id }}"><img
-                                src="/images/avatar/Avatar-9.png" /></a>
-                    </div>
-                </div>
-                <div class="card-body items-center text-center">
+            <div class="w-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
                     @php
                     $matchName = DB::table('users')
                     ->where('id', $match->user_id)
                     ->value('name');
                     @endphp
-                    <h2 class="card-title">{{ $matchName }}</h2>
-                    <p class="text-xs">{{ $match->email }}</p>
-                    <p class="text-xs">{{ $match->address }}</p>
-                    <div class="card-actions">
+                    <h2 class="text-2xl font-bold mb-2">{{ $matchName }}</h2>
+                    <p class="text-sm mb-4">{{ $match->email }}</p>
+                    <p class="text-sm mb-4">{{ $match->address }}</p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm font-bold text-gray-700">Course:</p>
+                        <p class="text-sm">{{ $match->course }}</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm font-bold text-gray-700">Pet type:</p>
+                        <p class="text-sm">{{ $match->pet_type }}</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <p class="text-sm font-bold text-gray-700">Price:</p>
+                        <p class="text-sm font-bold text-green-500">{{ $match->price }}</p>
+                    </div>
+                    <div class="mt-6 flex justify-end">
                         <button
-                            class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
-                                href="/show-matched/training-plan/{{ $match->id }}" target="_blank">View
-                                Training Plan</a></button>
-                        <label for="my-modal-{{ $match->id }}"
-                            class="tracking-wide rounded-md px-5 py-4 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Book
-                            now<i class="fa-solid fa-arrow-right ml-2"></i></label>
+                            class="px-4 py-2 rounded-full text-white font-bold bg-yellow-400 hover:bg-yellow-500 transition-colors duration-300">
+                            <a href="/show-matched/training-plan/{{ $match->id }}" target="_blank">View Training
+                                Plan</a>
+                        </button>
+                        <label
+                            class="ml-4 px-4 py-2 rounded-full text-black font-bold border border-black hover:bg-gray-200 transition-colors duration-300"
+                            for="my-modal-{{ $match->id }}">
+                            Book now <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </label>
                     </div>
                 </div>
             </div>
+
             <form method="POST" action="/show-matched/book">
                 @csrf
                 <input type="checkbox" id="my-modal-{{ $match->id }}" class="modal-toggle h-fit" />
@@ -55,8 +65,9 @@
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
                         <input type="hidden" name="status" value="pending">
                         <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
-                        <input type="hidden" name="payment" value="unpaid">
+                        <input type="hidden" name="payment_status" value="unpaid">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
+
 
                         <ol type="1" style="font-size: 13.5px">
                             <li class="p-2 tracking-wider">1. After the pet trainer's approve

@@ -102,10 +102,6 @@ class TrainerController extends Controller
             $formFields['certificates'] = $request->file('certificates')->store('images', 'public');
         }
 
-        if ($request->hasFile('profile_photo')) {
-            $formFields['profile_photo'] = $request->file('profile_photo')->store('images', 'public');
-        }
-
         if ($request->hasFile('journey_photos')) {
             $formFields['journey_photos'] = $request->file('journey_photos')->store('images', 'public');
         }
@@ -117,6 +113,6 @@ class TrainerController extends Controller
         TrainerModel::create($formFields);
 
 
-        return redirect('/trainer')->with('message', 'Portfolio added successfully!');
+        return redirect('/trainer/portfolio')->with('message', 'Portfolio added successfully!');
     }
 }

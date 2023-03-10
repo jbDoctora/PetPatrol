@@ -83,39 +83,40 @@
                 </div>
             </div>
             <nav class="flex flex-col items-start w-full h-full bg-slate-900 text-white">
-                <a href="/owner" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons-outlined" style="font-size: 27px;">
+                <a href="/owner"
+                    class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black font-base antialiased">
+                    <span class="material-icons" style="font-size: 20px;">
                         donut_small
                     </span>
-                    <span class="font-semibold ml-7">Dashboard</span>
+                    <span class="ml-7">Dashboard</span>
                 </a>
 
                 <a href="/request" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons-outlined" style="font-size: 27px;">
+                    <span class="material-icons" style="font-size: 20px;">
                         build
                     </span>
-                    <span class="font-semibold ml-7">Request</span>
+                    <span class="ml-7">Request</span>
                 </a>
 
                 <a href="/bookings" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons-outlined" style="font-size: 27px;">
+                    <span class="material-icons" style="font-size: 20px;">
                         event
                     </span>
-                    <span class="font-semibold ml-7">Bookings</span>
+                    <span class="ml-7">Bookings</span>
                 </a>
 
                 <a href="/pet-info" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons-outlined" style="font-size: 27px;">
+                    <span class="material-icons" style="font-size: 20px;">
                         pets
                     </span>
-                    <span class="font-semibold ml-7">Pet Profile</span>
+                    <span class="ml-7">Pet Profile</span>
                 </a>
 
                 <a href="/profile" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons-outlined md-36" style="font-size: 27px;">
-                        person_outline
+                    <span class="material-icons" style="font-size: 20px;">
+                        person
                     </span>
-                    <span class="font-semibold ml-7">Profile</span>
+                    <span class="ml-7">Profile</span>
                 </a>
             </nav>
         </aside>

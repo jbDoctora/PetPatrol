@@ -48,7 +48,8 @@
                             <label for="sex" class="block text-sm font-medium text-gray-700">
                                 Sex
                             </label>
-                            <select class="w-full rounded-lg border border-gray-400 py-3" id="sex" name="sex" required>
+                            <select class="w-full rounded-lg border border-gray-400 py-3" id="sex" name="sex" required
+                                value="{{ old('sex') }}">
                                 <option value="">Select a gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -143,40 +144,17 @@
 
                         </div>
 
-                        <div class="col-span-6">
-                            <label for="MarketingAccept" class="flex gap-4">
-                                <input type="checkbox" id="MarketingAccept" name="marketing_accept"
-                                    class="h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm" />
-
-                                <span class="mt-2 mb-2 text-sm text-gray-700">
-                                    I want to receive emails about events, product updates and
-                                    company announcements.
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="col-span-6">
-                            <p class="text-sm text-gray-500">
-                                By creating an account, you agree to our
-                                <a href="#" class="text-gray-700 underline">
-                                    terms and conditions
-                                </a>
-                                and
-                                <a href="#" class="text-gray-700 underline">privacy policy</a>.
-                            </p>
-                        </div>
-
                         <input type="hidden" name="role" value="1" />
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                             <button type="submit"
-                                class="inline-block rounded border border-rose-400 bg-rose-400 px-12 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-rose-400 focus:outline-none focus:ring active:text-rose-500">
+                                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">
                                 Create an account
                             </button>
 
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                                 Already have an account?
-                                <a href="#" class="text-gray-700 underline">Log in</a>.
+                                <a href="/login" class="text-gray-700 underline">Log in</a>.
                             </p>
                         </div>
                     </form>
