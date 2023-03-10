@@ -40,7 +40,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
+    <link rel="icon" type="image/x-icon" href="images/icon.svg" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
