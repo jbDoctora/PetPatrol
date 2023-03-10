@@ -50,9 +50,32 @@
     <div class="navbar sticky top-0 z-50 bg-white text-black">
         <div class="flex-1 bg-fixed">
             {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
-            <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
+            {{-- <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
                 src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
-                style="font-family: 'Climate Crisis', cursive;">PET PATROL</span>
+                style="font-family: 'Climate Crisis', cursive;">PET PATROL</span> --}}
+            <svg version="1.0" class="mx-3" xmlns="http://www.w3.org/2000/svg" width="35.000000pt" height="35.000000pt"
+                viewBox="0 0 72.000000 72.000000" preserveAspectRatio="xMidYMid meet">
+
+                <g transform="translate(0.000000,72.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M262 673 c-19 -14 -26 -14 -48 -3 -27 15 -38 9 -48 -27 -10 -33 43
+                -88 99 -102 46 -11 75 -46 75 -89 0 -35 -31 -108 -61 -145 -24 -29 -37 -37
+                -64 -37 -19 0 -37 5 -40 10 -3 6 -11 10 -18 10 -6 0 2 -14 20 -31 25 -25 39
+                -32 72 -32 39 0 43 -3 57 -36 28 -68 98 -117 129 -91 25 20 17 38 -25 60 -56
+                28 -75 62 -74 130 1 79 43 150 89 150 33 0 72 36 95 86 19 44 40 52 40 14 0
+                -10 10 -36 23 -59 18 -31 26 -38 35 -29 20 20 14 -13 -11 -56 -30 -53 -49 -64
+                -88 -49 -18 7 -36 10 -40 7 -5 -3 -11 -27 -15 -54 -7 -53 -10 -55 -63 -40 -33
+                9 -33 9 -15 -11 74 -82 218 -74 274 15 36 59 29 162 -18 249 -47 88 -118 109
+                -267 81 -52 -10 -97 -15 -101 -12 -3 4 4 20 16 36 36 49 17 86 -28 55z" />
+                    <path d="M72 517 c-29 -31 -42 -78 -42 -155 0 -71 12 -102 39 -102 38 0 44 24
+                30 110 -9 58 -10 92 -2 125 12 51 6 55 -25 22z" />
+                    <path d="M210 505 c-7 -9 -11 -17 -9 -20 3 -2 10 5 17 15 14 24 10 26 -8 5z" />
+                    <path d="M145 429 c-11 -17 1 -21 15 -4 8 9 8 15 2 15 -6 0 -14 -5 -17 -11z" />
+                    <path d="M245 399 c-4 -11 -4 -23 -2 -26 9 -8 24 5 30 27 7 27 -20 27 -28 -1z" />
+                    <path d="M530 390 c0 -5 5 -10 11 -10 5 0 7 5 4 10 -3 6 -8 10 -11 10 -2 0 -4
+                -4 -4 -10z" />
+                </g>
+            </svg><span class="text-md font-semibold tracking-wide" style="font-family: 'Climate Crisis', cursive;">PET
+                PATROL</span>
         </div>
 
         <div class="navbar-start hidden px-5 lg:flex">

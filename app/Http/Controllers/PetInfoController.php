@@ -45,6 +45,9 @@ class PetInfoController extends Controller
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('image', 'public');
         }
+        $formFields['info'] = $request->input('info');
+        $formFields['vaccine'] = $request->input('vaccine');
+        $formFields['vaccine_list'] = $request->input('vaccine_list');
         $formFields['type'] = $request->input('type');
         $formFields['weight'] = $request->input('weight');
         $formFields['owner_id'] = auth()->id() ?? null;

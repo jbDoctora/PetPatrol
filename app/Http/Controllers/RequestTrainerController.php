@@ -37,11 +37,8 @@ class RequestTrainerController extends Controller
                     return $query->where('user_id', $request->input('user_id'));
                 }),
             ],
-            'vaccinated' => 'required',
             'course' => 'required',
-            'info' => 'required',
             'sessions' => 'required',
-            'date' => 'required',
             'location' => 'required',
         ]);
         $formFields['user_id'] = $request->input('user_id');

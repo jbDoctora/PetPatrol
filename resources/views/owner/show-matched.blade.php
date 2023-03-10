@@ -53,7 +53,7 @@
                         <input type="hidden" name="pet_id" value="{{ $match->pet_id }}">
                         <input type="hidden" name="client_id" value="{{ auth()->id() }}">
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
-                        <input type="hidden" name="status" value="on going">
+                        <input type="hidden" name="status" value="pending">
                         <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
                         <input type="hidden" name="payment" value="unpaid">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />

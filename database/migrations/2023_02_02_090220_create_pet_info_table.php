@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('months');
             $table->string('breed');
             $table->string('weight');
+            $table->longText('info');
+            $table->string('vaccine');
+            $table->string('vaccine_list');
         });
     }
 

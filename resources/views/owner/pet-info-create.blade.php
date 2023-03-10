@@ -1,21 +1,21 @@
 <x-dash-layout>
     <form method="POST" action="/pet/add-info/add" enctype="multipart/form-data" class="max-w-lg mx-auto my-5">
         @csrf
-        <div class="mb-6">
+        <div class="mb-4">
             <label class="block font-medium mb-2" for="pet-name">Pet Name</label>
             <input id="pet-name" class="input input-bordered w-full py-2 px-3 rounded" type="text" name="name">
             @error('name')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-6">
+        <div class="mb-4">
             <label class="block font-medium mb-2" for="pet-photo">Pet Photo</label>
             <input id="pet-photo" class="file-input file-input-bordered w-full" type="file" name="image">
             @error('image')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-6">
+        <div class="mb-4">
             <label class="block font-medium mb-2" for="pet-type">Pet Type</label>
             <select id="pet-type" class="select select-bordered w-full py-2 px-3 rounded" name="type">
                 <option disabled selected>Select a pet type</option>
@@ -28,7 +28,20 @@
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-6">
+        <div class="mb-4">
+            <label class="block font-medium mb-2" for="pet-type">Vaccination status</label>
+            <select id="pet-type" class="select select-bordered w-full py-2 px-3 rounded" name="vaccine">
+                <option disabled selected></option>
+                <option value="Dog">Vaccinated</option>
+                <option value="Cat">Unvaccinated</option>
+            </select>
+            @error('type')
+            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+            @enderror
+            <label for="">Please list all the vaccines</label>
+            <textarea name="vaccine_list" cols="10" rows="3" class="w-full rounded-sm"></textarea>
+        </div>
+        <div class="mb-4">
             <label class="block font-medium mb-2" for="pet-age">Pet Age</label>
             <div class="flex items-center">
                 <input id="pet-age-years" class="input input-bordered w-16 py-2 px-3 rounded-l" type="text" name="years"
@@ -45,14 +58,14 @@
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-6">
+        <div class="mb-4">
             <label class="block font-medium mb-2" for="pet-breed">Pet Breed</label>
             <input id="pet-breed" class="input input-bordered w-full py-2 px-3 rounded" type="text" name="breed">
             @error('breed')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-6">
+        <div class="mb-4">
             <p>Weight: </p>
             <select class="select select-bordered w-full" name="weight">
                 <option disabled selected></option>
@@ -66,9 +79,9 @@
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-6">
+        <div class="mb-4">
             <p>Additional Information</p>
-            <input type="text" class="textarea textarea-bordered w-full h-56">
+            <textarea name="info" class="rounded-sm w-full h-56"></textarea>
             @error('breed')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror

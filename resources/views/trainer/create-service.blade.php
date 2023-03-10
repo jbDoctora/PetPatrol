@@ -1,14 +1,14 @@
 <x-trainer-layout>
 
     <div x-data="{ price: '' }">
-        <div class="mx-5">
+        <div class="m-5 bg-white p-5">
             <div class="flex justify-end m-5">
                 <label for="my-modal"
                     class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">
                     Add new training service</label>
             </div>
             <table id="myTable" class="compact hover row-border p-3 text-sm text-left">
-                <thead class="text-yellow-500">
+                <thead>
                     <tr>
                         <th>#</th>
                         <th>Training service</th>

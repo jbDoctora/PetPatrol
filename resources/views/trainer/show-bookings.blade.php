@@ -37,15 +37,15 @@
                             <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->client_name }}
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 border-b border-black">
-                                @if ($requests->status == 'on going')
+                                @if ($requests->status == 'pending')
                                 <span
                                     class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{
                                     $requests->status }}</span>
-                                @elseif ($requests->status == 'Approved')
+                                @elseif ($requests->status == 'approved')
                                 <span
                                     class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{{
                                     $requests->status }}</span>
-                                @elseif ($requests->status == 'Declined')
+                                @elseif ($requests->status == 'declined')
                                 <span
                                     class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">{{
                                     $requests->status }}</span>
