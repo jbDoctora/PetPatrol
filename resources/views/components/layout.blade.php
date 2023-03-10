@@ -53,10 +53,11 @@
             {{-- <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
                 src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
                 style="font-family: 'Climate Crisis', cursive;">PET PATROL</span> --}}
-            <svg version="1.0" class="mx-3" xmlns="http://www.w3.org/2000/svg" width="35.000000pt" height="35.000000pt"
-                viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">
+            <svg version="1.0" class="mx-3 font-bold" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
+                height="40.000000pt" viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">
 
-                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#FFC820" stroke="none">
+                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#FFC820" stroke="#000"
+                    stroke-width="2">
                     <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
                                 -69 -3 -87 -26 -25 -32 -28 -111 -6 -153 23 -46 103 -109 166 -132 33 -12 59
                                 -27 59 -33 0 -6 -14 -58 -31 -116 -27 -93 -31 -120 -32 -240 0 -99 4 -151 16

@@ -113,7 +113,8 @@
                         PATROL</span>
                 </div>
             </div>
-            <nav class="flex flex-col items-start w-full h-full bg-slate-900 text-white font-normal">
+            <nav
+                class="flex flex-col items-start w-full h-full bg-slate-900 text-white font-normal subpixel-antialiased">
                 <a href="/trainer" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
                     <span class="material-icons" style="font-size: 20px;">
                         donut_small

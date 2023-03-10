@@ -2,6 +2,9 @@
     <h1 class="my-7 ml-5 text-xl font-bold">Your Matched Trainers</h1>
     <div class="grid grid-cols-3 px-1 bg-base-300 mx-5 rounded-lg" x-data="{checked: false}">
         @forelse ($matchedservices as $match)
+        @php
+        $service_id = DB::table('service')->where('user_id', $match->user_id)->value('id');
+        @endphp
         <div class="card-container m-3">
             <div class="w-96 bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
@@ -28,7 +31,7 @@
                     <div class="mt-6 flex justify-end">
                         <button
                             class="px-4 py-2 rounded-full text-white font-bold bg-yellow-400 hover:bg-yellow-500 transition-colors duration-300">
-                            <a href="/show-matched/training-plan/{{ $match->id }}" target="_blank">View Training
+                            <a href="/show-matched/training-plan/{{ $service_id }}" target="_blank">View Training
                                 Plan</a>
                         </button>
                         <label
@@ -66,9 +69,6 @@
                         <input type="hidden" name="status" value="pending">
                         <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
                         <input type="hidden" name="payment" value="unpaid">
-                        @php
-                        $service_id = DB::table('service')->where('user_id', $match->user_id)->value('id');
-                        @endphp
                         <input type="hidden" name="service_id" value="{{$service_id}}">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
                         <input type="hidden" name="status" value="pending">

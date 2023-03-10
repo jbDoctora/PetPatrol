@@ -39,7 +39,7 @@ class BookingController extends Controller
             ->join('users', 'users.id', '=', 'service.user_id')
             ->where('booking.client_id', $clientId)
             ->get();
-
+        // dd($request);
         return view('owner.show-bookings', [
             'request' => $request
         ]);

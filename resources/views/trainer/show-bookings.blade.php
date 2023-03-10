@@ -7,7 +7,7 @@
         </div>
         <div class="m-5 h-screen overflow-x-auto rounded-lg bg-white px-4">
             <div class="mx-auto mt-5 inline-block min-w-full overflow-hidden rounded-lg shadow-lg">
-                <table id="myTable" class="min-w-full leading-normal bg-base-300">
+                <table class="min-w-full leading-normal bg-base-300">
                     <thead>
                         <tr>
                             <th
@@ -65,13 +65,11 @@
                             <td
                                 class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium border-b border-black">
                                 <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                                    x-on:click="showModal = !showModal">View</a>
+                                    x-on:click="showModal = { course: '{{ $requests->course }}', availability: '{{ $requests->availability }}', name: '{{ $requests->client_name }}' }">View</a>
                                 <a href="#" class="ml-4 text-red-600 hover:text-red-900">Cancel</a>
                             </td>
                         </tr>
 
-                        <div x-cloak x-show="showModal" x-transition.opacity class="fixed inset-0 bg-slate-900/75">
-                        </div>
                         <div x-cloak x-show="showModal" x-transition
                             class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
                             <div x-on:click.away="showModal = false"
@@ -80,11 +78,11 @@
                                     <h2 class="text-2xl font-bold mb-2">Client Information</h2>
                                     <div class="grid grid-cols-2 gap-4 mb-4 bg-base-300 rounded-lg p-5">
                                         <div class="font-bold">Client name:</div>
-                                        <div>{{$requests->client_name}}</div>
-                                        <div class="font-bold">Pet type:</div>
-                                        <div>{{$requests->pet_type}}</div>
-                                        <div class="font-bold">Additional info about pet:</div>
-                                        <div>{{$requests->info}}</div>
+                                        <div x-text="showModal.name"></div>
+                                        <div class="font-bold">Training service:</div>
+                                        <div x-text="showModal.course"></div>
+                                        <div class="font-bold">Sessions:</div>
+                                        <div x-text="showModal.availability"></div>
                                     </div>
                                     <form>
                                         <div class="mb-4">
