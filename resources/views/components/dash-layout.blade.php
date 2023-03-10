@@ -49,7 +49,7 @@
         class="flex h-screen overflow-x-hidden">
         <aside class="flex h-full w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
-            <div class="flex h-32 flex-row items-center justify-center bg-slate-900 text-white">
+            <div class="flex h-40 flex-row items-center justify-center bg-slate-900 text-white">
                 <div>
                     {{-- <img src="/images/vector.jpg" class="h-full w-full rounded-lg" alt=""> --}}
                     {{-- <div class="bg-blue-600 px-4 py-3 rounded-lg border border-black">
