@@ -36,7 +36,7 @@
                     @php
                     $pet_info = DB::table('pet_info')
                     ->where('pet_id', $requests->pet_id)
-                    ->value('name');
+                    ->value('pet_name');
                     @endphp
                     <tr>
                         <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $pet_info }}</td>

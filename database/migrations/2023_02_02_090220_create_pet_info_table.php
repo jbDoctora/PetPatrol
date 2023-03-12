@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('owner_id')->onDelete('cascade');
             $table->string('type');
             $table->string('image')->nullable();
-            $table->string('name');
+            $table->string('pet_name');
             $table->string('years');
             $table->string('months');
             $table->string('breed');

@@ -34,7 +34,7 @@ class PetInfoController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'name' => 'required|unique:pet_info,name,NULL,id,owner_id,' . auth()->id(),
+            'pet_name' => 'required|unique:pet_info,pet_name,NULL,id,owner_id,' . auth()->id(),
             'years' => 'required',
             'months' => 'required',
             'breed' => 'required',

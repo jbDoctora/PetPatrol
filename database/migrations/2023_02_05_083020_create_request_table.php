@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('request_id');
             $table->foreignId('user_id')->onDelete('cascade');
             $table->string('pet_type');
-            $table->string('pet');
+            $table->string('pet_name');
             $table->string('course');
             $table->string('sessions');
             $table->string('location');

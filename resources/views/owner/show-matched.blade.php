@@ -2,18 +2,19 @@
     <h1 class="my-7 ml-5 text-xl font-bold">Your Matched Trainers</h1>
     <div class="grid grid-cols-3 px-1 bg-base-300 mx-5 rounded-lg" x-data="{checked: false}">
         @forelse ($matchedservices as $match)
+
         @php
-        $service_id = DB::table('service')->where('user_id', $match->user_id)->value('id');
+        dd($service_id = DB::table('service')->where('user_id', $match->user_id)->value('id'));
+        $trainerName = DB::table('users')
+        ->where('id', $match->user_id)
+        ->value('name');
         @endphp
         <div class="card-container m-3">
             <div class="w-96 bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
-                    @php
-                    $matchName = DB::table('users')
-                    ->where('id', $match->user_id)
-                    ->value('name');
-                    @endphp
-                    <h2 class="text-2xl font-bold mb-2">{{ $matchName }}</h2>
+
+                    <p>{{$match->id}}</p>
+                    <h2 class="text-2xl font-bold mb-2">{{ $trainerName }}</h2>
                     <p class="text-sm mb-4">{{ $match->email }}</p>
                     <p class="text-sm mb-4">{{ $match->address }}</p>
                     <div class="flex justify-between items-center">
@@ -56,7 +57,7 @@
                             <div class="bg-base-200 rounded-xl p-3">
                                 <p>Service Package: {{ $match->course }}</p>
                                 <p>Availabilty: {{ $match->availability }}</p>
-                                <p>Pet name: {{ $match->name }}</p>
+                                <p>Pet name: {{ $match->pet_name }}</p>
                             </div>
                             <p>Start date:</p><input type="date" name="start_date"
                                 class="border border-gray-300 rounded-lg" />
@@ -66,15 +67,14 @@
                             <h2 class="my-4 font-bold">Pet Patrol Booking Policy</h2>
                         </div>
 
-                        <input type="hidden" name="pet_id" value="{{ $match->pet_id }}">
+                        {{-- <input type="hidden" name="pet_id" value="{{ $match->pet_id }}"> --}}
                         <input type="hidden" name="client_id" value="{{ auth()->id() }}">
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
                         <input type="hidden" name="status" value="pending">
                         <input type="hidden" name="payment" value="unpaid">
                         <input type="hidden" name="service_id" value="{{$service_id}}">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
-                        <input type="hidden" name="status" value="pending">
-                        <input type="hidden" name="trainer_name" value="{{$matchName}}" />
+                        <input type="hidden" name="trainer_name" value="{{$trainerName}}" />
 
 
                         <ol type="1" style="font-size: 13.5px">

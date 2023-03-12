@@ -3,8 +3,8 @@
         @csrf
         <div class="mb-4">
             <label class="block font-medium mb-2" for="pet-name">Pet Name</label>
-            <input id="pet-name" class="input input-bordered w-full py-2 px-3 rounded" type="text" name="name">
-            @error('name')
+            <input id="pet-name" class="input input-bordered w-full py-2 px-3 rounded" type="text" name="pet_name">
+            @error('pet_name')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
@@ -32,8 +32,8 @@
             <label class="block font-medium mb-2" for="pet-type">Vaccination status</label>
             <select id="pet-type" class="select select-bordered w-full py-2 px-3 rounded" name="vaccine">
                 <option disabled selected></option>
-                <option value="Dog">Vaccinated</option>
-                <option value="Cat">Unvaccinated</option>
+                <option value="Vaccinated">Vaccinated</option>
+                <option value="Unvaccinated">Unvaccinated</option>
             </select>
             @error('type')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>

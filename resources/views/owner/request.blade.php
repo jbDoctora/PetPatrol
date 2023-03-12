@@ -19,7 +19,7 @@
                     <div class="mb-4 flex items-center justify-between">
                         <h1 class="text-sm font-semibold text-gray-700">Your Request</h1>
                     </div>
-                    <h2 class="text-lg font-bold text-gray-800">{{ $info->pet }}</h2>
+                    <h2 class="text-lg font-bold text-gray-800">{{ $info->pet_name }}</h2>
                     <div class="my-4 flex flex-row items-center justify-center">
                         <div class="w-1/2 text-center">
                             <p class="font-medium text-gray-600">Preferred Course</p>

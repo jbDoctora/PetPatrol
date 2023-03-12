@@ -79,7 +79,7 @@ Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('
 
 Route::get('/show-matched/trainerInfo/{user_id}', [OwnerController::class, "showTrainerInfo"])->middleware('auth', 'verified', 'isOwner');
 
-Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'verified', 'isOwner')->name('show-matched');
+Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'verified', 'isOwner'); //->name('show-matched');
 
 Route::post('/show-matched/book', [BookingController::class, 'store']);
 

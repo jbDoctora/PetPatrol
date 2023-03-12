@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('booking', function (Blueprint $table) {
             $table->id('book_id');
             $table->foreignId('service_id')->onDelete('cascade');
-            $table->integer('pet_id');
+            $table->integer('pet_id')->nullable();
             $table->integer('client_id');
             $table->integer('trainer_id');
             $table->string('client_name');

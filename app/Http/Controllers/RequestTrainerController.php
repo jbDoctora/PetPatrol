@@ -31,7 +31,7 @@ class RequestTrainerController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'pet' => [
+            'pet_name' => [
                 'required',
                 Rule::unique('request')->where(function ($query) use ($request) {
                     return $query->where('user_id', $request->input('user_id'));
