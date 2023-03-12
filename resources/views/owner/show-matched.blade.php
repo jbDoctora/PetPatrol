@@ -26,7 +26,8 @@
                     </div>
                     <div class="flex justify-between items-center mt-4">
                         <p class="text-sm font-bold text-gray-700">Price:</p>
-                        <p class="text-sm font-bold text-green-500">{{ $match->price }}</p>
+                        <p class="text-sm font-bold text-green-500"><span class="text-xl">₱ {{ $match->price }}</span>
+                        </p>
                     </div>
                     <div class="mt-6 flex justify-end">
                         <button
@@ -72,6 +73,7 @@
                         <input type="hidden" name="service_id" value="{{$service_id}}">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
                         <input type="hidden" name="status" value="pending">
+                        <input type="hidden" name="trainer_name" value="{{$matchName}}" />
 
 
                         <ol type="1" style="font-size: 13.5px">

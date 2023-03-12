@@ -19,6 +19,7 @@ class BookingController extends Controller
         $formFields['payment'] = $request->input('payment');
         $formFields['service_id'] = $request->input('service_id');
         $formFields['client_name'] = $request->input('client_name');
+        $formFields['trainer_name'] = $request->input('trainer_name');
 
         Booking::create($formFields);
 
@@ -36,7 +37,7 @@ class BookingController extends Controller
 
         $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('service', 'service.user_id', '=', 'booking.trainer_id')
-            ->join('users', 'users.id', '=', 'service.user_id')
+            // ->join('users', 'users.id', '=', 'service.user_id')
             ->where('booking.client_id', $clientId)
             ->get();
         // dd($request);

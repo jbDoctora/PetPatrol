@@ -40,7 +40,7 @@
                     @endphp
                     <tr>
                         <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $pet_info }}</td>
-                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->name }}</td>
+                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->trainer_name }}</td>
                         <td class="whitespace-nowrap px-6 py-4 border-b border-black">
                             @if ($requests->status == 'pending')
                             <span

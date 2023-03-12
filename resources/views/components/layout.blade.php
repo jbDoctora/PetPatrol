@@ -56,7 +56,7 @@
             <svg version="1.0" class="mx-3 font-bold" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
                 height="40.000000pt" viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">
 
-                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#FFC820" stroke="#000"
+                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#344ceb" stroke="#000"
                     stroke-width="2">
                     <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
                                 -69 -3 -87 -26 -25 -32 -28 -111 -6 -153 23 -46 103 -109 166 -132 33 -12 59
