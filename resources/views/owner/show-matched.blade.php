@@ -48,7 +48,7 @@
                 @csrf
                 <input type="checkbox" id="my-modal-{{ $match->id }}" class="modal-toggle h-fit" />
                 <div class="modal">
-                    <div class="modal-box w-5/6" x-data="{ today: '' }">
+                    <div class="modal-box w-5/6">
                         <div class="flex justify-center">
                             <h3 class="font-bold text-2xl tracking-wide p-2">Confirm Booking</h3>
                         </div>
@@ -58,6 +58,8 @@
                                 <p>Availabilty: {{ $match->availability }}</p>
                                 <p>Pet name: {{ $match->name }}</p>
                             </div>
+                            <p>Start date:</p><input type="date" name="start_date"
+                                class="border border-gray-300 rounded-lg" />
                         </div>
                         <div class="flex flex-row justify-center">
                             <div class="h-16 w-16 p-2"><img src="/images/warning.png" alt=""></div>
@@ -68,7 +70,6 @@
                         <input type="hidden" name="client_id" value="{{ auth()->id() }}">
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
                         <input type="hidden" name="status" value="pending">
-                        <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
                         <input type="hidden" name="payment" value="unpaid">
                         <input type="hidden" name="service_id" value="{{$service_id}}">
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
@@ -122,18 +123,4 @@
         <p>No matched trainers yet!</p>
         @endforelse
     </div>
-
-    <script>
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        let mm = today.getMonth() + 1; // Months start at 0!
-        let dd = today.getDate();
-
-        if (dd < 10) dd = '0' + dd;
-        if (mm < 10) mm = '0' + mm;
-
-        const formattedToday = dd + '/' + mm + '/' + yyyy;
-
-        document.getElementById('DATE').value = formattedToday;
-    </script>
 </x-dash-layout>

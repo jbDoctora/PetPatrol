@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('trainer_name');
             $table->string('status');
             $table->string('payment');
-            $table->string('date');
+            $table->string('start_date');
         });
     }
 
