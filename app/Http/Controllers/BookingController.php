@@ -14,7 +14,7 @@ class BookingController extends Controller
         $formFields = $request->all();
         Booking::create($formFields);
 
-        dd($service_id = $request->input('service_id'));
+        $service_id = $request->input('service_id');
         $service = Service::find($service_id);
         $service->status = $request->input('status');
         $service->save();
