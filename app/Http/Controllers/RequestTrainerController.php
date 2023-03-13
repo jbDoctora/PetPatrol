@@ -40,6 +40,7 @@ class RequestTrainerController extends Controller
             'course' => 'required',
             'sessions' => 'required',
             'location' => 'required',
+            'request_status' => 'required'
         ]);
         $formFields['user_id'] = $request->input('user_id');
         $formFields['pet_type'] = $request->input('pet_type');

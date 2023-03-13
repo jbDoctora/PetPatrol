@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('request', function (Blueprint $table) {
             $table->id('request_id');
             $table->foreignId('user_id')->onDelete('cascade');
-            $table->string('pet_type');
-            $table->string('pet_name');
-            $table->string('course');
-            $table->string('sessions');
-            $table->string('location');
+            $table->string('pet_type')->nullable();
+            $table->string('pet_name')->nullable();
+            $table->string('course')->nullable();
+            $table->string('sessions')->nullable();
+            $table->string('location')->nullable();
+            $table->string('request_status')->nullable();
         });
     }
 

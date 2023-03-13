@@ -155,6 +155,7 @@
         <div x-show="step === 5">
             <form method="POST" action="/book-trainer/add" class="mb-18 mt-2 space-y-4 rounded-lg p-8 shadow-2xl">
                 @csrf
+                <input type="hidden" name="request_status" value="active">
                 <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                 <input type="hidden" name="pet_type" x-bind:value="pet.split(',')[1]" />
                 <div class="flex items-center">
