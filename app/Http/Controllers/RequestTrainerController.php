@@ -21,7 +21,9 @@ class RequestTrainerController extends Controller
 
     public function index()
     {
-        $requestinfo = RequestTrainer::where('user_id', auth()->id())->get();
+        $requestinfo = RequestTrainer::where('user_id', auth()->id())
+            ->where('request_status', 'active')
+            ->get();
 
         return view('owner.request', [
             'requestinfo' => $requestinfo,
@@ -39,10 +41,10 @@ class RequestTrainerController extends Controller
             ],
             'course' => 'required',
             'sessions' => 'required',
-            'location' => 'required',
-            'request_status' => 'required'
+            'location' => 'required'
         ]);
         $formFields['user_id'] = $request->input('user_id');
+        $formFields['request_status'] = $request->input('request_status');
         $formFields['pet_type'] = $request->input('pet_type');
         RequestTrainer::create($formFields);
 

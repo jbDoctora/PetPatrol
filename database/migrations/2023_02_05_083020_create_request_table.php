@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('course')->nullable();
             $table->string('sessions')->nullable();
             $table->string('location')->nullable();
-            $table->string('request_status')->nullable();
+            $table->string('request_status');
         });
     }
 

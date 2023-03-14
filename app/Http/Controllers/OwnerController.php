@@ -23,6 +23,7 @@ class OwnerController extends Controller
         $request = RequestTrainer::where('request_id', $request_id)->get();
 
         foreach ($request as $req) {
+            $request_id = $req->request_id;
             $course = $req->course;
             $availability = $req->sessions;
             $type = $req->pet_type;
@@ -50,7 +51,8 @@ class OwnerController extends Controller
             // dd($matched_services);
             return view('owner.show-matched', [
                 'matchedservices' => $matched_services,
-                'request' => $request
+                'request' => $request,
+                'request_id' => $request_id
             ]);
         }
     }

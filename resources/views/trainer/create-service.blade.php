@@ -7,7 +7,7 @@
                     class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">
                     Add new training service</label>
             </div>
-            <table id="myTable" class="compact hover row-border p-3 text-sm text-left">
+            <table id="myTable" class="compact cell-border hover p-3 text-sm text-left">
                 <thead>
                     <tr>
                         <th>#</th>

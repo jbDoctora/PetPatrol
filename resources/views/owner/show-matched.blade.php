@@ -3,12 +3,6 @@
     <div class="grid grid-cols-3 px-1 bg-base-300 mx-5 rounded-lg" x-data="{checked: false}">
         @forelse ($matchedservices as $match)
 
-        {{-- @php
-
-        $trainerName = DB::table('users')
-        ->where('id', $match->user_id)
-        ->value('name');
-        @endphp --}}
         <div class="card-container m-3">
             <div class="w-96 bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
@@ -56,6 +50,7 @@
                         </div>
                         <div class="flex flex-col">
                             <div class="bg-base-200 rounded-xl p-3">
+                                {{-- <p class="text-yellow-500">Request ID: {{$request_id}}</p> --}}
                                 <p>Service Package: {{ $match->course }}</p>
                                 <p>Availabilty: {{ $match->availability }}</p>
                                 <p>Pet name: {{ $match->pet_name }}</p>
@@ -73,7 +68,8 @@
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
                         <input type="hidden" name="status" value="pending">
                         <input type="hidden" name="payment" value="unpaid">
-                        <input type="hidden" name="service_id" value="{{$match->service_id}}">
+                        <input type="hidden" name="service_id" value="{{$match->service_id}}" />
+                        <input type="hidden" name="request_id" value="{{$request_id}}" />
                         <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
                         <input type="hidden" name="trainer_name" value="{{$match->user_name}}" />
 

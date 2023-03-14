@@ -33,13 +33,8 @@
                 </thead>
                 <tbody>
                     @foreach ($request as $requests)
-                    @php
-                    $pet_info = DB::table('pet_info')
-                    ->where('pet_id', $requests->pet_id)
-                    ->value('pet_name');
-                    @endphp
                     <tr>
-                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $pet_info }}</td>
+                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->pet_name }}</td>
                         <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->trainer_name }}</td>
                         <td class="whitespace-nowrap px-6 py-4 border-b border-black">
                             @if ($requests->status == 'pending')

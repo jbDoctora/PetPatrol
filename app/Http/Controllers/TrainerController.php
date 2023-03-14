@@ -28,12 +28,14 @@ class TrainerController extends Controller
     {
         $trainerId = auth()->id();
 
-        $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
-            // ->join('service', 'service.user_id', '=', 'booking.trainer_id')
-            ->join('request', 'request.user_id', '=', 'booking.client_id')
+        $request = Booking::select('booking.status', 'booking.payment', 'pet_info.pet_name', 'booking.client_name', 'booking.start_date', 'service.course', 'service.availability')
+            ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+            ->join('users', 'users.id', '=', 'booking.trainer_id')
+            ->join('service', 'service.id', 'booking.service_id')
+            // ->where('users.role', 0)
             ->where('booking.trainer_id', $trainerId)
             ->get();
-
+        // dd($request);
         return view('trainer.show-bookings', [
             'request' => $request
         ]);

@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\RequestTrainer;
 
 class BookingController extends Controller
 {
@@ -19,18 +20,40 @@ class BookingController extends Controller
         $service->status = $request->input('status');
         $service->save();
 
+        $request_id = $request->input('request_id');
+        $requestTrainer = RequestTrainer::where('request_id', $request_id)->first();
+        $requestTrainer->request_status = "inactive";
+        $requestTrainer->save();
+
 
         return redirect()->back()->with('message', 'Booking is now placed!');
     }
 
 
+    // public function show()
+    // {
+    //     $clientId = auth()->id();
+
+    //     $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+    //         ->join('service', 'service.user_id', '=', 'booking.trainer_id')
+    //         ->join('users', 'users.id', '=', 'service.user_id')
+    //         ->where('role', '=', '1')
+    //         ->where('booking.client_id', $clientId)
+    //         ->distinct()
+    //         ->get();
+    //     // dd($request);
+    //     return view('owner.show-bookings', [
+    //         'request' => $request
+    //     ]);
+    // }
     public function show()
     {
         $clientId = auth()->id();
 
-        $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
-            ->join('service', 'service.user_id', '=', 'booking.trainer_id')
-            ->join('users', 'users.id', '=', 'service.user_id')
+        $request = Booking::select('booking.status', 'booking.payment', 'pet_info.pet_name', 'users.name AS trainer_name')
+            ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+            ->join('users', 'users.id', '=', 'booking.trainer_id')
+            ->where('users.role', 1)
             ->where('booking.client_id', $clientId)
             ->get();
         // dd($request);

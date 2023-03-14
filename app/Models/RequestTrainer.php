@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RequestTrainer extends Model
 {
+    protected $primaryKey = 'request_id';
     protected $fillable = [
         'pet_name', 'course', 'sessions', 'location', 'user_id', 'pet_type', 'request_status'
     ];
