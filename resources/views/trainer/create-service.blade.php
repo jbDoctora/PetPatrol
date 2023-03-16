@@ -30,15 +30,15 @@
                         <th>{{$trainings->weeks}}</th>
                         <th>{{$trainings->price}}</th>
                         <th>{{$trainings->status}}</th>
-                        <th class="flex justify-between">
+                        <th class="flex justify-between gap-1">
                             <button
-                                class="tracking-wide w-full py-2 bg-yellow-400 text-black text-xs font-bold border border-black"><a
+                                class="tracking-wide w-full p-1 bg-yellow-400 rounded-sm text-black text-xs font-bold border border-black"><a
                                     href="/trainer/service/add-service/{{ $trainings->id }}">View
-                                    details</a></button>
+                                    plan</a></button>
                             <button
-                                class="tracking-wide w-full py-2 text-black text-xs font-bold border border-black">Edit</button>
+                                class="tracking-wide w-full py-2 text-black rounded-sm text-xs font-bold border border-black">Edit</button>
                             <button
-                                class="tracking-wide w-full py-2 bg-red-500 text-white text-xs font-medium border border-black">Delete</button>
+                                class="tracking-wide w-full py-2 bg-red-500 rounded-sm text-white text-xs font-medium border border-black">Delete</button>
                         </th>
                     </tr>
                     @empty

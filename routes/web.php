@@ -91,6 +91,8 @@ Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 
 //TRAINER
 Route::get('/trainer', [TrainerController::class, 'index'])->middleware('auth', 'isTrainer');
 
+Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
+
 Route::get('/trainer/bookings', [TrainerController::class, 'showBooking'])->middleware('auth', 'isTrainer');
 
 Route::get('/trainer/portfolio', [TrainerController::class, 'show'])->middleware('auth', 'isTrainer');
@@ -110,6 +112,8 @@ Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsCon
 Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create'])->middleware('auth', 'isTrainer');
 
 Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
+
+
 
 /******************************************************************* */
 

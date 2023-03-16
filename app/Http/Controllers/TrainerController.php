@@ -28,7 +28,7 @@ class TrainerController extends Controller
     {
         $trainerId = auth()->id();
 
-        $request = Booking::select('booking.status', 'booking.payment', 'pet_info.pet_name', 'booking.client_name', 'booking.start_date', 'service.course', 'service.availability')
+        $request = Booking::select('booking.book_id', 'booking.status', 'booking.payment', 'pet_info.pet_name', 'booking.client_name', 'booking.start_date', 'service.course', 'service.availability')
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('users', 'users.id', '=', 'booking.trainer_id')
             ->join('service', 'service.id', 'booking.service_id')
@@ -39,6 +39,16 @@ class TrainerController extends Controller
         return view('trainer.show-bookings', [
             'request' => $request
         ]);
+    }
+    public function updateBooking(Request $request)
+    {
+        $booking = Booking::where('book_id', $request->input('book_id'))->first();
+        $booking->status = $request->input('status');
+        $booking->payment = $request->input('payment');
+        // dd($booking);
+        $booking->save();
+
+        return redirect()->back();
     }
 
     public function updateProfile(Request $request, User $id)

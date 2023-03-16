@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PetInfo extends Model
 {
+    protected $primaryKey = 'pet_id';
     protected $fillable = [
         'pet_name', 'years', 'months', 'breed', 'type', 'weight', 'image', 'owner_id', 'info', 'vaccine', 'vaccine_list'
     ];

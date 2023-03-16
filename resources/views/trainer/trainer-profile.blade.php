@@ -1,5 +1,13 @@
 <x-trainer-layout>
-    <h1 class="mb-9 mt-4 ml-4 text-3xl font-bold">User Profile</h1>
+    <nav class="flex p-2 text-md font-bold">
+        <a href="" class="-mb-px border-b border-current p-4 text-yellow-500">
+            Profile
+        </a>
+
+        <a href="" class="-mb-px border-b border-transparent p-4 hover:text-yellow-500">
+            Password
+        </a>
+    </nav>
 
     <form method="POST" action="/trainer/{{ $user->id }}/update-profile" enctype="multipart/form-data" class="px-3">
         @csrf
@@ -70,18 +78,6 @@
                 <input
                     class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     name="email" type="email" placeholder="Enter your email" value="{{ $user->email }}" disabled>
-            </div>
-            <div class="mb-4">
-                <label class="mb-2 block font-medium text-gray-700">New Password</label>
-                <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    name="password" type="password" placeholder="Enter your new password">
-            </div>
-            <div class="mb-4">
-                <label class="mb-2 block font-medium text-gray-700" for="email">Password Confirmation</label>
-                <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    name="password_confirmation" type="password" placeholder="Enter your new password again">
             </div>
             <div class="mb-6 flex justify-center gap-3 p-5">
                 <button
