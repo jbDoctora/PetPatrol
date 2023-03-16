@@ -1,5 +1,5 @@
 <x-trainer-layout>
-
+    <h2 class="font-bold text-2xl p-5">Manage Services</h2>
     <div x-data="{ price: '' }">
         <div class="m-5 bg-white p-5">
             <div class="flex justify-end m-5">
@@ -56,7 +56,7 @@
             @csrf
             <input type="checkbox" id="my-modal" class="modal-toggle flex items-center justify-center" />
             <div class="modal">
-                <div class="modal-box">
+                <div class="modal-box rounded-sm">
                     <h1 class="mb-4 text-xl font-medium">Input course details:</h1>
                     <div class="flex flex-col gap-4">
                         <input type="text" x-model="price" class="input input-bordered mx-auto w-full max-w-xs"

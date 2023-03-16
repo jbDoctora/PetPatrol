@@ -1,4 +1,5 @@
 <x-trainer-layout>
+    <h2 class="font-bold text-2xl p-5">Manage Profile</h2>
     <nav class="flex p-2 text-md font-bold">
         <a href="" class="-mb-px border-b border-current p-4 text-yellow-500">
             Profile

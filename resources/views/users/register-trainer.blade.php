@@ -18,6 +18,20 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="col-span-6">
+                            <label for="email" class="block text-sm font-medium text-gray-700">
+                                Email
+                            </label>
+
+                            <input type="email" name="email" value="{{ old('email') }}"
+                                class="input input-bordered w-full" />
+
+                            @error('email')
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
+
+                        </div>
+
+                        <div class="col-span-6">
                             <label for="name" class="block text-sm font-medium text-gray-700">
                                 Name
                             </label>
@@ -97,20 +111,6 @@
                                 class="file-input file-input-bordered w-full max-w-xs" />
 
                             @error('id_verify')
-                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-
-                        </div>
-
-                        <div class="col-span-6">
-                            <label for="email" class="block text-sm font-medium text-gray-700">
-                                Email
-                            </label>
-
-                            <input type="email" name="email" value="{{ old('email') }}"
-                                class="input input-bordered w-full" />
-
-                            @error('email')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
