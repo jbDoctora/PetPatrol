@@ -26,6 +26,7 @@ return new class extends Migration
             $table->longText('info');
             $table->string('vaccine');
             $table->string('vaccine_list');
+            $table->string('book_status')->nullable();
         });
     }
 

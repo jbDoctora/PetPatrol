@@ -9,7 +9,7 @@ class PetInfo extends Model
 {
     protected $primaryKey = 'pet_id';
     protected $fillable = [
-        'pet_name', 'years', 'months', 'breed', 'type', 'weight', 'image', 'owner_id', 'info', 'vaccine', 'vaccine_list'
+        'pet_name', 'years', 'months', 'breed', 'type', 'weight', 'image', 'owner_id', 'info', 'vaccine', 'vaccine_list', 'book_status'
     ];
     protected $table = 'pet_info';
     public $timestamps = false;

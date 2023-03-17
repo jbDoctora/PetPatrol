@@ -9,7 +9,8 @@ class Booking extends Model
 {
     protected $primaryKey = 'book_id';
     protected $fillable = [
-        'pet_id', 'client_id', 'trainer_id', 'status', 'start_date', 'payment', 'client_name', 'service_id', 'trainer_name', 'request_id'
+        'pet_id', 'client_id', 'trainer_id', 'status', 'start_date', 'payment', 'client_name',
+        'service_id', 'request_id', 'trainer_name', 'request_id', 'reason_reject'
     ];
     protected $table = 'booking';
     public $timestamps = false;
