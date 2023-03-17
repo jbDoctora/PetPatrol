@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('service_id')->onDelete('cascade');
             $table->integer('pet_id')->nullable();
             $table->integer('client_id');
-            $table->integer('request_id');
             $table->foreignId('request_id')->onDelete('cascade');
             $table->integer('trainer_id');
             $table->string('client_name');
