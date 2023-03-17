@@ -1,42 +1,26 @@
 <x-dash-layout>
-    <div class="m-5 flex justify-end gap-3">
-        <div>
-            <p>Status</p>
-            <select class="select w-full max-w-xs bg-base-300 border border-black">
-                <option disabled selected></option>
-                <option>On Going</option>
-                <option>Approved</option>
-                <option>Declined</option>
-                <option>Completed</option>
-            </select>
-        </div>
-        <div>
-            <p>Date</p>
-            <input type="date" class="h-12 rounded-lg border border-black bg-base-300 px-3">
-        </div>
-    </div>
-    <div class="m-5 h-screen overflow-x-auto rounded-lg bg-white px-4">
-        <div class="mx-auto mt-5 inline-block min-w-full overflow-hidden rounded-lg shadow-lg">
+    <div class="m-5 overflow-x-auto">
+        {{-- <div class="mx-auto mt-5 inline-block min-w-full overflow-hidden rounded-lg shadow-lg"> --}}
             <table class="min-w-full leading-normal bg-base-300">
                 <thead>
-                    <tr>
-                        <th class="bg-yellow-400 px-6 py-3 text-left text-xs font-bold tracking-wider text-black">
+                    <tr class="text-left font-bold bg-yellow-700 text-white">
+                        <th class="px-6 py-4">
                             Pet Name</th>
-                        <th class="bg-yellow-400 px-6 py-3 text-left text-xs font-bold tracking-wider text-black">
+                        <th class="px-6 py-4">
                             Trainer Name</th>
-                        <th class="bg-yellow-400 px-6 py-3 text-left text-xs font-bold tracking-wider text-black">
+                        <th class="px-6 py-4">
                             Status</th>
-                        <th class="bg-yellow-400 px-6 py-3 text-left text-xs font-bold tracking-wider text-black">
+                        <th class="px-6 py-4">
                             Payment Status</th>
-                        <th class="bg-yellow-400 px-6 py-3"></th>
+                        <th class="px-6 py-4"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($request as $requests)
                     <tr>
-                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->pet_name }}</td>
-                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">{{ $requests->trainer_name }}</td>
-                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">
+                        <td class="px-6 py-4">{{ $requests->pet_name }}</td>
+                        <td class="px-6 py-4">{{ $requests->trainer_name }}</td>
+                        <td class="px-3 py-4">
                             @if ($requests->status == 'pending')
                             <span
                                 class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{
@@ -51,7 +35,7 @@
                                 $requests->status }}</span>
                             @endif
                         </td>
-                        <td class="whitespace-nowrap px-6 py-4 border-b border-black">
+                        <td class="px-6 py-4">
                             @if ($requests->payment == 'unpaid')
                             <span
                                 class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{
@@ -62,7 +46,7 @@
                                 $requests->payment }}</span>
                             @endif
                         </td>
-                        <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium border-b border-black">
+                        <td class="px-6 py-4">
                             <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
                             <a href="#" class="ml-4 text-red-600 hover:text-red-900">Cancel</a>
                         </td>
@@ -70,6 +54,8 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+            {{--
+        </div> --}}
+
     </div>
 </x-dash-layout>

@@ -48,79 +48,96 @@
                         </td>
                         <td class="whitespace-nowrap px-6 py-4 ">{{$requests->start_date}}</td>
                         <td class="whitespace-nowrap px-6 py-4 text-sm flex justify-center gap-3">
-                            <a href="#" class="bg-yellow-400 px-3 py-2 rounded-sm"
-                                x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability: '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id: '{{$requests->book_id}}', service_id: '{{$requests->service_id}}' }">Update</a>
+                            <a href="#"
+                                class="bg-yellow-400 px-3 py-2 rounded-sm text-black w-full text-center text-sm font-bold"
+                                x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability: '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id: '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment: '{{$requests->payment}}' }">Update</a>
                         </td>
                     </tr>
 
+                    <form method="POST" action="/trainer/bookings/update">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="book_id" x-bind:value="showModal.book_id">
+                        <input type="hidden" name="service_id" x-bind:value="showModal.service_id">
 
-                    <div x-cloak x-show="showModal" x-transition
-                        class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-                        <div class="max-w-md bg-white rounded-sm shadow-lg" style="width:400px">
-                            <div class="flex justify-end pt-4 pr-4">
-                                <button @click.prevent="showModal = false"
-                                    class="text-gray-500 hover:text-gray-800 transition ease-in-out duration-150">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="px-6 py-4">
-                                <h2 class="text-2xl font-bold mb-2">Client Information</h2>
-                                <div class="grid grid-cols-2 gap-4 mb-4 bg-base-300 text-sm rounded-lg p-5">
-                                    <div class="font-bold">Client name:</div>
-                                    <div x-text="showModal.name"></div>
-                                    <div class="font-bold">Training service:</div>
-                                    <div x-text="showModal.course"></div>
-                                    <div class="font-bold">Sessions:</div>
-                                    <div x-text="showModal.availability"></div>
+                        <div class="fixed z-50 inset-0 overflow-y-auto" x-show="showModal" x-transition>
+                            <div
+                                class="flex items-center justify-center min-h-screen px-4 pt-6 pb-20 text-center sm:block sm:p-0">
+                                <!-- Background overlay -->
+                                <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+
+                                <!-- Modal content -->
+                                <div
+                                    class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg">
+                                    <div class="px-4 py-6">
+                                        <!-- Close button -->
+                                        <div class="absolute top-0 right-0 p-2">
+                                            <button class="bg-gray-300 hover:bg-gray-400 rounded-full p-2"
+                                                @click.prevent="showModal = false">
+                                                <svg class="w-6 h-6 text-gray-700" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M12.293 10l4.146-4.147a1 1 0 1 0-1.414-1.414L10.88 8.586 6.733 4.44a1 1 0 1 0-1.414 1.414L9.46 10l-4.147 4.147a1 1 0 1 0 1.414 1.414L10.88 11.414l4.147 4.147a1 1 0 1 0 1.414-1.414L12.293 10z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <!-- Modal content -->
+                                        <div class="text-left">
+                                            <h3 class="text-lg font-bold mb-4">Booking Information</h3>
+                                            <div class="grid grid-cols-2 gap-4 mb-4 bg-base-300 text-sm rounded-lg p-5">
+                                                <div class="font-bold">Client name:</div>
+                                                <div x-text="showModal.name"></div>
+                                                <div class="font-bold">Training service:</div>
+                                                <div x-text="showModal.course"></div>
+                                                <div class="font-bold">Sessions:</div>
+                                                <div x-text="showModal.availability"></div>
+                                            </div>
+
+                                            <div x-data="{ isApproved: false }">
+                                                <p class="mb-4 italic">Action:</p>
+                                                <div class="flex flex-col justify-center gap-3 mb-3">
+                                                    <div>
+                                                        <input type="radio" name="status" class="mx-2" value="approved"
+                                                            @click="isApproved = true" />
+                                                        Approve
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="status" class="mx-2" value="declined"
+                                                            @click="isApproved = false" />
+                                                        Decline
+                                                    </div>
+                                                </div>
+                                                <p class="mb-4">Reason for decline:</p>
+                                                <textarea name="" id="" cols="50" rows="5"
+                                                    x-bind:disabled="isApproved || !document.querySelector('input[name=status]:checked')"
+                                                    class="border border-slate-300"></textarea>
+                                            </div>
+
+                                            <div class="flex items-center">
+                                                <div class="tooltip tooltip-right"
+                                                    data-tip="You can't revert your decision once marked as paid"><input
+                                                        type="checkbox" name="payment" value="paid" class="mr-3"
+                                                        x-bind:checked="showModal.payment === 'paid' ? true : false"
+                                                        x-bind:disabled="showModal.payment === 'paid' ? true : false">
+                                                </div>
+                                                <p class="mr-5"
+                                                    x-text="showModal.payment === 'paid' ? 'Marked as paid' : 'Mark as paid'">
+                                                    Mark as paid</p>
+                                            </div>
+
+                                            <div class=" flex justify-end">
+                                                <button type="submit"
+                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded text-sm">Update
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <form method="POST" action="/trainer/bookings/update">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="book_id" x-bind:value="showModal.book_id">
-                                    <input type="hidden" name="service_id" x-bind:value="showModal.service_id">
-                                    <div class="mb-4">
-                                        <h3 class="text-lg font-bold mb-2">Update Status:</h3>
-                                        <div>
-                                            {{-- <p>Request ID: <span x-text="showModal.book_id"></span></p>
-                                            <p>Service ID: <span x-text="showModal.service_id"></span></p> --}}
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" name="status" value="approved"
-                                                    class="radio radio-primary">
-                                                <span class="ml-2">Approve</span>
-                                            </label>
-                                            <label class="inline-flex items-center ml-6">
-                                                <input type="radio" name="status" value="declined"
-                                                    class="radio radio-primary">
-                                                <span class="ml-2">Decline</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <h3 class="text-lg font-bold mb-2">Payment Status:</h3>
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" name="payment" value="paid"
-                                                    class="radio radio-primary">
-                                                <span class="ml-2">Paid</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" name="payment" value="unpaid"
-                                                    class="radio radio-primary">
-                                                <span class="ml-2">Unpaid</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-end">
-                                        <button
-                                            class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold hover:rounded-3xl transition-all duration-400">Update</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
                     @endforeach
                 </tbody>

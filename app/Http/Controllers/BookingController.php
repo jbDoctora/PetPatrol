@@ -29,23 +29,6 @@ class BookingController extends Controller
         return redirect()->back()->with('message', 'Booking is now placed!');
     }
 
-
-    // public function show()
-    // {
-    //     $clientId = auth()->id();
-
-    //     $request = Booking::join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
-    //         ->join('service', 'service.user_id', '=', 'booking.trainer_id')
-    //         ->join('users', 'users.id', '=', 'service.user_id')
-    //         ->where('role', '=', '1')
-    //         ->where('booking.client_id', $clientId)
-    //         ->distinct()
-    //         ->get();
-    //     // dd($request);
-    //     return view('owner.show-bookings', [
-    //         'request' => $request
-    //     ]);
-    // }
     public function show()
     {
         $clientId = auth()->id();

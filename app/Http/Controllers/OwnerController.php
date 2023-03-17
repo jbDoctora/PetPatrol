@@ -43,12 +43,12 @@ class OwnerController extends Controller
                         ->where('users.role', 1);
                 })
                 ->join('pet_info', 'request.pet_name', '=', 'pet_info.pet_name')
-                ->select('service.id as service_id', 'users.id as user_id', 'users.name as user_name', 'users.*', 'service.*', 'pet_info.pet_name', 'pet_info.pet_id')
+                ->select('service.id as service_id', 'users.id as user_id', 'users.name as user_name', 'users.*', 'service.*', 'pet_info.pet_name', 'pet_info.pet_id', 'request.request_id')
                 ->where('request.user_id', auth()->id())
                 ->get();
 
 
-            // dd($matched_services);
+            dd($matched_services);
             return view('owner.show-matched', [
                 'matchedservices' => $matched_services,
                 'request' => $request,

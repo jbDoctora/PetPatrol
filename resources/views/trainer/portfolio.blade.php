@@ -62,7 +62,6 @@
             </div>
         </div>
         @empty
-        <h2 class="font-bold text-2xl p-5">My Portfolio</h2>
         <div class="flex justify-center">
             {{-- <img class="h-72 w-96" src="{{ asset('images/bored.png') }}" /> --}}
             <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_eq1aIIplXI.json" background="transparent"

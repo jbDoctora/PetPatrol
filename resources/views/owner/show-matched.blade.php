@@ -61,6 +61,7 @@
                         <div class="flex flex-row justify-center">
                             <div class="h-16 w-16 p-2"><img src="/images/warning.png" alt=""></div>
                             <h2 class="my-4 font-bold">Pet Patrol Booking Policy</h2>
+                            <p>Request_id: {{$match->request_id}}</p>
                         </div>
 
                         <input type="hidden" name="pet_id" value="{{ $match->pet_id }}">
