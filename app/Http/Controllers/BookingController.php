@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\PetInfo;
 use App\Models\Service;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\RequestTrainer;
+use App\Http\Controllers\Controller;
 
 class BookingController extends Controller
 {
@@ -25,8 +26,13 @@ class BookingController extends Controller
         $requestTrainer->request_status = "inactive";
         $requestTrainer->save();
 
+        $pet_id = $request->input('pet_id');
+        $pet_status = PetInfo::where('pet_id', $pet_id)->first();
+        $pet_status->book_status = 'pending';
+        $pet_status->save();
 
-        return redirect()->back()->with('message', 'Booking is now placed!');
+
+        return redirect('/bookings')->back()->with('message', 'Booking is now placed!');
     }
 
     public function show()

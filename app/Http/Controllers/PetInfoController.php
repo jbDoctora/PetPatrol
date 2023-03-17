@@ -50,6 +50,7 @@ class PetInfoController extends Controller
         $formFields['vaccine_list'] = $request->input('vaccine_list');
         $formFields['type'] = $request->input('type');
         $formFields['weight'] = $request->input('weight');
+        $formFields['book_status'] = $request->input('book_status');
         $formFields['owner_id'] = auth()->id() ?? null;
 
         PetInfo::create($formFields);

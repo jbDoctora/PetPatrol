@@ -110,21 +110,25 @@
                                                     </div>
                                                 </div>
                                                 <p class="mb-4">Reason for decline:</p>
-                                                <textarea name="" id="" cols="50" rows="5"
+                                                <textarea name="reason_reject" id="" cols="50" rows="5"
                                                     x-bind:disabled="isApproved || !document.querySelector('input[name=status]:checked')"
+                                                    x-bind:class="cursor-not-allowed"
                                                     class="border border-slate-300"></textarea>
                                             </div>
 
                                             <div class="flex items-center">
                                                 <div class="tooltip tooltip-right"
-                                                    data-tip="You can't revert your decision once marked as paid"><input
-                                                        type="checkbox" name="payment" value="paid" class="mr-3"
+                                                    data-tip="You can't revert your decision once marked as paid">
+                                                    <input type="checkbox" name="payment" value="paid" class="mr-3"
                                                         x-bind:checked="showModal.payment === 'paid' ? true : false"
                                                         x-bind:disabled="showModal.payment === 'paid' ? true : false">
                                                 </div>
                                                 <p class="mr-5"
                                                     x-text="showModal.payment === 'paid' ? 'Marked as paid' : 'Mark as paid'">
-                                                    Mark as paid</p>
+                                                    Mark as paid
+                                                </p>
+                                                <input type="hidden" name="payment" value="unpaid"
+                                                    x-bind:value="showModal.payment !== 'paid' ? 'unpaid' : ''">
                                             </div>
 
                                             <div class=" flex justify-end">

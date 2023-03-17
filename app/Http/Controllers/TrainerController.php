@@ -55,6 +55,7 @@ class TrainerController extends Controller
         $booking = Booking::where('book_id', $request->input('book_id'))->first();
         $booking->status = $request->input('status');
         $booking->payment = $request->input('payment');
+        $booking->reason_reject = $request->input('reason_reject');
         $booking->save();
 
         $service = Service::where('id', $request->input('service_id'))->first();

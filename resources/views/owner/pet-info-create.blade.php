@@ -1,6 +1,7 @@
 <x-dash-layout>
     <form method="POST" action="/pet/add-info/add" enctype="multipart/form-data" class="max-w-lg mx-auto my-5">
         @csrf
+        <input type="hidden" name="book_status" value="inactive">
         <div class="mb-4">
             <label class="block font-medium mb-2" for="pet-name">Pet Name</label>
             <input id="pet-name" class="input input-bordered w-full py-2 px-3 rounded" type="text" name="pet_name">

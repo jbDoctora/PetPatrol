@@ -14,9 +14,9 @@
                 </div>
 
                 @forelse($petinfo as $petinfos)
-                @if (in_array($petinfos->pet_name, $requestedPetNames))
+                {{-- @if (in_array($petinfos->pet_name, $requestedPetNames))
                 @continue
-                @endif
+                @endif --}}
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
                     <input type="radio" name="radio-1" class="radio radio-primary"
