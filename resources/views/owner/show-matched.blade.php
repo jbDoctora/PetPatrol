@@ -7,8 +7,8 @@
             <div class="w-96 bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
 
-                    <p>User id:{{$match->user_id}}</p>
-                    <p>pet_id: {{$match->pet_id}}</p>
+                    {{-- <p>User id:{{$match->user_id}}</p>
+                    <p>pet_id: {{$match->pet_id}}</p> --}}
                     <h2 class="text-2xl font-bold mb-2">{{ $match->user_name }}</h2>
                     <p class="text-sm mb-4">{{ $match->email }}</p>
                     <p class="text-sm mb-4">{{ $match->address }}</p>
@@ -55,8 +55,8 @@
                                 <p>Availabilty: {{ $match->availability }}</p>
                                 <p>Pet name: {{ $match->pet_name }}</p>
                             </div>
-                            <p>Start date:</p><input type="date" name="start_date"
-                                class="border border-gray-300 rounded-lg" />
+                            <p>Preferred start date:</p><input type="date" name="start_date"
+                                class="border border-gray-300 rounded-lg py-2" />
                         </div>
                         <div class="flex flex-row justify-center">
                             <div class="h-16 w-16 p-2"><img src="/images/warning.png" alt=""></div>
@@ -76,18 +76,20 @@
 
 
                         <ol type="1" style="font-size: 13.5px">
-                            <li class="p-2 tracking-wider">1. After the pet trainer's approve
+                            <li class="p-2 tracking-wider text-justify">1. After the pet trainer's approve
                                 training request,
                                 cancellation is
                                 allowed up to
                                 48
                                 hours
                                 prior to the scheduled training session without penalty.</li>
-                            <li class="p-2 tracking-wider">2. Cancellation within 48 hours of the scheduled training
+                            <li class="p-2 tracking-wider text-justify">2. Cancellation within 48 hours of the scheduled
+                                training
                                 session will result in a penalty fee equivalent to 50% of the total cost of the
                                 session. If the penalty fee is not paid within 7 days, we reserve the right to take
                                 appropriate action, which may include legal action or suspension of services.</li>
-                            <li class="p-2 tracking-wider">3. After the pet trainer's approve training request,
+                            <li class="p-2 tracking-wider text-justify">3. After the pet trainer's approve training
+                                request,
                                 cancellation within
                                 24 hours of
                                 the
@@ -105,7 +107,7 @@
                         </div>
                         <div class="modal-action flex justify-center">
 
-                            <label for="my-modal-{{ $match->id }}" class="tracking-wide rounded-md px-5 py-4 hover:rounded-3xl border border-black text-sm text-black font-bold
+                            <label for="my-modal-{{ $match->user_id }}" class="tracking-wide rounded-md px-5 py-4 hover:rounded-3xl border border-black text-sm text-black font-bold
                             transition-all duration-400">Cancel</label>
                             <button type="submit" :disabled="!checked" :class="{'bg-gray-400': !checked}"
                                 class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Confirm</button>

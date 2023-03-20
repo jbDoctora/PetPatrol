@@ -53,13 +53,13 @@
         {{ $slot }}
     </main>
     {{-- Footer --}}
-    <footer class="footer footer-center bg-base-300 text-base-content p-4 text-xs">
+    {{-- <footer class="footer footer-center bg-base-300 text-base-content p-4 text-xs">
         <div>
             <p><i class="fa-solid fa-paw mr-8"></i>Copyright © 2023 - All right reserved by Pet Patrol<i
                     class="fa-solid fa-paw ml-8"></i></p>
 
         </div>
-    </footer>
+    </footer> --}}
     <x-toast />
 </body>
 
