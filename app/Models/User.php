@@ -29,6 +29,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'role',
+        'gcash_qr',
+        'gcash_number',
     ];
 
     /**

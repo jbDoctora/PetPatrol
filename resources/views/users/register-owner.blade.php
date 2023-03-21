@@ -18,7 +18,7 @@
                         @csrf
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">
-                                Full Name
+                                Full Name<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
                                 class="input input-bordered w-96" />
@@ -38,7 +38,7 @@
 
                         <div>
                             <label for="address" class="block text-sm font-medium text-gray-700">
-                                Address
+                                Address<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="text" name="address" value="{{ old('address') }}"
@@ -51,7 +51,7 @@
 
                         <div>
                             <label for="phone_number" class="block text-sm font-medium text-gray-700">
-                                Phone number
+                                Phone number<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
@@ -64,7 +64,7 @@
 
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">
-                                Email
+                                Email<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
@@ -78,7 +78,7 @@
 
                         <div>
                             <label for="password" class="block text-sm font-medium text-gray-700">
-                                Password
+                                Password<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
@@ -92,7 +92,7 @@
 
                         <div>
                             <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
-                                Password Confirmation
+                                Password Confirmation<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="password" name="password_confirmation"

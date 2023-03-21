@@ -24,11 +24,6 @@
         };
     </script>
     <style>
-        h2 {
-            font-weight: bold;
-            font-size: 40px;
-        }
-
         .tox-tinymce {
             height: 400px;
             width: 90%;
@@ -38,9 +33,16 @@
             border: 1px solid #928d8d;
         }
 
-        .dataTables_filter input,
+        .dataTables_filter input {
+            margin: 15px;
+        }
+
         .dataTables_length select {
-            padding: 50px;
+            margin: 15px;
+        }
+
+        .dataTables_wrapper {
+            border: none;
         }
     </style>
     <x-head.tinymce-config />

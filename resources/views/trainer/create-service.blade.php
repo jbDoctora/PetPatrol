@@ -1,13 +1,12 @@
 <x-trainer-layout>
-    <h2 class="font-bold text-2xl p-5">Manage Services</h2>
     <div x-data="{ price: '' }">
-        <div class="m-5 bg-white p-5">
-            <div class="flex justify-end m-5">
+        <div class="m-3 bg-white p-3 border-t-4 border-blue-500">
+            <div class="flex justify-start m-3">
                 <label for="my-modal"
-                    class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">
+                    class="tracking-wide rounded-sm px-4 py-3 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">
                     Add new training service</label>
             </div>
-            <table id="myTable" class="compact cell-border hover p-3 text-sm text-left">
+            <table id="myTable" class="stripe nowrap hover border border-gray-300 text-sm">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -17,28 +16,35 @@
                         <th>Weeks of training</th>
                         <th>Price</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th><span class="material-icons-outlined">
+                                settings_applications
+                            </span></th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($training as $trainings)
                     <tr>
-                        <th>{{$trainings->id}}</th>
-                        <th>{{$trainings->course}}</th>
-                        <th>{{$trainings->pet_type}}</th>
-                        <th>{{$trainings->availability}}</th>
-                        <th>{{$trainings->weeks}}</th>
-                        <th>{{$trainings->price}}</th>
-                        <th>{{$trainings->status}}</th>
-                        <th class="flex justify-between gap-1">
-                            <button
-                                class="tracking-wide w-full p-1 bg-yellow-400 rounded-sm text-black text-xs font-bold border border-black"><a
-                                    href="/trainer/service/add-service/{{ $trainings->id }}">View
-                                    plan</a></button>
-                            <button
-                                class="tracking-wide w-full py-2 text-black rounded-sm text-xs font-bold border border-black">Edit</button>
-                            <button
-                                class="tracking-wide w-full py-2 bg-red-500 rounded-sm text-white text-xs font-medium border border-black">Delete</button>
+                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->id}}</th>
+                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->course}}</th>
+                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->pet_type}}</th>
+                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->availability}}</th>
+                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->weeks}}</th>
+                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->price}}</th>
+                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->status}}</th>
+                        <th class="flex justify-center gap-1 border-b border-gray-300 text-left text-sm">
+                            <button class="px-2 bg-base-300 rounded-sm text-black text-xs shadow-lg"><a
+                                    href="/trainer/service/add-service/{{ $trainings->id }}"><span
+                                        class="material-icons-outlined text-lg">
+                                        visibility
+                                    </span></a></button>
+                            <button class="px-2 bg-base-300 text-black rounded-sm text-sm shadow-lg"><span
+                                    class="material-icons-outlined text-lg">
+                                    edit
+                                </span></button>
+                            <button class="px-2 bg-red-300 rounded-sm text-black text-sm shadow-lg"><span
+                                    class="material-icons-outlined text-lg">
+                                    delete
+                                </span></button>
                         </th>
                     </tr>
                     @empty

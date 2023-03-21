@@ -19,7 +19,7 @@
                         @csrf
                         <div class="col-span-6">
                             <label for="email" class="block text-sm font-medium text-gray-700">
-                                Email
+                                Email<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
@@ -33,7 +33,7 @@
 
                         <div class="col-span-6">
                             <label for="name" class="block text-sm font-medium text-gray-700">
-                                Name
+                                Name<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
                                 class="input input-bordered w-full" />
@@ -46,7 +46,7 @@
 
                         <div class="col-span-3">
                             <label for="name" class="block text-sm font-medium text-gray-700">
-                                Birthday
+                                Birthday<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
@@ -60,14 +60,13 @@
 
                         <div class="col-span-3">
                             <label for="sex" class="block text-sm font-medium text-gray-700">
-                                Sex
+                                Sex<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
                             <select class="w-full rounded-lg border border-gray-400 py-3" id="sex" name="sex" required
                                 value="{{ old('sex') }}">
-                                <option value="">Select a gender</option>
+                                <option value=""><span class="text-sm">Select a gender</span></option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
-                                <option value="other">Other</option>
                             </select>
 
                             @error('sex')
@@ -78,7 +77,7 @@
 
                         <div class="col-span-6">
                             <label for="address" class="block text-sm font-medium text-gray-700">
-                                Address
+                                Address<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="text" name="address" value="{{ old('address') }}"
@@ -91,7 +90,7 @@
 
                         <div class="col-span-6">
                             <label for="phone_number" class="block text-sm font-medium text-gray-700">
-                                Phone number
+                                Phone number<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
@@ -104,21 +103,25 @@
 
                         <div class="col-span-6">
                             <label for="id_verify" class="block text-sm font-medium text-gray-700">
-                                Please upload ID for verification (back and front):
+                                Please upload ID for verification (back and front):<span
+                                    class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
-                            <input type="file" name="id_verify" value="{{ old('id_verify') }}"
-                                class="file-input file-input-bordered w-full max-w-xs" />
+                            <div class="relative">
+                                <input type="file" name="id_verify" value="{{ old('id_verify') }}" id="id_verify"
+                                    class="file-input file-input-bordered w-full max-w-xs" multiple>
 
-                            @error('id_verify')
-                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                            @enderror
+                                @error('id_verify')
+                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                                @enderror
 
+                            </div>
                         </div>
+
 
                         <div class="col-span-6">
                             <label for="password" class="block text-sm font-medium text-gray-700">
-                                Password
+                                Password<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
@@ -132,7 +135,7 @@
 
                         <div class="col-span-6">
                             <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
-                                Password Confirmation
+                                Password Confirmation<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
 
                             <input type="password" name="password_confirmation"

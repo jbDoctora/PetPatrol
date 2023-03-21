@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('id_verify')->nullable();
             $table->string('email')->unique();
             $table->integer('role');
+            $table->string('gcash_qr')->nullable();
+            $table->string('gcash_number')->nullable();
+            $table->string('admin_approve')->default('no');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
