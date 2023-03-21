@@ -9,16 +9,14 @@
             <table id="myTable" class="stripe nowrap hover border border-gray-300 text-sm">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Training service</th>
-                        <th>Pet type</th>
-                        <th>Availability</th>
-                        <th>Weeks of training</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th><span class="material-icons-outlined">
-                                settings_applications
-                            </span></th>
+                        <th class="text-left">#</th>
+                        <th class="text-left">Training service</th>
+                        <th class="text-left">Pet type</th>
+                        <th class="text-left">Availability</th>
+                        <th class="text-left">Weeks of training</th>
+                        <th class="text-left">Price</th>
+                        <th class="text-left">Status</th>
+                        <th><i class="fa-solid fa-gears fa-lg"></i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,16 +30,19 @@
                         <th class="border-b border-gray-300 text-left text-xs">{{$trainings->price}}</th>
                         <th class="border-b border-gray-300 text-left text-xs">{{$trainings->status}}</th>
                         <th class="flex justify-center gap-1 border-b border-gray-300 text-left text-sm">
-                            <button class="px-2 bg-base-300 rounded-sm text-black text-xs shadow-lg"><a
+                            <button
+                                class="px-3 bg-base-300 rounded-sm text-black text-xs shadow-lg hover:bg-yellow-300"><a
                                     href="/trainer/service/add-service/{{ $trainings->id }}"><span
                                         class="material-icons-outlined text-lg">
-                                        visibility
+                                        fitness_center
                                     </span></a></button>
-                            <button class="px-2 bg-base-300 text-black rounded-sm text-sm shadow-lg"><span
+                            <button
+                                class="px-3 bg-base-300 text-black rounded-sm text-sm shadow-lg hover:bg-yellow-300"><span
                                     class="material-icons-outlined text-lg">
                                     edit
                                 </span></button>
-                            <button class="px-2 bg-red-300 rounded-sm text-black text-sm shadow-lg"><span
+                            <button
+                                class="px-3 bg-red-500 rounded-sm text-white text-sm shadow-lg hover:bg-red-800"><span
                                     class="material-icons-outlined text-lg">
                                     delete
                                 </span></button>

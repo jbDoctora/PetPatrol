@@ -1,8 +1,8 @@
 <x-trainer-layout>
-    <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false">
-        <h2 class="font-bold text-2xl p-5">Manage Bookings</h2>
+    <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
+        class="rounded-sm bg-white border-t-4 border-blue-500 m-3 p-3">
         <div class="mx-auto px-3 mt-5 min-w-full overflow-hidden rounded-none">
-            <table class="table w-full rounded-none">
+            <table class="table w-full rounded-none border border-gray-300">
                 <thead>
                     <tr>
                         <th class="">id
@@ -112,7 +112,6 @@
                                                 <p class="mb-4">Reason for decline:</p>
                                                 <textarea name="reason_reject" id="" cols="50" rows="5"
                                                     x-bind:disabled="isApproved || !document.querySelector('input[name=status]:checked')"
-                                                    x-bind:class="cursor-not-allowed"
                                                     class="border border-slate-300"></textarea>
                                             </div>
 

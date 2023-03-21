@@ -2,7 +2,7 @@
     @forelse ($portfolio as $portfolios)
     <section class="container mx-auto mt-6 p-3">
         <div
-            class="container mb-9 flex items-center rounded-md bg-gradient-to-r from-green-400 to-blue-500 bg-cover bg-center bg-no-repeat p-9">
+            class="container mb-9 flex items-center rounded-sm bg-gradient-to-r from-green-400 to-blue-500 bg-cover bg-center bg-no-repeat p-9">
             <div class="h-24 w-24 overflow-hidden rounded-full border-4 border-white">
                 <img src="{{ $portfolios->profile_photo ? asset('storage/' . $portfolios->profile_photo) : asset('/images/no-image.png') }}"
                     alt="Profile Photo" class="h-full w-full object-cover">
@@ -20,19 +20,19 @@
             </div>
         </div>
 
-        <div class="container my-4 rounded-md bg-white p-6">
+        <div class="container my-4 rounded-sm bg-white p-6 border-l-4 border-blue-500">
             <h2 class="mb-6 text-2xl font-bold">About Me</h2>
             {!! $portfolios->about_me !!}
         </div>
 
-        <div class="container my-4 rounded-md bg-white p-6">
+        <div class="container my-4 rounded-sm bg-white p-6 border-l-4 border-blue-500">
             <h2 class="mb-6 text-2xl font-bold">Services</h2>
             <ul class="text-lg">
                 <li class="mb-4">{{ $portfolios->services }}</li>
             </ul>
         </div>
 
-        <div class="container my-4 rounded-md bg-white p-6">
+        <div class="container my-4 rounded-sm bg-white p-6 border-l-4 border-blue-500">
             <h2 class="mb-6 text-2xl font-bold">Certificates</h2>
             <div class="mb-6 flex flex-row gap-4">
                 <div class="overflow-hidden rounded-md shadow-md">
@@ -42,14 +42,14 @@
             </div>
         </div>
 
-        <div class="container my-4 rounded-md bg-white p-6">
+        <div class="container my-4 rounded-sm bg-white p-6 border-l-4 border-blue-500">
             <h2 class="mb-6 text-2xl font-bold">Pet Training Experience</h2>
             <div class="list-disc">
                 {!! $portfolios->experience !!}
             </div>
         </div>
 
-        <div class="container my-4 rounded-md bg-white p-6">
+        <div class="container my-4 rounded-sm bg-white p-6 border-l-4 border-blue-500">
             <h2 class="mb-6 text-2xl font-bold">Journey Photos</h2>
             <div class="mb-6 flex flex-row gap-2">
                 <div class="card bg-white">
