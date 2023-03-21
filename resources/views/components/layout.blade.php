@@ -47,16 +47,12 @@
 <body class="flex min-h-screen flex-col">
 
     <!-- NavBar -->
-    <div class="navbar sticky top-0 z-50 bg-white text-black">
+    <div class="navbar bg-white text-black">
         <div class="flex-1 bg-fixed">
-            {{-- e add ni if mawala ang logo mix-blend-mode: color-burn --}}
-            {{-- <img style="aspect-ratio: 4/2; object-fit: contain; margin-left: 2px; margin-right: 4px;"
-                src="images/apple-touch-icon-76x76.png"><span class="text-md font-semibold tracking-wide"
-                style="font-family: 'Climate Crisis', cursive;">PET PATROL</span> --}}
             <svg version="1.0" class="mx-3 font-bold" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
                 height="40.000000pt" viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">
 
-                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#344ceb" stroke="#000"
+                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="#000"
                     stroke-width="2">
                     <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
                                 -69 -3 -87 -26 -25 -32 -28 -111 -6 -153 23 -46 103 -109 166 -132 33 -12 59
@@ -88,7 +84,7 @@
                                 -7 -114 -13 -15 -36 -16 -253 -10 -132 4 -243 9 -246 12 -10 11 0 164 15 231
                                 20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
                 </g>
-            </svg><span class="text-md font-normal tracking-wide" style="font-family: 'Climate Crisis', cursive;">PET
+            </svg><span class="text-xl font-normal tracking-wide" style="font-family: 'Climate Crisis', cursive;">PET
                 PATROL</span>
         </div>
 
