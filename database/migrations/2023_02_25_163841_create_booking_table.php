@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('client_name');
             $table->string('trainer_name');
             $table->string('status');
-            $table->string('payment');
+            $table->string('payment')->default('unpaid')->nullable();
             $table->longText('reason_reject')->nullable();
             $table->string('start_date');
         });

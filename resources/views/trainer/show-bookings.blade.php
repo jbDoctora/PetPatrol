@@ -127,8 +127,6 @@
                                                     x-text="showModal.payment === 'paid' ? 'Marked as paid' : 'Mark as paid'">
                                                     Mark as paid
                                                 </p>
-                                                <input type="hidden" name="payment" value="unpaid"
-                                                    x-bind:value="showModal.payment !== 'paid' ? 'unpaid' : ''">
                                             </div>
 
                                             <div class=" flex justify-end">

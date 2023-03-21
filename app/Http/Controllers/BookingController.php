@@ -23,7 +23,7 @@ class BookingController extends Controller
 
         $request_id = $request->input('request_id');
         $requestTrainer = RequestTrainer::where('request_id', $request_id)->first();
-        $requestTrainer->request_status = "inactive";
+        $requestTrainer->request_status = "pending";
         $requestTrainer->save();
 
         $pet_id = $request->input('pet_id');
@@ -32,7 +32,7 @@ class BookingController extends Controller
         $pet_status->save();
 
 
-        return redirect('/bookings')->back()->with('message', 'Booking is now placed!');
+        return redirect('/bookings')->with('message', 'Booking is now placed!');
     }
 
     public function show()

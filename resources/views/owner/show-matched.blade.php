@@ -6,7 +6,9 @@
         <div class="card-container m-3">
             <div class="w-96 bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
-                    <h2 class="text-2xl font-bold mb-2">{{ $match->user_name }}</h2>
+                    <a href="/show-matched/trainerInfo/{{$match->user_id}}">
+                        <h2 class="text-2xl font-bold mb-2">{{ $match->user_name }}</h2>
+                    </a>
                     <p class="text-sm mb-4">{{ $match->email }}</p>
                     <p class="text-sm mb-4">{{ $match->address }}</p>
                     <div class="grid grid-cols-2 gap-4 mb-4">

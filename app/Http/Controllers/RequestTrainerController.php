@@ -48,6 +48,11 @@ class RequestTrainerController extends Controller
         $formFields['pet_type'] = $request->input('pet_type');
         RequestTrainer::create($formFields);
 
+        $pet_id = $request->input('pet_id');
+        $pet_status = PetInfo::where('pet_id', $pet_id)->first();
+        $pet_status->book_status = "requested";
+        $pet_status->save();
+
         return redirect('/owner')->with('message', 'Request added successfully!');
     }
 }

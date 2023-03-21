@@ -18,13 +18,17 @@
 
                 <div class="mb-4 flex items-center bg-slate-300 p-5">
                     <input type="radio" name="radio-1" class="radio radio-primary"
-                        value="{{ $petinfos->pet_name }},{{ $petinfos->type }}" x-model="pet" required />
+                        value="{{ $petinfos->pet_name }},{{ $petinfos->type }},{{$petinfos->pet_id}}" x-model="pet"
+                        required />
                     <label for="" class="ml-2 text-sm font-medium">{{ $petinfos->pet_name }}</label>
                 </div>
 
                 @empty
 
-                <p>No Pet record</p>
+                <p>You have not registered a pet, or training requests have already been made for your pets.</p>
+                <a href="/pet/add-info" class="underline text-blue-500 text-center">
+                    Add another pet
+                </a>
                 @endforelse
 
                 <div class="flex items-center justify-center">
@@ -156,6 +160,7 @@
                 <input type="hidden" name="request_status" value="active">
                 <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                 <input type="hidden" name="pet_type" x-bind:value="pet.split(',')[1]" />
+                <input type="hidden" name="pet_id" x-bind:value="pet.split(',')[2]" />
                 <div class="flex items-center">
                     <label for="" class="ml-2 block text-center text-2xl font-bold">
                         Confirm Information

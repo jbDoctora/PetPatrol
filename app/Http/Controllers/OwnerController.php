@@ -45,7 +45,7 @@ class OwnerController extends Controller
                 ->join('pet_info', 'request.pet_name', '=', 'pet_info.pet_name')
                 ->select('service.id as service_id', 'users.id as user_id', 'users.name as user_name', 'users.*', 'service.*', 'pet_info.pet_name', 'pet_info.pet_id', 'request.request_id')
                 ->where('request.user_id', auth()->id())
-                ->where('pet_info.book_status', 'inactive')
+                ->where('pet_info.book_status', 'requested')
                 ->get();
 
 
@@ -77,17 +77,10 @@ class OwnerController extends Controller
         ]);
     }
 
-    // public function create()
-    // {
-    //     $petinfo = PetInfo::where('owner_id', auth()->id())->paginate(9);
-    //     $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet_name')->toArray();
-    //     // dd($petinfo);
-    //     return view('owner.book-trainer', compact('petinfo', 'requestedPetNames'));
-    // }
     public function create()
     {
         $petinfo = PetInfo::where('owner_id', auth()->id())
-            ->where('book_status', '<>', 'pending') //add this line to check book_status column value
+            ->whereNotIn('book_status', ['pending', 'requested'])
             ->paginate(9);
         $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet_name')->toArray();
         // dd($petinfo);
