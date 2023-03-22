@@ -1,28 +1,32 @@
 <x-trainer-layout>
+    <div class="bg-white shadow-lg p-3 m-3">
+        Filter area
+    </div>
+
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
         class="rounded-sm bg-white border-t-4 border-blue-500 m-3 p-3">
         <div class="mx-auto px-3 mt-5 min-w-full overflow-hidden rounded-none">
-            <table class="table w-full rounded-none border border-gray-300">
-                <thead>
+            <table class="table-auto w-full rounded-none border border-gray-300 text-base">
+                <thead class="text-center">
                     <tr>
-                        <th class="">id
+                        <th class="border-b border-gray-200 py-2">id
                         </th>
-                        <th class="">
+                        <th class="border-b border-gray-200">
                             Pet Name</th>
-                        <th class="">
+                        <th class="border-b border-gray-200">
                             Client Name</th>
-                        <th class="">
+                        <th class="border-b border-gray-200">
                             Status</th>
-                        <th class="">
+                        <th class="border-b border-gray-200">
                             Appointment Date</th>
-                        <th class="">
+                        <th class="border-b border-gray-200">
                             Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-left">
                     @foreach ($request as $requests)
                     <tr>
-                        <td class="whitespace-nowrap px-6 py-4">{{$requests->book_id}}</td>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm">{{$requests->book_id}}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $requests->pet_name}}</td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $requests->client_name }}
                         </td>
@@ -85,18 +89,19 @@
 
                                         <!-- Modal content -->
                                         <div class="text-left">
-                                            <h3 class="text-lg font-bold mb-4">Booking Information</h3>
-                                            <div class="grid grid-cols-2 gap-4 mb-4 bg-base-300 text-sm rounded-lg p-5">
+                                            <h3 class="text-lg font-bold mb-4">Action</h3>
+                                            {{-- <div
+                                                class="grid grid-cols-2 gap-4 mb-4 bg-base-300 text-sm rounded-lg p-5">
                                                 <div class="font-bold">Client name:</div>
                                                 <div x-text="showModal.name"></div>
                                                 <div class="font-bold">Training service:</div>
                                                 <div x-text="showModal.course"></div>
                                                 <div class="font-bold">Sessions:</div>
                                                 <div x-text="showModal.availability"></div>
-                                            </div>
+                                            </div> --}}
 
                                             <div x-data="{ isApproved: false }">
-                                                <p class="mb-4 italic">Action:</p>
+                                                {{-- <p class="mb-4 italic">Action:</p> --}}
                                                 <div class="flex flex-col justify-center gap-3 mb-3">
                                                     <div>
                                                         <input type="radio" name="status" class="mx-2" value="approved"
