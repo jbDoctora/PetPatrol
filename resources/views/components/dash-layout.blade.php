@@ -133,7 +133,7 @@
                 </a>
             </nav>
         </aside>
-        <div class="flex-1">
+        <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
                 <div class="navbar bg-white shadow-lg">
                     <button class="bg-base-300 mr-4 rounded-lg border-0 py-3 px-4 hover:bg-yellow-300"
