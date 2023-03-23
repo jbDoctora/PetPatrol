@@ -31,7 +31,8 @@
                         <th class="border-b border-gray-300 text-left text-xs">{{$trainings->status}}</th>
                         <th class="flex justify-center gap-1 border-b border-gray-300 text-left text-sm">
                             <button
-                                class="px-3 bg-base-300 rounded-sm text-black text-xs shadow-lg hover:bg-yellow-300"><a
+                                class="px-3 bg-base-300 rounded-sm text-black text-xs shadow-lg hover:bg-yellow-300 tooltip"
+                                data-tip="view training plan"><a
                                     href="/trainer/service/add-service/{{ $trainings->id }}"><span
                                         class="material-icons-outlined text-lg">
                                         fitness_center

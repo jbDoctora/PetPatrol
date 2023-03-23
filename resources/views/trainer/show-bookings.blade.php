@@ -1,12 +1,13 @@
 <x-trainer-layout>
-    <div class="bg-white shadow-lg p-3 m-3">
+    <h2 class="text-blue-800 text-2xl font-bold p-2 m-2">Bookings</h2>
+    <div class="bg-white drop-shadow-lg p-3 m-3">
         Filter area
     </div>
 
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="rounded-sm bg-white border-t-4 border-blue-500 m-3 p-3">
-        <div class="mx-auto px-3 mt-5 min-w-full overflow-hidden rounded-none">
-            <table class="table-auto w-full rounded-none border border-gray-300 text-base">
+        class="rounded-sm bg-white m-3 p-3">
+        <div class="mx-auto px-3 mt-5 min-w-full overflow-hidden rounded-none drop-shadow-lg">
+            <table class="table-auto w-full rounded-none text-base border border-neutral-700">
                 <thead class="text-center">
                     <tr>
                         <th class="border-b border-gray-200 py-2">id

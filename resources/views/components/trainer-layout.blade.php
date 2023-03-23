@@ -62,25 +62,21 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
-<body class="bg-base-300 flex min-h-screen flex-col">
+<body class=" flex min-h-screen flex-col">
     <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
         class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
-            <div class="flex h-40 flex-row items-center justify-center bg-slate-900 text-white">
-                <div>
-                    {{-- <img src="/images/vector.jpg" class="h-full w-full rounded-lg" alt=""> --}}
-                    {{-- <div class="bg-blue-600 px-4 py-3 rounded-lg border border-black">
-                        <p style="font-family: 'Climate Crisis', cursive;" class="text-black">PET PATROL</p>
-                    </div> --}}
-                    <svg version="1.0" class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="68.000000pt"
-                        height="68.000000pt" viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">
+            <div class="flex h-36 flex-row items-center justify-center bg-blue-800 text-white border-r border-gray-300">
 
-                        <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="white"
-                            stroke="none">
-                            <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
+                <svg version="1.0" class="flex justify-between items-center" xmlns="http://www.w3.org/2000/svg"
+                    width="44.000000pt" height="44.000000pt" viewBox="0 0 206.000000 196.000000"
+                    preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
+                        <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
                                 -69 -3 -87 -26 -25 -32 -28 -111 -6 -153 23 -46 103 -109 166 -132 33 -12 59
                                 -27 59 -33 0 -6 -14 -58 -31 -116 -27 -93 -31 -120 -32 -240 0 -99 4 -151 16
                                 -195 9 -33 24 -85 33 -115 17 -62 30 -206 21 -241 -4 -14 -24 -34 -46 -46 -25
@@ -109,43 +105,50 @@
                                 -52 79 -203 125 -304 92z m716 -929 c68 -140 104 -290 118 -490 5 -76 4 -101
                                 -7 -114 -13 -15 -36 -16 -253 -10 -132 4 -243 9 -246 12 -10 11 0 164 15 231
                                 20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
-                        </g>
-                    </svg><span class="text-lg font-normal tracking-wide text-white text-center"
-                        style="font-family: 'Climate Crisis', cursive;">PET
-                        PATROL</span>
-                </div>
+                    </g>
+                </svg>
+
+                <span class="text-sm font-normal tracking-wide text-white text-center"
+                    style="font-family: 'Climate Crisis', cursive;">PET
+                    PATROL</span>
+
             </div>
             <nav
-                class="flex flex-col items-start w-full h-full bg-slate-900 text-white font-normal subpixel-antialiased">
-                <a href="/trainer" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons" style="font-size: 20px;">
+                class="flex flex-col items-center w-full h-full bg-blue-800 text-white font-medium subpixel-antialiased border-r border-gray-300">
+                <a href="/trainer"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
+                    <span class="material-icons-outlined" style="font-size: 25px;"">
                         donut_small
                     </span>
-                    <span class="ml-7">Dashboard</span>
+                    <span class=" ml-9">Dashboard</span>
                 </a>
-                <a href="/trainer/portfolio" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons" style="font-size: 20px;">
+                <a href="/trainer/portfolio"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:text-white hover:px-12 transition transition-all">
+                    <span class="material-icons-outlined" style="font-size: 25px;">
                         contact_page
                     </span>
-                    <span class="ml-7">Portfolio</span>
+                    <span class="ml-9">Portfolio</span>
                 </a>
-                <a href="/trainer/service/add" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons" style="font-size: 20px;">
+                <a href="/trainer/service/add"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
+                    <span class="material-icons-outlined" style="font-size: 25px;">
                         home_repair_service
                     </span>
-                    <span class="ml-7">Service</span>
+                    <span class="ml-9">Service</span>
                 </a>
-                <a href="/trainer/bookings" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons" style="font-size: 20px;">
-                        event
+                <a href="/trainer/bookings"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
+                    <span class="material-icons-outlined" style="font-size: 25px">
+                        bookmark_border
                     </span>
-                    <span class="ml-7">Bookings</span>
+                    <span class="ml-9">Bookings</span>
                 </a>
-                <a href="/trainer/profile" class="flex items-center w-full p-5 hover:bg-gray-200 hover:text-black">
-                    <span class="material-icons md-36" style="font-size: 20px;">
-                        person
+                <a href="/trainer/profile"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
+                    <span class="material-icons-outlined md-36" style="font-size: 25px;">
+                        settings
                     </span>
-                    <span class="ml-7">Profile</span>
+                    <span class="ml-9">Settings</span>
                 </a>
             </nav>
         </aside>
