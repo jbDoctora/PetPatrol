@@ -117,35 +117,35 @@
                 class="flex flex-col items-center w-full h-full bg-blue-800 text-white font-medium subpixel-antialiased border-r border-gray-300">
                 <a href="/trainer"
                     class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
-                    <span class="material-icons-outlined" style="font-size: 25px;"">
+                    <span class="material-icons" style="font-size: 25px;"">
                         donut_small
                     </span>
                     <span class=" ml-9">Dashboard</span>
                 </a>
                 <a href="/trainer/portfolio"
                     class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:text-white hover:px-12 transition transition-all">
-                    <span class="material-icons-outlined" style="font-size: 25px;">
+                    <span class="material-icons" style="font-size: 25px;">
                         contact_page
                     </span>
                     <span class="ml-9">Portfolio</span>
                 </a>
                 <a href="/trainer/service/add"
                     class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
-                    <span class="material-icons-outlined" style="font-size: 25px;">
+                    <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
                     </span>
                     <span class="ml-9">Service</span>
                 </a>
                 <a href="/trainer/bookings"
                     class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
-                    <span class="material-icons-outlined" style="font-size: 25px">
-                        bookmark_border
+                    <span class="material-icons" style="font-size: 25px">
+                        bookmark
                     </span>
                     <span class="ml-9">Bookings</span>
                 </a>
                 <a href="/trainer/profile"
                     class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
-                    <span class="material-icons-outlined md-36" style="font-size: 25px;">
+                    <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>
                     <span class="ml-9">Settings</span>
