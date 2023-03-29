@@ -44,6 +44,10 @@
         .dataTables_wrapper {
             border: none;
         }
+
+        table.dataTable thead th {
+            border-bottom: none;
+        }
     </style>
     <x-head.tinymce-config />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
@@ -58,8 +62,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
         type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </head>
 
 <body class=" flex min-h-screen flex-col">
@@ -69,7 +75,7 @@
         class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
-            <div class="flex h-36 flex-row items-center justify-center bg-blue-800 text-white border-r border-gray-300">
+            <div class="flex h-40 flex-row items-center justify-center bg-blue-700 text-white border-r border-gray-300">
 
                 <svg version="1.0" class="flex justify-between items-center" xmlns="http://www.w3.org/2000/svg"
                     width="44.000000pt" height="44.000000pt" viewBox="0 0 206.000000 196.000000"
@@ -108,43 +114,39 @@
                     </g>
                 </svg>
 
-                <span class="text-sm font-normal tracking-wide text-white text-center"
-                    style="font-family: 'Climate Crisis', cursive;">PET
+                <span class="text-xl font-bold tracking-wide text-white text-center"
+                    style="font-family: 'Jost', sans-serif;">PET
                     PATROL</span>
 
             </div>
             <nav
-                class="flex flex-col items-center w-full h-full bg-blue-800 text-white font-medium subpixel-antialiased border-r border-gray-300">
-                <a href="/trainer"
-                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
-                    <span class="material-icons" style="font-size: 25px;"">
+                class="flex flex-col items-center w-full h-full bg-blue-700 text-white font-medium subpixel-antialiased border-r border-gray-300">
+                <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
+                    <span class="material-icons" style="font-size: 25px;">
                         donut_small
                     </span>
                     <span class=" ml-9">Dashboard</span>
                 </a>
                 <a href="/trainer/portfolio"
-                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:text-white hover:px-12 transition transition-all">
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:text-white">
                     <span class="material-icons" style="font-size: 25px;">
                         contact_page
                     </span>
                     <span class="ml-9">Portfolio</span>
                 </a>
-                <a href="/trainer/service/add"
-                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
+                <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
                     <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
                     </span>
                     <span class="ml-9">Service</span>
                 </a>
-                <a href="/trainer/bookings"
-                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
+                <a href="/trainer/bookings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 ">
                     <span class="material-icons" style="font-size: 25px">
                         bookmark
                     </span>
                     <span class="ml-9">Bookings</span>
                 </a>
-                <a href="/trainer/profile"
-                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:px-12 transition transition-all">
+                <a href="/trainer/profile" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>
@@ -155,7 +157,7 @@
         <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
                 <div class="navbar bg-white text-black shadow-lg">
-                    <button class="bg-base-300 mr-4 rounded-lg border-0 py-3 px-4 hover:bg-yellow-300"
+                    <button class="mr-4 rounded-lg border-0 py-3 px-4"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -173,11 +175,10 @@
                     @auth
                     <div class="dropdown dropdown-end mx-2">
                         <div class="indicator">
-                            <span class="indicator-item badge border-0 bg-yellow-400 text-black font-bold">1</span>
-                            <button tabindex="0" class="hover:text-yellow-400"><span class="material-icons-outlined"
-                                    style="font-size: 27px;">
-                                    notifications
-                                </span></button>
+                            <span
+                                class="indicator-item badge border-0 bg-blue-700 text-white font-bold text-xs">1</span>
+                            <button tabindex="0" class="hover:text-blue-400"><i
+                                    class="fa-solid fa-bell fa-lg mr-1"></i></button>
                         </div>
                         <ul tabindex="0"
                             class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
@@ -186,10 +187,8 @@
                         </ul>
                     </div>
                     <div class="dropdown dropdown-end mx-2">
-                        <button tabindex="0" class="hover:text-yellow-400"><span class="material-icons-outlined"
-                                style="font-size: 27px;">
-                                help_outline
-                            </span></button>
+                        <button tabindex="0" class="hover:text-blue-400"><i
+                                class="fa-solid fa-circle-question fa-lg"></i></button>
                         <ul tabindex="0"
                             class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
                             <li><a href="">About us</a></li>

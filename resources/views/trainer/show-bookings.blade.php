@@ -1,34 +1,32 @@
 <x-trainer-layout>
-    <h2 class="text-blue-800 text-2xl font-bold p-2 m-2">Bookings</h2>
-    <div class="bg-white drop-shadow-lg p-3 m-3">
-        Filter area
-    </div>
+    <h2 class="text-blue-700 text-2xl font-bold p-2 m-2">Bookings</h2>
 
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="rounded-sm bg-white m-3 p-3">
-        <div class="mx-auto px-3 mt-5 min-w-full overflow-hidden rounded-none drop-shadow-lg">
-            <table class="table-auto w-full rounded-none text-base border border-neutral-700">
+        class="rounded-sm bg-white mx-9 p-3">
+        <div class="mx-auto px-3 mt-5 min-w-full overflow-hidden rounded-none">
+            <table class="table-auto w-full rounded-none text-base border border-slate-200 p-0">
                 <thead class="text-center">
                     <tr>
-                        <th class="border-b border-gray-200 py-2">id
+                        <th class="border-b-2 border-blue-700 py-2 text-sm font-semibold">Id
                         </th>
-                        <th class="border-b border-gray-200">
+                        <th class="border-b-2 border-blue-700 text-sm font-semibold">
                             Pet Name</th>
-                        <th class="border-b border-gray-200">
+                        <th class="border-b-2 border-blue-700 text-sm font-semibold">
                             Client Name</th>
-                        <th class="border-b border-gray-200">
+                        <th class="border-b-2 border-blue-700 text-sm font-semibold">
                             Status</th>
-                        <th class="border-b border-gray-200">
+                        <th class="border-b-2 border-blue-700 text-sm font-semibold">
                             Appointment Date</th>
-                        <th class="border-b border-gray-200">
+                        <th class="border-b-2 border-blue-700 text-sm font-semibold">
                             Actions</th>
                     </tr>
                 </thead>
-                <tbody class="text-left">
+                <tbody class="text-left text-sm">
                     @foreach ($request as $requests)
                     <tr>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm">{{$requests->book_id}}</td>
-                        <td class="whitespace-nowrap px-6 py-4">{{ $requests->pet_name}}</td>
+                        <td class="whitespace-nowrap px-6 py-6 text-sm">{{$requests->book_id}}</td>
+                        <td class="whitespace-nowrap px-6 py-4 text-blue-700 underline"><a href="#">{{
+                                $requests->pet_name}}</a></td>
                         <td class="whitespace-nowrap px-6 py-4">{{ $requests->client_name }}
                         </td>
                         <td class="whitespace-nowrap px-6 py-4">
@@ -54,8 +52,9 @@
                         <td class="whitespace-nowrap px-6 py-4 ">{{$requests->start_date}}</td>
                         <td class="whitespace-nowrap px-6 py-4 text-sm flex justify-center gap-3">
                             <a href="#"
-                                class="bg-yellow-400 px-3 py-2 rounded-sm text-black w-full text-center text-sm font-bold"
-                                x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability: '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id: '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment: '{{$requests->payment}}' }">Update</a>
+                                class="bg-blue-700 py-2 rounded-sm text-white w-full text-center text-xs font-bold hover:bg-blue-800"
+                                x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability: '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id: '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment: '{{$requests->payment}}' }"><i
+                                    class="fa-regular fa-pen-to-square fa-lg mr-3"></i>UPDATE</a>
                         </td>
                     </tr>
                 </tbody>
