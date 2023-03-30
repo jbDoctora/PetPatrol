@@ -6,7 +6,7 @@
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded text-sm">
                     <i class="fa-solid fa-plus fa-lg mr-2"></i>Add new training service</label>
             </div>
-            <table id="myTable" class="stripe nowrap hover border border-gray-300 text-sm">
+            <table class="w-full">
                 <thead>
                     <tr>
                         <th class="text-left border-b-2 border-blue-700">#</th>
@@ -22,7 +22,8 @@
                 <tbody>
                     @forelse ($training as $trainings)
                     <tr>
-                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->id}}</th>
+                        <th class="border-b border-gray-300 text-left text-xs divide-y bg-slate-500">{{$trainings->id}}
+                        </th>
                         <th class="border-b border-gray-300 text-left text-xs">{{$trainings->course}}</th>
                         <th class="border-b border-gray-300 text-left text-xs">{{$trainings->pet_type}}</th>
                         <th class="border-b border-gray-300 text-left text-xs">{{$trainings->availability}}</th>

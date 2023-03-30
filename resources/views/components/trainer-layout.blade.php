@@ -68,7 +68,7 @@
 
 </head>
 
-<body class=" flex min-h-screen flex-col">
+<body class="bg-slate-200 flex min-h-screen flex-col">
     <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
