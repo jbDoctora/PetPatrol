@@ -40,6 +40,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/icon.svg" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -47,12 +48,12 @@
 <body class="flex min-h-screen flex-col font-normal">
 
     <!-- NavBar -->
-    <div class="navbar bg-white text-black">
+    <div class="navbar bg-blue-700 text-black">
         <div class="flex-1 bg-fixed">
             <svg version="1.0" class="mx-3 font-bold" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
                 height="40.000000pt" viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">
 
-                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="#000"
+                <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="white" stroke="#000"
                     stroke-width="2">
                     <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
                                 -69 -3 -87 -26 -25 -32 -28 -111 -6 -153 23 -46 103 -109 166 -132 33 -12 59
@@ -84,12 +85,13 @@
                                 -7 -114 -13 -15 -36 -16 -253 -10 -132 4 -243 9 -246 12 -10 11 0 164 15 231
                                 20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
                 </g>
-            </svg><span class="text-xl font-normal tracking-wide" style="font-family: 'Climate Crisis', cursive;">PET
-                PATROL</span>
+            </svg>
+            <span class="text-2xl font-bold tracking-wide text-white text-center ml-3"
+                style="font-family: 'Jost', sans-serif;">PETPATROL</span>
         </div>
 
         <div class="navbar-start hidden px-5 lg:flex">
-            <ul class="menu menu-horizontal px-5 text-sm font-bold">
+            <ul class="menu menu-horizontal px-5 text-sm font-bold text-white">
                 <li class="px-5">About Us</li>
                 <li class="px-5">Need Help?</li>
                 <a href="/register-trainer">
@@ -128,12 +130,10 @@
             <p class="font-bold">Hi, {{ auth()->user()->name }}</p>
         </div>
         @else
-        <div class="flex gap-3">
-            <button
-                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
+        <div class="flex gap-2">
+            <button class="bg-yellow-400 px-4 py-3 text-black font-bold rounded text-sm hover:bg-yellow-500"><a
                     href="/login"><span class="normal-case">Sign in</span></a></button>
-            <button
-                class="tracking-wide rounded-md px-5 py-4 bg-white text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
+            <button class="px-4 py-3 text-white font-bold rounded text-sm hover:text-yellow-400"><a
                     href="/register-owner"><span class="normal-case">Sign
                         up</span></a></button>
         </div>

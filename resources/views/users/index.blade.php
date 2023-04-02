@@ -1,23 +1,22 @@
 <x-layout>
 
     <div class="hero min-h-screen">
-        <div class="hero-content m-3 flex-col lg:flex-row-reverse">
+        <div class="hero-content flex-col lg:flex-row-reverse">
             <img src="/images/test.png"
                 style="background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill; width: 600px; height:600px;" />
             {{-- <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_o1JRaPxx1E.json"
                 background="transparent" speed="1" style="width: 600px; height: 600px; margin-bottom: 5px;" loop
                 autoplay></lottie-player> --}}
             <div class="mr-8 ml-5 text-center">
-                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-5xl"><span class="text-black"
-                        style="font-family: 'Rampart One', cursive;">MAKE YOUR
+                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-6xl"><span class="text-black">MAKE YOUR
                         APPOINTMENT<span class="text-8xl text-black xl:text-6xl"><br>PAWESOME!</span></span></h1>
                 <p class="py-6 text-xl tracking-wide text-black xl:text-lg">Unlock Your Pet's Full Potential with Our
                     Expert
                     Training Services
                 </p>
-                <button
-                    class="tracking-wide rounded-md px-8 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400"><a
-                        href="/register-owner">Get Started<i class="fa-solid fa-paper-plane ml-3"></i></a></button>
+                <button class="bg-blue-700 px-4 py-3 text-white font-bold rounded text-sm hover:bg-blue-900"><a
+                        href="/register-owner">Get
+                        Started<i class="fa-solid fa-paper-plane ml-3"></i></a></button>
             </div>
         </div>
     </div>
