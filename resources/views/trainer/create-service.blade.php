@@ -1,56 +1,69 @@
 <x-trainer-layout>
     <div x-data="{ price: '' }">
-        <div class="mx-10 bg-white p-3">
-            <div class="flex justify-end m-3">
-                <label for="my-modal"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded text-sm">
-                    <i class="fa-solid fa-plus fa-lg mr-2"></i>Add new training service</label>
+        <div class="rounded-sm bg-white my-5 mx-9 shadow-lg h-screen rounded">
+            <div class="flex justify-between text-xl font-bold p-4 border-b border-slate-300">
+                <div>
+                    <h3>Service Manager</h3>
+                </div>
+                <div><label for="my-modal" class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs">Add
+                        training
+                        service</label>
+                </div>
             </div>
-            <table class="w-full">
-                <thead>
-                    <tr>
-                        <th class="text-left border-b-2 border-blue-700">#</th>
-                        <th class="text-left">Training service</th>
-                        <th class="text-left">Pet type</th>
-                        <th class="text-left">Availability</th>
-                        <th class="text-left">Weeks of training</th>
-                        <th class="text-left">Price</th>
-                        <th class="text-left">Status</th>
-                        <th><i class="fa-solid fa-gears fa-lg"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($training as $trainings)
-                    <tr>
-                        <th class="border-b border-gray-300 text-left text-xs divide-y bg-slate-500">{{$trainings->id}}
-                        </th>
-                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->course}}</th>
-                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->pet_type}}</th>
-                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->availability}}</th>
-                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->weeks}}</th>
-                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->price}}</th>
-                        <th class="border-b border-gray-300 text-left text-xs">{{$trainings->status}}</th>
-                        <th class="flex justify-center gap-1 border-b border-gray-300 text-left text-sm">
-                            <button
-                                class="px-3 bg-blue-100 py-2 rounded-sm text-blue-700 text-xs shadow-lg hover:bg-blue-500 hover:text-white tooltip"
-                                data-tip="view training plan"><a
-                                    href="/trainer/service/add-service/{{ $trainings->id }}"><i
-                                        class="fa-solid fa-eye mr-2"></i>View plan</a></button>
-                            <button
-                                class="px-3 bg-blue-100 py-2 rounded-sm text-blue-700 text-xs shadow-lg hover:bg-blue-500 hover:text-white"><i
-                                    class="fa-solid fa-pen-to-square mr-2"></i>Edit</button>
-                            <button
-                                class="px-3 bg-blue-100 py-2 rounded-sm text-blue-700 text-xs shadow-lg hover:bg-blue-500 hover:text-white"><i
-                                    class="fa-solid fa-trash mr-2"></i>Delete</button>
-                        </th>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="8" class="text-center py-4">No service created yet</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
+
+            <div class="mt-2 min-w-full overflow-hidden rounded-none">
+                <table class="w-full text-xs">
+                    <thead class="text-center bg-blue-100">
+                        <tr>
+                            <th class="py-3 text-xs font-semibold">Id</th>
+                            <th class="text-xs font-semibold">Training service</th>
+                            <th class="text-xs font-semibold">Pet type</th>
+                            <th class="text-xs font-semibold">Availability</th>
+                            <th class="text-xs font-semibold">Weeks of training</th>
+                            <th class="text-xs font-semibold">Price</th>
+                            <th class="text-xs font-semibold">Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-left text-xs">
+                        @forelse ($training as $trainings)
+                        <tr>
+                            <td class="whitespace-nowrap text-xs border-b border-slate-200 px-4 py-7">
+                                {{$trainings->id}}
+                            </td>
+                            <td class="whitespace-nowrap  border-b border-slate-200">
+                                {{$trainings->course}}</td>
+                            <td class="whitespace-nowrap  border-b border-slate-200">
+                                {{$trainings->pet_type}}</td>
+                            <td class="whitespace-nowrap  border-b border-slate-200">
+                                {{$trainings->availability}}</td>
+                            <td class="whitespace-nowrap  border-b border-slate-200">
+                                {{$trainings->weeks}}</td>
+                            <td class="whitespace-nowrap  border-b border-slate-200">
+                                {{$trainings->price}}</td>
+                            <td class="whitespace-nowrap  border-b border-slate-2000">
+                                {{$trainings->status}}</td>
+                            <td class="whitespace-nowrap border-b border-slate-200">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button class="bg-blue-700 text-white px-3 py-1 rounded"
+                                        data-tip="view training plan"><a
+                                            href="/trainer/service/add-service/{{ $trainings->id }}"><i
+                                                class="fa-solid fa-eye mr-2"></i>View plan</a></button>
+                                    <button class="bg-blue-700 text-white px-3 py-1 rounded"><i
+                                            class="fa-solid fa-pen-to-square mr-2"></i>Edit</button>
+                                    <button class="bg-blue-700 text-white px-3 py-1 rounded"><i
+                                            class="fa-solid fa-trash mr-2"></i>Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="8" class="text-center py-4">No service created yet</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         {{-- Modal that asks user input --}}

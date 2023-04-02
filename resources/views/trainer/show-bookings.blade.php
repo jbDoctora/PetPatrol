@@ -1,38 +1,48 @@
 <x-trainer-layout>
-
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="rounded-sm bg-white mt-5 mx-9 shadow-lg h-screen">
-        <div class="flex flex-row justify-between gap-1 text-xs py-3 px-4">
-            <div class="shrink border border-slate-300 bg-base-300"> <i
+        class="rounded-sm bg-white my-5 mx-9 shadow-lg h-screen rounded">
+        <h1 class="text-xl font-bold p-4 border-b border-slate-300">Booking Manager</h1>
+        <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
+            <div class="shrink border border-slate-300 bg-base-300 rounded"> <i
                     class="fa-solid fa-magnifying-glass ml-2"></i><input type="text" placeholder="Search"
                     class="px-6 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52">
             </div>
             <div>
-                <select class="border border-blue-100 h-full rounded-sm px-3 py-2 text-left w-64 sm:w-40" name="" id="">
+                <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded" name="" id="">
                     <option disabled selected>Status</option>
                     <option value="">Yes</option>
                     <option value="">No</option>
                 </select>
             </div>
             <div>
-                <select class="border border-slate-300 h-full rounded-sm px-3 py-2 text-left w-56" name="" id="">
+                <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="" id="">
                     <option disabled selected>Pet type</option>
                     <option value="">Yes</option>
                     <option value="">No</option>
                 </select>
             </div>
             <div>
-                <input type="date" class="border border-slate-300 h-full rounded-sm px-3 py-2 text-left w-56">
+                <input type="date" class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56">
             </div>
             <div>
-                <button class="bg-blue-700 px-10 py-3 text-white font-bold rounded-sm">
+                <button class="bg-blue-700 px-7 py-3 text-white font-bold rounded">
                     Search
                 </button>
             </div>
         </div>
-        <div class="mx-auto mt-5 min-w-full overflow-hidden rounded-none">
+
+        <div class="flex justify-between items-center">
+            <div class="p-3 text-xs"><span class="font-bold text-sm">{{ \App\Models\Booking::count() }}</span>
+                bookings found
+            </div>
+            <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
+                <i class="fa-solid fa-arrows-rotate fa-xl mr-2"></i>Refresh
+            </div>
+        </div>
+
+        <div class="mt-2 min-w-full overflow-hidden rounded-none">
             <table class="w-full text-xs">
-                <thead class="text-center bg-slate-200">
+                <thead class="text-center bg-blue-100">
                     <tr>
                         <th class="py-3 text-xs font-semibold">Id
                         </th>
@@ -43,22 +53,35 @@
                         <th class="text-xs font-semibold">
                             Status</th>
                         <th class="text-xs font-semibold">
+                            Payment Status
+                        </th>
+                        <th class="text-xs font-semibold">
                             Appointment Date</th>
                         <th class="text-xs font-semibold">
                             Actions</th>
                     </tr>
                 </thead>
                 <tbody class="text-left text-xs">
+                    @if(count($request) == 0)
+                    <tr>
+                        <td colspan="7">
+                            <lottie-player class="mx-auto"
+                                src="https://assets6.lottiefiles.com/private_files/lf30_e3pteeho.json"
+                                background="transparent" speed="0.5" style="width: 400px; height: 400px;" loop autoplay>
+                            </lottie-player>
+                        </td>
+                    </tr>
+                    @else
                     @foreach ($request as $requests)
                     <tr>
-                        <td class="whitespace-nowrap text-xs border-b border-slate-400 px-2 py-5">
+                        <td class="whitespace-nowrap text-xs border-b border-slate-200 px-2 py-7">
                             {{$requests->book_id}}
                         </td>
-                        <td class="whitespace-nowrap text-blue-700 underline border-b border-slate-400"><a href="#">{{
+                        <td class="whitespace-nowrap text-blue-700 underline border-b border-slate-200"><a href="#">{{
                                 $requests->pet_name}}</a></td>
-                        <td class="whitespace-nowrap  border-b border-slate-400">{{ $requests->client_name }}
+                        <td class="whitespace-nowrap  border-b border-slate-200">{{ $requests->client_name }}
                         </td>
-                        <td class="whitespace-nowrap border-b border-slate-400">
+                        <td class="whitespace-nowrap border-b border-slate-200">
                             @if ($requests->status == 'pending')
                             <span class="badge bg-yellow-300 text-yellow-800 text-xs">{{
                                 $requests->status }}</span>
@@ -70,6 +93,8 @@
                                 $requests->status }}</span>
                             @endif
 
+                        </td>
+                        <td class="whitespace-nowrap border-b border-slate-200">
                             @if ($requests->payment == 'unpaid')
                             <span class="badge bg-yellow-300 text-yellow-800 text-xs">{{
                                 $requests->payment }}</span>
@@ -78,15 +103,14 @@
                                 $requests->payment }}</span>
                             @endif
                         </td>
-                        <td class="whitespace-nowrap border-b border-slate-400">{{$requests->start_date}}
+                        <td class="whitespace-nowrap border-b border-slate-200">{{$requests->start_date}}
                         </td>
-                        <td class="whitespace-nowrap border-b border-slate-400">
-                            <div class="flex justify-center"><a href="#"><button class="bg-blue-700 px-8 py-2 rounded-sm text-white text-center text-xs font-bold
-                                    hover:bg-blue-800" x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
+                        <td class="whitespace-nowrap border-b border-slate-200">
+                            <div class="flex justify-center"><a href="#"><button
+                                        class="bg-blue-700 text-white px-3 py-1 rounded" x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
                                     '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
-                                    '{{$requests->payment}}' }"><i
-                                            class="fa-regular fa-pen-to-square fa-lg mr-3"></i>UPDATE</button></a>
+                                    '{{$requests->payment}}' }">Update</button></a>
                             </div>
                         </td>
                     </tr>
@@ -121,7 +145,12 @@
 
                                     <!-- Modal content -->
                                     <div class="text-left">
-                                        <h3 class="text-lg font-bold mb-4">Action</h3>
+                                        <div class="flex flex-row items-center justify-start gap-3">
+                                            <div><i class="fa-solid fa-wrench fa-lg"></i></div>
+                                            <div>
+                                                <h3 class="text-lg font-bold mb-4">Action</h3>
+                                            </div>
+                                        </div>
                                         {{-- <div
                                             class="grid grid-cols-2 gap-4 mb-4 bg-base-300 text-sm rounded-lg p-5">
                                             <div class="font-bold">Client name:</div>
@@ -177,9 +206,10 @@
                     </div>
                 </form>
                 @endforeach
+                @endif
             </table>
         </div>
 
-        {{-- @endforeach --}}
+
     </div>
 </x-trainer-layout>

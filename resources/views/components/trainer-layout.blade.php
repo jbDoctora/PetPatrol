@@ -73,7 +73,7 @@
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
         class="flex h-screen overflow-x-hidden">
-        <aside class="flex h-screen w-64 flex-shrink-0 flex-col border-r transition-all duration-300"
+        <aside class="flex h-screen w-64 flex-shrink-0 flex-col transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
             <div class="flex h-40 flex-row items-center justify-center bg-blue-700 text-white border-r border-gray-300">
 
@@ -114,13 +114,12 @@
                     </g>
                 </svg>
 
-                <span class="text-xl font-bold tracking-wide text-white text-center"
-                    style="font-family: 'Jost', sans-serif;">PET
-                    PATROL</span>
+                <span class="text-xl font-bold tracking-wide text-white text-center ml-3"
+                    style="font-family: 'Jost', sans-serif;">PETPATROL</span>
 
             </div>
             <nav
-                class="flex flex-col items-center w-full h-full bg-blue-700 text-white font-medium subpixel-antialiased border-r border-gray-300">
+                class="flex flex-col items-center w-full h-full bg-blue-700 text-white text-sm font-medium subpixel-antialiased border-r border-gray-300">
                 <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
                     <span class="material-icons" style="font-size: 25px;">
                         donut_small
