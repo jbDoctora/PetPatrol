@@ -107,7 +107,9 @@
                                 $requests->payment }}</span>
                             @endif
                         </td>
-                        <td class="whitespace-nowrap border-b border-slate-200">{{$requests->start_date}}
+                        <td class="whitespace-nowrap border-b border-slate-200" x-data="{ formattedDate: '' }"
+                            x-init="let date = new Date('{{ $requests->start_date }}'); formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })">
+                            <span x-text="formattedDate"></span>
                         </td>
                         <td class="whitespace-nowrap border-b border-slate-200">
                             <div class="flex justify-center"><a href="#"><button

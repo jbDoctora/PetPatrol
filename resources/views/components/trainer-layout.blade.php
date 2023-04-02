@@ -114,7 +114,7 @@
                     </g>
                 </svg>
 
-                <span class="text-xl font-bold tracking-wide text-white text-center ml-3"
+                <span class="text-xl font-black tracking-wide text-white text-center ml-3"
                     style="font-family: 'Jost', sans-serif;">PETPATROL</span>
 
             </div>
