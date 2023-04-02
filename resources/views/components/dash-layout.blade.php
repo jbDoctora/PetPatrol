@@ -42,7 +42,7 @@
         type="text/css" />
 </head>
 
-<body class="bg-base-300 flex min-h-screen flex-col">
+<body class="bg-slate-200 flex min-h-screen flex-col">
 
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"

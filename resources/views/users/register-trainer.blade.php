@@ -10,7 +10,7 @@
                 class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
                 <div class="max-w-xl lg:max-w-3xl">
 
-                    <h1 class="mt-6 text-2xl font-bold text-yellow-400 sm:text-3xl md:text-4xl">
+                    <h1 class="mt-6 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
                         Sign up
                     </h1>
 
@@ -151,7 +151,7 @@
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                             <button type="submit"
-                                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">
+                                class="bg-blue-700 px-4 py-3 text-white font-bold rounded text-sm hover:bg-blue-900">
                                 Create an account
                             </button>
 

@@ -14,7 +14,7 @@
                             height="68.000000pt" viewBox="0 0 206.000000 196.000000"
                             preserveAspectRatio="xMidYMid meet">
 
-                            <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#000000"
+                            <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#1d4fd8"
                                 stroke="#000" stroke-width="3">
                                 <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
                                         -69 -3 -87 -26 -25 -32 -28 -111 -6 -153 23 -46 103 -109 166 -132 33 -12 59
@@ -49,14 +49,14 @@
                         </svg>
                     </div>
 
-                    <h1 class="mt-6 text-2xl font-bold text-yellow-400 text-gray-900 sm:text-3xl md:text-4xl">
+                    <h1 class="mt-6 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
                         Sign in
                     </h1>
 
                     <form method="POST" action="/users/authenticate" class="mt-8 grid grid-cols-2 gap-6">
                         @csrf
                         <div class="col-span-6">
-                            <label for="email" class="mb-5 block text-sm font-bold text-gray-700">
+                            <label for="email" class="mb-5 block text-sm text-gray-700">
                                 Email
                             </label>
 
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="password" class="mb-5 block text-sm font-bold text-gray-700">
+                            <label for="password" class="mb-5 block text-sm text-gray-700">
                                 Password
                             </label>
 
@@ -81,7 +81,7 @@
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
                             <button type="submit" {{-- class="btn btn-primary" --}}
-                                class="transition-all duration-400 tracking-wide rounded-md px-7 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl">
+                                class="bg-blue-700 px-6 py-3 text-white font-bold rounded text-sm hover:bg-blue-900">
                                 Login
                             </button>
 

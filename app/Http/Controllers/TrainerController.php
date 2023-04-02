@@ -66,6 +66,11 @@ class TrainerController extends Controller
         return redirect()->back();
     }
 
+    public function showSettings()
+    {
+        return view('trainer.settings');
+    }
+
     public function updateProfile(Request $request, User $id)
     {
         $formFields = $request->validate([

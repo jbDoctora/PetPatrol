@@ -10,15 +10,19 @@
             <div>
                 <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded" name="" id="">
                     <option disabled selected>Status</option>
-                    <option value="">Yes</option>
-                    <option value="">No</option>
+                    <option value="">Pending</option>
+                    <option value="">Approved</option>
+                    <option value="">Declined</option>
+                    <option value="">Completed</option>
                 </select>
             </div>
             <div>
                 <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="" id="">
                     <option disabled selected>Pet type</option>
-                    <option value="">Yes</option>
-                    <option value="">No</option>
+                    <option value="">Dog</option>
+                    <option value="">Cat</option>
+                    <option value="">Parrot</option>
+                    <option value="">Hamster</option>
                 </select>
             </div>
             <div>

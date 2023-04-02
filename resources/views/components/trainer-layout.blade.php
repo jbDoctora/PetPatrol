@@ -126,13 +126,13 @@
                     </span>
                     <span class=" ml-9">Dashboard</span>
                 </a>
-                <a href="/trainer/portfolio"
+                {{-- <a href="/trainer/portfolio"
                     class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:text-white">
                     <span class="material-icons" style="font-size: 25px;">
                         contact_page
                     </span>
                     <span class="ml-9">Portfolio</span>
-                </a>
+                </a> --}}
                 <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
                     <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
@@ -145,7 +145,7 @@
                     </span>
                     <span class="ml-9">Bookings</span>
                 </a>
-                <a href="/trainer/profile" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
+                <a href="/settings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>

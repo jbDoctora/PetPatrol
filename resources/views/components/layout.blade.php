@@ -86,7 +86,7 @@
                                 20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
                 </g>
             </svg>
-            <span class="text-2xl font-bold tracking-wide text-white text-center ml-3"
+            <span class="text-2xl font-bold tracking-wide text-white text-center"
                 style="font-family: 'Jost', sans-serif;">PETPATROL</span>
         </div>
 
@@ -131,11 +131,11 @@
         </div>
         @else
         <div class="flex gap-2">
-            <button class="bg-yellow-400 px-4 py-3 text-black font-bold rounded text-sm hover:bg-yellow-500"><a
-                    href="/login"><span class="normal-case">Sign in</span></a></button>
-            <button class="px-4 py-3 text-white font-bold rounded text-sm hover:text-yellow-400"><a
+            <button class="px-4 py-3 text-white font-semibold rounded text-sm hover:text-yellow-400"><a
                     href="/register-owner"><span class="normal-case">Sign
                         up</span></a></button>
+            <button class="bg-yellow-400 px-4 py-3 text-black font-semibold rounded text-sm hover:bg-yellow-500"><a
+                    href="/login"><span class="normal-case">Sign in</span></a></button>
         </div>
         @endauth
     </div>

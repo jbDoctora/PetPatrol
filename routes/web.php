@@ -107,12 +107,13 @@ Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
 
 Route::get('/trainer/service/add', [TrainerController::class, 'showService'])->middleware('auth', 'isTrainer');
 
+Route::get('/settings', [TrainerController::class, 'showSettings'])->middleware('auth', 'isTrainer');
+
 Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
 
 Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create'])->middleware('auth', 'isTrainer');
 
 Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
-
 
 
 /******************************************************************* */
