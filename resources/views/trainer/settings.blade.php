@@ -23,13 +23,15 @@
             </a>
         </div>
         <div class="w-full p-5 rounded bg-white hover:bg-blue-200">
-            <div class="flex flex-row gap-5">
-                <div class="bg-base-300 px-3 py-2 rounded"><i class="fa-solid fa-wallet fa-lg"></i></div>
-                <div>
-                    <h3 class="font-semibold text-lg">Payment Settings</h3>
-                    <h4 class=text-sm>Edit your gcash qr code and number</h4>
+            <a href="/settings/payment">
+                <div class="flex flex-row gap-5">
+                    <div class="bg-base-300 px-3 py-2 rounded"><i class="fa-solid fa-wallet fa-lg"></i></div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Payment Settings</h3>
+                        <h4 class=text-sm>Edit your gcash qr code and number</h4>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </x-trainer-layout>

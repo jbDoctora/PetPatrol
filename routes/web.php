@@ -109,6 +109,8 @@ Route::get('/trainer/service/add', [TrainerController::class, 'showService'])->m
 
 Route::get('/settings', [TrainerController::class, 'showSettings'])->middleware('auth', 'isTrainer');
 
+Route::get('/settings/payment', [TrainerController::class, 'showPayment'])->middleware('auth', 'isTrainer');
+
 Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
 
 Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create'])->middleware('auth', 'isTrainer');

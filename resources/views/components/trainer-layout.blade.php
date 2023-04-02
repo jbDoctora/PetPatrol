@@ -119,8 +119,8 @@
 
             </div>
             <nav
-                class="flex flex-col items-center w-full h-full bg-blue-700 text-white text-sm font-medium subpixel-antialiased border-r border-gray-300">
-                <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
+                class="flex flex-col items-center w-full h-full bg-blue-700 text-sm font-medium subpixel-antialiased border-r border-gray-300">
+                <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons" style="font-size: 25px;">
                         donut_small
                     </span>
@@ -133,24 +133,45 @@
                     </span>
                     <span class="ml-9">Portfolio</span>
                 </a> --}}
-                <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
+                <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
                     </span>
                     <span class="ml-9">Service</span>
                 </a>
-                <a href="/trainer/bookings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 ">
+                <a href="/trainer/bookings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons" style="font-size: 25px">
                         bookmark
                     </span>
                     <span class="ml-9">Bookings</span>
                 </a>
-                <a href="/settings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900">
+                <a href="/settings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>
                     <span class="ml-9">Settings</span>
                 </a>
+
+                <a class="flex items-center w-full px-8 py-4 text-xs text-white"></a>
+                <div class="mx-1">
+                    <a class="flex items-center w-full px-24 py-6 text-xs text-white border-t-2 border-gray-400"></a>
+                </div>
+                <a class="flex items-center w-full px-8 py-3 text-xs text-white">More info</a>
+                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
+                        class="material-icons" style="font-size: 25px;">
+                        lightbulb
+                    </span>
+                    <span class="ml-9">About us</span></a>
+                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
+                        class="material-icons" style="font-size: 25px;">
+                        contact_support
+                    </span>
+                    <span class="ml-9">Need help?</span></a>
+                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
+                        class="material-icons" style="font-size: 25px;">
+                        fitness_center
+                    </span>
+                    <span class="ml-9 text-xs">Become a PetPatroller</span></a>
             </nav>
         </aside>
         <div class="flex-1 overflow-x-scroll">
@@ -185,7 +206,7 @@
                             <li><a href="">--upcoming features--</a></li>
                         </ul>
                     </div>
-                    <div class="dropdown dropdown-end mx-2">
+                    {{-- <div class="dropdown dropdown-end mx-2">
                         <button tabindex="0" class="hover:text-blue-400"><i
                                 class="fa-solid fa-circle-question fa-lg"></i></button>
                         <ul tabindex="0"
@@ -194,7 +215,7 @@
                             <li><a href="">Need Help?</a></li>
                             <li><a href="">Be a Pet Patroller</a></li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                     <div class="avatar dropdown dropdown-end text-black">
                         <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">

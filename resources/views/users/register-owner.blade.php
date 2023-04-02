@@ -2,7 +2,7 @@
     <section class="bg-inherit">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
-                <img alt="Pattern" src={{ asset('images/pet-owner.jpg') }}
+                <img alt="Pattern" src={{ asset('images/pet-trainer.jpg') }}
                     class="absolute inset-0 h-full w-full object-cover" />
             </aside>
 

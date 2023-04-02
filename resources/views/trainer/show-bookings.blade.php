@@ -1,7 +1,7 @@
 <x-trainer-layout>
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
         class="rounded-sm bg-white my-5 mx-9 shadow-lg h-screen rounded">
-        <h1 class="text-xl font-bold p-4 border-b border-slate-300">Booking Manager</h1>
+        <h1 class="text-xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
         <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
             <div class="shrink border border-slate-300 bg-base-300 rounded"> <i
                     class="fa-solid fa-magnifying-glass ml-2"></i><input type="text" placeholder="Search"

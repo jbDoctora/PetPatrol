@@ -71,6 +71,11 @@ class TrainerController extends Controller
         return view('trainer.settings');
     }
 
+    public function showPayment()
+    {
+        return view('trainer.settings-payment');
+    }
+
     public function updateProfile(Request $request, User $id)
     {
         $formFields = $request->validate([
