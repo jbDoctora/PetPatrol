@@ -86,12 +86,12 @@
                                 20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
                 </g>
             </svg>
-            <span class="text-2xl font-bold tracking-wide text-white text-center"
+            <span class="text-xl font-bold tracking-wide text-white text-center"
                 style="font-family: 'Jost', sans-serif;">PETPATROL</span>
         </div>
 
         <div class="navbar-start hidden px-5 lg:flex">
-            <ul class="menu menu-horizontal px-5 text-sm font-bold text-white">
+            <ul class="menu menu-horizontal px-5 text-xs font-bold text-white">
                 <li class="px-5">About Us</li>
                 <li class="px-5">Need Help?</li>
                 <a href="/register-trainer">
