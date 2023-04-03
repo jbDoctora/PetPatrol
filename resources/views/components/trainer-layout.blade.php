@@ -154,7 +154,8 @@
 
                 <a class="flex items-center w-full px-8 py-4 text-xs text-white"></a>
                 <div class="mx-1">
-                    <a class="flex items-center w-full px-24 py-6 text-xs text-white border-t-2 border-gray-400"></a>
+                    <a
+                        class="flex items-center w-full px-24 py-6 md:py-3 text-xs text-white border-t-2 border-gray-400"></a>
                 </div>
                 <a class="flex items-center w-full px-8 py-3 text-xs text-white">More info</a>
                 <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span

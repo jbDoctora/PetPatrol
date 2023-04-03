@@ -164,10 +164,44 @@
             @csrf
             <input type="checkbox" id="my-modal-{{ $match->user_id }}" class="modal-toggle h-fit" />
             <div class="modal">
-                <div class="modal-box w-5/6">
-                    <h3 class="font-bold text-2xl tracking-wide p-2 text-center bg-yellow-400 text-white rounded-t-lg">
-                        Confirm Booking</h3>
-                    <div class="flex flex-col p-4">
+                <div class="modal-box w-11/12 max-w-5xl">
+                    <h3 class="font-bold text-sm tracking-wide p-2 text-left bg-blue-200 text-black rounded">
+                        Summary</h3>
+                    <div class="flex flex-col text-sm gap-2 m-3">
+                        <div>Pet name: {{$match->pet_name}}</div>
+                        <div>Client name: {{auth()->user()->name}}</div>
+                        <div class=""> <label>Preferred start
+                                date:</label> <input type="date" name="start_date"
+                                class="border border-gray-300 rounded py-1 px-5" />
+                        </div>
+                    </div>
+                    <div>
+                        <table class="w-full text-sm px-40">
+                            <thead class="bg-blue-100">
+                                <tr>
+                                    <th class="mx-6">Trainer name</th>
+                                    <th class="px-6">Course package</th>
+                                    <th class="px-6">Availability</th>
+                                    <th class="px-6">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="px-6">{{$match->trainer_name}}</td>
+                                    <td class="px-6">{{$match->course}}</td>
+                                    <td class="px-6">{{$match->availability}}</td>
+                                    <td class="px-6">{{$match->price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex flex-col justify-center p-5">
+                        <div class="flex flex-row justify-end">
+                            <div>Total Price:</div>
+                            <div class="ml-3">{{$match->price}}</div>
+                        </div>
+                    </div>
+                    {{-- <div class="flex flex-col p-4">
                         <div class="bg-base-200 rounded-xl p-3 mb-4">
                             <p class="text-lg font-bold mb-2">Service Package:</p>
                             <p class="text-sm">{{ $match->course }}</p>
@@ -195,22 +229,32 @@
                         <div class="flex flex-row"> <label class="cursor-pointer label"> <input type="checkbox"
                                     class="checkbox checkbox-warning" x-model="checked" /> <span
                                     class="label-text ml-5">I agree to the cancellation policy</span> </label> </div>
+                    </div> --}}
+                    <div class="flex flex-row pt-8 text-sm justify-end ">
+                        <label class="cursor-pointer label whitespace-nowrap">
+                            <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" /> I agree to
+                            the
+                            <span class="text-blue-600">Terms and Conditions</span>and <span class="text-blue-600">
+                                Cancellation Policy </span>
+                        </label>
                     </div>
-                    <div class="modal-action flex justify-center bg-gray-100 rounded-b-lg p-4"> <label
-                            for="my-modal-{{ $match->user_id }}"
-                            class="tracking-wide rounded-md px-5 py-4 hover:rounded-3xl border border-black text-sm text-black font-bold transition-all duration-400">Cancel</label>
+                    <div class="modal-action flex justify-end p-4"> <label for="my-modal-{{ $match->user_id }}"
+                            class="tracking-wide rounded-md px-5 py-2  border border-black text-sm text-black font-bold">Cancel</label>
                         <button type="submit" :disabled="!checked" :class="{'bg-gray-400': !checked}"
-                            class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Confirm</button>
-                    </div> <input type="hidden" name="pet_id" value="{{ $match->pet_id }}"> <input type="hidden"
-                        name="client_id" value="{{ auth()->id() }}"> <input type="hidden" name="trainer_id"
-                        value="{{ $match->user_id }}"> <input type="hidden" name="status" value="pending"> <input
-                        type="hidden" name="payment" value="unpaid"> <input type="hidden" name="service_id"
-                        value="{{$match->service_id}}" /> <input type="hidden" name="request_id"
-                        value="{{$request_id}}" /> <input type="hidden" name="client_name"
-                        value="{{auth()->user()->name}}" /> <input type="hidden" name="trainer_name"
-                        value="{{$match->trainer_name}}" />
+                            class="tracking-wide rounded-md px-6 py-2 bg-blue-700 text-white text-sm font-normal border border-black">Set</button>
+                    </div>
+                    <input type="hidden" name="pet_id" value="{{ $match->pet_id }}">
+                    <input type="hidden" name="client_id" value="{{ auth()->id() }}">
+                    <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
+                    <input type="hidden" name="status" value="pending">
+                    <input type="hidden" name="payment" value="unpaid">
+                    <input type="hidden" name="service_id" value="{{$match->service_id}}" />
+                    <input type="hidden" name="request_id" value="{{$request_id}}" />
+                    <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
+                    <input type="hidden" name="trainer_name" value="{{$match->trainer_name}}" />
                 </div>
             </div>
-        </form> @endforeach
+        </form>
+        @endforeach
     </div>
 </x-dash-layout>

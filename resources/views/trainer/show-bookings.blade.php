@@ -187,7 +187,7 @@
                                                 class="border border-slate-300"></textarea>
                                         </div>
 
-                                        <div class="flex items-center">
+                                        {{-- <div class="flex items-center">
                                             <div class="tooltip tooltip-right"
                                                 data-tip="You can't revert your decision once marked as paid">
                                                 <input type="checkbox" name="payment" value="paid" class="mr-3"
@@ -198,6 +198,14 @@
                                                 x-text="showModal.payment === 'paid' ? 'Marked as paid' : 'Mark as paid'">
                                                 Mark as paid
                                             </p>
+                                        </div> --}}
+                                        <div>
+                                            <h3>Payment status</h3>
+                                            <select name="payment"
+                                                class="border border-slate-300 w-full px-3 py-2 text-left w-64 sm:w-40 rounded">
+                                                <option value="unpaid">unpaid</option>
+                                                <option value="paid">paid</option>
+                                            </select>
                                         </div>
 
                                         <div class=" flex justify-end">
