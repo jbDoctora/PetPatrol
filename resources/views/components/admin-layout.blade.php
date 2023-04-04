@@ -70,11 +70,8 @@
 
 <body class="bg-slate-200 flex min-h-screen flex-col">
     <!-- NavBar -->
-    <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
-        x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
-        class="flex h-screen overflow-x-hidden">
-        <aside class="flex h-screen w-64 flex-shrink-0 flex-col transition-all duration-300"
-            :class="{ '-ml-64': !sidebarOpen }">
+    <div x-data="" class="flex h-screen overflow-x-hidden">
+        <aside class="flex h-screen w-64 flex-shrink-0 flex-col transition-all duration-300">
             <div class="flex h-28 flex-row items-center justify-center bg-blue-700 text-white border-r border-gray-300">
 
                 <svg version="1.0" class="flex justify-between items-center" xmlns="http://www.w3.org/2000/svg"
@@ -213,16 +210,7 @@
                             <li><a href="">--upcoming features--</a></li>
                         </ul>
                     </div>
-                    {{-- <div class="dropdown dropdown-end mx-2">
-                        <button tabindex="0" class="hover:text-blue-400"><i
-                                class="fa-solid fa-circle-question fa-lg"></i></button>
-                        <ul tabindex="0"
-                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
-                            <li><a href="">About us</a></li>
-                            <li><a href="">Need Help?</a></li>
-                            <li><a href="">Be a Pet Patroller</a></li>
-                        </ul>
-                    </div> --}}
+
 
                     <div class="avatar dropdown dropdown-end text-black">
                         <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">

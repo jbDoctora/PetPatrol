@@ -36,7 +36,8 @@
         </div>
 
         <div class="flex justify-between items-center">
-            <div class="p-3 text-xs"><span class="font-bold text-sm">{{ \App\Models\Booking::count() }}</span>
+            <div class="p-3 text-xs"><span class="font-bold text-sm">{{ \App\Models\Booking::where('trainer_id',
+                    auth()->user()->id)->count() }}</span>
                 bookings found
             </div>
             <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
