@@ -12,7 +12,7 @@
                 </button>
             </div>
         </div>
-        <div class="flex justify-start p-5 gap-4 text-xs">
+        <div class="flex justify-start p-5 gap-4 text-xs mx-8">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
                 <i class="fa-solid fa-magnifying-glass ml-2"></i>
                 <input type="text" placeholder="Search"
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-span-2 bg-gray-200 p-4 rounded-md">
                         <i class="fa-solid fa-scale-balanced fa-md text-gray-500"></i>
-                        <span class="ml-2 text-gray-500">{{ $petinfos->weight }}</span>
+                        <span class="ml-2 text-gray-500">{{ $petinfos->weight }} kgs.</span>
                     </div>
                     <div class="col-span-2 bg-gray-200 p-3 rounded-md">
                         <i class="fa-solid fa-syringe fa-md text-gray-500"></i>

@@ -37,7 +37,7 @@
         </div>
 
         <div class="flex justify-between items-center">
-            <div class="p-3 text-xs"><span class="font-bold text-sm">{{ \App\Models\Booking::where('trainer_id',
+            <div class="py-3 px-4 text-xs"><span class="font-bold text-sm">{{ \App\Models\Booking::where('trainer_id',
                     auth()->user()->id)->count() }}</span>
                 bookings found
             </div>

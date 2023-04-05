@@ -1,18 +1,19 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Foundation\Auth\User;
-use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PetInfoController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TrainerController;
 use Symfony\Component\Routing\RequestContext;
 use App\Http\Controllers\RequestTrainerController;
-use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TrainingDetailsController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 //use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -27,8 +28,10 @@ use App\Http\Controllers\TrainingDetailsController;
 |
 */
 
-// ALL USERS
+// ADMIN
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth', 'isAdmin');
 
+// ALL USERS
 
 Route::get('/register-owner', [UserController::class, 'create'])->middleware('guest');
 
@@ -120,6 +123,11 @@ Route::post('/trainer/service/add-service/addService', [ServiceController::class
 
 /******************************************************************* */
 
+
 // DEFAULT
 Route::get('/', [UserController::class, 'index']);
+
+Route::get('/unauthorized', function () {
+    return view('unauthorized');
+})->name('unauthorized');
 /******************************************************************* */

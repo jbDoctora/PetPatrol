@@ -72,13 +72,14 @@
     <!-- NavBar -->
     <div x-data="" class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col transition-all duration-300">
-            <div class="flex h-28 flex-row items-center justify-center bg-blue-700 text-white border-r border-gray-300">
+            <div class="flex h-28 flex-row items-center justify-center bg-white text-white border-r border-gray-300">
 
                 <svg version="1.0" class="flex justify-between items-center" xmlns="http://www.w3.org/2000/svg"
                     width="44.000000pt" height="44.000000pt" viewBox="0 0 206.000000 196.000000"
                     preserveAspectRatio="xMidYMid meet">
 
-                    <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
+                    <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)" fill="#000000"
+                        stroke="none">
                         <path d="M482 1797 c-25 -8 -39 -21 -53 -53 -23 -48 -36 -54 -131 -54 -60 0
                                 -69 -3 -87 -26 -25 -32 -28 -111 -6 -153 23 -46 103 -109 166 -132 33 -12 59
                                 -27 59 -33 0 -6 -14 -58 -31 -116 -27 -93 -31 -120 -32 -240 0 -99 4 -151 16
@@ -111,77 +112,53 @@
                     </g>
                 </svg>
 
-                <span class="text-xl font-black tracking-wide text-white text-center ml-3"
-                    style="font-family: 'Jost', sans-serif;">PETPATROL</span>
+                <div class="flex flex-col">
+                    <div class="text-xl font-black tracking-wide text-black text-center ml-3"
+                        style="font-family: 'Jost', sans-serif;">PETPATROL
+                    </div>
+                    <div class="text-xs text-black ml-3">Admin</div>
+                </div>
 
             </div>
             <nav
-                class="flex flex-col items-center w-full h-full bg-blue-700 text-sm font-medium subpixel-antialiased border-r border-gray-300">
-                <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                class="flex flex-col items-center w-full h-full bg-white text-sm font-medium subpixel-antialiased border-r border-gray-300 ">
+                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white ">
                     <span class="material-icons" style="font-size: 25px;">
                         donut_small
                     </span>
                     <span class=" ml-9">Dashboard</span>
                 </a>
-                {{-- <a href="/trainer/portfolio"
-                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:text-white">
-                    <span class="material-icons" style="font-size: 25px;">
-                        contact_page
-                    </span>
-                    <span class="ml-9">Portfolio</span>
-                </a> --}}
-                <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+
+                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
                     </span>
                     <span class="ml-9">Service</span>
                 </a>
-                <a href="/trainer/bookings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons" style="font-size: 25px">
                         bookmark
                     </span>
                     <span class="ml-9">Bookings</span>
                 </a>
-                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         assessment
                     </span>
                     <span class="ml-9">Report</span>
                 </a>
-                <a href="/settings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>
                     <span class="ml-9">Settings</span>
                 </a>
-
-                <a class="flex items-center w-full px-8 py-4 text-xs text-white"></a>
-                <div class="mx-1">
-                    <a
-                        class="flex items-center w-full px-24 py-6 md:py-3 text-xs text-white border-t-2 border-gray-400"></a>
-                </div>
-                <a class="flex items-center w-full px-8 py-3 text-xs text-yellow-400">More info</a>
-                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
-                        class="material-icons" style="font-size: 25px;">
-                        lightbulb
-                    </span>
-                    <span class="ml-9">About us</span></a>
-                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
-                        class="material-icons" style="font-size: 25px;">
-                        contact_support
-                    </span>
-                    <span class="ml-9">Need help?</span></a>
-                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
-                        class="material-icons" style="font-size: 25px;">
-                        fitness_center
-                    </span>
-                    <span class="ml-9">Become a trainer</span></a>
             </nav>
         </aside>
         <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
                 <div class="navbar bg-white text-black shadow-lg">
-                    <button class="mr-4 rounded-lg border-0 py-3 px-4"
+                    {{-- <button class="mr-4 rounded-lg border-0 py-3 px-4"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -191,7 +168,7 @@
                             <path x-show="sidebarOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </button>
+                    </button> --}}
                     <div class="flex-1 bg-fixed">
                         {{-- EMPTY --}}
                     </div>
