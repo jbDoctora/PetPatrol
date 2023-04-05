@@ -115,11 +115,11 @@
                 </svg>
 
                 <div class="flex flex-col">
-                    <div class="text-xl font-black tracking-wide text-black text-center ml-3"
+                    <div class="text-xl font-black tracking-wide text-white text-center ml-3"
                         style="font-family: 'Jost', sans-serif;">
                         PETPATROL
                     </div>
-                    <div class="text-xs text-black ml-3">Trainer</div>
+                    <div class="text-xs text-white ml-3">Trainer</div>
                 </div>
 
             </div>

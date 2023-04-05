@@ -100,11 +100,17 @@
 
             <main>
                 <div class="mx-auto" style="width: 600px; height: 600px;">
-                    <img src="images/unauthorized.png" alt="" class="block mx-auto">
+                    <img src="images/notfound.png" alt="" class="block mx-auto">
                 </div>
                 <div>
-                    <p class="text-center font-bold text-2xl">Oops! I believe you are accessing a page that you are not
-                        authorized to view.</p>
+                    <h1 class="text-4xl font-bold mb-4 text-center">Oops! We can't find the page you're looking for.
+                    </h1>
+                    <p class="text-lg mb-8 text-center">The page you requested may have been moved, deleted, or it never
+                        existed in
+                        the first place.</p>
+                    <p class="text-lg text-center">Please check the URL and try again, or go back to the <a href="/"
+                            class="link text-blue-700">homepage</a>.
+                    </p>
                 </div>
             </main>
         </div>
