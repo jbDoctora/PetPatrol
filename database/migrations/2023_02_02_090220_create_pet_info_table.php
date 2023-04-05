@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('pet_name');
             $table->string('years');
             $table->string('months');
-            $table->string('breed');
+            $table->string('breed')->default('none');
             $table->string('weight');
             $table->longText('info');
             $table->string('vaccine');
