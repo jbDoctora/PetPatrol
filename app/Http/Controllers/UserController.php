@@ -33,6 +33,20 @@ class UserController extends Controller
         return view('users.index');
     }
 
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $data = $request->only(['name', 'sex', 'address', 'phone_number', 'email', 'profile_photo']);
+
+        if ($request->hasFile('profile_photo')) {
+            $data['profile_photo'] = $request->file('profile_photo')->store('public/image');
+        }
+
+        $user->update($data);
+
+        return redirect()->back()->with('message', 'User updated successfully.');
+    }
+
     public function store(Request $request)
     {
         $formFields = $request->validate([

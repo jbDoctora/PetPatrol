@@ -91,7 +91,7 @@
         </div>
 
         <div class="navbar-start hidden px-5 lg:flex">
-            <ul class="menu menu-horizontal px-5 text-xs font-bold text-white">
+            <ul class="menu menu-horizontal px-5 text-xs font-medium text-white">
                 <li class="px-5">About Us</li>
                 <li class="px-5">Need Help?</li>
                 <a href="/register-trainer">
@@ -103,8 +103,8 @@
         @auth
         <div class="dropdown dropdown-end">
             <div class="indicator">
-                <span class="indicator-item badge bg-yellow-400 outline-0 text-black font-bold">99+</span>
-                <button tabindex="0" class="fa-solid fa-bell fa-xl m-4"></button>
+                <span class="indicator-item badge bg-yellow-400 outline-0 text-black font-bold mr-2">99+</span>
+                <button tabindex="0" class="fa-solid fa-bell fa-lg my-4 mr-5 text-white hover:text-yellow-400"></button>
             </div>
             <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
                 <li><a href="">--upcoming features--</a></li>
@@ -113,8 +113,9 @@
         </div>
 
         <div class="avatar dropdown dropdown-end">
-            <div tabindex="0" class="mr-4 ml-8 h-9 w-9 rounded-full ring-2 ring-yellow-400 ring-offset-2">
-                <img src="/images/avatar/Avatar-9.png" />
+            <div tabindex="0" class="avatar mx-4 h-9 w-9 rounded-full bg-white">
+                <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+                    class="bg-base-300">
             </div>
             <ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-base-200 p-2 shadow">
                 <li><a>Profile</a></li>
@@ -127,7 +128,7 @@
             </ul>
         </div>
         <div class="mr-3">
-            <p class="font-bold">Hi, {{ auth()->user()->name }}</p>
+            <p class="font-medium text-white text-xs">Hi, {{ auth()->user()->name }}</p>
         </div>
         @else
         <div class="flex gap-2">

@@ -18,45 +18,7 @@ class OwnerController extends Controller
         return view('owner.dashboard');
     }
 
-    // public function show($request_id)
-    // {
-    //     $request = RequestTrainer::where('request_id', $request_id)->get();
 
-    //     foreach ($request as $req) {
-    //         $request_id = $req->request_id;
-    //         $course = $req->course;
-    //         $availability = $req->sessions;
-    //         $type = $req->pet_type;
-
-    //         $matched_services = DB::table('request')
-    //             ->join('service', function ($join) use ($course, $availability, $type) {
-    //                 $join->on('request.course', '=', 'service.course')
-    //                     ->on('request.sessions', '=', 'service.availability')
-    //                     ->on('request.pet_type', '=', 'service.pet_type')
-    //                     ->where('request.course', $course)
-    //                     ->where('request.sessions', $availability)
-    //                     ->where('request.pet_type', $type)
-    //                     ->where('service.status', 'active');
-    //             })
-    //             ->join('users', function ($join) {
-    //                 $join->on('service.user_id', '=', 'users.id')
-    //                     ->where('users.role', 1);
-    //             })
-    //             ->join('pet_info', 'request.pet_name', '=', 'pet_info.pet_name')
-    //             ->select('service.id as service_id', 'users.id as user_id', 'users.name as user_name', 'users.*', 'service.*', 'pet_info.pet_name', 'pet_info.pet_id', 'request.request_id')
-    //             ->where('request.user_id', auth()->id())
-    //             ->where('pet_info.book_status', 'requested')
-    //             ->get();
-
-
-    //         dd($matched_services);
-    //         return view('owner.show-matched', [
-    //             'matchedservices' => $matched_services,
-    //             'request' => $request,
-    //             'request_id' => $request_id
-    //         ]);
-    //     }
-    // }
     public function show($request_id)
     {
         $request = RequestTrainer::where('request_id', $request_id)->first();

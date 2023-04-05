@@ -47,6 +47,9 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/profile', [UserController::class, 'edit'])->middleware('auth');
 
+//update profile
+Route::put('/profile/{id}', [UserController::class, 'update']);
+
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
@@ -89,6 +92,7 @@ Route::post('/show-matched/book', [BookingController::class, 'store']);
 Route::get('/bookings', [BookingController::class, "show"])->middleware('auth', 'verified', 'isOwner');
 
 Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining'])->middleware('auth', 'verified', 'isOwner');
+
 
 /******************************************************************* */
 //TRAINER
