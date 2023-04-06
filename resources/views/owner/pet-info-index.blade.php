@@ -1,8 +1,7 @@
 <x-dash-layout>
     <div class="bg-white rounded m-5 h-full">
-        <div
-            class="flex items-center justify-between text-xl font-extrabold p-4 border-b border-slate-300 text-blue-700">
-            <h3>Request Manager</h3>
+        <div class="flex items-center justify-between text-xl font-medium p-4 border-b border-slate-300 text-blue-700">
+            <h3>Pet Profile</h3>
             <div>
                 <button
                     class="bg-blue-700 px-4 py-3 text-white font-bold rounded hover:bg-blue-800 transition-all text-xs">

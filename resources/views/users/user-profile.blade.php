@@ -5,7 +5,7 @@
         @csrf
         @method('PUT')
         <h3 class="text-blue-700 text-xl">Profile Manager</h3>
-        <div class="text-xs breadcrumbs">
+        <div class="text-xs breadcrumbs mt-2">
             <ul>
                 <li class="text-blue-700 font-bold"><i class="fa-solid fa-pen-to-square mr-2"></i><a
                         href="/profile">Edit

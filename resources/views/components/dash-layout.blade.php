@@ -154,10 +154,10 @@
                                 <div class="ml-10 flex items-baseline space-x-4">
                                     <a href="/owner"
                                         class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
-                                    <a href="/request"
-                                        class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Request</a>
                                     <a href="/bookings"
                                         class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Bookings</a>
+                                    <a href="/request"
+                                        class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Request</a>
                                     <a href="/pet-info"
                                         class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Pet
                                         Profile</a>

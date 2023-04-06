@@ -25,8 +25,40 @@ class RequestTrainerController extends Controller
             ->where('request_status', 'active')
             ->get();
 
+        $request = RequestTrainer::find($requestinfo->first()->request_id);
+
+        $course = $request->course;
+        $availability = $request->sessions;
+        $type = $request->pet_type;
+
+        $matched_services = DB::table('request')
+            ->join('service', function ($join) use ($course, $availability, $type) {
+                $join->on('request.course', '=', 'service.course')
+                    ->on('request.sessions', '=', 'service.availability')
+                    ->on('request.pet_type', '=', 'service.pet_type')
+                    ->where('request.course', $course)
+                    ->where('request.sessions', $availability)
+                    ->where('request.pet_type', $type)
+                    ->where('request.user_id', auth()->id())
+                    ->where('service.status', 'active');
+            })
+            ->join('users', function ($join) {
+                $join->on('service.user_id', '=', 'users.id')
+                    ->where('users.role', 1);
+            })
+            ->join(
+                'pet_info',
+                'request.pet_name',
+                '=',
+                'pet_info.pet_name'
+            )
+            ->select('users.id as user_id', 'users.email', 'users.address', 'users.name as trainer_name', 'service.id as service_id', 'service.*', 'pet_info.pet_name', 'pet_info.pet_id', 'request.request_id')
+            ->where('request.request_id', $request->request_id)
+            ->where('pet_info.book_status', 'requested')
+            ->get();
+
         return view('owner.request', [
-            'requestinfo' => $requestinfo,
+            'requestinfo' => $requestinfo, 'matchedservices' => $matched_services
         ]);
     }
 
