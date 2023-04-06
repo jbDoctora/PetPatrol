@@ -126,33 +126,45 @@
                     <span class="material-icons" style="font-size: 25px;">
                         donut_small
                     </span>
-                    <span class=" ml-9">Dashboard</span>
+                    <span class=" ml-9">Test</span>
                 </a>
 
                 <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
                     </span>
-                    <span class="ml-9">Service</span>
+                    <span class="ml-9">Test</span>
                 </a>
                 <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons" style="font-size: 25px">
                         bookmark
                     </span>
-                    <span class="ml-9">Bookings</span>
+                    <span class="ml-9">Test</span>
                 </a>
                 <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         assessment
                     </span>
-                    <span class="ml-9">Report</span>
+                    <span class="ml-9">Test</span>
                 </a>
                 <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>
-                    <span class="ml-9">Settings</span>
+                    <span class="ml-9">Test</span>
                 </a>
+
+                <form method="POST" action="/logout"
+                    class="flex items-center w-full px-8 py-3 my-5 hover:bg-blue-400 hover:text-white text-black mt-auto">
+                    @csrf
+                    <button class="flex items-center">
+                        <span class="material-icons md-36" style="font-size: 25px;">
+                            logout
+                        </span>
+                        <span class="ml-4">Logout</span>
+                    </button>
+                </form>
+
             </nav>
         </aside>
         <div class="flex-1 overflow-x-scroll">
@@ -174,28 +186,15 @@
                     </div>
 
                     @auth
-                    <div class="dropdown dropdown-end mx-2">
-                        <div class="indicator">
-                            <span
-                                class="indicator-item badge border-0 bg-blue-700 text-white font-bold text-xs">1</span>
-                            <button tabindex="0" class="hover:text-blue-400"><i
-                                    class="fa-solid fa-bell fa-lg mr-1"></i></button>
-                        </div>
-                        <ul tabindex="0"
-                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
-                            <li><a href="">--upcoming features--</a></li>
-                            <li><a href="">--upcoming features--</a></li>
-                        </ul>
-                    </div>
-
 
                     <div class="avatar dropdown dropdown-end text-black">
+
                         <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
                             <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
                                 class="bg-base-300">
-                            {{-- <img src="/images/placeholder.png" /> --}}
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+
+                        {{-- <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
                             <li><a>Profile</a></li>
                             <li>
                                 <form method="POST" action="/logout">
@@ -203,7 +202,7 @@
                                     <button type="submit">Logout</button>
                                 </form>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="mr-3">
                         {{-- <p class="text-xs font-bold">Hi, {{ auth()->user()->name }}</p> --}}

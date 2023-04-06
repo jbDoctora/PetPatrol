@@ -188,7 +188,7 @@
         </aside>
         <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
-                <div class="navbar bg-white text-black shadow-lg">
+                <div class="navbar bg-white text-black shadow-lg pr-12">
                     <button class="mr-4 rounded-lg border-0 py-3 px-4"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">

@@ -1,6 +1,6 @@
 <x-trainer-layout>
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="rounded-sm bg-white my-5 mx-9 shadow-lg h-screen rounded">
+        class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
         <h1 class="text-xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
         <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
@@ -36,13 +36,13 @@
             </div>
         </div>
 
-        <div class="flex justify-between items-center">
-            <div class="py-3 px-4 text-xs"><span class="font-bold text-sm">{{ \App\Models\Booking::where('trainer_id',
+        <div class="flex justify-between items-center border-b border-slate-300">
+            <div class="py-3 px-4 text-sm"><span class="font-bold text-sm">{{ \App\Models\Booking::where('trainer_id',
                     auth()->user()->id)->count() }}</span>
                 bookings found
             </div>
             <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
-                <i class="fa-solid fa-arrows-rotate fa-xl mr-2"></i>Refresh
+                <i class="fa-solid fa-arrows-rotate fa-xl mr-2"></i><span class="text-sm">Refresh</span>
             </div>
         </div>
 

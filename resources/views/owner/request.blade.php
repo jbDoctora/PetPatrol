@@ -1,6 +1,6 @@
 <x-dash-layout>
 
-    <div class="bg-white rounded m-5 h-full">
+    <div class="bg-white rounded m-5 h-screen">
         <div class="flex items-center justify-between text-xl font-medium p-4 border-b border-slate-300 text-blue-700">
             <h3>Request Manager</h3>
             <div>
@@ -12,8 +12,8 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-between text-xl font-medium p-4 border-b border-slate-300 text-blue-700">
-            <div class="grid grid-cols-1 gap-6 rounded px-3 md:grid-cols-2 lg:grid-cols-3">
+        <div class="flex items-center justify-between text-xl font-medium p-4 text-blue-700">
+            <div class="grid grid-cols-1 gap-3 rounded px-3 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($requestinfo as $info)
                 <div class="m-5 overflow-hidden rounded-lg border border-slate-400 shadow-lg text-xs w-96">
                     <div class="p-6">
@@ -47,7 +47,7 @@
                             <div class="flex flex-row justify-between">
                                 <p class="text-center text-xs font-bold text-red-500">No Active Match</p>
                                 <div class="tooltip tooltip-left" data-tip="No active trainer matched, come back later">
-                                    <i class="fa-solid fa-circle-info fa-xl"></i>
+                                    <i class="fa-solid fa-circle-info" style="font-size: 1.25rem;"></i>
                                 </div>
                             </div>
                             @endif

@@ -48,7 +48,7 @@
 <body class="flex min-h-screen flex-col font-normal">
 
     <!-- NavBar -->
-    <div class="navbar bg-blue-700 text-black fixed top-0 w-full z-50">
+    <div class="navbar bg-blue-700 text-black fixed top-0 w-full z-50 px-12">
         <div class="flex-1 bg-fixed">
             <svg version="1.0" class="mx-3 font-bold" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
                 height="40.000000pt" viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">

@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <div class="rounded-sm bg-white my-5 mx-9 shadow-lg h-fit rounded">
+    <div class="bg-white my-5 mx-14 shadow-lg h-fit rounded">
         <h1 class="text-xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
         <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
@@ -35,35 +35,54 @@
             </div>
         </div>
 
+        <div class="flex justify-between items-center border-b border-slate-300">
+            <div class="py-3 px-4 text-sm"><span class="font-bold text-sm">{{ \App\Models\Booking::where('client_id',
+                    auth()->user()->id)->count() }}</span>
+                bookings found
+            </div>
+            <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
+                <i class="fa-solid fa-arrows-rotate fa-xl mr-2"></i><span class="text-sm">Refresh</span>
+            </div>
+        </div>
 
-        <div class="flex flex-col gap-3 my-3 py-5">
+        <div class="flex flex-col gap-3 my-3 py-3">
             @forelse($request as $requests)
             <div class="flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
-                <div class="flex flex-col gap-3 p-3">
+                <div class="flex flex-col gap-3 p-3 w-96">
                     <h2 class="font-bold text-xl">{{$requests->course}}</h2>
-                    <p class="text-sm">{{$requests->pet_name}}</p>
-                    <p class="text-sm">{{$requests->trainer_name}}</p>
-                    <p class="text-sm">{{$requests->availability}}</p>
+                    <p class="text-sm">Pet: {{$requests->pet_name}}</p>
+                    <p class="text-sm">Trainer: {{$requests->trainer_name}}</p>
+                    <p class="text-sm">Session: {{$requests->availability}}</p>
                     <p class="text-sm" x-data="{ formattedDate: '' }"
                         x-init="let date = new Date('{{ $requests->start_date }}'); formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })">
                         Preferred start date: <span x-text="formattedDate"></span>
                     </p>
                 </div>
-                <div class="flex items-center justify-center">
+                <div class="flex items-center justify-center w-80 gap-3">
                     @if ($requests->status == 'pending')
                     <span class="badge bg-amber-400 text-black text-sm border-none">{{
-                        $requests->status }}</span>
+                        $requests->status }}</span> |
                     @elseif ($requests->status == 'approved')
                     <span class="badge bg-green-400 text-black text-sm border-none">{{
-                        $requests->status }}</span>
+                        $requests->status }}</span> |
                     @elseif ($requests->status == 'declined')
+                    <span class="badge bg-red-400 text-black text-sm">{{
+                        $requests->status }}</span> |
+                    @endif
+
+                    @if ($requests->payment == 'unpaid')
+                    <span class="badge bg-amber-400 text-black text-sm border-none">{{
+                        $requests->payment }}</span>
+                    @elseif ($requests->payment == 'paid')
                     <span class="badge bg-green-400 text-black text-sm border-none">{{
-                        $requests->status }}</span>
+                        $requests->payment }}</span>
                     @endif
                 </div>
-                <div class="flex items-center justify-center px-5 text-sm">
+                <div class="flex items-center justify-center px-5 text-sm w-80 gap-3">
                     <a class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
-                            class="fa-solid fa-pen-to-square pr-3"></i>View/Edit</a>
+                            class="fa-solid fa-pen-to-square pr-3"></i>View</a>
+                    <a class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
+                            class="fa-solid fa-hand-holding-dollar pr-3"></i>Pay</a>
                 </div>
             </div>
             @empty

@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\PetInfo;
 use App\Models\Service;
+use App\Models\TrainerModel;
 use Illuminate\Http\Request;
 use App\Models\RequestTrainer;
+use App\Models\TrainingDetails;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\TrainingDetails;
 
 class OwnerController extends Controller
 {
@@ -43,7 +44,18 @@ class OwnerController extends Controller
                     ->where('users.role', 1);
             })
             ->join('pet_info', 'request.pet_name', '=', 'pet_info.pet_name')
-            ->select('users.id as user_id', 'users.email', 'users.address', 'users.name as trainer_name', 'service.id as service_id', 'service.*', 'pet_info.pet_name', 'pet_info.pet_id', 'request.request_id')
+            ->select(
+                'users.id as user_id',
+                'users.email',
+                'users.address',
+                'users.profile_photo',
+                'users.name as trainer_name',
+                'service.id as service_id',
+                'service.*',
+                'pet_info.pet_name',
+                'pet_info.pet_id',
+                'request.request_id'
+            )
             ->where('request.request_id', $request_id)
             ->where('pet_info.book_status', 'requested')
             ->get();
@@ -68,10 +80,13 @@ class OwnerController extends Controller
     {
         $showInfo = Service::where('service.user_id', $user_id)
             ->join('users', 'service.user_id', '=', 'users.id')
+            ->limit(1)
             ->get();
+        $portfolio = TrainerModel::where('user_id', $user_id)->get();
 
         return view('owner.show-trainerInfo', [
-            'showInfo' => $showInfo
+            'showInfo' => $showInfo,
+            'portfolio' => $portfolio
         ]);
     }
 

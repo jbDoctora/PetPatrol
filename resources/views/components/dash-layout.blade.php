@@ -52,7 +52,7 @@
         {{-- ARI IBUTANG ANG ASIDE IF GANAHAN MABALIK TO --}}
         <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
-                <div class="navbar bg-blue-700 shadow-lg text-white">
+                <div class="navbar bg-blue-700 shadow-lg text-white px-12">
                     {{-- ARI E BUTANG ANG BUTTON --}}
                     <svg version="1.0" class="ml-3" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
                         height="35.000000pt" viewBox="0 0 206.000000 196.000000" preserveAspectRatio="xMidYMid meet">
@@ -147,7 +147,7 @@
             </header>
 
             <nav class="bg-white">
-                <div class="max-w-8xl mx-auto px-3 sm:px-6 lg:px-1">
+                <div class="max-w-8xl mx-auto px-3 sm:px-6 lg:px-3">
                     <div class="flex items-center justify-between h-11">
                         <div class="flex items-center">
                             <div class="hidden md:block">
