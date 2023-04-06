@@ -1,18 +1,25 @@
 <x-dash-layout>
+
     <form method="POST" action="/profile/{{auth()->user()->id}}" enctype="multipart/form-data"
         class="m-5 rounded-lg bg-white p-5 text-xs">
         @csrf
         @method('PUT')
+        <h3 class="text-blue-700 text-xl">Profile Manager</h3>
+        <div class="text-xs breadcrumbs">
+            <ul>
+                <li class="text-blue-700 font-bold"><i class="fa-solid fa-pen-to-square mr-2"></i><a
+                        href="/profile">Edit
+                        Profile</a></li>
+                <li><i class="fa-solid fa-lock mr-2"></i><a href="/profile/change-password">Change Password</a></li>
+            </ul>
+        </div>
         <div class="flex flex-col items-center justify-center mb-5">
-            {{-- <img
-                src="{{ auth()->user()->profile_photo ? url('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
-                class="h-24 w-24 rounded-full bg-white object-cover"> --}}
-            <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+            <img src="{{$user->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
                 alt="Profile photo" class="h-24 w-24 rounded-full bg-white object-cover">
             <div class="mx-auto flex flex-col gap-3 items-center mt-5">
                 <i class="fa-solid fa-cloud-arrow-up fa-xl"></i>
                 <p>Upload a new profile photo</p>
-                <input type="file" name="profile_photo" class="border border-gray-200 p-2 rounded" />
+                <input type="file" name="profile_photo" class="border-dashed border border-gray-300 p-2 rounded" />
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -47,8 +54,9 @@
                     name="phone_number">
             </div>
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="email">Email</label> <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="email" type="email" placeholder="Enter your email" value="{{ $user->email }}" name="email">
+                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none bg-gray-100"
+                    id="email" type="email" placeholder="Enter your email" value="{{ $user->email }}" name="email"
+                    disabled>
             </div>
         </div>
         <div class="flex justify-center mt-8">

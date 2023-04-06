@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 //delete niya ni if mo error
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -28,23 +30,47 @@ class UserController extends Controller
         return view('users.user-profile', ['user' => $user]);
     }
 
+    public function editPassword()
+    {
+        $user = auth()->user();
+        return view('owner.change-password', ['user' => $user]);
+    }
+
     public function index()
     {
         return view('users.index');
     }
 
-    public function update(Request $request, $id)
+    public function updateProfile(Request $request, $id)
     {
         $user = User::findOrFail($id);
         $data = $request->only(['name', 'sex', 'address', 'phone_number', 'email', 'profile_photo']);
 
         if ($request->hasFile('profile_photo')) {
-            $data['profile_photo'] = $request->file('profile_photo')->store('public/image');
+            // Delete the old file
+            Storage::delete('image/' . $user->profile_photo);
+
+            // Store the new file
+            $data['profile_photo'] = $request->file('profile_photo')->store('image', 'public');
         }
 
         $user->update($data);
 
         return redirect()->back()->with('message', 'User updated successfully.');
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $request->validate([
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->back()->with('message', 'Password updated successfully.');
     }
 
     public function store(Request $request)

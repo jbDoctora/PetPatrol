@@ -45,10 +45,14 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::get('/profile', [UserController::class, 'edit'])->middleware('auth');
+Route::get('/profile', [UserController::class, 'edit'])->middleware('auth', 'isOwner');
+
+Route::get('/profile/change-password', [UserController::class, 'editPassword'])->middleware('auth', 'isOwner');
 
 //update profile
-Route::put('/profile/{id}', [UserController::class, 'update']);
+Route::put('/profile/{id}', [UserController::class, 'updateProfile']);
+
+Route::put('/profile/{id}/change-password', [UserController::class, 'updatePassword']);
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
