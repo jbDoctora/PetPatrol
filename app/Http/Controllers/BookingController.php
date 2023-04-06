@@ -39,12 +39,23 @@ class BookingController extends Controller
     {
         $clientId = auth()->id();
 
-        $request = Booking::select('booking.status', 'booking.payment', 'pet_info.pet_name', 'users.name AS trainer_name')
+        $request = Booking::select(
+            'booking.book_id',
+            'booking.status',
+            'booking.payment',
+            'pet_info.pet_name',
+            'booking.trainer_name',
+            'booking.start_date',
+            'service.course',
+            'service.availability',
+            'service.id as service_id'
+        )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
-            ->join('users', 'users.id', '=', 'booking.trainer_id')
-            ->where('users.role', 1)
+            ->join('users', 'users.id', '=', 'booking.client_id')
+            ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.client_id', $clientId)
-            ->get();
+            ->paginate(5);
+        // ->get();
         // dd($request);
         return view('owner.show-bookings', [
             'request' => $request

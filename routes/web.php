@@ -28,113 +28,78 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-// ADMIN
-Route::get('/admin', [AdminController::class, 'index'])->middleware('auth', 'isAdmin');
-
-// ALL USERS
-
-Route::get('/register-owner', [UserController::class, 'create'])->middleware('guest');
-
-Route::get('/register-trainer', [UserController::class, 'createNew'])->middleware('guest');
-
-Route::post('/users', [UserController::class, 'store']);
-
+// Authentication Routes
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
-
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
-
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::get('/profile', [UserController::class, 'edit'])->middleware('auth', 'isOwner');
+// Registration Routes
+Route::get('/register-owner', [UserController::class, 'create'])->middleware('guest');
+Route::get('/register-trainer', [UserController::class, 'createNew'])->middleware('guest');
+Route::post('/users', [UserController::class, 'store']);
 
-Route::get('/profile/change-password', [UserController::class, 'editPassword'])->middleware('auth', 'isOwner');
-
-//update profile
-Route::put('/profile/{id}', [UserController::class, 'updateProfile']);
-
-Route::put('/profile/{id}/change-password', [UserController::class, 'updatePassword']);
-
+// Email Verification Routes
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-
     return redirect('/owner');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-/******************************************************************* */
-//OWNER_PET_INFO
-Route::get('/pet-info', [PetInfoController::class, 'index'])->middleware('auth', 'verified', 'isOwner');
+// Owner Routes
+Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
+    Route::get('/owner', [OwnerController::class, 'index']);
+    Route::get('/pet-info', [PetInfoController::class, 'index']);
+    Route::get('/pet/add-info', [PetInfoController::class, 'create']);
+    Route::post('/pet/add-info/add', [PetInfoController::class, 'store']);
+    Route::get('/book-trainer', [OwnerController::class, 'create']);
+    Route::post('/book-trainer/add', [RequestTrainerController::class, 'store']);
+    Route::get('/request', [RequestTrainerController::class, 'index']);
+    Route::get('/show-matched/trainerInfo/{user_id}', [OwnerController::class, "showTrainerInfo"]);
+    Route::get('/show-matched/{request_id}', [OwnerController::class, 'show']);
+    Route::post('/show-matched/book', [BookingController::class, 'store']);
+    Route::get('/bookings', [BookingController::class, "show"]);
+    Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining']);
+    Route::get('/profile', [UserController::class, 'edit']);
+    Route::get('/profile/change-password', [UserController::class, 'editPassword']);
+    Route::put('/profile/{id}', [UserController::class, 'updateProfile']);
+    Route::put('/profile/{id}/change-password', [UserController::class, 'updatePassword']);
+});
 
-Route::get('/pet/add-info', [PetInfoController::class, 'create'])->middleware('auth', 'verified', 'isOwner');
+// Trainer Routes
+Route::middleware(['auth', 'isTrainer'])->group(function () {
+    Route::get('/trainer', [TrainerController::class, 'index']);
+    Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
+    Route::get('/trainer/bookings', [TrainerController::class, 'showBooking']);
+    Route::get('/trainer/portfolio', [TrainerController::class, 'show']);
+    Route::get('/trainer/profile', [TrainerController::class, 'showProfile']);
+    Route::put('/trainer/{user}/update-profile', [TrainerController::class, 'updateProfile']);
+    Route::get('/trainer/portfolio/create', [TrainerController::class, 'create']);
+    Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
+    Route::get('/trainer/service/add', [TrainerController::class, 'showService']);
+    Route::get('/settings', [TrainerController::class, 'showSettings']);
+    Route::get('/settings/payment', [TrainerController::class, 'showPayment']);
+    Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
+    Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create']);
+    Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
+});
 
-Route::post('/pet/add-info/add', [PetInfoController::class, 'store']);
+// Admin Routes
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+});
 
-//OWNER
-Route::get('/owner', [OwnerController::class, 'index'])->middleware('auth', 'verified', 'isOwner');
-
-Route::get('/book-trainer', [OwnerController::class, 'create'])->middleware('auth', 'verified', 'isOwner');
-
-Route::post('/book-trainer/add', [RequestTrainerController::class, 'store']);
-
-Route::get('/request', [RequestTrainerController::class, 'index'])->middleware('auth', 'verified', 'isOwner');
-
-Route::get('/show-matched/trainerInfo/{user_id}', [OwnerController::class, "showTrainerInfo"])->middleware('auth', 'verified', 'isOwner');
-
-Route::get('/show-matched/{request_id}', [OwnerController::class, 'show'])->middleware('auth', 'verified', 'isOwner'); //->name('show-matched');
-
-Route::post('/show-matched/book', [BookingController::class, 'store']);
-
-Route::get('/bookings', [BookingController::class, "show"])->middleware('auth', 'verified', 'isOwner');
-
-Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining'])->middleware('auth', 'verified', 'isOwner');
-
-
-/******************************************************************* */
-//TRAINER
-Route::get('/trainer', [TrainerController::class, 'index'])->middleware('auth', 'isTrainer');
-
-Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
-
-Route::get('/trainer/bookings', [TrainerController::class, 'showBooking'])->middleware('auth', 'isTrainer');
-
-Route::get('/trainer/portfolio', [TrainerController::class, 'show'])->middleware('auth', 'isTrainer');
-
-Route::get('/trainer/profile', [TrainerController::class, 'showProfile'])->middleware('auth', 'isTrainer');
-
-Route::put('/trainer/{user}/update-profile', [TrainerController::class, 'updateProfile']);
-
-Route::get('/trainer/portfolio/create', [TrainerController::class, 'create'])->middleware('auth', 'isTrainer');
-
-Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
-
-Route::get('/trainer/service/add', [TrainerController::class, 'showService'])->middleware('auth', 'isTrainer');
-
-Route::get('/settings', [TrainerController::class, 'showSettings'])->middleware('auth', 'isTrainer');
-
-Route::get('/settings/payment', [TrainerController::class, 'showPayment'])->middleware('auth', 'isTrainer');
-
-Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
-
-Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create'])->middleware('auth', 'isTrainer');
-
-Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
-
-
-/******************************************************************* */
-
-
-// DEFAULT
+// Default Route
 Route::get('/', [UserController::class, 'index']);
 
+// Unauthorized Route
 Route::get('/unauthorized', function () {
     return view('unauthorized');
 })->name('unauthorized');

@@ -1,61 +1,79 @@
 <x-dash-layout>
-    <div class="m-5 overflow-x-auto">
-        {{-- <div class="mx-auto mt-5 inline-block min-w-full overflow-hidden rounded-lg shadow-lg"> --}}
-            <table class="min-w-full leading-normal bg-base-300">
-                <thead>
-                    <tr class="text-left font-bold bg-yellow-700 text-white">
-                        <th class="px-6 py-4">
-                            Pet Name</th>
-                        <th class="px-6 py-4">
-                            Trainer Name</th>
-                        <th class="px-6 py-4">
-                            Status</th>
-                        <th class="px-6 py-4">
-                            Payment Status</th>
-                        <th class="px-6 py-4"></th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($request as $requests)
-                    <tr>
-                        <td class="px-6 py-4">{{ $requests->pet_name }}</td>
-                        <td class="px-6 py-4">{{ $requests->trainer_name }}</td>
-                        <td class="px-3 py-4">
-                            @if ($requests->status == 'pending')
-                            <span
-                                class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{
-                                $requests->status }}</span>
-                            @elseif ($requests->status == 'approved')
-                            <span
-                                class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{{
-                                $requests->status }}</span>
-                            @elseif ($requests->status == 'declined')
-                            <span
-                                class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">{{
-                                $requests->status }}</span>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4">
-                            @if ($requests->payment == 'unpaid')
-                            <span
-                                class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-yellow-800">{{
-                                $requests->payment }}</span>
-                            @elseif ($requests->payment == 'paid')
-                            <span
-                                class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{{
-                                $requests->payment }}</span>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
-                            <a href="#" class="ml-4 text-red-600 hover:text-red-900">Cancel</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{--
-        </div> --}}
+    <div class="rounded-sm bg-white my-5 mx-9 shadow-lg h-fit rounded">
+        <h1 class="text-xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
+        <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
+            <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
+                <i class="fa-solid fa-magnifying-glass ml-2"></i>
+                <input type="text" placeholder="Search"
+                    class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52" />
+            </div>
+            <div>
+                <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded" name="" id="">
+                    <option disabled selected>Status</option>
+                    <option value="">Pending</option>
+                    <option value="">Approved</option>
+                    <option value="">Declined</option>
+                    <option value="">Completed</option>
+                </select>
+            </div>
+            <div>
+                <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="" id="">
+                    <option disabled selected>Pet type</option>
+                    <option value="">Dog</option>
+                    <option value="">Cat</option>
+                    <option value="">Parrot</option>
+                    <option value="">Hamster</option>
+                </select>
+            </div>
+            <div>
+                <input type="date" class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56">
+            </div>
+            <div>
+                <button class="bg-blue-700 px-7 py-3 text-white font-bold rounded">
+                    Search
+                </button>
+            </div>
+        </div>
+
+
+        <div class="flex flex-col gap-3 my-3 py-5">
+            @forelse($request as $requests)
+            <div class="flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
+                <div class="flex flex-col gap-3 p-3">
+                    <h2 class="font-bold text-xl">{{$requests->course}}</h2>
+                    <p class="text-sm">{{$requests->pet_name}}</p>
+                    <p class="text-sm">{{$requests->trainer_name}}</p>
+                    <p class="text-sm">{{$requests->availability}}</p>
+                    <p class="text-sm" x-data="{ formattedDate: '' }"
+                        x-init="let date = new Date('{{ $requests->start_date }}'); formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })">
+                        Preferred start date: <span x-text="formattedDate"></span>
+                    </p>
+                </div>
+                <div class="flex items-center justify-center">
+                    @if ($requests->status == 'pending')
+                    <span class="badge bg-amber-400 text-black text-sm border-none">{{
+                        $requests->status }}</span>
+                    @elseif ($requests->status == 'approved')
+                    <span class="badge bg-green-400 text-black text-sm border-none">{{
+                        $requests->status }}</span>
+                    @elseif ($requests->status == 'declined')
+                    <span class="badge bg-green-400 text-black text-sm border-none">{{
+                        $requests->status }}</span>
+                    @endif
+                </div>
+                <div class="flex items-center justify-center px-5 text-sm">
+                    <a class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
+                            class="fa-solid fa-pen-to-square pr-3"></i>View/Edit</a>
+                </div>
+            </div>
+            @empty
+            No booking
+            @endforelse
+        </div>
+        <div class="flex justify-end p-5">
+            {{ $request->links() }}
+        </div>
+
 
     </div>
 </x-dash-layout>
