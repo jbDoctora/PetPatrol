@@ -33,6 +33,7 @@
                             </div>
                         </div>
                         <div class="my-4 border-t border-gray-200"></div>
+
                         <div class="my-4">
                             <p class="text-left text-xs font-bold text-gray-700">Status:</p>
                             @if (!$matchedservices->isEmpty())
@@ -52,6 +53,8 @@
                             </div>
                             @endif
                         </div>
+
+
                         <div class="mt-6 flex flex-row justify-end gap-2">
                             <button
                                 class="tracking-wide rounded px-5 py-2 bg-blue-700 text-white text-xs font-medium hover:bg-blue-800"><a

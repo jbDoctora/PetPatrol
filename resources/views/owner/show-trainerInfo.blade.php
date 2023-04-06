@@ -29,7 +29,7 @@
             @endforeach
         </div>
 
-        <div class="px-5 py-3 border-b border-slate-300">
+        <div class="px-5 py-3 border-b border-slate-300 my-4">
             <h4 class="text-lg font-medium">Pet Experience</h4>
             @foreach ($portfolio as $portfolios)
             <div class="grid grid-cols-2 gap-4 mt-4">

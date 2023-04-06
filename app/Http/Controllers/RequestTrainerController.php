@@ -52,7 +52,17 @@ class RequestTrainerController extends Controller
                 '=',
                 'pet_info.pet_name'
             )
-            ->select('users.id as user_id', 'users.email', 'users.address', 'users.name as trainer_name', 'service.id as service_id', 'service.*', 'pet_info.pet_name', 'pet_info.pet_id', 'request.request_id')
+            ->select(
+                'users.id as user_id',
+                'users.email',
+                'users.address',
+                'users.name as trainer_name',
+                'service.id as service_id',
+                'service.*',
+                'pet_info.pet_name',
+                'pet_info.pet_id',
+                'request.request_id'
+            )
             ->where('request.request_id', $request->request_id)
             ->where('pet_info.book_status', 'requested')
             ->get();
