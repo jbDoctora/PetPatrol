@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" action="/show-matched/book">
+            {{-- <form method="POST" action="/show-matched/book">
                 @csrf
                 <input type="checkbox" id="my-modal-{{ $match->user_id }}" class="modal-toggle h-fit" />
                 <div class="modal">
@@ -114,52 +114,101 @@
                                 <div class="ml-3">{{$match->price}}</div>
                             </div>
                         </div>
-                        {{-- <div class="flex flex-col p-4">
-                            <div class="bg-base-200 rounded-xl p-3 mb-4">
-                                <p class="text-lg font-bold mb-2">Service Package:</p>
-                                <p class="text-sm">{{ $match->course }}</p>
-                            </div>
-                            <div class="bg-base-200 rounded-xl p-3 mb-4">
-                                <p class="text-lg font-bold mb-2">Availability:</p>
-                                <p class="text-sm">{{ $match->availability }}</p>
-                            </div>
-                            <div class="bg-base-200 rounded-xl p-3 mb-4">
-                                <p class="text-lg font-bold mb-2">Pet name:</p>
-                                <p class="text-sm">{{ $match->pet_name }}</p>
-                            </div>
-                            <div class="mb-4"> <label for="start_date" class="text-lg font-bold mb-2">Preferred
-                                    start
-                                    date:</label> <input type="date" name="start_date"
-                                    class="border border-gray-300 rounded-lg py-2 px-3 w-full" /> </div>
-                            <div class="flex flex-row justify-center mb-4">
-                                <div class="h-16 w-16 p-2"><img src="/images/warning.png" alt=""></div>
-                                <h2 class="my-4 font-bold">Pet Patrol Booking Policy</h2>
-                            </div>
-                            <div class="mb-4">
-                                <h3 class="text-lg font-bold mb-2">Cancellation Policy:</h3>
-                                <p class="text-sm">Cancellations made less than 24 hours before the scheduled
-                                    appointment
-                                    will be charged 50% of the total fee.</p>
-                            </div>
-                            <div class="flex flex-row"> <label class="cursor-pointer label"> <input type="checkbox"
-                                        class="checkbox checkbox-warning" x-model="checked" /> <span
-                                        class="label-text ml-5">I agree to the cancellation policy</span> </label>
-                            </div>
-                        </div> --}}
+
                         <div class="flex flex-row pt-8 text-sm justify-end ">
+                            <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" />
                             <label class="cursor-pointer label whitespace-nowrap">
-                                <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" /> I
-                                agree
+                                I agree
                                 to
                                 the
-                                <span class="text-blue-600">Terms and Conditions</span>and <span class="text-blue-600">
-                                    Cancellation Policy </span>
+                                <a class="text-blue-600 px-2"> Terms and Conditions </a> and <a
+                                    class="text-blue-600 px-2">
+                                    Cancellation Policy </a>
                             </label>
                         </div>
                         <div class="modal-action flex justify-end p-4"> <label for="my-modal-{{ $match->user_id }}"
-                                class="tracking-wide rounded-md px-5 py-2  border border-black text-sm text-black font-bold">Cancel</label>
+                                class="tracking-wide rounded px-5 py-2  border border-gray-300 text-sm text-black font-normal hover:bg-gray-300">Cancel</label>
                             <button type="submit" :disabled="!checked" :class="{'bg-gray-400': !checked}"
-                                class="tracking-wide rounded-md px-6 py-2 bg-blue-700 text-white text-sm font-normal border border-black">Set</button>
+                                class="tracking-wide rounded px-6 py-2 bg-blue-700 text-white text-sm font-normal">Set</button>
+                        </div>
+                        <input type="hidden" name="pet_id" value="{{ $match->pet_id }}">
+                        <input type="hidden" name="client_id" value="{{ auth()->id() }}">
+                        <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
+                        <input type="hidden" name="status" value="pending">
+                        <input type="hidden" name="payment" value="unpaid">
+                        <input type="hidden" name="service_id" value="{{$match->service_id}}" />
+                        <input type="hidden" name="request_id" value="{{$request_id}}" />
+                        <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
+                        <input type="hidden" name="trainer_name" value="{{$match->trainer_name}}" />
+                    </div>
+                </div>
+            </form> --}}
+            <form method="POST" action="/show-matched/book">
+                @csrf
+                <input type="checkbox" id="my-modal-{{ $match->user_id }}" class="modal-toggle h-fit" />
+                <div class="modal">
+                    <div class="modal-box w-11/12 max-w-5xl">
+                        <h3 class="font-bold text-sm tracking-wide p-2 text-left bg-blue-200 text-black rounded">
+                            Booking Summary</h3>
+                        <div class="flex flex-col text-sm gap-4 m-3">
+                            <div class="flex flex-col md:flex-row md:justify-between">
+                                <div class="mb-2 md:mb-0">Pet name:</div>
+                                <div class="font-bold">{{$match->pet_name}}</div>
+                            </div>
+                            <div class="flex flex-col md:flex-row md:justify-between">
+                                <div class="mb-2 md:mb-0">Client name:</div>
+                                <div class="font-bold">{{auth()->user()->name}}</div>
+                            </div>
+                            <div class="flex flex-col md:flex-row md:justify-between">
+                                <div class="mb-2 md:mb-0">Preferred start date:</div>
+                                <div><input type="date" name="start_date"
+                                        class="border border-gray-300 rounded py-1 px-3 w-full md:w-auto" /></div>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead class="bg-blue-100">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left">Trainer name</th>
+                                        <th class="px-4 py-2 text-left">Course package</th>
+                                        <th class="px-4 py-2 text-left">Availability</th>
+                                        <th class="px-4 py-2 text-left">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="px-4 py-2">{{$match->trainer_name}}</td>
+                                        <td class="px-4 py-2">{{$match->course}}</td>
+                                        <td class="px-4 py-2">{{$match->availability}}</td>
+                                        <td class="px-4 py-2">{{$match->price}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:justify-between items-center p-5">
+                            <div class="font-bold mb-2 md:mb-0">Total Price:</div>
+                            <div class="font-bold">{{$match->price}}</div>
+                        </div>
+                        <div class="flex flex-col gap-4 p-5">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" />
+                                <label class="cursor-pointer label whitespace-nowrap">
+                                    I agree to the <a class="text-blue-600 px-2">Terms and Conditions</a> and <a
+                                        class="text-blue-600 px-2">Cancellation Policy</a>
+                                </label>
+                            </div>
+                            <div class="text-red-500 text-sm" x-show="!checked">
+                                Please agree to the Terms and Conditions and Cancellation Policy to proceed.
+                            </div>
+                        </div>
+                        <div class="modal-action flex justify-end p-4">
+                            <label for="my-modal-{{ $match->user_id }}"
+                                class="tracking-wide rounded px-5 py-2 border border-gray-300 text-sm text-black font-normal hover:bg-gray-300">Cancel</label>
+                            <button type="submit" :disabled="!checked"
+                                :class="{ 'bg-gray-400 hover:bg-gray-400': !checked }"
+                                class="tracking-wide rounded px-6 py-2 bg-blue-700 text-white text-sm font-normal hover:bg-blue-800">
+                                Book Now
+                            </button>
                         </div>
                         <input type="hidden" name="pet_id" value="{{ $match->pet_id }}">
                         <input type="hidden" name="client_id" value="{{ auth()->id() }}">
@@ -173,6 +222,7 @@
                     </div>
                 </div>
             </form>
+
             @endforeach
         </div>
     </div>

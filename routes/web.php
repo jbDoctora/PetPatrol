@@ -71,6 +71,7 @@ Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::get('/profile/change-password', [UserController::class, 'editPassword']);
     Route::put('/profile/{id}', [UserController::class, 'updateProfile']);
     Route::put('/profile/{id}/change-password', [UserController::class, 'updatePassword']);
+    Route::get('/checkout', [BookingController::class, 'showCheckout']);
 });
 
 // Trainer Routes

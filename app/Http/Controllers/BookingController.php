@@ -61,4 +61,9 @@ class BookingController extends Controller
             'request' => $request
         ]);
     }
+
+    public function showCheckout()
+    {
+        return view('owner.checkout');
+    }
 }

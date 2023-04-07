@@ -45,13 +45,21 @@
                         <p class="text-base leading-7">{!! html_entity_decode($portfolios->experience) !!}</p>
                     </div>
                 </div>
-                <div>
-                    <h5 class="text-lg font-medium text-gray-600 mb-2">Services</h5>
-                    <p class="text-lg leading-7 font-bold">{{ $portfolios->services }}</p>
-                </div>
-                <div>
+                <div x-data="{ types: '{{ $portfolios->services  }}'.split(',') }">
                     <h5 class="text-lg font-medium text-gray-600 mb-2">Pet Type that I trained</h5>
-                    <p class="text-lg leading-7 font-bold">{{ $portfolios->type }}</p>
+                    <div class="flex flex-wrap">
+                        <template x-for="type in types" :key="type">
+                            <span class="badge badge-primary mr-2 mb-2" x-text="type.trim()"></span>
+                        </template>
+                    </div>
+                </div>
+                <div x-data="{ types: '{{ $portfolios->type }}'.split(',') }">
+                    <h5 class="text-lg font-medium text-gray-600 mb-2">Pet Type that I trained</h5>
+                    <div class="flex flex-wrap">
+                        <template x-for="type in types" :key="type">
+                            <span class="badge badge-primary mr-2 mb-2" x-text="type.trim()"></span>
+                        </template>
+                    </div>
                 </div>
                 <div>
                     <h5 class="text-lg font-medium text-gray-600 mb-2">Certificates</h5>

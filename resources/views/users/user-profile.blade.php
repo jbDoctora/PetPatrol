@@ -1,5 +1,4 @@
 <x-dash-layout>
-
     <form method="POST" action="/profile/{{auth()->user()->id}}" enctype="multipart/form-data"
         class="m-5 rounded-lg bg-white p-5 text-xs">
         @csrf
@@ -13,7 +12,8 @@
                 <li><i class="fa-solid fa-lock mr-2"></i><a href="/profile/change-password">Change Password</a></li>
             </ul>
         </div>
-        <div class="flex flex-col items-center justify-center mb-5">
+
+        <div class="flex flex-col items-center justify-center mb-5 bg-blue-700 w-full rounded h-56 text-white">
             <img src="{{$user->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
                 alt="Profile photo" class="h-24 w-24 rounded-full bg-white object-cover">
             <div class="mx-auto flex flex-col gap-3 items-center mt-5">
@@ -22,6 +22,7 @@
                 <input type="file" name="profile_photo" class="border-dashed border border-gray-300 p-2 rounded" />
             </div>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="name">Name</label>
                 <input

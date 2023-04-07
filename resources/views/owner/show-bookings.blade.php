@@ -60,29 +60,36 @@
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">
                     @if ($requests->status == 'pending')
-                    <span class="badge bg-amber-400 text-black text-sm border-none">{{
+                    <span class="badge bg-amber-400 text-black text-xs border-none">{{
                         $requests->status }}</span> |
                     @elseif ($requests->status == 'approved')
-                    <span class="badge bg-green-400 text-black text-sm border-none">{{
+                    <span class="badge bg-green-400 text-black text-xs border-none">{{
                         $requests->status }}</span> |
                     @elseif ($requests->status == 'declined')
-                    <span class="badge bg-red-400 text-black text-sm">{{
+                    <span class="badge bg-red-400 text-black text-xs">{{
+                        $requests->status }}</span> |
+                    @elseif ($requests->status == 'confirmed')
+                    <span class="badge bg-blue-700 text-white text-xs">{{
                         $requests->status }}</span> |
                     @endif
 
                     @if ($requests->payment == 'unpaid')
-                    <span class="badge bg-amber-400 text-black text-sm border-none">{{
+                    <span class="badge bg-amber-400 text-black text-xs border-none">{{
                         $requests->payment }}</span>
                     @elseif ($requests->payment == 'paid')
-                    <span class="badge bg-green-400 text-black text-sm border-none">{{
+                    <span class="badge bg-green-400 text-black text-xs border-none">{{
                         $requests->payment }}</span>
                     @endif
                 </div>
-                <div class="flex items-center justify-center px-5 text-sm w-80 gap-3">
-                    <a class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
-                            class="fa-solid fa-pen-to-square pr-3"></i>View</a>
-                    <a class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
-                            class="fa-solid fa-hand-holding-dollar pr-3"></i>Pay</a>
+                <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+                    <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
+                            class="fa-solid fa-pen-to-square pr-3"></i>View</button>
+                    <button type="button" x-bind:disabled="['declined', 'pending'].includes('{{ $requests->status }}')"
+                        x-bind:class="{'bg-gray-400 hover:bg-gray-400': ['declined', 'pending'].includes('{{ $requests->status }}')}"
+                        class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white"
+                        x-on:click="window.location.href='/checkout'">
+                        <i class="fa-solid fa-cart-shopping pr-3"></i>Checkout
+                    </button>
                 </div>
             </div>
             @empty
