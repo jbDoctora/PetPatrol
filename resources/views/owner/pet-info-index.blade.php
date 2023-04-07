@@ -1,6 +1,6 @@
 <x-dash-layout>
-    <div class="bg-white rounded m-5 h-full">
-        <div class="flex items-center justify-between text-xl font-medium p-4 border-b border-slate-300 text-blue-700">
+    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
+        <div class="flex items-center justify-between text-xl font-bold p-4 border-b border-slate-300 text-blue-700">
             <h3>Pet Profile</h3>
             <div>
                 <button
@@ -92,12 +92,15 @@
                 </div>
             </div>
             @empty
-            <div class="mx-auto grid grid-cols-none">
-                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_pkkire0h.json"
-                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
-                </lottie-player>
+            <div class="col-span-3 mx-auto grid grid-cols-none">
+                <div>
+                    <img src="{{asset('images/empty-pet.png')}}" alt="" class="h-96 w-96 mx-auto">
+                </div>
+                <div>
+                    <p class="text-base text-center font-bold mb-3">Your pet is excited, create your pet info now.</p>
+                </div>
             </div>
-            <p class="mt-4 text-center text-lg font-bold">Your pet is excited, Request a trainer now.</p>
+
             @endforelse
         </div>
     </div>

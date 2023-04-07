@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <div class="bg-white my-5 mx-14 shadow-lg h-fit rounded">
+    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
         <h1 class="text-xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
         <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
@@ -93,7 +93,12 @@
                 </div>
             </div>
             @empty
-            No booking
+            <div class="flex flex-col justify-center">
+                <div><img src="{{asset('images/empty.png')}}" alt="empty" class="h-96 w-96 mx-auto"></div>
+                <div>
+                    <p class="text-base text-center font-bold">Empty bookings as of the moment.</p>
+                </div>
+            </div>
             @endforelse
         </div>
         <div class="flex justify-end p-5">

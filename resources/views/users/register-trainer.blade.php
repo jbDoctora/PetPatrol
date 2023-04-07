@@ -23,7 +23,7 @@
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('email')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -36,7 +36,7 @@
                                 Name<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('name')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -50,7 +50,7 @@
                             </label>
 
                             <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
-                                class="mt-1 h-10 w-full rounded-md border border-gray-400 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="mt-1 h-10 w-full px-3 py-2 rounded border border-gray-400 bg-white text-sm text-gray-700 shadow-sm" />
 
                             @error('birthday')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -62,7 +62,7 @@
                             <label for="sex" class="block text-sm font-medium text-gray-700">
                                 Sex<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
-                            <select class="w-full rounded-lg border border-gray-400 py-3" id="sex" name="sex" required
+                            <select class="w-full rounded border border-gray-400 py-3 px-2" id="sex" name="sex" required
                                 value="{{ old('sex') }}">
                                 <option value=""><span class="text-sm">Select a gender</span></option>
                                 <option value="male">Male</option>
@@ -81,7 +81,7 @@
                             </label>
 
                             <input type="text" name="address" value="{{ old('address') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
                             @error('address')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -94,7 +94,7 @@
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
                             @error('phone_number')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -109,7 +109,7 @@
 
                             <div class="relative">
                                 <input type="file" name="id_verify" value="{{ old('id_verify') }}" id="id_verify"
-                                    class="file-input file-input-bordered w-full max-w-xs" multiple>
+                                    class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" multiple>
 
                                 @error('id_verify')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -125,7 +125,7 @@
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('password')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -139,7 +139,8 @@
                             </label>
 
                             <input type="password" name="password_confirmation"
-                                value="{{ old('password_confirmation') }}" class="input input-bordered w-full" />
+                                value="{{ old('password_confirmation') }}"
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('password_confirmation')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>

@@ -66,7 +66,6 @@ Route::middleware(['auth', 'isTrainer'])->group(function () {
     Route::get('/trainer/portfolio/create', [TrainerController::class, 'create']);
     Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
     Route::get('/trainer/service/add', [TrainerController::class, 'showService']);
-    Route::get('/settings', [TrainerController::class, 'showSettings']);
     Route::get('/settings/payment', [TrainerController::class, 'showPayment']);
     Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
     Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create']);

@@ -156,7 +156,7 @@
                     </span>
                     <span class="ml-9">Report</span>
                 </a>
-                <a href="/settings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                <a href="/trainer/profile" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>

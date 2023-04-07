@@ -21,7 +21,7 @@
                                 Full Name<span class="text-red-400 text-sm ml-2">*</span>
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
-                                class="input input-bordered w-96" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('name')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -29,9 +29,8 @@
 
                         </div>
 
-                        <input type="hidden" name="birthday" value="01/01/2022"
+                        <input type="hidden" name="birthday" value="01/01/2023"
                             class="mt-1 h-10 w-full rounded-md border-solid border-slate-400 bg-white text-sm text-gray-700 shadow-sm" />
-                        <input type="hidden" name="age" value="00" class="input input-bordered w-full" />
                         <input type="hidden" class="w-full rounded-lg border border-gray-400 p-2" id="sex" name="sex"
                             value="null" />
                         <input type="hidden" name="id_verify" value="null">
@@ -42,7 +41,7 @@
                             </label>
 
                             <input type="text" name="address" value="{{ old('address') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
                             @error('address')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -55,7 +54,7 @@
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
                             @error('phone_number')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -68,7 +67,7 @@
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('email')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -82,7 +81,7 @@
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
-                                class="input input-bordered w-full" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96" />
 
                             @error('password')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -96,7 +95,8 @@
                             </label>
 
                             <input type="password" name="password_confirmation"
-                                value="{{ old('password_confirmation') }}" class="input input-bordered w-full" />
+                                value="{{ old('password_confirmation') }}"
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('password_confirmation')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>

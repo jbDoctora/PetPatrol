@@ -3,7 +3,7 @@
         class="m-5 rounded-lg bg-white p-5 text-xs">
         @csrf
         @method('PUT')
-        <h3 class="text-blue-700 text-xl">Profile Manager</h3>
+        <h3 class="text-blue-700 text-xl">Settings</h3>
         <div class="text-xs breadcrumbs mt-2">
             <ul>
                 <li><i class="fa-solid fa-pen-to-square mr-2"></i><a href="/trainer/profile">Edit

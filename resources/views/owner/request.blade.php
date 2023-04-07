@@ -1,7 +1,7 @@
 <x-dash-layout>
 
-    <div class="bg-white rounded m-5 h-screen">
-        <div class="flex items-center justify-between text-xl font-medium p-4 border-b border-slate-300 text-blue-700">
+    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
+        <div class="flex items-center justify-between text-xl font-bold p-4 border-b border-slate-300 text-blue-700">
             <h3>Request Manager</h3>
             <div>
                 <button
@@ -11,10 +11,9 @@
                 </button>
             </div>
         </div>
-
-        <div class="flex items-center justify-between text-xl font-medium p-4 text-blue-700">
+        {{-- <div class="flex items-center justify-between text-xl font-medium p-4"> --}}
             <div class="grid grid-cols-1 gap-3 rounded px-3 md:grid-cols-2 lg:grid-cols-3">
-                @foreach ($requestinfo as $info)
+                @forelse ($requestinfo as $info)
                 <div class="m-5 overflow-hidden rounded-lg border border-slate-400 shadow-lg text-xs w-96">
                     <div class="p-6">
                         <div class="mb-4 flex items-center justify-between">
@@ -69,9 +68,17 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <div class="col-span-3 flex justify-center items-center">
+                    <div class="flex flex-col items-center">
+                        <img src="{{asset('images/empty-request.png')}}" alt="" class="mx-auto h-96 w-96">
+                        <p class="font-medium text-lg text-center ">Empty Request</p>
+                    </div>
+                </div>
+                @endforelse
             </div>
-        </div>
+            {{--
+        </div> --}}
     </div>
 
 </x-dash-layout>
