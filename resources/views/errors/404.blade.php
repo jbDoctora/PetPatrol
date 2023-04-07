@@ -100,7 +100,7 @@
 
             <main>
                 <div class="mx-auto" style="width: 600px; height: 600px;">
-                    <img src="images/notfound.png" alt="" class="block mx-auto">
+                    <img src="{{asset('images/notfound.png')}}" alt="" class="block mx-auto">
                 </div>
                 <div>
                     <h1 class="text-4xl font-bold mb-4 text-center">Oops! We can't find the page you're looking for.

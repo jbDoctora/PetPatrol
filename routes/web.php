@@ -53,6 +53,26 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+// Trainer Routes
+Route::middleware(['auth', 'isTrainer'])->group(function () {
+    Route::get('/trainer', [TrainerController::class, 'index']);
+    Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
+    Route::get('/trainer/bookings', [TrainerController::class, 'showBooking']);
+    Route::get('/trainer/portfolio', [TrainerController::class, 'show']);
+    Route::get('/trainer/profile', [TrainerController::class, 'showProfile']);
+    Route::put('/trainer/{user}/update-profile', [TrainerController::class, 'updateProfile']);
+    Route::put('trainer/profile/{id}/changePassword', [TrainerController::class, 'updatePassword']);
+    Route::get('/trainer/profile/change-password', [TrainerController::class, 'showPasswordChange']);
+    Route::get('/trainer/portfolio/create', [TrainerController::class, 'create']);
+    Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
+    Route::get('/trainer/service/add', [TrainerController::class, 'showService']);
+    Route::get('/settings', [TrainerController::class, 'showSettings']);
+    Route::get('/settings/payment', [TrainerController::class, 'showPayment']);
+    Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
+    Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create']);
+    Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
+});
+
 // Owner Routes
 Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::get('/owner', [OwnerController::class, 'index']);
@@ -72,24 +92,6 @@ Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::put('/profile/{id}', [UserController::class, 'updateProfile']);
     Route::put('/profile/{id}/change-password', [UserController::class, 'updatePassword']);
     Route::get('/checkout', [BookingController::class, 'showCheckout']);
-});
-
-// Trainer Routes
-Route::middleware(['auth', 'isTrainer'])->group(function () {
-    Route::get('/trainer', [TrainerController::class, 'index']);
-    Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
-    Route::get('/trainer/bookings', [TrainerController::class, 'showBooking']);
-    Route::get('/trainer/portfolio', [TrainerController::class, 'show']);
-    Route::get('/trainer/profile', [TrainerController::class, 'showProfile']);
-    Route::put('/trainer/{user}/update-profile', [TrainerController::class, 'updateProfile']);
-    Route::get('/trainer/portfolio/create', [TrainerController::class, 'create']);
-    Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
-    Route::get('/trainer/service/add', [TrainerController::class, 'showService']);
-    Route::get('/settings', [TrainerController::class, 'showSettings']);
-    Route::get('/settings/payment', [TrainerController::class, 'showPayment']);
-    Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
-    Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create']);
-    Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
 });
 
 // Admin Routes

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\TrainingDetails;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class TrainerController extends Controller
 {
@@ -73,33 +75,45 @@ class TrainerController extends Controller
 
     public function showPayment()
     {
-        return view('trainer.settings-payment');
+        $user = auth()->user();
+        return view('trainer.settings-payment', ['user' => $user]);
     }
 
-    public function updateProfile(Request $request, User $id)
+    public function updateProfile(Request $request, $id)
     {
-        $formFields = $request->validate([
-            'name' => ['required', 'min:3'],
-            'birthday' => 'required',
-            'age' => 'required',
-            'address' => 'required',
-            'phone_number' => 'required',
-            'email' => 'nullable',
-            'password' => 'nullable', //|confirmed|min:6
-        ]);
-        $formFields['sex'] = $request->input('sex');
-        if ($request->hasFile('profile_photo')) {
-            $formFields['profile_photo'] = $request->file('profile_photo')->store('profile_photo', 'public');
-        }
-        if (!empty($formFields['password'])) {
-            $formFields['password'] = bcrypt($formFields['password']);
-        } else {
-            unset($formFields['password']);
-        }
-        // dd($formFields);
-        $id->update($formFields);
+        $user = User::findOrFail($id);
+        $data = $request->only(['name', 'sex', 'address', 'phone_number', 'email', 'profile_photo', 'birthday']);
 
-        return back()->with('message', 'Profile updated successfully!');
+        if ($request->hasFile('profile_photo')) {
+            // Delete the old file
+            Storage::delete('image/' . $user->profile_photo);
+
+            // Store the new file
+            $data['profile_photo'] = $request->file('profile_photo')->store('image', 'public');
+        }
+
+        $user->update($data);
+
+        return redirect()->back()->with('message', 'User updated successfully.');
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('message', 'Password updated successfully.');
+    }
+
+    public function showPasswordChange()
+    {
+        return view('trainer.trainer-password');
     }
 
     public function show()

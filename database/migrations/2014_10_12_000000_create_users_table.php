@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('role');
             $table->string('gcash_qr')->nullable();
             $table->string('gcash_number')->nullable();
-            $table->string('admin_approve')->default('no');
+            $table->boolean('admin_approve')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
