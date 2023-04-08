@@ -13,10 +13,10 @@
                     <h1 class="mt-1 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
                         Sign up
                     </h1>
-                    <div class="rounded bg-yellow-400 text-slate-600 my-2 p-3">
-                        <i class="fa-solid fa-triangle-exclamation mr-3"></i></i>This will serve as your trainer
+                    {{-- <div class="bg-yellow-400 text-slate-600 my-2 p-3">
+                        <i class="fa-solid fa-triangle-exclamation fa-lg mr-3"></i></i>This will serve as your trainer
                         application
-                    </div>
+                    </div> --}}
                     <p class="text-xs my-3"><span class="text-red-400 text-sm">*</span> Indicates a required field.</p>
 
                     <form method="POST" action="/users" class="grid-rows-7 mt-5 grid gap-4"
