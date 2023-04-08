@@ -28,4 +28,11 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Updated Successfully!');
     }
+
+    public function showUsers()
+    {
+        $users = User::whereIn('role', [0, 1])->get();
+
+        return view('admin.view-users', compact('users'));
+    }
 }

@@ -101,6 +101,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/trainer-approval', [AdminController::class, 'showTrainerApproval']);
     Route::put('/admin/trainer-approval/{id}', [AdminController::class, 'updateApproval']);
+    Route::get('/admin/monitor/users', [AdminController::class, 'showUsers']);
 });
 
 // Default Route

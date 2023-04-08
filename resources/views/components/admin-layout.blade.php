@@ -144,7 +144,7 @@
                             style="font-size: 25px;">arrow_drop_down</span> <span x-show="open" class="material-icons"
                             style="font-size: 25px;">arrow_drop_up</span> </span> </a>
                 <div x-show="open" class="flex flex-col">
-                    <a href="#"
+                    <a href="/admin/monitor/users"
                         class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black bg-gray-200">
                         <span class="material-icons-outlined" style="font-size: 25px;">
                             supervised_user_circle
