@@ -53,8 +53,10 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+Route::get('/trainer/waiting-approval', [TrainerController::class, 'showWaitingApproval']);
+
 // Trainer Routes
-Route::middleware(['auth', 'isTrainer'])->group(function () {
+Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {
     Route::get('/trainer', [TrainerController::class, 'index']);
     Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
     Route::get('/trainer/bookings', [TrainerController::class, 'showBooking']);
@@ -97,6 +99,8 @@ Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/admin/trainer-approval', [AdminController::class, 'showTrainerApproval']);
+    Route::put('/admin/trainer-approval/{id}', [AdminController::class, 'updateApproval']);
 });
 
 // Default Route

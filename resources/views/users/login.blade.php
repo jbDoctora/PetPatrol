@@ -2,7 +2,8 @@
     <section class="bg-inherit">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
-                <img alt="Pattern" src="/images/8271009_5503.jpg" class="absolute inset-0 h-full w-full object-cover" />
+                <img alt="Pattern" src="{{asset('images/8271009_5503.jpg')}}"
+                    class="absolute inset-0 h-full w-full object-cover" />
             </aside>
 
             <main aria-label="Main"

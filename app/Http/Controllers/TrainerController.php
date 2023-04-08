@@ -26,6 +26,11 @@ class TrainerController extends Controller
         return view('trainer.trainer-profile', ['user' => $user]);
     }
 
+    public function showWaitingApproval()
+    {
+        return view('users.waiting-approval');
+    }
+
     public function showBooking()
     {
         $trainerId = auth()->id();

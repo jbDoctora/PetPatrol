@@ -32,6 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'gcash_qr',
         'gcash_number',
         'profile_photo',
+        'admin_approve'
     ];
 
     /**

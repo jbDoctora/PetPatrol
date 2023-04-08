@@ -45,9 +45,7 @@
 
 <body class="bg-slate-300 flex min-h-screen flex-col">
 
-    <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
-        x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
-        class="flex h-screen overflow-x-hidden">
+    <div class="flex h-screen overflow-x-hidden">
         {{-- ARI IBUTANG ANG ASIDE IF GANAHAN MABALIK TO --}}
         <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
