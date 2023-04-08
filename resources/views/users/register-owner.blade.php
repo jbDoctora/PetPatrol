@@ -13,12 +13,13 @@
                     <h1 class="mt-6 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
                         Sign Up
                     </h1>
+                    <p class="text-xs my-3"><span class="text-red-400 text-sm">*</span> Indicates a required field.</p>
 
                     <form method="POST" action="/users" class="mt-5 flex flex-col gap-4" enctype="multipart/form-data">
                         @csrf
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">
-                                Full Name<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Full Name
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
                                 class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
@@ -37,7 +38,7 @@
 
                         <div>
                             <label for="address" class="block text-sm font-medium text-gray-700">
-                                Address<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Address
                             </label>
 
                             <input type="text" name="address" value="{{ old('address') }}"
@@ -50,7 +51,7 @@
 
                         <div>
                             <label for="phone_number" class="block text-sm font-medium text-gray-700">
-                                Phone number<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Phone number
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
@@ -63,7 +64,7 @@
 
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">
-                                Email<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Email
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
@@ -77,7 +78,7 @@
 
                         <div>
                             <label for="password" class="block text-sm font-medium text-gray-700">
-                                Password<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Password
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
@@ -91,7 +92,7 @@
 
                         <div>
                             <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
-                                Password Confirmation<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Password Confirmation
                             </label>
 
                             <input type="password" name="password_confirmation"

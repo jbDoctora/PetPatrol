@@ -13,17 +13,18 @@
                     <h1 class="mt-6 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
                         Sign up
                     </h1>
+                    <p class="text-xs my-3"><span class="text-red-400 text-sm">*</span> Indicates a required field.</p>
 
                     <form method="POST" action="/users" class="grid-rows-7 mt-5 grid gap-4"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="col-span-6">
                             <label for="email" class="block text-sm font-medium text-gray-700">
-                                Email<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Email
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
 
                             @error('email')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -33,10 +34,10 @@
 
                         <div class="col-span-6">
                             <label for="name" class="block text-sm font-medium text-gray-700">
-                                Name<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Name
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
 
                             @error('name')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -46,7 +47,7 @@
 
                         <div class="col-span-3">
                             <label for="name" class="block text-sm font-medium text-gray-700">
-                                Birthday<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Birthday
                             </label>
 
                             <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
@@ -60,10 +61,11 @@
 
                         <div class="col-span-3">
                             <label for="sex" class="block text-sm font-medium text-gray-700">
-                                Sex<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Sex
                             </label>
-                            <select class="w-full rounded border border-gray-400 py-3 px-2" id="sex" name="sex" required
-                                value="{{ old('sex') }}">
+                            <select
+                                class="mt-1 h-10 w-full px-3 py-2 rounded border border-gray-400 bg-white text-sm text-gray-700 shadow-sm"
+                                id="sex" name="sex" required value="{{ old('sex') }}">
                                 <option value=""><span class="text-sm">Select a gender</span></option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -77,11 +79,11 @@
 
                         <div class="col-span-6">
                             <label for="address" class="block text-sm font-medium text-gray-700">
-                                Address<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Address
                             </label>
 
                             <input type="text" name="address" value="{{ old('address') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
                             @error('address')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -90,11 +92,11 @@
 
                         <div class="col-span-6">
                             <label for="phone_number" class="block text-sm font-medium text-gray-700">
-                                Phone number<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Phone number
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
                             @error('phone_number')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -103,13 +105,12 @@
 
                         <div class="col-span-6">
                             <label for="id_verify" class="block text-sm font-medium text-gray-700">
-                                Please upload ID for verification (back and front):<span
-                                    class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Please attach Valid ID
                             </label>
 
                             <div class="relative">
-                                <input type="file" name="id_verify" value="{{ old('id_verify') }}" id="id_verify"
-                                    class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" multiple>
+                                <input type="file" name="id_verify" value="{{ old('id_verify') }}"
+                                    class="rounded border border-gray-300 py-2 px-3 w-full text-sm">
 
                                 @error('id_verify')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -121,11 +122,11 @@
 
                         <div class="col-span-6">
                             <label for="password" class="block text-sm font-medium text-gray-700">
-                                Password<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Password
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
 
                             @error('password')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -135,12 +136,12 @@
 
                         <div class="col-span-6">
                             <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
-                                Password Confirmation<span class="text-red-400 text-sm ml-2">*</span>
+                                <span class="text-red-400 text-sm">*</span>Password Confirmation
                             </label>
 
                             <input type="password" name="password_confirmation"
                                 value="{{ old('password_confirmation') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
 
                             @error('password_confirmation')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>

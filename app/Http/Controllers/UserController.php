@@ -81,11 +81,15 @@ class UserController extends Controller
             'sex' => 'required',
             'address' => 'required',
             'phone_number' => 'required',
-            'id_verify' => 'nullable',
+            'id_verify' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'role' => 'required'
         ]);
+
+        if ($request->hasFile('id_verify')) {
+            $formFields['id_verify'] = $request->file('id_verify')->store('id_verification', 'public');
+        }
 
         $formFields['password'] = bcrypt($formFields['password']);
 
