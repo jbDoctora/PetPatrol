@@ -10,7 +10,7 @@
                 class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
                 <div class="max-w-xl lg:max-w-3xl">
 
-                    <h1 class="mt-6 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
+                    <h1 class="mt-1 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
                         Sign Up
                     </h1>
                     <p class="text-xs my-3"><span class="text-red-400 text-sm">*</span> Indicates a required field.</p>
