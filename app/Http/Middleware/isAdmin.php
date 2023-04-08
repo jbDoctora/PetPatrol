@@ -14,11 +14,20 @@ class isAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+    // public function handle(Request $request, Closure $next)
+    // {
+    //     if (auth()->check() && auth()->user()->role != 3) {
+    //         return redirect()->route('unauthorized');
+    //     }
+    //     return $next($request);
+    // }
+
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->role != 3) {
-            return redirect()->route('unauthorized');
+        $user = auth()->user();
+        if ($user && $user->role == 3) {
+            return $next($request);
         }
-        return $next($request);
+        return redirect('/unauthorized');
     }
 }

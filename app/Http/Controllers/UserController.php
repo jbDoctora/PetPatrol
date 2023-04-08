@@ -98,9 +98,7 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        if (auth()->attempt($formFields)) {
-            $request->session()->regenerate();
-        }
+
         $user = auth()->user();
         if ($user->role == 0) {
             auth()->login($user);
@@ -108,6 +106,9 @@ class UserController extends Controller
         } elseif ($user->role == 1) {
             auth()->login($user);
             return redirect('/trainer')->with('message', 'You are now logged in as a trainer!');
+        } elseif ($user->role == 3) {
+            auth()->login($user);
+            return redirect('/admin')->with('message', 'Welcome Admin!');
         } else {
             auth()->login($user);
             return redirect('/')->with('message', 'You are now logged in!');
@@ -115,6 +116,7 @@ class UserController extends Controller
         return redirect('/')->with('message', 'You are now logged in!');
         //return redirect('/')->with('message','User created and logged in!');  
     }
+
     public function login()
     {
         return view('users.login');
@@ -143,6 +145,8 @@ class UserController extends Controller
                 return redirect('/owner')->with('message', 'You are now logged in as an owner!');
             } elseif ($user->role == 1) {
                 return redirect('/trainer')->with('message', 'You are now logged in as a trainer!');
+            } elseif ($user->role == 3) {
+                return redirect('/admin')->with('message', 'Welcome Admin!');
             } else {
                 return redirect('/')->with('message', 'You are now logged in!');
             }

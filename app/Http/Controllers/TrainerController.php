@@ -68,11 +68,6 @@ class TrainerController extends Controller
         return redirect()->back();
     }
 
-    // public function showSettings()
-    // {
-    //     return view('trainer.settings');
-    // }
-
     public function showPayment()
     {
         $user = auth()->user();
@@ -109,6 +104,24 @@ class TrainerController extends Controller
         $user->save();
 
         return back()->with('message', 'Password updated successfully.');
+    }
+
+    public function updatePayment(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $data = $request->only('gcash_qr', 'gcash_number');
+        if ($request->hasFile('gcash_qr')) {
+            // Delete the old file
+            Storage::delete('image/' . $user->gcash_qr);
+
+            // Store the new file
+            $data['gcash_qr'] = $request->file('gcash_qr')->store('image', 'public');
+        }
+
+        $user->update($data);
+
+        return redirect()->back()->with('message', 'Payment details updated successfully');
     }
 
     public function showPasswordChange()

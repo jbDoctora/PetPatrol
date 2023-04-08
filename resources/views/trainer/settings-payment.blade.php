@@ -1,6 +1,6 @@
 <x-trainer-layout>
-    <form method="POST" action="/trainer/{{ auth()->user()->id }}/update-profile" enctype="multipart/form-data"
-        class="m-5 rounded-lg bg-white p-5 text-xs">
+    <form x-data="{ autoPopulate: false }" method="POST" action="/settings/payment/{{auth()->user()->id}}"
+        enctype="multipart/form-data" class="m-5 rounded-lg bg-white p-5 text-xs">
         @csrf
         @method('PUT')
         <h3 class="text-blue-700 text-xl">Settings</h3>
@@ -21,29 +21,25 @@
                 <label class="mb-2 block font-medium text-gray-700" for="gcash_number">GCash Number</label>
                 <input
                     class="focus:shadow-outline w-80 appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    type="text" name="gcash_number">
+                    type="text" name="gcash_number" value="{{$user->gcash_number}}">
             </div>
-            {{-- @error('gcash_number')
+            @error('gcash_number')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-            @enderror --}}
+            @enderror
 
             <div class="mb-5">
                 <label class="mb-2 block font-medium text-gray-700" for="gcash_qr_code">GCash QR Code</label>
                 <input
                     class="focus:shadow-outline w-80 appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    type="file" name="gcash_qr_code">
+                    type="file" name="gcash_qr">
             </div>
-            {{-- @error('gcash_qr_code')
+            @error('gcash_qr_code')
             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-            @enderror --}}
+            @enderror
 
             <div class="mb-5">
-                <label class="mb-2 block font-medium text-gray-700" for="auto_populate_gcash_number">Auto Populate GCash
-                    Number</label>
-                <input class="mr-2" type="checkbox" name="auto_populate_gcash_number" value="1" {{
-                    old('auto_populate_gcash_number') ? 'checked' : '' }}>
-                <span class="text-gray-500 text-xs">Check this box to auto populate GCash number from user's phone
-                    number.</span>
+                <label for="qr-modal" class="bg-blue-700 rounded text-white text-sm px-3 py-2 hover:bg-blue-800">View QR
+                    Code</label>
             </div>
         </div>
 
@@ -53,6 +49,15 @@
                 type="submit"> Upload </button>
         </div>
     </form>
+    <input type="checkbox" id="qr-modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative rounded">
+            <label for="qr-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Current QR Code</h3>
+            <div>
+                <img src="{{$user->gcash_qr ? asset('storage/' . $user->gcash_qr) : asset('/images/placeholder.png') }}"
+                    alt="gcash-qr code">
+            </div>
+        </div>
+    </div>
 </x-trainer-layout>
-
-{{-- ({{$trainer->phone_number}}) --}}
