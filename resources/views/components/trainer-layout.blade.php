@@ -131,13 +131,7 @@
                     </span>
                     <span class=" ml-9">Dashboard</span>
                 </a>
-                {{-- <a href="/trainer/portfolio"
-                    class="flex items-center w-full px-8 py-3 hover:bg-blue-900 hover:text-white">
-                    <span class="material-icons" style="font-size: 25px;">
-                        contact_page
-                    </span>
-                    <span class="ml-9">Portfolio</span>
-                </a> --}}
+
                 <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
