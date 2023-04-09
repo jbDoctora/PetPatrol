@@ -16,6 +16,13 @@
             </ul>
         </div>
 
+        <div class="text-xs text-gray-600 mt-4">
+            <p>Disclaimer: Please note that our system does not integrate a payment gateway. It is up to the trainer to
+                confirm the
+                payment
+                via GCash reference number. Thank you for your understanding.</p>
+        </div>
+
         <div class="flex flex-col justify-start my-7">
             <div class="mb-5">
                 <label class="mb-2 block font-medium text-gray-700" for="gcash_number">GCash Number</label>

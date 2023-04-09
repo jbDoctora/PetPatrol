@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\PetInfo;
 use App\Models\Service;
+use App\Models\AdminService;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
 use App\Models\RequestTrainer;
@@ -92,11 +93,13 @@ class OwnerController extends Controller
 
     public function create()
     {
+        $adminService = AdminService::where('isPosted', 1)->get();
+
         $petinfo = PetInfo::where('owner_id', auth()->id())
             ->whereNotIn('book_status', ['pending', 'requested'])
             ->paginate(9);
         $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet_name')->toArray();
         // dd($petinfo);
-        return view('owner.book-trainer', compact('petinfo', 'requestedPetNames'));
+        return view('owner.book-trainer', compact('adminService', 'petinfo', 'requestedPetNames'));
     }
 }

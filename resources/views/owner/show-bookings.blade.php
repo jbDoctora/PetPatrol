@@ -87,7 +87,7 @@
                     <button type="button" x-bind:disabled="['declined', 'pending'].includes('{{ $requests->status }}')"
                         x-bind:class="{'bg-gray-400 hover:bg-gray-400': ['declined', 'pending'].includes('{{ $requests->status }}')}"
                         class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white"
-                        x-on:click="window.location.href='/checkout'">
+                        x-on:click="window.location.href='/checkout/{{$requests->book_id}}'">
                         <i class="fa-solid fa-cart-shopping pr-3"></i>Checkout
                     </button>
                 </div>

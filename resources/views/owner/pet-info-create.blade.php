@@ -25,6 +25,9 @@
                     <option value="Cat">Cat</option>
                     <option value="Hamster">Hamster</option>
                     <option value="Parrot">Parrot</option>
+                    @foreach($adminPetType as $pet_type)
+                    <option value="{{$pet_type->admin_petType}}">{{$pet_type->admin_petType}}</option>
+                    @endforeach
                 </select>
                 @error('type')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -86,7 +89,9 @@
                     Information</label> <textarea id="additional-info" name="info"
                     class="input input-bordered w-full h-56 rounded"></textarea> @error('info') <p
                     class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror </div>
-            <div class="flex justify-center"> <button class="btn btn-primary w-full" type="submit">Submit</button>
+            <div class="flex justify-center"> <button
+                    class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-full text-sm"
+                    type="submit">Submit</button>
             </div>
         </form>
     </div>

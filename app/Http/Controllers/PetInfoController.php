@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PetInfo;
+use App\Models\AdminPetType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\Console\Input\Input;
@@ -28,7 +29,8 @@ class PetInfoController extends Controller
     }
     public function create()
     {
-        return view('owner.pet-info-create');
+        $adminPetType = AdminPetType::where('isPosted', 1)->get();
+        return view('owner.pet-info-create', compact('adminPetType'));
     }
 
     public function store(Request $request)

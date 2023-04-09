@@ -62,8 +62,45 @@ class BookingController extends Controller
         ]);
     }
 
-    public function showCheckout()
+    public function showCheckout($id)
     {
-        return view('owner.checkout');
+        $data = Booking::where('trainer_id', $id);
+
+        $request = Booking::select(
+            'booking.book_id',
+            'booking.status',
+            'booking.payment',
+            'pet_info.pet_name',
+            'booking.trainer_name',
+            'booking.start_date',
+            'service.course',
+            'service.availability',
+            'service.id as service_id',
+            'users.gcash_qr',
+            'service.price',
+        )
+            ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+            ->join('users', 'users.id', '=', 'booking.trainer_id')
+            ->join('service', 'service.id', 'booking.service_id')
+            // ->where('booking.trainer_id', $id)
+            ->get();
+
+        // dd($request);
+
+        return view('owner.checkout', compact('request'));
+    }
+
+    public function updatePayment(Request $request, $book_id)
+    {
+        $book_id = Booking::findOrFail($book_id);
+
+        $data = [
+            'gcash_refnum' => $request->input('gcash_refnum')
+        ];
+
+
+        $book_id->update($data);
+
+        return redirect('/bookings')->with('message', 'Payment Uploaded');
     }
 }

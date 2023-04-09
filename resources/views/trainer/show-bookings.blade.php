@@ -67,7 +67,7 @@
                             Actions</th>
                     </tr>
                 </thead>
-                <tbody class="text-left text-xs">
+                <tbody class="text-center text-xs">
                     @if(count($request) == 0)
                     <tr>
                         <td colspan="7">
