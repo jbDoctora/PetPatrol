@@ -40,7 +40,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/icon.svg" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -86,12 +86,12 @@
                                 20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
                 </g>
             </svg>
-            <span class="text-xl font-bold tracking-wide text-white text-center"
+            <span class="text-2xl font-bold tracking-wide text-white text-center"
                 style="font-family: 'Jost', sans-serif;">PETPATROL</span>
         </div>
 
         <div class="navbar-start hidden px-5 lg:flex">
-            <ul class="menu menu-horizontal px-5 text-xs font-medium text-white">
+            <ul class="menu menu-horizontal px-5 text-sm font-medium text-white">
                 <li class="px-5">About Us</li>
                 <li class="px-5">Need Help?</li>
                 <a href="/register-trainer">
@@ -135,7 +135,7 @@
             <button class="px-4 py-3 text-white font-semibold rounded text-sm hover:text-yellow-400"><a
                     href="/register-owner"><span class="normal-case">Sign
                         up</span></a></button>
-            <button class="bg-yellow-400 px-4 py-3 text-black font-semibold rounded text-sm hover:bg-yellow-500"><a
+            <button class="rounded bg-yellow-400 text-black py-2 px-3 hover:bg-yellow-500 w-24 text-sm font-semibold"><a
                     href="/login"><span class="normal-case">Sign in</span></a></button>
         </div>
         @endauth

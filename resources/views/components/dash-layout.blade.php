@@ -41,7 +41,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
         type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-slate-300 flex min-h-screen flex-col">
@@ -89,7 +89,7 @@
                                         -7 -114 -13 -15 -36 -16 -253 -10 -132 4 -243 9 -246 12 -10 11 0 164 15 231
                                         20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
                         </g>
-                    </svg><span class="text-xl font-bold tracking-wide text-white text-center ml-3"
+                    </svg><span class="text-2xl font-bold tracking-wide text-white text-center ml-3"
                         style="font-family: 'Jost', sans-serif;">PETPATROL</span>
                     <div class="flex-1 bg-fixed">
 
