@@ -35,7 +35,7 @@
 
                         <div class="my-4">
                             <p class="text-left text-xs font-bold text-gray-700">Status:</p>
-                            @if (!$matchedservices->isEmpty())
+                            {{-- @if (!$matchedservices->isEmpty()) --}}
                             <div class="flex flex-row justify-between">
                                 <p class="text-center text-xs font-bold text-green-500">Active Match</p>
                                 <div class="tooltip tooltip-left"
@@ -43,14 +43,14 @@
                                     <i class="fa-solid fa-circle-info fa-lg"></i>
                                 </div>
                             </div>
-                            @else
+                            {{-- @else
                             <div class="flex flex-row justify-between">
                                 <p class="text-center text-xs font-bold text-red-500">No Active Match</p>
                                 <div class="tooltip tooltip-left" data-tip="No active trainer matched, come back later">
                                     <i class="fa-solid fa-circle-info" style="font-size: 1.25rem;"></i>
                                 </div>
                             </div>
-                            @endif
+                            @endif --}}
                         </div>
 
 

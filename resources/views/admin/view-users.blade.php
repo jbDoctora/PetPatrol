@@ -30,7 +30,9 @@
             <tbody class="text-xs text-gray-600">
                 @foreach($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
+                    <td>
+                        <div class="my-3">{{$user->id}}</div>
+                    </td>
                     <td><img src="{{$user->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
                             alt="Profile photo" class="h-14 w-14 rounded-full bg-white object-cover"></td>
                     <td>{{$user->name}}</td>

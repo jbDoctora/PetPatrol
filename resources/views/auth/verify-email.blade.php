@@ -227,11 +227,13 @@
                         Welcome,
                     </h2>
                     <p class="mt-2 text-justify text-sm text-gray-600 py-2">
-                        Hi, {{ auth()->user()->name }}! You have successfully submitted your Trainer Application.
+                        Hi, {{ auth()->user()->name }}!
+                    <p class="mt-2 text-justify text-sm text-gray-600 py-2">
                         Thanks for signing up! Before getting started, could you verify your email address by
                         clicking on the link we just emailed to you? If you didn't receive the email, we will gladly
                         send
                         you another.
+                    </p>
                     <p class="mt-2 text-left text-sm text-gray-600 py-2">
                         - Pet Patrol
                     </p>

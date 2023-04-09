@@ -24,7 +24,9 @@
             <tbody class="text-xs text-gray-600 text-center">
                 @foreach($service as $services)
                 <tr>
-                    <td class="my-5">{{$services->id}}</td>
+                    <td>
+                        <div class="my-3">{{$services->id}}</div>
+                    </td>
                     <td>{{$services->admin_service}}</td>
                     <td>{{$services->isPosted == 0? 'unposted': 'posted'}}</td>
                     <td><label for="action-modal-{{$services->id}}" class="text-white bg-blue-700 py-2 px-3 rounded"><i

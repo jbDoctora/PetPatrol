@@ -24,7 +24,9 @@
             <tbody class="text-xs text-gray-600 text-center">
                 @foreach($petType as $pet)
                 <tr>
-                    <td class="my-5">{{$pet->id}}</td>
+                    <td>
+                        <div class="my-2">{{$pet->id}}</div>
+                    </td>
                     <td>{{$pet->admin_petType}}</td>
                     <td>{{$pet->isPosted == 0? 'unposted': 'posted'}}</td>
                     <td><label for="action-modal-{{$pet->id}}" class="text-white bg-blue-700 py-2 px-3 rounded"><i

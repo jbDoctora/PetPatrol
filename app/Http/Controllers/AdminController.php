@@ -53,8 +53,29 @@ class AdminController extends Controller
 
     public function showBookings()
     {
-        $bookings = Booking::all();
-        return view('admin.bookings', compact('bookings'));
+
+        $bookings = Booking::select(
+            'booking.book_id',
+            'booking.status',
+            'booking.payment',
+            'pet_info.pet_name',
+            'pet_info.type',
+            'booking.trainer_name',
+            'booking.client_name',
+            'booking.start_date',
+            'service.course',
+            'service.availability',
+            'service.id as service_id'
+        )
+            ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+            ->join('users', 'users.id', '=', 'booking.client_id')
+            ->join('service', 'service.id', 'booking.service_id')
+            ->get();
+        // ->get();
+        // dd($request);
+        return view('admin.bookings', [
+            'bookings' => $bookings
+        ]);
     }
 
     public function storeService(Request $request)
