@@ -102,6 +102,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/trainer-approval', [AdminController::class, 'showTrainerApproval']);
     Route::put('/admin/trainer-approval/{id}', [AdminController::class, 'updateApproval']);
     Route::get('/admin/monitor/users', [AdminController::class, 'showUsers']);
+    Route::get('/admin/service', [AdminController::class, 'showAdminService']);
+    Route::get('/admin/pet-type', [AdminController::class, 'showAdminPetType']);
+    Route::post('/admin/pet-type/add', [AdminController::class, 'storePetType']);
+    Route::post('/admin/service/add', [AdminController::class, 'storeService']);
 });
 
 // Default Route

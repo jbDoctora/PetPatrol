@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="bg-white rounded m-5 p-5">
+    <div class="bg-white rounded m-3 p-5">
         <div class="flex justify-between items-center p-3 border-b border-gray-300">
             <div>
                 <h2 class="text-blue-700 text-xl">Trainer Applications</h2>
@@ -41,7 +41,7 @@
                     <td>{{$user->phone_number}}</td>
                     <td>
                         <label for="id-modal-{{$user->id}}"
-                            class="bg-gray-300 rounded text-gray-600 text-sm px-4 py-2 hover:bg-gray-700 hover:text-white">View
+                            class="bg-gray-300 rounded text-gray-600 text-sm md:text-xs md:p-2 px-1 py-2 hover:bg-gray-700 hover:text-white">View
                             ID</label>
                     </td>
                     <td>
@@ -49,7 +49,8 @@
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="admin_approve" value="1" />
-                            <button class="bg-green-700 rounded text-sm text-white px-4 py-2 hover:bg-green-800"
+                            <button
+                                class="bg-green-700 rounded text-sm text-white px-2 py-2 md:p-2 md:text-xs hover:bg-green-800"
                                 type="submit">Approve</button>
                         </form>
                     </td>

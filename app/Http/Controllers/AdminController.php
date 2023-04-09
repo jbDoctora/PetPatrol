@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\AdminPetType;
+use App\Models\AdminService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -34,5 +36,39 @@ class AdminController extends Controller
         $users = User::whereIn('role', [0, 1])->get();
 
         return view('admin.view-users', compact('users'));
+    }
+
+    public function showAdminService()
+    {
+        $service = AdminService::all();
+        return view('admin.view-service', compact('service'));
+    }
+
+    public function showAdminPetType()
+    {
+        $petType = AdminPetType::all();
+        return view('admin.view-petType', compact('petType'));
+    }
+
+    public function storeService(Request $request)
+    {
+        $formFields = $request->validate([
+            'admin_service' => 'required',
+        ]);
+        $formFields['isPosted'] = $request->input('isPosted');
+        AdminService::create($formFields);
+
+        return redirect()->back()->with('message', 'New service added');
+    }
+
+    public function storePetType(Request $request)
+    {
+        $formFields = $request->validate([
+            'admin_petType' => 'required',
+        ]);
+        $formFields['isPosted'] = $request->input('isPosted');
+        AdminPetType::create($formFields);
+
+        return redirect()->back()->with('message', 'New pet type added');
     }
 }

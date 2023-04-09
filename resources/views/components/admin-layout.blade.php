@@ -137,7 +137,7 @@
                     <span class="ml-9">Trainer Approval</span>
                 </a>
 
-                <a class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white cursor-pointer  "
+                <a class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white cursor-pointer"
                     @click="open = !open">
                     <span class="material-icons-outlined" style="font-size: 25px;"> people_alt </span> <span
                         class=" ml-9">Monitor</span> <span class="ml-auto"> <span x-show="!open" class="material-icons"
@@ -167,18 +167,20 @@
                     </a>
                 </div>
 
-                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
+                <a href="/admin/service"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         home_repair_service
                     </span>
-                    <span class="ml-9">Manage Services</span>
+                    <span class="ml-9">Services</span>
                 </a>
 
-                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
+                <a href="/admin/pet-type"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         pets
                     </span>
-                    <span class="ml-9">Manage Pet Type</span>
+                    <span class="ml-9">Pet Type</span>
                 </a>
 
                 <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
