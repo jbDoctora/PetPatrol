@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Booking;
 use App\Models\AdminPetType;
 use App\Models\AdminService;
 use Illuminate\Http\Request;
@@ -48,6 +49,12 @@ class AdminController extends Controller
     {
         $petType = AdminPetType::all();
         return view('admin.view-petType', compact('petType'));
+    }
+
+    public function showBookings()
+    {
+        $bookings = Booking::all();
+        return view('admin.bookings', compact('bookings'));
     }
 
     public function storeService(Request $request)

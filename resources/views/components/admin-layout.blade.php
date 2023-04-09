@@ -14,7 +14,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Euclid Circular A', 'sans-serif'],
+                        'sans': ['Poppins', 'Euclid Circular A', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
@@ -183,7 +183,8 @@
                     <span class="ml-9">Pet Type</span>
                 </a>
 
-                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
+                <a href="/admin/bookings"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         bookmark_border
                     </span>

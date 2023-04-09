@@ -106,6 +106,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/pet-type', [AdminController::class, 'showAdminPetType']);
     Route::post('/admin/pet-type/add', [AdminController::class, 'storePetType']);
     Route::post('/admin/service/add', [AdminController::class, 'storeService']);
+    Route::get('/admin/bookings', [AdminController::class, 'showBookings']);
 });
 
 // Default Route

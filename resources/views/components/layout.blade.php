@@ -19,7 +19,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Euclid Circular A'],
+                        'sans': ['Poppins', 'Euclid Circular A', 'sans-serif'],
                     },
                     colors: {
                         laravel: "#ef3b2d",
