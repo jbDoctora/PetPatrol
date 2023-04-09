@@ -132,10 +132,10 @@
         </div>
         @else
         <div class="flex gap-2">
-            <button class="px-4 py-3 text-white font-semibold rounded text-sm hover:text-yellow-400"><a
+            <button class="rounded text-white py-3 px-3 hover:text-yellow-400 w-24 text-sm "><a
                     href="/register-owner"><span class="normal-case">Sign
                         up</span></a></button>
-            <button class="rounded bg-yellow-400 text-black py-2 px-3 hover:bg-yellow-500 w-24 text-sm font-semibold"><a
+            <button class="rounded bg-yellow-400 text-black py-3 px-3 hover:bg-yellow-500 w-24 text-sm"><a
                     href="/login"><span class="normal-case">Sign in</span></a></button>
         </div>
         @endauth
