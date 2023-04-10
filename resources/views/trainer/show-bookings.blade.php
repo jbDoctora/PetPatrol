@@ -58,6 +58,7 @@
                             Client Name</th>
                         <th class="text-xs font-semibold">
                             Status</th>
+                        <th class="text-xs font-semibold">Gcash Reference Number</th>
                         <th class="text-xs font-semibold">
                             Payment Status
                         </th>
@@ -100,6 +101,7 @@
                             @endif
 
                         </td>
+                        <td class="whitespace-nowrap border-b border-slate-200">{{$requests->gcash_refnum}}</td>
                         <td class="whitespace-nowrap border-b border-slate-200">
                             @if ($requests->payment == 'unpaid')
                             <span class="badge bg-yellow-300 text-yellow-800 text-xs">{{

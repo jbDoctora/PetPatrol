@@ -77,6 +77,8 @@ class BookingController extends Controller
             'service.availability',
             'service.id as service_id',
             'users.gcash_qr',
+            'users.gcash_number',
+            'booking.gcash_refnum',
             'service.price',
         )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')

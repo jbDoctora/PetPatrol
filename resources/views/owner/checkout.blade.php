@@ -46,7 +46,7 @@
                         @csrf
                         @method('PUT')
 
-                        @if(!empty($requests->gcash_refnum))
+                        @if(!empty(trim($requests->gcash_refnum)))
                         <div class="flex bg-yellow-100 text-gray-600 p-2 text-justify">
                             <div class="flex items-center">
                                 <i class="fa-solid fa-triangle-exclamation fa-2xl px-3"></i>

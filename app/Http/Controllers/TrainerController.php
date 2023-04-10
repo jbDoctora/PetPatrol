@@ -39,6 +39,7 @@ class TrainerController extends Controller
             'booking.book_id',
             'booking.status',
             'booking.payment',
+            'booking.gcash_refnum',
             'pet_info.pet_name',
             'booking.client_name',
             'booking.start_date',

@@ -60,25 +60,31 @@
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">
                     @if ($requests->status == 'pending')
-                    <span class="badge bg-amber-400 text-black text-xs border-none">{{
-                        $requests->status }}</span> |
+                    <span class="badge bg-yellow-400 text-black text-xs border-none">
+                        <i class="fa-solid fa-hourglass-start pr-1"></i>{{ $requests->status }}
+                    </span> |
                     @elseif ($requests->status == 'approved')
-                    <span class="badge bg-green-400 text-black text-xs border-none">{{
-                        $requests->status }}</span> |
+                    <span class="badge bg-green-400 text-black text-xs border-none">
+                        <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}
+                    </span> |
                     @elseif ($requests->status == 'declined')
-                    <span class="badge bg-red-400 text-black text-xs">{{
-                        $requests->status }}</span> |
+                    <span class="badge bg-red-400 text-black text-xs">
+                        <i class="fa-solid fa-times pr-1"></i>{{ $requests->status }}
+                    </span> |
                     @elseif ($requests->status == 'confirmed')
-                    <span class="badge bg-blue-700 text-white text-xs">{{
-                        $requests->status }}</span> |
+                    <span class="badge bg-blue-700 text-white text-xs">
+                        <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}
+                    </span> |
                     @endif
 
                     @if ($requests->payment == 'unpaid')
-                    <span class="badge bg-amber-400 text-black text-xs border-none">{{
-                        $requests->payment }}</span>
+                    <span class="badge bg-yellow-400 text-black text-xs border-none">
+                        <i class="fa-solid fa-exclamation-triangle pr-1"></i>{{ $requests->payment }}
+                    </span>
                     @elseif ($requests->payment == 'paid')
-                    <span class="badge bg-green-400 text-black text-xs border-none">{{
-                        $requests->payment }}</span>
+                    <span class="badge bg-green-400 text-black text-xs border-none">
+                        <i class="fa-solid fa-check pr-1"></i>{{ $requests->payment }}
+                    </span>
                     @endif
                 </div>
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
