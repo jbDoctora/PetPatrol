@@ -120,7 +120,7 @@
 
             </div>
             <nav
-                class="flex flex-col items-center w-full h-full bg-white text-sm font-medium subpixel-antialiased border-r border-gray-300 ">
+                class="flex flex-col items-center w-full h-full bg-white text-xs font-medium subpixel-antialiased border-r border-gray-300 ">
                 <a href="/admin"
                     class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons-outlined md-36" style="font-size: 25px;">

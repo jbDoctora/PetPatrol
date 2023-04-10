@@ -5,7 +5,8 @@
                 <div>
                     <h3>Service Manager</h3>
                 </div>
-                <div><label for="my-modal" class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs">Add
+                <div><label for="my-modal"
+                        class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
                         training
                         service</label>
                 </div>
@@ -13,19 +14,19 @@
 
             <div class="mt-2 min-w-full overflow-hidden rounded-none">
                 <table class="w-full text-xs">
-                    <thead class="text-center bg-blue-100">
+                    <thead class="text-center bg-gray-200 text-gray-800">
                         <tr>
-                            <th class="py-3 text-xs font-semibold">Id</th>
-                            <th class="text-xs font-semibold">Training service</th>
-                            <th class="text-xs font-semibold">Pet type</th>
-                            <th class="text-xs font-semibold">Availability</th>
-                            <th class="text-xs font-semibold">Weeks of training</th>
-                            <th class="text-xs font-semibold">Price</th>
-                            <th class="text-xs font-semibold">Status</th>
+                            <th class="py-3 text-xs font-normal">Id</th>
+                            <th class="text-xs font-normal">Training service</th>
+                            <th class="text-xs font-normal">Pet type</th>
+                            <th class="text-xs font-normal">Availability</th>
+                            <th class="text-xs font-normal">Weeks of training</th>
+                            <th class="text-xs font-normal">Price</th>
+                            <th class="text-xs font-normal">Status</th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody class="text-left text-xs">
+                    <tbody class="text-center text-xs">
                         @forelse ($training as $trainings)
                         <tr>
                             <td class="whitespace-nowrap text-xs border-b border-slate-200 px-4 py-7">
@@ -48,9 +49,7 @@
                                     <button class="bg-blue-700 text-white px-3 py-1 rounded"
                                         data-tip="view training plan"><a
                                             href="/trainer/service/add-service/{{ $trainings->id }}"><i
-                                                class="fa-solid fa-eye mr-2"></i>View plan</a></button>
-                                    <button class="bg-blue-700 text-white px-3 py-1 rounded"><i
-                                            class="fa-solid fa-pen-to-square mr-2"></i>Edit</button>
+                                                class="fa-solid fa-pen-to-square mr-2"></i>Edit plan</a></button>
                                     <button class="bg-blue-700 text-white px-3 py-1 rounded"><i
                                             class="fa-solid fa-trash mr-2"></i>Delete</button>
                                 </div>
@@ -66,53 +65,97 @@
             </div>
         </div>
 
+
         {{-- Modal that asks user input --}}
         <form method="POST" action="/trainer/service/add-service/addService"
             x-on:submit="price = price.replace(/,/g, '')">
             @csrf
             <input type="checkbox" id="my-modal" class="modal-toggle flex items-center justify-center" />
             <div class="modal">
-                <div class="modal-box rounded-sm">
-                    <h1 class="mb-4 text-xl font-medium">Input course details:</h1>
-                    <div class="flex flex-col gap-4">
-                        <input type="text" x-model="price" class="input input-bordered mx-auto w-full max-w-xs"
-                            name="price" placeholder="₱ | Price of the package  ">
-                        <select class="select select-bordered mx-auto w-full max-w-xs" name="course" required>
-                            <option disabled selected>Choose training course</option>
-                            <option>Potty Training</option>
-                            <option>Obedience Training</option>
-                            <option>Behavioral Training</option>
-                            <option>Agility Training</option>
-                            <option>Tricks Training</option>
-                            <option>Theraphy</option>
-                        </select>
-                        <select class="select select-bordered mx-auto w-full max-w-xs" name="pet_type" required>
-                            <option disabled selected>Choose pet type</option>
-                            <option>Dog</option>
-                            <option>Cat</option>
-                            <option>Hamster</option>
-                            <option>Parrot</option>
-                        </select>
-                        <select class="select select-bordered mx-auto w-full max-w-xs" name="availability" required>
-                            <option disabled selected>Choose availability</option>
-                            <option>Weekdays mornings</option>
-                            <option>Weekdays afternoon</option>
-                            <option>Weekends</option>
-                        </select>
-                        <select class="select select-bordered mx-auto w-full max-w-xs" name="weeks" required>
-                            <option disabled selected>Weeks of training</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+                <div class="modal-box max-w-5xl rounded">
+                    <label for="my-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h1 class="my-5 text-lg font-bold">Input course details:</h1>
+                    <div class="grid grid-cols-2 gap-6 items-center">
+                        <div>
+                            <p class="text-sm">Price</p>
+                            <input type="text" x-model="price"
+                                class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs" name="price">
+                            @error('price')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <p class="text-sm">Training Service</p>
+                            <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs" name="course"
+                                required>
+                                <option disabled selected>Choose training course</option>
+                                @foreach($adminService as $service)
+                                <option>{{$service->admin_service}}</option>
+                                @endforeach
+                                {{-- <option>Potty Training</option>
+                                <option>Obedience Training</option>
+                                <option>Behavioral Training</option>
+                                <option>Agility Training</option>
+                                <option>Tricks Training</option>
+                                <option>Theraphy</option> --}}
+                            </select>
+                            @error('course')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <p class="text-sm">Pet Type</p>
+                            <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs" name="pet_type"
+                                required>
+                                <option disabled selected>Choose pet type</option>
+                                @foreach($adminPetType as $petType)
+                                <option>{{$petType->admin_petType}}</option>
+                                @endforeach
+                                {{-- <option>Dog</option>
+                                <option>Cat</option>
+                                <option>Hamster</option>
+                                <option>Parrot</option> --}}
+                            </select>
+                            @error('pet_type')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <p class="text-sm">Session</p>
+                            <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                name="availability" required>
+                                <option disabled selected>Choose availability</option>
+                                <option>Weekdays mornings</option>
+                                <option>Weekdays afternoon</option>
+                                <option>Weekends</option>
+                            </select>
+                            @error('availability')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <p class="text-sm">Days of Training</p>
+                            <input type="number" class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                name="days">
+                            @error('days')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div>
+                        {{-- <div>
+                            <p class="text-sm">Capacity</p>
+                            <input type="number" class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                name="capacity">
+                            @error('capacity')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div> --}}
                     </div>
                     <input type="hidden" name="status" value="active">
-                    <div class="modal-action flex items-center justify-center">
+                    <div class="modal-action flex items-center justify-end">
                         <button type="submit"
-                            class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Create</button>
+                            class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Create</button>
                         <label for="my-modal"
-                            class="tracking-wide rounded-md px-5 py-4 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400">Close</label>
+                            class="bg-neutral-950 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-neutral-800">Close</label>
                     </div>
                 </div>
             </div>

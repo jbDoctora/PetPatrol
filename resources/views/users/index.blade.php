@@ -12,9 +12,10 @@
             {{-- <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_o1JRaPxx1E.json"
                 background="transparent" speed="1" style="width: 600px; height: 600px; margin-bottom: 5px;" loop
                 autoplay></lottie-player> --}}
-            <div class="mr-8 ml-5 text-center">
-                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-6xl"><span class="text-black">MAKE YOUR
-                        APPOINTMENT<span class="text-8xl text-yellow-500 xl:text-6xl"><br>PAWESOME!</span></span></h1>
+            <div class="mr-8 ml-5 text-center ">
+                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-7xl leading-relaxed text-black">MAKE YOUR
+                    APPOINTMENT<br><span style="font-family: 'Lora', serif;" class="text-yellow-500">PAWESOME!</span>
+                </h1>
                 <p class="py-6 text-xl tracking-wide text-black xl:text-lg">Unlock Your Pet's Full Potential with Our
                     Expert
                     Training Services

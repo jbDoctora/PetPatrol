@@ -44,10 +44,11 @@
                     @endif
                 </div>
             </div>
+
             @endforeach
         </div>
 
-        @forelse($trainingDetails as $det)
+
         <div class="my-3 py-3">
             <div class="overflow-x-auto mx-9">
                 <table class="w-full border border-gray-300 rounded">
@@ -62,21 +63,23 @@
                         </tr>
                     </thead>
                     <tbody class="text-center text-xs">
-                        <tr>
+                        @forelse($trainingDetails as $det)
+                        <tr class="border border-gray-300">
                             <td>
-                                <div class="my-3">{{$det->day}}</div>
+                                <div class="my-5">{{$det->day}}</div>
                             </td>
                             <td>{{$det->lesson}}</td>
                             <td>{{$det->start_time}}</td>
                             <td>{{$det->end_time}}</td>
                         </tr>
+                        @empty
+                        <div class=""></div>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
-        @empty
-        <div class=""></div>
-        @endforelse
+
 
     </div>
 </x-dash-layout>

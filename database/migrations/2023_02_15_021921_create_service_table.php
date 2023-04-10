@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('pet_type');
             $table->string('availability');
-            $table->integer('weeks');
+            $table->integer('days');
             $table->string('status');
         });
     }

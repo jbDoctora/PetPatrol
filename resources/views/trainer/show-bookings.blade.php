@@ -5,7 +5,7 @@
         <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
                 <i class="fa-solid fa-magnifying-glass ml-2"></i>
-                <input type="text" placeholder="Search"
+                <input type="search" placeholder="Search Keyword"
                     class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52" />
             </div>
             <div>
@@ -48,23 +48,23 @@
 
         <div class="mt-2 min-w-full overflow-hidden rounded-none">
             <table class="w-full text-xs">
-                <thead class="text-center bg-blue-100">
+                <thead class="text-center bg-gray-200 text-gray-800">
                     <tr>
-                        <th class="py-3 text-xs font-semibold">Id
+                        <th class="py-3 text-xs font-normal">Id
                         </th>
-                        <th class="text-xs font-semibold">
+                        <th class="text-xs font-normal">
                             Pet Name</th>
-                        <th class="text-xs font-semibold">
+                        <th class="text-xs font-normal">
                             Client Name</th>
-                        <th class="text-xs font-semibold">
+                        <th class="text-xs font-normal">
                             Status</th>
-                        <th class="text-xs font-semibold">Gcash Reference Number</th>
-                        <th class="text-xs font-semibold">
+                        <th class="text-xs font-normal">
                             Payment Status
                         </th>
-                        <th class="text-xs font-semibold">
+                        <th class="text-xs font-normal">Gcash Reference Number</th>
+                        <th class="text-xs font-normal">
                             Appointment Date</th>
-                        <th class="text-xs font-semibold">
+                        <th class="text-xs font-normal">
                             Actions</th>
                     </tr>
                 </thead>
@@ -81,12 +81,108 @@
                     @else
                     @foreach ($request as $requests)
                     <tr>
-                        <td class="whitespace-nowrap text-xs border-b border-slate-200 px-2 py-7">
-                            {{$requests->book_id}}
+                        <td class="whitespace-nowrap text-xs border-b border-slate-200 px-2 py-7 font-semibold">
+                            {{$requests->code}}
                         </td>
-                        <td class="whitespace-nowrap text-blue-700 underline border-b border-slate-200"><a href="#">{{
-                                $requests->pet_name}}</a></td>
-                        <td class="whitespace-nowrap  border-b border-slate-200">{{ $requests->client_name }}
+                        <td class="whitespace-nowrap hover:text-blue-700 border-b border-slate-200"><label
+                                for="pet-modal" class="cursor-pointer">{{
+                                $requests->pet_name}}</label></td>
+                        <!-- Put this part before </body> tag -->
+                        <input type="checkbox" id="pet-modal" class="modal-toggle" />
+                        <div class="modal">
+                            <div class="modal-box rounded w-max-4xl">
+                                <label for="pet-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <h3 class="my-5 text-lg font-bold">Pet Information</h3>
+                                <div class="flex justify-center avatar bg-gray-300 py-3">
+                                    <div class="w-24 rounded-full">
+                                        <img src="{{ $requests->image ? asset('storage/' . $requests->image) : asset('/images/no-image.png') }}"
+                                            alt="Pet image">
+                                    </div>
+                                </div>
+                                <div class="m-3">
+                                    <p class="text-sm">Pet Name</p>
+                                    <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                        {{$requests->pet_name}}
+                                    </div>
+                                </div>
+                                <div class="m-3">
+                                    <p class="text-sm">Pet Name</p>
+                                    <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                        {{$requests->years}} years and {{$requests->months}} months
+                                    </div>
+                                </div>
+                                <div class="m-3">
+                                    <p class="text-sm">Breed</p>
+                                    <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                        {{$requests->breed}}
+                                    </div>
+                                </div>
+                                <div class="m-3">
+                                    <p class="text-sm">Weight</p>
+                                    <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                        {{$requests->weight}} kgs.
+                                    </div>
+                                </div>
+                                <div class="m-3">
+                                    <p class="text-sm">List of Vaccines</p>
+                                    <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                        {{$requests->vaccine_list}}
+                                    </div>
+                                </div>
+                                <div class="m-3">
+                                    <p class="text-sm">More Infos</p>
+                                    <div class="rounded border border-gray-300 px-3 py-2 w-full h-32 text-xs">
+                                        {{$requests->info}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <td class="whitespace-nowrap border-b border-slate-200">
+                            <label for="client-modal" class="hover:text-blue-700 cursor-pointer">{{
+                                $requests->client_name }}</label>
+                            <input type="checkbox" id="client-modal" class="modal-toggle" />
+                            <div class="modal">
+                                <div class="modal-box rounded w-max-4xl">
+                                    <label for="client-modal"
+                                        class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                    <h3 class="my-5 text-lg font-bold text-left">Client Information</h3>
+                                    <div class="text-left">
+                                        <div class="flex justify-center avatar bg-gray-300 py-3">
+                                            <div class="w-24 rounded-full">
+                                                <img src="{{ $requests->image ? asset('storage/' . $requests->image) : asset('/images/no-image.png') }}"
+                                                    alt="Pet image">
+                                            </div>
+                                        </div>
+                                        <div class="m-3">
+                                            <div class="flex items-center gap-2 my-2">
+                                                <i class="fa-solid fa-user fa-sm"></i>
+                                                <p class="text-sm">Client Name</p>
+                                            </div>
+                                            <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                                {{$requests->client_name}}
+                                            </div>
+                                        </div>
+                                        <div class="m-3">
+                                            <div class="flex items-center gap-2 my-2">
+                                                <i class="fa-solid fa-envelope fa-sm"></i>
+                                                <p class="text-sm">Email</p>
+                                            </div>
+                                            <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                                {{$requests->email}}
+                                            </div>
+                                        </div>
+                                        <div class="m-3">
+                                            <div class="flex items-center gap-2 my-2">
+                                                <i class="fa-solid fa-phone fa-sm"></i>
+                                                <p class="text-sm">Phone Number</p>
+                                            </div>
+                                            <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
+                                                {{$requests->phone_number}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                         <td class="whitespace-nowrap border-b border-slate-200">
                             @if ($requests->status == 'pending')
@@ -101,7 +197,6 @@
                             @endif
 
                         </td>
-                        <td class="whitespace-nowrap border-b border-slate-200">{{$requests->gcash_refnum}}</td>
                         <td class="whitespace-nowrap border-b border-slate-200">
                             @if ($requests->payment == 'unpaid')
                             <span class="badge bg-yellow-300 text-yellow-800 text-xs">{{
@@ -111,6 +206,7 @@
                                 $requests->payment }}</span>
                             @endif
                         </td>
+                        <td class="whitespace-nowrap border-b border-slate-200">{{$requests->gcash_refnum}}</td>
                         <td class="whitespace-nowrap border-b border-slate-200" x-data="{ formattedDate: '' }"
                             x-init="let date = new Date('{{ $requests->start_date }}'); formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })">
                             <span x-text="formattedDate"></span>
@@ -154,11 +250,13 @@
                                     </div>
 
                                     <!-- Modal content -->
-                                    <div class="text-left">
-                                        <div class="flex flex-row items-center justify-start gap-3">
-                                            <div><i class="fa-solid fa-wrench fa-lg"></i></div>
+                                    <div>
+                                        <div class="flex items-center justify-start gap-3 my-3">
                                             <div>
-                                                <h3 class="text-lg font-bold mb-4">Action</h3>
+                                                <i class="fa-solid fa-wrench fa-lg"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-bold">Action</h3>
                                             </div>
                                         </div>
                                         {{-- <div
@@ -173,7 +271,7 @@
 
                                         <div x-data="{ isApproved: false }">
                                             {{-- <p class="mb-4 italic">Action:</p> --}}
-                                            <div class="flex flex-col justify-center gap-3 mb-3">
+                                            <div class="flex flex-col justify-center gap-3 mb-3 text-xs">
                                                 <div>
                                                     <input type="radio" name="status" class="mx-2" value="approved"
                                                         @click="isApproved = true" />
@@ -185,7 +283,7 @@
                                                     Decline
                                                 </div>
                                             </div>
-                                            <p class="mb-4">Reason for decline:</p>
+                                            <p class="mb-4 text-sm">Reason for decline:</p>
                                             <textarea name="reason_reject" id="" cols="50" rows="5"
                                                 x-bind:disabled="isApproved || !document.querySelector('input[name=status]:checked')"
                                                 class="border border-slate-300"></textarea>
@@ -204,9 +302,9 @@
                                             </p>
                                         </div> --}}
                                         <div>
-                                            <h3>Payment status</h3>
+                                            <h3 class="my-4 text-sm">Payment status</h3>
                                             <select name="payment"
-                                                class="border border-slate-300 w-full px-3 py-2 text-left w-64 sm:w-40 rounded">
+                                                class="border border-slate-300 px-3 py-2 text-left w-64 sm:w-40 rounded text-xs">
                                                 <option value="unpaid">unpaid</option>
                                                 <option value="paid">paid</option>
                                             </select>
@@ -214,7 +312,7 @@
 
                                         <div class=" flex justify-end">
                                             <button type="submit"
-                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded text-sm">Update
+                                                class="bg-blue-700 hover:bg-blue-800 text-white py-2 px-3 rounded text-sm">Update
                                             </button>
                                         </div>
                                     </div>

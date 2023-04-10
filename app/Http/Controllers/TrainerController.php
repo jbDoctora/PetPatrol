@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Booking;
 use App\Models\Service;
+use App\Models\AdminPetType;
+use App\Models\AdminService;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
 use App\Models\TrainingDetails;
@@ -41,14 +43,23 @@ class TrainerController extends Controller
             'booking.payment',
             'booking.gcash_refnum',
             'pet_info.pet_name',
+            'pet_info.years',
+            'pet_info.months',
+            'pet_info.breed',
+            'pet_info.weight',
+            'pet_info.vaccine',
+            'pet_info.vaccine_list',
+            'pet_info.info',
             'booking.client_name',
             'booking.start_date',
             'service.course',
             'service.availability',
-            'service.id as service_id'
+            'service.id as service_id',
+            'users.email',
+            'users.phone_number'
         )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
-            ->join('users', 'users.id', '=', 'booking.trainer_id')
+            ->join('users', 'users.id', '=', 'booking.client_id')
             ->join('service', 'service.id', 'booking.service_id')
             // ->where('users.role', 0)
             ->where('booking.trainer_id', $trainerId)
@@ -147,10 +158,14 @@ class TrainerController extends Controller
     {
         $service = TrainingDetails::all();
         $training = Service::where('user_id', auth()->id())->get();
+        $adminService = AdminService::where('isPosted', 1)->get();
+        $adminPetType = AdminPetType::where('isPosted', 1)->get();
 
         return view('trainer.create-service', [
             'service' => $service,
             'training' => $training,
+            'adminService' => $adminService,
+            'adminPetType' => $adminPetType
         ]);
     }
 

@@ -17,7 +17,7 @@
         </div>
 
         <div class="flex flex-col items-center justify-center mb-5 bg-blue-700 w-full rounded h-56 text-white">
-            <img src="{{$user->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+            <img src="{{$user->profile_photo ? asset('storage/' . $user->profile_photo) : asset('/images/placeholder.png') }}"
                 alt="Profile photo" class="h-24 w-24 rounded-full bg-white object-cover">
             <div class="mx-auto flex flex-col gap-3 items-center mt-5">
                 <i class="fa-solid fa-cloud-arrow-up fa-xl"></i>

@@ -116,6 +116,8 @@ class BookingController extends Controller
             'booking.status',
             'booking.payment',
             'pet_info.pet_name',
+            'pet_info.years',
+            'pet_info.months',
             'booking.trainer_name',
             'booking.start_date',
             'service.course',
@@ -123,6 +125,7 @@ class BookingController extends Controller
             'service.id as service_id',
             'users.gcash_qr',
             'users.gcash_number',
+            'users.profile_photo',
             'booking.gcash_refnum',
             'service.price',
         )

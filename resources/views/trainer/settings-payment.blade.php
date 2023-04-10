@@ -4,15 +4,21 @@
         @csrf
         @method('PUT')
         <h3 class="text-blue-700 text-xl">Settings</h3>
-        <div class="text-xs breadcrumbs mt-2">
+        <div class="text-xs breadcrumbs mt-2 p-3">
             <ul>
                 <li><i class="fa-solid fa-pen-to-square mr-2"></i><a href="/trainer/profile">Edit
                         Profile</a></li>
                 <li><i class="fa-solid fa-lock mr-2"></i><a href="/trainer/profile/change-password">Change Password</a>
                 </li>
-                <li class="text-blue-700 font-bold"><i class="fa-solid fa-cash-register mr-2"></i><a
-                        href="/settings/payment">Edit
-                        Payment Details</a></li>
+                <div class="indicator">
+                    @if (empty($user->gcash_number) && empty($user->gcash_qr))
+                    <span class="indicator-item indicator-top indicator-end badge badge-secondary badge-xs"></span>
+                    @endif
+                    <li class="text-blue-700 font-bold inline-flex items-center">
+                        <i class="fa-solid fa-cash-register mr-2"></i>
+                        <a href="/settings/payment">Edit Payment Details</a>
+                    </li>
+                </div>
             </ul>
         </div>
 

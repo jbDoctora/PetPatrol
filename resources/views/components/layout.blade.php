@@ -40,7 +40,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Poppins&family=Rampart+One&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/icon.svg" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -87,7 +87,7 @@
                 </g>
             </svg>
             <span class="text-2xl font-bold tracking-wide text-white text-center"
-                style="font-family: 'Jost', sans-serif;">PETPATROL</span>
+                style="font-family: 'Lora', serif;">PETPATROL</span>
         </div>
 
         <div class="navbar-start hidden px-5 lg:flex">

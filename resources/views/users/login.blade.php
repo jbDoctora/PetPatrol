@@ -24,7 +24,9 @@
                             <input type="email" name="email" value="{{ old('email') }}"
                                 class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
                             @error('email')
-                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            <div>
+                                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            </div>
                             @enderror
                         </div>
 
