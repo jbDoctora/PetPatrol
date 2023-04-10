@@ -27,7 +27,7 @@
                 </select>
             </div>
             <div>
-                <input type="date" class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56">
+                <input type="date" class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-44">
             </div>
             <div>
                 <button class="bg-blue-700 px-7 py-3 text-white font-bold rounded">

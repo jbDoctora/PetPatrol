@@ -30,11 +30,10 @@
                 </div>
                 <div class="w-full md:w-1/3 bg-white rounded p-5 text-xs border border-gray-300">
                     <h2 class="text-xl font-bold mb-5">Payment Details</h2>
-                    <div class="my-2 flex justify-center">
+                    <div class="my-2 flex justify-start">
                         <label for="gcash-modal-{{$requests->book_id}}"
-                            class="rounded bg-blue-700 px-4 py-2 text-white text-sm text-center w-48 hover:bg-blue-800 cursor-pointer">View
-                            QR
-                            Code</label>
+                            class="rounded bg-blue-700 px-4 py-2 text-white text-sm text-center w-48 hover:bg-blue-800 cursor-pointer">
+                            <i class="fa-solid fa-qrcode fa-lg pr-3"></i>View QR Code</label>
                     </div>
                     <div class="my-2">
                         <label for="gcash-ref" class="font-bold mb-3">GCash Number</label>
@@ -51,7 +50,7 @@
                             <div class="flex items-center">
                                 <i class="fa-solid fa-triangle-exclamation fa-2xl px-3"></i>
                             </div>
-                            <div>
+                            <div class="inline-block">
                                 Your Gcash Reference Number has already been posted;
                                 if you submit another reference number, the current one will be replaced.
                             </div>

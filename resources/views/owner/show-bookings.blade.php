@@ -49,13 +49,13 @@
             @forelse($request as $requests)
             <div class="flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
                 <div class="flex flex-col gap-3 p-3 w-96">
-                    <h2 class="font-bold text-xl">{{$requests->course}}</h2>
+                    <a href="/bookings/{{$requests->book_id}}">
+                        <h2 class="font-bold text-xl hover:text-blue-600">{{$requests->course}}</h2>
+                    </a>
                     <p class="text-sm">Pet: {{$requests->pet_name}}</p>
                     <p class="text-sm">Trainer: {{$requests->trainer_name}}</p>
                     <p class="text-sm">Session: {{$requests->availability}}</p>
-                    <p class="text-sm" x-data="{ formattedDate: '' }"
-                        x-init="let date = new Date('{{ $requests->start_date }}'); formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })">
-                        Preferred start date: <span x-text="formattedDate"></span>
+                    <p class="text-sm">Start Date: {{$requests->start_date}}
                     </p>
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">
@@ -88,13 +88,15 @@
                     @endif
                 </div>
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                    <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
-                            class="fa-solid fa-pen-to-square pr-3"></i>View</button>
+                    <a href="/bookings/{{$requests->book_id}}">
+                        <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
+                                class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
+                    </a>
                     <button type="button" x-bind:disabled="['declined', 'pending'].includes('{{ $requests->status }}')"
                         x-bind:class="{'bg-gray-400 hover:bg-gray-400': ['declined', 'pending'].includes('{{ $requests->status }}')}"
                         class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white"
                         x-on:click="window.location.href='/checkout/{{$requests->book_id}}'">
-                        <i class="fa-solid fa-cart-shopping pr-3"></i>Checkout
+                        <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
                     </button>
                 </div>
             </div>

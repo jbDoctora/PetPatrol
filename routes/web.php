@@ -95,6 +95,7 @@ Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::put('/profile/{id}/change-password', [UserController::class, 'updatePassword']);
     Route::get('/checkout/{book_id}', [BookingController::class, 'showCheckout']);
     Route::put('/checkout/{book_id}/pay', [BookingController::class, 'updatePayment']);
+    Route::get('/bookings/{book_id}', [BookingController::class, 'showBooking']);
 });
 
 // Admin Routes

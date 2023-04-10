@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TrainingDetails extends Model
 {
@@ -12,6 +13,16 @@ class TrainingDetails extends Model
 
     protected $table = 'training_details';
     public $timestamps = false;
+
+    public function getStartTimeAttribute($value)
+    {
+        return Carbon::createFromFormat('H:i:s', $value)->format('g:i A');
+    }
+
+    public function getEndTimeAttribute($value)
+    {
+        return Carbon::createFromFormat('H:i:s', $value)->format('g:i A');
+    }
 
     public function service()
     {

@@ -7,6 +7,7 @@ use App\Models\PetInfo;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\RequestTrainer;
+use App\Models\TrainingDetails;
 use App\Http\Controllers\Controller;
 
 class BookingController extends Controller
@@ -64,7 +65,7 @@ class BookingController extends Controller
 
     public function showCheckout($id)
     {
-        $data = Booking::where('trainer_id', $id);
+        $data = Booking::where('book_id', $id);
 
         $request = Booking::select(
             'booking.book_id',
@@ -104,5 +105,38 @@ class BookingController extends Controller
         $book_id->update($data);
 
         return redirect('/bookings')->with('message', 'Payment Uploaded');
+    }
+
+    public function showBooking($id)
+    {
+        $data = Booking::where('book_id', $id);
+
+        $request = Booking::select(
+            'booking.book_id',
+            'booking.status',
+            'booking.payment',
+            'pet_info.pet_name',
+            'booking.trainer_name',
+            'booking.start_date',
+            'service.course',
+            'service.availability',
+            'service.id as service_id',
+            'users.gcash_qr',
+            'users.gcash_number',
+            'booking.gcash_refnum',
+            'service.price',
+        )
+            ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+            ->join('users', 'users.id', '=', 'booking.trainer_id')
+            ->join('service', 'service.id', 'booking.service_id')
+            ->where('booking.book_id', $id)
+            ->get();
+
+        $service_id = $request->first()->service_id;
+
+        $trainingDetails = TrainingDetails::where('service_id', $service_id)->get();
+
+        // dd($request);
+        return view('owner.view-progress', compact('request', 'trainingDetails'));
     }
 }
