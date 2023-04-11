@@ -4,30 +4,40 @@
         @csrf
         @method('PUT')
         <h3 class="text-blue-700 text-xl">Settings</h3>
-        <div class="text-xs breadcrumbs mt-2 p-3">
+        <div class="text-xs breadcrumbs mt-2">
             <ul>
                 <li><i class="fa-solid fa-pen-to-square mr-2"></i><a href="/trainer/profile">Edit
                         Profile</a></li>
                 <li><i class="fa-solid fa-lock mr-2"></i><a href="/trainer/profile/change-password">Change Password</a>
                 </li>
-                <div class="indicator">
-                    @if (empty($user->gcash_number) && empty($user->gcash_qr))
-                    <span class="indicator-item indicator-top indicator-end badge badge-secondary badge-xs"></span>
-                    @endif
-                    <li class="text-blue-700 font-bold inline-flex items-center">
-                        <i class="fa-solid fa-cash-register mr-2"></i>
-                        <a href="/settings/payment">Edit Payment Details</a>
-                    </li>
-                </div>
+                <li class="text-blue-700 font-bold inline-flex items-center">
+                    <i class="fa-solid fa-cash-register mr-2"></i>
+                    <a href="/settings/payment">Edit Payment Details</a>
+                </li>
             </ul>
         </div>
 
-        <div class="text-xs text-gray-600 mt-4">
-            <p>Disclaimer: Please note that our system does not integrate a payment gateway. It is up to the trainer to
-                confirm the
-                payment
-                via GCash reference number. Thank you for your understanding.</p>
+        <div class="flex bg-gray-200 text-gray-800 rounded p-3 mx-2 my-3 gap-3">
+            <div class="flex items-center">
+                <i class="fa-solid fa-info fa-lg"></i></i>
+            </div>
+            <div>
+                <p>Disclaimer: Please note that our system does not integrate a payment gateway. You need to confirm the
+                    payment
+                    using the GCash reference number provided by the client. Thank you for your understanding.</p>
+            </div>
         </div>
+
+        @if(empty($user->gcash_number) && empty($user->gcash_qr))
+        <div class="flex bg-yellow-300 text-gray-800 rounded p-3 mx-2 my-3 gap-3">
+            <div class="flex items-center">
+                <i class="fa-solid fa-triangle-exclamation fa-lg"></i>
+            </div>
+            <div>
+                <p>Please add your gcash number or qr code for client payment</p>
+            </div>
+        </div>
+        @endif
 
         <div class="flex flex-col justify-start my-7">
             <div class="mb-5">

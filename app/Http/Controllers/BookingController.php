@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\Service;
@@ -31,6 +32,17 @@ class BookingController extends Controller
         $pet_status = PetInfo::where('pet_id', $pet_id)->first();
         $pet_status->book_status = 'pending';
         $pet_status->save();
+
+        // $start_date = Carbon::parse($request->input('start_date'));
+        // $days = $service->days; // get the number of days from the service
+        // $end_date = $start_date->copy()->addDays($days);
+
+        // $booking = Booking::where('start_date', $start_date)
+        //     ->where('service_id', $service_id)
+        //     ->where('client_id', auth()->id())
+        //     ->first();
+        // $booking->end_date = $end_date;
+        // $booking->save();
 
 
         return redirect('/bookings')->with('message', 'Booking is now placed!');
@@ -65,7 +77,7 @@ class BookingController extends Controller
 
     public function showCheckout($id)
     {
-        $data = Booking::where('book_id', $id);
+        $data = Booking::where('book_id', $id)->first();
 
         $request = Booking::select(
             'booking.book_id',
@@ -86,7 +98,7 @@ class BookingController extends Controller
             ->join('users', 'users.id', '=', 'booking.trainer_id')
             ->join('service', 'service.id', 'booking.service_id')
             // ->where('booking.trainer_id', $id)
-            ->get();
+            ->first();
 
         // dd($request);
 

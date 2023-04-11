@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('payment')->default('unpaid')->nullable();
             $table->longText('reason_reject')->nullable();
             $table->string('start_date');
+            $table->string('end_date')->nullable();
             $table->string('gcash_refnum')->nullable();
         });
     }

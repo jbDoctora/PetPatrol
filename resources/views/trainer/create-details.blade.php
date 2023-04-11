@@ -3,59 +3,71 @@
         @csrf
         {{-- hidden for passing id data --}}
         <input type="hidden" name="service_id" value="{{ $service->id }}">
-        <h1 class="my-5 text-2xl font-bold">Create Training Details</h1>
-        <div class="m-4 overflow-x-auto">
-            <table class="table w-full">
-                <!-- head -->
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Lesson</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                    </tr>
-                </thead>
-                @forelse($trainingDet as $trainings)
-                <tbody>
-                    <tr>
-                        <th>{{ $trainings->day }}</th>
-                        <td>{{ $trainings->lesson }}</td>
-                        <td>{{ $trainings->start_time }}</td>
-                        <td>{{ $trainings->end_time }}</td>
-                    </tr>
-                </tbody>
-                @empty
-                <tr>
-                    <th>empty</th>
-                    <td>empty</td>
-                    <td>empty</td>
-                    <td>empty</td>
-                </tr>
-                </tbody>
-                @endforelse
-            </table>
-        </div>
-        <div class="flex flex-row justify-center gap-3">
-            <select class="select select-bordered w-full max-w-xs" name="day" required>
-                <option disabled selected>Day</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-            </select>
-            <input type="text" name="lesson" placeholder="Lesson Ex: fetch, sit"
-                class="input input-bordered w-full max-w-xs" />
-            <input type="time" name="start_time" class="border-base-300 rounded-xl border-2" />
-            <input type="time" name="end_time" class="border-base-300 rounded-xl border-2">
-        </div>
+        <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
+            <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Create Training Details</h1>
+            <div class="overflow-x-auto">
+                <table class="rounded border border-gray-300 w-full">
+                    <!-- head -->
+                    <thead class="text-gray-800 bg-gray-300">
+                        <tr class="text-xs">
+                            <th class="font-normal">
+                                <div class="my-3">Day</div>
+                            </th>
+                            <th class="font-normal">Lesson</th>
+                            <th class="font-normal">Start Time</th>
+                            <th class="font-normal">End Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($trainingDet as $trainings)
+                        <tr class="font-normal text-xs text-center">
+                            <td>
+                                <div class="my-4">{{ $trainings->day }}</div>
+                            </td>
+                            <td>{{ $trainings->lesson }}</td>
+                            <td>{{ $trainings->start_time }}</td>
+                            <td>{{ $trainings->end_time }}</td>
+                        </tr>
+                        @empty
+                        <td colspan="4">
+                            <div class="my-3 flex flex-col justify-center text-xs">
+                                <div class="mx-auto">
+                                    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_k76opbel.json"
+                                        background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                                        autoplay></lottie-player>
+                                </div>
+                                <div>
+                                    <p class="text-center text-sm">Empty training plan</p>
+                                </div>
+                            </div>
+                        </td>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="flex justify-center">
-            <button
-                class="tracking-wide rounded-md px-5 py-4 bg-yellow-400 text-black text-sm font-bold border border-black hover:rounded-3xl transition-all duration-400 m-5"
-                type="submit">Add</button>
+            <div class="flex flex-row justify-center gap-3 m-5">
+                <select class="rounded border border-gray-300 px-4 py-2 w-48 text-xs" name="day" required>
+                    <option disabled selected>Day</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                </select>
+                <input type="text" name="lesson" placeholder="Lesson Ex: fetch, sit"
+                    class="rounded border border-gray-300 px-4 py-2 w-48 text-xs" />
+                <input type="time" name="start_time" class="rounded border border-gray-300 p-2 w-28 text-xs" />
+                <input type="time" name="end_time" class="rounded border border-gray-300 p-2 w-28 text-xs">
+            </div>
+
+            <div class="flex justify-center">
+                <button
+                    class="bg-blue-700 text-white text-center text-sm px-4 py-3 font-normal w-24 rounded hover:bg-blue-800"
+                    type="submit">Add</button>
+            </div>
         </div>
     </form>
 </x-trainer-layout>

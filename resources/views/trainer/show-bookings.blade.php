@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="mt-2 min-w-full overflow-hidden rounded-none">
+        <div class="mt-2 overflow-hidden rounded-none">
             <table class="w-full text-xs">
                 <thead class="text-center bg-gray-200 text-gray-800">
                     <tr>
@@ -220,6 +220,8 @@
                             </div>
                         </td>
                     </tr>
+                    @endforeach
+                    @endif
                 </tbody>
                 <form method="POST" action="/trainer/bookings/update">
                     @csrf
@@ -321,8 +323,7 @@
                         </div>
                     </div>
                 </form>
-                @endforeach
-                @endif
+
             </table>
         </div>
 

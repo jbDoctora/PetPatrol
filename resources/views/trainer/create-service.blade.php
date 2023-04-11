@@ -1,6 +1,6 @@
 <x-trainer-layout>
     <div x-data="{ price: '' }">
-        <div class="rounded-sm bg-white my-5 mx-14 shadow-lg h-screen rounded">
+        <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
             <div class="flex justify-between text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">
                 <div>
                     <h3>Service Manager</h3>
@@ -39,7 +39,7 @@
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->availability}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
-                                {{$trainings->weeks}}</td>
+                                {{$trainings->days}} days</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->price}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-2000">

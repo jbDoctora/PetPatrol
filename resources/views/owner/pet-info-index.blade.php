@@ -100,14 +100,16 @@
                     <p class="text-lg text-center font-normal mb-3">Your pet is excited, create your pet info now.</p>
                 </div>
             </div>
-
             @endforelse
+            <div class="pagination justify-center p-5">
+                {{ $petinfo->links() }}
+            </div>
         </div>
+
+
     </div>
 
-    <div class="pagination m-4 mb-9 justify-center">
-        {{ $petinfo->links() }}
-    </div>
+
 </x-dash-layout>
 
 

@@ -24,7 +24,7 @@ class PetInfoController extends Controller
     // }
     public function index()
     {
-        $petinfo = PetInfo::where('owner_id', auth()->id())->paginate(9);
+        $petinfo = PetInfo::where('owner_id', auth()->id())->paginate(3);
         return view('owner.pet-info-index', compact('petinfo'));
     }
     public function create()
