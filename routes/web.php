@@ -53,7 +53,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::get('/trainer/waiting-approval', [TrainerController::class, 'showWaitingApproval']);
+Route::get('/trainer/waiting-approval', [TrainerController::class, 'showWaitingApproval'])->middleware('auth');
 
 // Trainer Routes
 Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {

@@ -104,12 +104,12 @@
             <div class="flex flex-col justify-center">
                 <div><img src="{{asset('images/empty.png')}}" alt="empty" class="h-96 w-96 mx-auto"></div>
                 <div>
-                    <p class="text-base text-center font-bold">Empty bookings as of the moment.</p>
+                    <p class="text-lg text-center font-normal">Empty bookings as of the moment.</p>
                 </div>
             </div>
             @endforelse
         </div>
-        <div class="flex justify-end p-5">
+        <div class="flex justify-end p-3">
             {{ $request->links() }}
         </div>
 

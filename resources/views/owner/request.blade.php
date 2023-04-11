@@ -72,7 +72,7 @@
                 <div class="col-span-3 flex justify-center items-center">
                     <div class="flex flex-col items-center">
                         <img src="{{asset('images/empty-request.png')}}" alt="" class="mx-auto h-96 w-96">
-                        <p class="font-medium text-lg text-center ">Empty Request</p>
+                        <p class="font-normal text-lg text-center ">Empty Request</p>
                     </div>
                 </div>
                 @endforelse

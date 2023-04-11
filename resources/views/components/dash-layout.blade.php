@@ -149,7 +149,7 @@
             <nav class="bg-white">
                 <div class="max-w-8xl mx-auto px-3 sm:px-6 lg:px-3">
                     <div class="flex items-center justify-between h-11">
-                        <div class="flex items-center">
+                        <nav class="flex items-center">
                             <div class="hidden md:block">
                                 <div class="ml-10 flex items-baseline space-x-4">
                                     <a href="/owner"
@@ -163,7 +163,7 @@
                                         Profile</a>
                                 </div>
                             </div>
-                        </div>
+                        </nav>
                         <div class="-mr-2 flex md:hidden">
                             <button type="button"
                                 class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"

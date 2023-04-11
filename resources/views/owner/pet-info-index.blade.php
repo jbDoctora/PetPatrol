@@ -97,7 +97,7 @@
                     <img src="{{asset('images/empty-pet.png')}}" alt="" class="h-96 w-96 mx-auto">
                 </div>
                 <div>
-                    <p class="text-base text-center font-bold mb-3">Your pet is excited, create your pet info now.</p>
+                    <p class="text-lg text-center font-normal mb-3">Your pet is excited, create your pet info now.</p>
                 </div>
             </div>
 
