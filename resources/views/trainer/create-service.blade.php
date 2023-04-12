@@ -43,7 +43,8 @@
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->price}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-2000">
-                                {{$trainings->status}}</td>
+                                {{$trainings->status}}
+                            </td>
                             <td class="whitespace-nowrap border-b border-slate-200">
                                 <div class="flex items-center justify-center gap-2">
                                     <button class="bg-blue-700 text-white px-3 py-1 rounded"

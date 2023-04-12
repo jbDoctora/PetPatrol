@@ -71,6 +71,14 @@
                     <span class="badge bg-red-400 text-black text-xs">
                         <i class="fa-solid fa-times pr-1"></i>{{ $requests->status }}
                     </span> |
+                    @elseif ($requests->status == 'in progress')
+                    <span class="badge bg-blue-400 text-blue-800 text-xs">
+                        <i class="fa-solid fa-times pr-1"></i>{{ $requests->status }}
+                    </span> |
+                    @elseif ($requests->status == 'completed')
+                    <span class="badge bg-green-400 text-green-800 text-xs">
+                        <i class="fa-solid fa-times pr-1"></i>{{ $requests->status }}
+                    </span> |
                     @elseif ($requests->status == 'confirmed')
                     <span class="badge bg-blue-700 text-white text-xs">
                         <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}

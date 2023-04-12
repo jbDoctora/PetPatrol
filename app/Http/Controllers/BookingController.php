@@ -67,6 +67,7 @@ class BookingController extends Controller
             ->join('users', 'users.id', '=', 'booking.client_id')
             ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.client_id', $clientId)
+            ->orderBy('status', 'asc')
             ->paginate(5);
         // ->get();
         // dd($request);
