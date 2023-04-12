@@ -60,6 +60,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {
     Route::get('/trainer', [TrainerController::class, 'index']);
     Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
     Route::get('/trainer/bookings', [TrainerController::class, 'showBooking']);
+    Route::put('/trainer/bookings/startTraining/{book_id}', [TrainerController::class, 'updateTraining']);
     Route::get('/trainer/portfolio', [TrainerController::class, 'show']);
     Route::get('/trainer/profile', [TrainerController::class, 'showProfile']);
     Route::put('/trainer/{user}/update-profile', [TrainerController::class, 'updateProfile']);

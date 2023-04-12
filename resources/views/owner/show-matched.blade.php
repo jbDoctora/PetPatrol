@@ -9,8 +9,8 @@
         <div class="grid grid-flow-col auto-cols-max px-1 my-4 rounded" x-data="{checked: false}">
             @foreach ($matchedservices as $match)
 
-            <div class="card-container m-3 border border-gray-300 rounded">
-                <div class="w-96 bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="card-container m-3 rounded">
+                <div class="w-96 bg-gray-200 rounded-lg shadow-lg overflow-hidden">
                     <div class="p-4">
                         <div class="flex flex-row justify-between">
                             <div>

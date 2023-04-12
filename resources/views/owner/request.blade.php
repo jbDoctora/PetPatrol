@@ -14,7 +14,7 @@
         {{-- <div class="flex items-center justify-between text-xl font-medium p-4"> --}}
             <div class="grid grid-cols-1 gap-3 rounded px-3 md:grid-cols-2 lg:grid-cols-3">
                 @forelse ($requestinfo as $info)
-                <div class="m-5 overflow-hidden rounded-lg border border-slate-400 shadow-lg text-xs w-96">
+                <div class="m-5 overflow-hidden rounded-lg bg-gray-200 shadow-lg text-xs w-96">
                     <div class="p-6">
                         <div class="mb-4 flex items-center justify-between">
                             <h1 class="text-sm font-semibold text-blue-700">Your Request</h1>

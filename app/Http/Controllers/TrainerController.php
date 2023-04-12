@@ -9,6 +9,7 @@ use App\Models\AdminPetType;
 use App\Models\AdminService;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
+use App\Models\RequestTrainer;
 use App\Models\TrainingDetails;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -139,6 +140,17 @@ class TrainerController extends Controller
         $user->update($data);
 
         return redirect()->back()->with('message', 'Payment details updated successfully');
+    }
+
+    public function updateTraining(Request $request, $book_id)
+    {
+        $training = Booking::where('book_id', $book_id)->first();
+
+        $data = $request->only('status');
+
+        $training->update($data);
+
+        return redirect()->back()->with('message', 'Successfully updated');
     }
 
     public function showPasswordChange()

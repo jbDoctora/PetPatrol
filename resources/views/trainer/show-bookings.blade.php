@@ -184,7 +184,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="whitespace-nowrap border-b border-slate-200">
+                        <td class="whitespace-nowrap">
                             @if ($requests->status == 'pending')
                             <span class="badge bg-yellow-300 text-yellow-800 text-xs">{{
                                 $requests->status }}</span>
@@ -193,6 +193,12 @@
                                 $requests->status }}</span>
                             @elseif ($requests->status == 'declined')
                             <span class="badge bg-red-300 text-red-800 text-xs">{{
+                                $requests->status }}</span>
+                            @elseif ($requests->status == 'in progress')
+                            <span class="badge bg-blue-300 text-blue-800 text-xs">{{
+                                $requests->status }}</span>
+                            @elseif ($requests->status == 'completed')
+                            <span class="badge bg-green-300 text-green-800 text-xs">{{
                                 $requests->status }}</span>
                             @endif
 
@@ -212,12 +218,41 @@
                             <span x-text="formattedDate"></span>
                         </td>
                         <td class="whitespace-nowrap border-b border-slate-200">
+                            @if($requests->status == 'approved')
+                            <div class="flex justify-center items-center">
+                                <div class="flex justify-center"><a href="#"><button
+                                            class="bg-blue-700 text-white px-4 py-2 rounded" type="submit">View
+                                            training</button></a>
+                                </div>
+                                <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="status" value="in progress" />
+                                    <div class="flex justify-center"><a href="#"><button
+                                                class="bg-blue-700 text-white px-4 py-2 rounded" type="submit">Start
+                                                training</button></a>
+                                    </div>
+                                </form>
+                            </div>
+
+                            @elseif($requests->status == 'in progress')
+                            <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="completed" />
+                                <div class="flex justify-center"><a href="#"><button
+                                            class="bg-blue-700 text-white px-4 py-2 rounded">Mark As Done</button></a>
+                                </div>
+                            </form>
+
+                            @elseif($requests->status == 'pending')
                             <div class="flex justify-center"><a href="#"><button
-                                        class="bg-blue-700 text-white px-3 py-1 rounded" x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
+                                        class="bg-blue-700 text-white px-4 py-2 rounded" x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
                                     '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
                                     '{{$requests->payment}}' }">Update</button></a>
                             </div>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

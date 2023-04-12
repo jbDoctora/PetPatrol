@@ -13,10 +13,11 @@
                 background="transparent" speed="1" style="width: 600px; height: 600px; margin-bottom: 5px;" loop
                 autoplay></lottie-player> --}}
             <div class="mr-8 ml-5 text-center ">
-                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-7xl leading-relaxed text-black">MAKE YOUR
+                <h1 class="mb-5 text-7xl font-bold tracking-widest xl:text-6xl md:text-3xl leading-relaxed text-black">
+                    MAKE YOUR
                     APPOINTMENT<br><span style="font-family: 'Lora', serif;" class="text-yellow-500">PAWESOME!</span>
                 </h1>
-                <p class="py-6 text-xl tracking-wide text-black xl:text-lg">Unlock Your Pet's Full Potential with Our
+                <p class="py-6 text-xl tracking-wide text-black xl:text-base">Unlock Your Pet's Full Potential with Our
                     Expert
                     Training Services
                 </p>
