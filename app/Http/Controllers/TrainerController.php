@@ -53,6 +53,7 @@ class TrainerController extends Controller
             'pet_info.info',
             'booking.client_name',
             'booking.start_date',
+            'booking.end_date',
             'service.course',
             'service.availability',
             'service.id as service_id',
@@ -66,10 +67,12 @@ class TrainerController extends Controller
             ->where('booking.trainer_id', $trainerId)
             ->get();
         // dd($request);
+
         return view('trainer.show-bookings', [
             'request' => $request
         ]);
     }
+
     public function updateBooking(Request $request)
     {
         $booking = Booking::where('book_id', $request->input('book_id'))->first();

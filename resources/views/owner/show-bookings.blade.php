@@ -36,9 +36,17 @@
         </div>
 
         <div class="flex justify-between items-center border-b border-slate-300">
-            <div class="py-3 px-4 text-sm"><span class="font-bold text-sm">{{ \App\Models\Booking::where('client_id',
-                    auth()->user()->id)->count() }}</span>
-                bookings found
+            <div class="py-3 px-4 text-sm flex items-center">
+                <div>
+                    <p> <span class="font-bold text-sm">
+                            {{\App\Models\Booking::where('client_id',auth()->user()->id)->count() }}
+                        </span>
+                        bookings found
+                    </p>
+                </div>
+                <div>
+                    <div class="badge badge-primary">pending</div>
+                </div>
             </div>
             <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
                 <i class="fa-solid fa-arrows-rotate fa-xl mr-2"></i><span class="text-sm">Refresh</span>

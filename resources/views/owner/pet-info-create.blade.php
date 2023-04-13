@@ -23,10 +23,10 @@
                 <label class="block font-normal text-sm mb-2" for="pet-type">Pet Type</label>
                 <select id="pet-type" class="rounded border border-gray-300 px-3 py-3 w-full text-xs" name="type">
                     <option disabled selected>Select a pet type</option>
-                    <option value="Dog">Dog</option>
+                    {{-- <option value="Dog">Dog</option>
                     <option value="Cat">Cat</option>
                     <option value="Hamster">Hamster</option>
-                    <option value="Parrot">Parrot</option>
+                    <option value="Parrot">Parrot</option> --}}
                     @foreach($adminPetType as $pet_type)
                     <option value="{{$pet_type->admin_petType}}">{{$pet_type->admin_petType}}</option>
                     @endforeach
