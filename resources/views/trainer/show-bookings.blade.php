@@ -1,6 +1,6 @@
 <x-trainer-layout>
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
+        class="bg-white my-5 mx-14 shadow-lg h-full rounded">
         <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
         <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
@@ -72,7 +72,7 @@
                 <tbody class="text-center text-xs">
                     @if(count($request) == 0)
                     <tr>
-                        <td colspan="7">
+                        <td colspan="9">
                             <lottie-player class="mx-auto"
                                 src="https://assets6.lottiefiles.com/private_files/lf30_e3pteeho.json"
                                 background="transparent" speed="0.5" style="width: 400px; height: 400px;" loop autoplay>
@@ -220,16 +220,8 @@
                             <p class="font-bold">{{$requests->gcash_refnum}}</p>
                             @endif
                         </td>
-                        <td class="whitespace-nowrap border-b border-slate-200">{{ $requests->start_date }}
-                        </td>
-                        <td class="whitespace-nowrap border-b border-slate-200" x-data="{ formattedDate: '' }"
-                            x-init="let date = new Date('{{ $requests->end_date }}'); formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })">
-                            @if(empty($requests->end_date))
-                            <p class="text-xs">Not Set</p>
-                            @else
-                            <span x-text="formattedDate"></span>
-                            @endif
-                        </td>
+                        <td class="whitespace-nowrap border-b border-slate-200">{{ $requests->start_date }}</td>
+                        <td class="whitespace-nowrap border-b border-slate-200">{{ $requests->end_date }}</td>
                         <td class="whitespace-nowrap border-b border-slate-200">
                             @if($requests->status == 'approved')
                             <div class="flex justify-center items-center gap-4">

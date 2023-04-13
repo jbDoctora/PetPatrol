@@ -74,7 +74,8 @@
                 </div>
             </div>
             {{-- HERE --}}
-            <form method="POST" action="/show-matched/book">
+            <form method="POST" action="/show-matched/book"
+                x-data="{ days: {{ $match->days ?? 0 }}, startDate: '', endDate: '' }">
                 @csrf
                 <input type="checkbox" id="my-modal-{{ $match->user_id }}" class="modal-toggle h-fit" />
                 <div class="modal">
@@ -93,7 +94,10 @@
                             <div class="flex flex-col md:flex-row md:justify-between">
                                 <div class="mb-2 md:mb-0">Preferred start date:</div>
                                 <div><input type="date" name="start_date"
-                                        class="border border-gray-300 rounded py-1 px-3 w-full md:w-auto" /></div>
+                                        class="border border-gray-300 rounded py-1 px-3 w-full md:w-auto"
+                                        x-model="startDate"
+                                        x-on:change="endDate = days ? new Date(new Date(startDate).getTime() + days * 24 * 60 * 60 * 1000).toISOString().split('T')[0] : ''" />
+                                </div>
                             </div>
                         </div>
                         <div class="overflow-x-auto">
@@ -145,6 +149,7 @@
                         <input type="hidden" name="client_id" value="{{ auth()->id() }}">
                         <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
                         <input type="hidden" name="status" value="pending">
+                        <input type="hidden" name="end_date" x-model="endDate" />
                         <input type="hidden" name="payment" value="unpaid">
                         <input type="hidden" name="service_id" value="{{$match->service_id}}" />
                         <input type="hidden" name="request_id" value="{{$request_id}}" />

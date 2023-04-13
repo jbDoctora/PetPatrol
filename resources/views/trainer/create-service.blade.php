@@ -22,6 +22,7 @@
                             <th class="text-xs font-normal">Availability</th>
                             <th class="text-xs font-normal">Weeks of training</th>
                             <th class="text-xs font-normal">Price</th>
+                            <th class="text-xs font-normal">Capacity</th>
                             <th class="text-xs font-normal">Status</th>
                             <th></th>
                         </tr>
@@ -42,6 +43,7 @@
                                 {{$trainings->days}} days</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->price}}</td>
+                            <td class="whitespace-nowrap  border-b border-slate-200">{{$trainings->capacity}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-2000">
                                 {{$trainings->status}}
                             </td>
@@ -142,6 +144,14 @@
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
                         </div>
+                        <div>
+                            <p class="text-sm">Capacity</p>
+                            <input type="number" class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                name="capacity">
+                            @error('capacity')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div>
                         {{-- <div>
                             <p class="text-sm">Capacity</p>
                             <input type="number" class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
@@ -151,7 +161,7 @@
                             @enderror
                         </div> --}}
                     </div>
-                    <input type="hidden" name="status" value="active">
+                    <input type="hidden" name="status" value="available">
                     <div class="modal-action flex items-center justify-end">
                         <button type="submit"
                             class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Create</button>

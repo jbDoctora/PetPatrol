@@ -174,7 +174,7 @@
                     <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         home_repair_service
                     </span>
-                    <span class="ml-9">Services</span>
+                    <span class="ml-9">List of Services</span>
                 </a>
 
                 <a href="/admin/pet-type"
@@ -182,7 +182,7 @@
                     <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         pets
                     </span>
-                    <span class="ml-9">Pet Type</span>
+                    <span class="ml-9">List of Pet Type</span>
                 </a>
 
                 <a href="/admin/bookings"

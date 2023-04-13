@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('training_details', function (Blueprint $table) {
             $table->id('training_id');
             $table->foreignId('service_id')->onDelete('cascade');
-            $table->string('day');
             $table->string('lesson');
             $table->time('start_time');
             $table->time('end_time');

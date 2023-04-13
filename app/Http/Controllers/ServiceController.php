@@ -17,6 +17,7 @@ class ServiceController extends Controller
             'days' => 'required',
             'price' => 'required|numeric',
             'status' => 'required',
+            'capacity' => 'required',
         ];
 
         $messages = [
@@ -27,10 +28,11 @@ class ServiceController extends Controller
             'price.required' => 'The price field is required.',
             'price.numeric' => 'The price field must be a number.',
             'status.required' => 'The status field is required.',
+            'capacity.required' => 'The capacity field is required.',
         ];
 
         $validatedData = $request->validate($rules, $messages);
-
+        $formFields['capacity'] = $validatedData['capacity'];
         $formFields['course'] = $validatedData['course'];
         $formFields['pet_type'] = $validatedData['pet_type'];
         $formFields['availability'] = $validatedData['availability'];

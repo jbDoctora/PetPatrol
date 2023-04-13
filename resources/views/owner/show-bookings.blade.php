@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
+    <div class="bg-white my-5 mx-14 shadow-lg h-full rounded">
         <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
         <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">

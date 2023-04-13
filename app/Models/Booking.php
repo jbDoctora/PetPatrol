@@ -24,6 +24,11 @@ class Booking extends Model
         return Carbon::createFromFormat('Y-m-d', $value)->format('F d, Y');
     }
 
+    public function getEndDateAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d', $value)->format('F d, Y');
+    }
+
     protected $table = 'booking';
     public $timestamps = false;
 }

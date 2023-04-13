@@ -20,7 +20,19 @@ class BookingController extends Controller
 
         $service_id = $request->input('service_id');
         $service = Service::find($service_id);
-        $service->status = $request->input('status');
+
+        // Check if the capacity of the service is greater than 0
+        if ($service->capacity > 1) {
+            $service->capacity -= 1;
+            $service->status = "available";
+        } elseif ($service->capacity == 1) {
+            $service->capacity -= 1;
+            $service->status = "unavailable";
+        } else {
+            $service->status = "unavailable";
+        }
+
+
         $service->save();
 
         $request_id = $request->input('request_id');
@@ -32,18 +44,23 @@ class BookingController extends Controller
         $pet_status = PetInfo::where('pet_id', $pet_id)->first();
         $pet_status->book_status = 'pending';
         $pet_status->save();
+        // $formFields = $request->all();
+        // Booking::create($formFields);
 
-        // $start_date = Carbon::parse($request->input('start_date'));
-        // $days = $service->days; // get the number of days from the service
-        // $end_date = $start_date->copy()->addDays($days);
+        // $service_id = $request->input('service_id');
+        // $service = Service::find($service_id);
+        // $service->status = $request->input('status');
+        // $service->save();
 
-        // $booking = Booking::where('start_date', $start_date)
-        //     ->where('service_id', $service_id)
-        //     ->where('client_id', auth()->id())
-        //     ->first();
-        // $booking->end_date = $end_date;
-        // $booking->save();
+        // $request_id = $request->input('request_id');
+        // $requestTrainer = RequestTrainer::where('request_id', $request_id)->first();
+        // $requestTrainer->request_status = "pending";
+        // $requestTrainer->save();
 
+        // $pet_id = $request->input('pet_id');
+        // $pet_status = PetInfo::where('pet_id', $pet_id)->first();
+        // $pet_status->book_status = 'pending';
+        // $pet_status->save();
 
         return redirect('/bookings')->with('message', 'Booking is now placed!');
     }
