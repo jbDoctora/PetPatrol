@@ -51,7 +51,7 @@ class UserController extends Controller
             Storage::delete('image/' . $user->profile_photo);
 
             // Store the new file
-            $data['profile_photo'] = $request->file('profile_photo')->store('image', 'public');
+            $data['profile_photo'] = $request->file('profile_photo')->store('profile_photo', 'public');
         }
 
         $user->update($data);

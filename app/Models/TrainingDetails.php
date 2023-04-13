@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class TrainingDetails extends Model
 {
     protected $primaryKey = 'training_id';
-    protected $fillable = ['service_id', 'day', 'lesson', 'start_time', 'end_time'];
+    protected $fillable = ['service_id', 'lesson', 'start_time', 'end_time'];
 
     protected $table = 'training_details';
     public $timestamps = false;

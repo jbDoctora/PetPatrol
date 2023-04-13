@@ -23,7 +23,6 @@ class TrainingDetailsController extends Controller
             'lesson' => 'required',
             'service_id' => 'required|exists:service,id'
         ]);
-        $formFields['day'] = $request->input('day');
         $formFields['start_time'] = $request->input('start_time');
         $formFields['end_time'] = $request->input('end_time');
         $formFields['service_id'] = $request->input('service_id');

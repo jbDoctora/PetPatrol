@@ -102,7 +102,7 @@ class TrainerController extends Controller
             Storage::delete('image/' . $user->profile_photo);
 
             // Store the new file
-            $data['profile_photo'] = $request->file('profile_photo')->store('image', 'public');
+            $data['profile_photo'] = $request->file('profile_photo')->store('profile_photo', 'public');
         }
 
         $user->update($data);
@@ -134,7 +134,7 @@ class TrainerController extends Controller
             Storage::delete('image/' . $user->gcash_qr);
 
             // Store the new file
-            $data['gcash_qr'] = $request->file('gcash_qr')->store('image', 'public');
+            $data['gcash_qr'] = $request->file('gcash_qr')->store('gcash_qr', 'public');
         }
 
         $user->update($data);
@@ -195,11 +195,11 @@ class TrainerController extends Controller
         ]);
 
         if ($request->hasFile('certificates')) {
-            $formFields['certificates'] = $request->file('certificates')->store('images', 'public');
+            $formFields['certificates'] = $request->file('certificates')->store('certs', 'public');
         }
 
         if ($request->hasFile('journey_photos')) {
-            $formFields['journey_photos'] = $request->file('journey_photos')->store('images', 'public');
+            $formFields['journey_photos'] = $request->file('journey_photos')->store('journey_photos', 'public');
         }
 
         $formFields['services'] = $request->input('services');

@@ -47,7 +47,7 @@
             </div>
 
             <div class="flex flex-row justify-center gap-3 m-5">
-                <select class="rounded border border-gray-300 px-4 py-2 w-48 text-xs" name="day" required>
+                {{-- <select class="rounded border border-gray-300 px-4 py-2 w-48 text-xs" name="day" required>
                     <option disabled selected>Day</option>
                     <option>1</option>
                     <option>2</option>
@@ -56,7 +56,7 @@
                     <option>5</option>
                     <option>6</option>
                     <option>7</option>
-                </select>
+                </select> --}}
                 <input type="text" name="lesson" placeholder="Lesson Ex: fetch, sit"
                     class="rounded border border-gray-300 px-4 py-2 w-48 text-xs" />
                 <input type="time" name="start_time" class="rounded border border-gray-300 p-2 w-28 text-xs" />
