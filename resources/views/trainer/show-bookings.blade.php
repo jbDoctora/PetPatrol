@@ -239,12 +239,14 @@
                                     </div>
                                 </form>
                             </div>
-
                             @elseif($requests->status == 'in progress')
                             <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="status" value="completed" />
+                                <input type="hidden" name="service_id" value="{{$requests->service_id}}">
+                                <input type="hidden" name="pet_id" value="{{$requests->pet_id}}">
+
                                 <div class="flex justify-center"><a href="#"><button
                                             class="bg-blue-700 text-white px-4 py-2 rounded">Mark As Done</button></a>
                                 </div>
@@ -271,6 +273,7 @@
                     @method('PUT')
                     <input type="hidden" name="book_id" x-bind:value="showModal.book_id">
                     <input type="hidden" name="service_id" x-bind:value="showModal.service_id">
+
 
                     <div class="fixed z-50 inset-0 overflow-y-auto" x-show="showModal" x-transition>
                         <div

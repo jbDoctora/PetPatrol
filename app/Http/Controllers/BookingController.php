@@ -25,8 +25,8 @@ class BookingController extends Controller
         if ($service->capacity > 1) {
             $service->capacity -= 1;
             $service->status = "available";
-        } elseif ($service->capacity == 1) {
-            $service->capacity -= 1;
+        } elseif ($service->current_capacity == 1) {
+            $service->current_capacity -= 1;
             $service->status = "unavailable";
         } else {
             $service->status = "unavailable";
@@ -74,6 +74,7 @@ class BookingController extends Controller
             'booking.status',
             'booking.payment',
             'pet_info.pet_name',
+            'pet_info.pet_id',
             'booking.trainer_name',
             'booking.start_date',
             'service.course',

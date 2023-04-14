@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('lesson');
             $table->time('start_time');
             $table->time('end_time');
+            $table->boolean('hasDone')->default(0);
         });
     }
 

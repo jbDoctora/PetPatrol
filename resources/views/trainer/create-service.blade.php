@@ -71,7 +71,7 @@
 
         {{-- Modal that asks user input --}}
         <form method="POST" action="/trainer/service/add-service/addService"
-            x-on:submit="price = price.replace(/,/g, '')">
+            x-on:submit="price = price.replace(/,/g, '')" x-data="{ serviceType: 'private', capacity: 1, }">
             @csrf
             <input type="checkbox" id="my-modal" class="modal-toggle flex items-center justify-center" />
             <div class="modal">
@@ -95,12 +95,6 @@
                                 @foreach($adminService as $service)
                                 <option>{{$service->admin_service}}</option>
                                 @endforeach
-                                {{-- <option>Potty Training</option>
-                                <option>Obedience Training</option>
-                                <option>Behavioral Training</option>
-                                <option>Agility Training</option>
-                                <option>Tricks Training</option>
-                                <option>Theraphy</option> --}}
                             </select>
                             @error('course')
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
@@ -114,10 +108,6 @@
                                 @foreach($adminPetType as $petType)
                                 <option>{{$petType->admin_petType}}</option>
                                 @endforeach
-                                {{-- <option>Dog</option>
-                                <option>Cat</option>
-                                <option>Hamster</option>
-                                <option>Parrot</option> --}}
                             </select>
                             @error('pet_type')
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
@@ -145,23 +135,27 @@
                             @enderror
                         </div>
                         <div>
+                            <p class="text-sm">Service Type</p>
+                            <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                name="service_type" x-model="serviceType" required>
+                                <option value="private">Home Service(private)</option>
+                                <option value="public">Group Session(public)</option>
+                            </select>
+                            @error('service_type')
+                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div x-show="serviceType === 'public'">
                             <p class="text-sm">Capacity</p>
                             <input type="number" class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                name="capacity">
+                                name="capacity" value="1" min="1" x-model="capacity">
                             @error('capacity')
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
                         </div>
-                        {{-- <div>
-                            <p class="text-sm">Capacity</p>
-                            <input type="number" class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                name="capacity">
-                            @error('capacity')
-                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
-                            @enderror
-                        </div> --}}
                     </div>
-                    <input type="hidden" name="status" value="available">
+                    <input type="hidden" name="status" value="available" />
+                    <input type="hidden" name="current_capacity" x-model="capacity" />
                     <div class="modal-action flex items-center justify-end">
                         <button type="submit"
                             class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Create</button>

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('days');
             $table->string('status');
             $table->integer('capacity');
+            $table->integer('current_capacity');
+            $table->string('service_type');
         });
     }
 

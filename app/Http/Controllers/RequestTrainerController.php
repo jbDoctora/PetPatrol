@@ -95,6 +95,6 @@ class RequestTrainerController extends Controller
         $pet_status->book_status = "requested";
         $pet_status->save();
 
-        return redirect('/owner')->with('message', 'Request added successfully!');
+        return redirect('/request')->with('message', 'Request added successfully!');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Booking;
+use App\Models\PetInfo;
 use App\Models\Service;
 use App\Models\AdminPetType;
 use App\Models\AdminService;
@@ -43,6 +44,7 @@ class TrainerController extends Controller
             'booking.status',
             'booking.payment',
             'booking.gcash_refnum',
+            'pet_info.pet_id',
             'pet_info.pet_name',
             'pet_info.years',
             'pet_info.months',
@@ -81,9 +83,9 @@ class TrainerController extends Controller
         $booking->reason_reject = $request->input('reason_reject');
         $booking->save();
 
-        $service = Service::where('id', $request->input('service_id'))->first();
-        $service->status = $request->input('status');
-        $service->save();
+        // $service = Service::where('id', $request->input('service_id'))->first();
+        // $service->status = $request->input('status');
+        //$service->save();
 
 
         return redirect()->back();
@@ -145,13 +147,62 @@ class TrainerController extends Controller
         return redirect()->back()->with('message', 'Payment details updated successfully');
     }
 
+    // public function updateTraining(Request $request, $book_id)
+    // {
+    //     $booking = Booking::where('book_id', $book_id)->first();
+
+    //     $data = $request->only('status', 'service_id');
+
+    //     $booking->update($data);
+
+    //     if ($booking->status === 'completed') {
+    //         $service = Service::where('id', $data['service_id'])->first();
+    //         if ($service->status === 'unavailable') {
+    //             $service->status = 'available';
+    //             $service->save();
+    //         }
+
+    //         $currentCapacity = $service->current_capacity;
+    //         $capacity = $service->capacity;
+
+    //         if ($currentCapacity < $capacity) {
+    //             $service->current_capacity = $currentCapacity + 1;
+    //             $service->save();
+    //         }
+    //     }
+
+    //     return redirect()->back()->with('message', 'Successfully updated');
+    // }
+
+    // 2nd version
     public function updateTraining(Request $request, $book_id)
     {
-        $training = Booking::where('book_id', $book_id)->first();
+        $booking = Booking::where('book_id', $book_id)->first();
+        $data = $request->only('status', 'service_id', 'pet_id');
+        $booking->update($data);
 
-        $data = $request->only('status');
+        if ($booking->status === 'completed') {
+            $service = Service::where(
+                'id',
+                $data['service_id']
+            )->first();
+            if ($service->status === 'unavailable') {
+                $service->status = 'available';
+                $service->save();
+            }
 
-        $training->update($data);
+            $currentCapacity = $service->current_capacity;
+            $capacity = $service->capacity;
+
+            if ($currentCapacity < $capacity) {
+                $service->current_capacity = $currentCapacity + 1;
+                $service->save();
+            }
+
+            $pet = PetInfo::where('pet_id', $data['pet_id'])->first();
+            $pet->book_status = 'inactive';
+            $pet->save();
+        }
 
         return redirect()->back()->with('message', 'Successfully updated');
     }

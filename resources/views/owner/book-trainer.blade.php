@@ -119,14 +119,14 @@
 
                 <div class="grid grid-cols-1 items-center gap-5">
                     <label class="inline-flex items-center rounded border border-gray-200 py-3 px-9 hover:bg-gray-100">
-                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500" value="At Home"
+                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500" value="private"
                             x-model="location" required />
-                        <span class="ml-2 text-xs font-medium">At Home</span>
+                        <span class="ml-2 text-xs font-medium">Home Service(private)</span>
                     </label>
                     <label class="inline-flex items-center rounded border border-gray-200 py-3 px-9 hover:bg-gray-100">
-                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500"
-                            value="Group Session" x-model="location" required />
-                        <span class="ml-2 text-xs font-medium">Group Session</span>
+                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500" value="public"
+                            x-model="location" required />
+                        <span class="ml-2 text-xs font-medium">Group Session(public)</span>
                     </label>
                 </div>
 
