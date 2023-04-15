@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TrainerRating extends Model
 {
     protected $fillable = [
-        'stars', 'service_id', 'client_id', 'trainer_id', 'comment', 'date_created', 'image',
+        'stars', 'service_id', 'client_id', 'trainer_id', 'comment', 'date_created', 'image', 'book_id'
     ];
     protected $table = 'rating';
     public $timestamps = false;

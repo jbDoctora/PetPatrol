@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('service_id')->onDelete('cascade');
             $table->foreignId('client_id')->onDelete('cascade');
             $table->foreignId('trainer_id')->onDelete('cascade');
+            $table->foreignId('book_id')->onDelete('cascade');
             $table->string('comment');
             $table->date('date_created');
             $table->string('image')->nullable();

@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Models\TrainerRating;
 use App\Models\RequestTrainer;
 use App\Models\TrainingDetails;
 use App\Http\Controllers\Controller;
@@ -44,25 +45,17 @@ class BookingController extends Controller
         $pet_status = PetInfo::where('pet_id', $pet_id)->first();
         $pet_status->book_status = 'pending';
         $pet_status->save();
-        // $formFields = $request->all();
-        // Booking::create($formFields);
-
-        // $service_id = $request->input('service_id');
-        // $service = Service::find($service_id);
-        // $service->status = $request->input('status');
-        // $service->save();
-
-        // $request_id = $request->input('request_id');
-        // $requestTrainer = RequestTrainer::where('request_id', $request_id)->first();
-        // $requestTrainer->request_status = "pending";
-        // $requestTrainer->save();
-
-        // $pet_id = $request->input('pet_id');
-        // $pet_status = PetInfo::where('pet_id', $pet_id)->first();
-        // $pet_status->book_status = 'pending';
-        // $pet_status->save();
 
         return redirect('/bookings')->with('message', 'Booking is now placed!');
+    }
+
+    public function storeRating(Request $request)
+    {
+        $formFields = $request->all();
+
+        $rating = TrainerRating::create($formFields);
+        // dd($rating);
+        return redirect()->back()->with('message', 'Rating added');
     }
 
     public function show()
@@ -76,7 +69,10 @@ class BookingController extends Controller
             'pet_info.pet_name',
             'pet_info.pet_id',
             'booking.trainer_name',
+            'booking.trainer_id',
+            'booking.client_id',
             'booking.start_date',
+            'booking.end_date',
             'service.course',
             'service.availability',
             'service.id as service_id'
@@ -151,6 +147,7 @@ class BookingController extends Controller
             'pet_info.months',
             'booking.trainer_name',
             'booking.start_date',
+            'booking.end_date',
             'service.course',
             'service.availability',
             'service.id as service_id',

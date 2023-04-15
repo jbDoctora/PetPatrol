@@ -36,7 +36,7 @@
         </div>
 
         <div class="flex justify-between items-center border-b border-slate-300">
-            <div class="py-3 px-4 text-sm flex items-center">
+            <div class="py-3 px-4 text-sm flex items-center gap-5">
                 <div>
                     <p> <span class="font-bold text-sm">
                             {{\App\Models\Booking::where('client_id',auth()->user()->id)->count() }}
@@ -44,8 +44,17 @@
                         bookings found
                     </p>
                 </div>
-                <div>
-                    <div class="badge badge-primary">pending</div>
+                <div class="flex justify-start gap-5">
+                    <div class="badge bg-neutral-950 text-white text-xs">pending</div>
+                </div>
+                <div class="flex justify-start gap-5">
+                    <div class="badge bg-neutral-950 text-white text-xs">in progress</div>
+                </div>
+                <div class="flex justify-start gap-5">
+                    <div class="badge bg-neutral-950 text-white text-xs">declined</div>
+                </div>
+                <div class="flex justify-start gap-5">
+                    <div class="badge bg-neutral-950 text-white text-xs">completed</div>
                 </div>
             </div>
             <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
@@ -63,17 +72,17 @@
                     <p class="text-sm">Pet: {{$requests->pet_name}}</p>
                     <p class="text-sm">Trainer: {{$requests->trainer_name}}</p>
                     <p class="text-sm">Session: {{$requests->availability}}</p>
-                    <p class="text-sm">Start Date: {{$requests->start_date}}
+                    <p class="text-sm">Schedule: {{$requests->start_date}} - {{$requests->end_date}}
                     </p>
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">
                     @if ($requests->status == 'pending')
                     <span class="badge bg-yellow-400 text-black text-xs border-none">
-                        <i class="fa-solid fa-hourglass-start pr-1"></i>{{ $requests->status }}
+                        <i class="fa-solid fa-hourglass pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'approved')
                     <span class="badge bg-green-400 text-black text-xs border-none">
-                        <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}
+                        <i class="fa-solid fa-thumbs-up pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'declined')
                     <span class="badge bg-red-400 text-black text-xs">
@@ -81,11 +90,11 @@
                     </span> |
                     @elseif ($requests->status == 'in progress')
                     <span class="badge bg-blue-400 text-blue-800 text-xs">
-                        <i class="fa-solid fa-times pr-1"></i>{{ $requests->status }}
+                        <i class="fa-solid fa-hourglass-end pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'completed')
                     <span class="badge bg-green-400 text-green-800 text-xs">
-                        <i class="fa-solid fa-times pr-1"></i>{{ $requests->status }}
+                        <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'confirmed')
                     <span class="badge bg-blue-700 text-white text-xs">
@@ -117,8 +126,11 @@
                         <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
                     </button>
                 </div>
-                @elseif($requests->status == 'in progress' || $requests->status == 'pending' || $requests->status ==
-                'declined')
+                @elseif($requests->status == 'declined')
+                <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+
+                </div>
+                @elseif($requests->status == 'in progress' || $requests->status == 'pending')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <a href="/bookings/{{$requests->book_id}}">
                         <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
@@ -131,38 +143,47 @@
                         <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
                     </button>
                 </div>
+                {{-- Rating form --}}
                 @elseif($requests->status == 'completed')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                    <label for="rating-modal" class="hover:text-blue-700 text-sm">Rate Trainer</label>
+                    <label for="rating-modal" class="hover:text-blue-700 text-sm"><i
+                            class="fa-solid fa-star fa-md pr-2"></i>Rate Trainer</label>
                 </div>
                 <input type="checkbox" id="rating-modal" class="modal-toggle" />
                 <div class="modal">
                     <div class="modal-box relative rounded">
                         <label for="rating-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <h3 class="text-lg font-bold">Rate Your Trainer</h3>
-                        <p class="py-4">Please give your trainer a rating and provide any feedback or comments below:
+                        <p class="py-4 text-sm">Please give your trainer a rating and provide any feedback or comments
+                            below:
                         </p>
-                        <form class="flex flex-col" action="#" method="POST">
+                        <form class="flex flex-col" action="/bookings/add-rating" method="POST">
+                            @csrf
+                            <input type="hidden" name="service_id" value="{{$requests->service_id}}">
+                            <input type="hidden" name="trainer_id" value="{{$requests->trainer_id}}">
+                            <input type="hidden" name="client_id" value="{{$requests->client_id}}">
+                            <input type="hidden" name="book_id" value="{{$requests->book_id}}">
+                            <input type="hidden" name="date_created" id="date_created">
                             <div class="flex items-center mb-4">
-                                <span class="text-lg mr-2">Rating:</span>
+                                <span class="text-sm mr-2">Rating:</span>
                                 <div class="rating rating-md">
-                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400"
-                                        checked />
-                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="stars" value="1" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="stars" value="2" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="stars" value="3" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="stars" value="4" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="stars" value="5" class="mask mask-star-2 bg-orange-400" />
                                 </div>
                             </div>
                             <div class="flex flex-col mb-4">
-                                <label for="comment" class="text-lg">Comment:</label>
+                                <label for="comment" class="text-sm">Comment:</label>
                                 <textarea id="comment" name="comment" class="border rounded p-2"></textarea>
                             </div>
                             <div class="flex flex-col mb-4">
-                                <label for="image" class="text-lg">Image:</label>
+                                <label for="image" class="text-sm">Image:</label>
                                 <input type="file" id="image" name="image" accept="image/*" class="border rounded p-2">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit"
+                                class="bg-blue-700 p-3 rounded text-sm text-white hover:bg-blue-800">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -184,4 +205,14 @@
 
 
     </div>
+
+    <script>
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const datestamp = `${year}-${month}-${day}`;
+        
+        document.getElementById("date_created").value = datestamp;
+    </script>
 </x-dash-layout>

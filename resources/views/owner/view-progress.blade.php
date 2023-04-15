@@ -9,10 +9,7 @@
                     <p class="text-sm">Pet: {{$requests->pet_name}}</p>
                     <p class="text-sm">Trainer: {{$requests->trainer_name}}</p>
                     <p class="text-sm">Session: {{$requests->availability}}</p>
-                    <p class="text-sm" x-data="{ formattedDate: '' }"
-                        x-init="let date = new Date('{{ $requests->start_date }}'); formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })">
-                        Preferred start date: <span x-text="formattedDate"></span>
-                    </p>
+                    <p class="text-sm">Date: {{$requests->start_date}} - {{$requests->end_date}}</p>
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">
                     @if ($requests->status == 'pending')
