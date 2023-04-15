@@ -6,23 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css" rel="stylesheet" type="text/css" />
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    {{-- <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Poppins', 'Euclid Circular A', 'sans-serif'],
-                    },
-                    colors: {
-                        laravel: "#ef3b2d",
-                    },
-                },
-            },
-        };
-    </script> --}}
     <style>
         .class-name {
             white-space: pre-wrap;
