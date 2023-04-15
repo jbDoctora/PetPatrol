@@ -103,6 +103,8 @@
                     </span>
                     @endif
                 </div>
+
+                @if($requests->status == 'approved')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <a href="/bookings/{{$requests->book_id}}">
                         <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
@@ -115,6 +117,57 @@
                         <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
                     </button>
                 </div>
+                @elseif($requests->status == 'in progress' || $requests->status == 'pending' || $requests->status ==
+                'declined')
+                <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+                    <a href="/bookings/{{$requests->book_id}}">
+                        <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
+                                class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
+                    </a>
+                    <button type="button" x-bind:disabled="['declined', 'pending'].includes('{{ $requests->status }}')"
+                        x-bind:class="{'bg-gray-400 hover:bg-gray-400': ['declined', 'pending'].includes('{{ $requests->status }}')}"
+                        class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white"
+                        x-on:click="window.location.href='/checkout/{{$requests->book_id}}'">
+                        <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
+                    </button>
+                </div>
+                @elseif($requests->status == 'completed')
+                <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+                    <label for="rating-modal" class="hover:text-blue-700 text-sm">Rate Trainer</label>
+                </div>
+                <input type="checkbox" id="rating-modal" class="modal-toggle" />
+                <div class="modal">
+                    <div class="modal-box relative rounded">
+                        <label for="rating-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <h3 class="text-lg font-bold">Rate Your Trainer</h3>
+                        <p class="py-4">Please give your trainer a rating and provide any feedback or comments below:
+                        </p>
+                        <form class="flex flex-col" action="#" method="POST">
+                            <div class="flex items-center mb-4">
+                                <span class="text-lg mr-2">Rating:</span>
+                                <div class="rating rating-md">
+                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400"
+                                        checked />
+                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col mb-4">
+                                <label for="comment" class="text-lg">Comment:</label>
+                                <textarea id="comment" name="comment" class="border rounded p-2"></textarea>
+                            </div>
+                            <div class="flex flex-col mb-4">
+                                <label for="image" class="text-lg">Image:</label>
+                                <input type="file" id="image" name="image" accept="image/*" class="border rounded p-2">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                @endif
+
             </div>
             @empty
             <div class="flex flex-col justify-center">
