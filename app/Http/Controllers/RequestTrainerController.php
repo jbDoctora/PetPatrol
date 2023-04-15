@@ -75,12 +75,13 @@ class RequestTrainerController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'pet_name' => [
-                'required',
-                Rule::unique('request')->where(function ($query) use ($request) {
-                    return $query->where('user_id', $request->input('user_id'));
-                }),
-            ],
+            'pet_name' => 'required',
+            //  [
+            //     'required',
+            //     Rule::unique('request')->where(function ($query) use ($request) {
+            //         return $query->where('user_id', $request->input('user_id'));
+            //     }),
+            // ],
             'course' => 'required',
             'sessions' => 'required',
             'location' => 'required'

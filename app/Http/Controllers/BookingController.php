@@ -22,8 +22,8 @@ class BookingController extends Controller
         $service = Service::find($service_id);
 
         // Check if the capacity of the service is greater than 0
-        if ($service->capacity > 1) {
-            $service->capacity -= 1;
+        if ($service->current_capacity >= $service->capacity) {
+            $service->current_capacity -= 1;
             $service->status = "available";
         } elseif ($service->current_capacity == 1) {
             $service->current_capacity -= 1;

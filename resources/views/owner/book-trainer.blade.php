@@ -186,36 +186,3 @@
     </div>
 
 </x-dash-layout>
-
-
-
-{{-- <label class="inline-flex items-center rounded border border-gray-200 py-2 px-4 hover:bg-gray-100">
-    <input type="radio" name="radio-1" class="radio radio-sm checked:bg-blue-500" value="Potty Training" required
-        x-model="course" />
-    <span class="ml-2 text-sm font-medium">Potty Training</span>
-</label>
-
-<label class="inline-flex items-center rounded border border-gray-200 py-2 px-4 hover:bg-gray-100">
-    <input type="radio" name="radio-1" class="radio radio-sm checked:bg-blue-500" value="Obedience Training"
-        x-model="course" />
-    <span class="ml-2 text-sm font-medium">Obedience Training</span>
-</label>
-
-<label class="inline-flex items-center rounded border border-gray-200 py-2 px-4 hover:bg-gray-100">
-    <input type="radio" name="radio-1" class="radio radio-sm checked:bg-blue-500" value="Behavioral Training"
-        x-model="course" />
-    <span class="ml-2 text-sm font-medium">Behavioral Training</span>
-</label>
-
-<label
-    class="inline-flex items-center rounded border border-gray-200 py-2 px-4 hover:bg-gray-100 checked:border-blue-700">
-    <input type="radio" name="radio-1" class="radio radio-sm checked:bg-blue-500 " value="Agility Training"
-        x-model="course" />
-    <span class="ml-2 text-sm font-medium">Agility Training</span>
-</label>
-
-<label class="inline-flex items-center rounded border border-gray-200 py-2 px-4 hover:bg-gray-100">
-    <input type="radio" name="radio-1" class="radio radio-sm checked:bg-blue-500" value="Tricks Training"
-        x-model="course" />
-    <span class="ml-2 text-sm font-medium">Tricks Training</span>
-</label> --}}
