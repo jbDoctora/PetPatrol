@@ -52,9 +52,8 @@
                     <thead class="bg-blue-500 text-white text-sm font-bold">
                         <tr>
                             <th>
-                                <div class="my-3">Day</div>
+                                <div class="my-3">Lesson</div>
                             </th>
-                            <th>Lesson</th>
                             <th>Start Time</th>
                             <th>End Time</th>
                         </tr>
@@ -63,9 +62,8 @@
                         @forelse($trainingDetails as $det)
                         <tr class="border border-gray-300">
                             <td>
-                                <div class="my-5">{{$det->day}}</div>
+                                <div class="my-4">{{$det->lesson}}</div>
                             </td>
-                            <td>{{$det->lesson}}</td>
                             <td>{{$det->start_time}}</td>
                             <td>{{$det->end_time}}</td>
                         </tr>

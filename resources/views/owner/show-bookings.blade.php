@@ -69,6 +69,7 @@
                     <a href="/bookings/{{$requests->book_id}}">
                         <h2 class="font-bold text-xl hover:text-blue-600">{{$requests->course}}</h2>
                     </a>
+                    <p class="text-sm">Reference #: {{$requests->code}}</p>
                     <p class="text-sm">Pet: {{$requests->pet_name}}</p>
                     <p class="text-sm">Trainer: {{$requests->trainer_name}}</p>
                     <p class="text-sm">Session: {{$requests->availability}}</p>
@@ -119,12 +120,11 @@
                         <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
                                 class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
                     </a>
-                    <button type="button" x-bind:disabled="['declined', 'pending'].includes('{{ $requests->status }}')"
-                        x-bind:class="{'bg-gray-400 hover:bg-gray-400': ['declined', 'pending'].includes('{{ $requests->status }}')}"
-                        class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white"
-                        x-on:click="window.location.href='/checkout/{{$requests->book_id}}'">
-                        <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
-                    </button>
+                    <a href="/checkout/{{$requests->book_id}}">
+                        <button type="button" class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white">
+                            <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
+                        </button>
+                    </a>
                 </div>
                 @elseif($requests->status == 'declined')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
@@ -136,23 +136,35 @@
                         <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
                                 class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
                     </a>
-                    <button type="button" x-bind:disabled="['declined', 'pending'].includes('{{ $requests->status }}')"
-                        x-bind:class="{'bg-gray-400 hover:bg-gray-400': ['declined', 'pending'].includes('{{ $requests->status }}')}"
-                        class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white"
-                        x-on:click="window.location.href='/checkout/{{$requests->book_id}}'">
-                        <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
-                    </button>
+                    <a href="/checkout/{{$requests->book_id}}">
+                        <button type="button" class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white">
+                            <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
+                        </button>
+                    </a>
                 </div>
                 {{-- Rating form --}}
                 @elseif($requests->status == 'completed')
+
+                @if($requests->isRated == 1)
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                    <label for="rating-modal" class="hover:text-blue-700 text-sm"><i
-                            class="fa-solid fa-star fa-md pr-2"></i>Rate Trainer</label>
+                    <label class="hover:text-blue-700 text-sm">Done rating
+                        Trainer</label>
                 </div>
-                <input type="checkbox" id="rating-modal" class="modal-toggle" />
+                @else
+                <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+                    <label for="rating-modal-{{$requests->book_id}}" class="hover:text-blue-700 text-sm"><i
+                            class="fa-solid fa-star fa-md pr-2"></i>Rate
+                        Trainer</label>
+                </div>
+                @endif
+
+
+
+                <input type="checkbox" id="rating-modal-{{$requests->book_id}}" class="modal-toggle" />
                 <div class="modal">
                     <div class="modal-box relative rounded">
-                        <label for="rating-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <label for="rating-modal-{{$requests->book_id}}"
+                            class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <h3 class="text-lg font-bold">Rate Your Trainer</h3>
                         <p class="py-4 text-sm">Please give your trainer a rating and provide any feedback or comments
                             below:
@@ -163,7 +175,7 @@
                             <input type="hidden" name="trainer_id" value="{{$requests->trainer_id}}">
                             <input type="hidden" name="client_id" value="{{$requests->client_id}}">
                             <input type="hidden" name="book_id" value="{{$requests->book_id}}">
-                            <input type="hidden" name="date_created" id="date_created">
+                            {{-- <input type="hidden" name="date_created" id="date_created"> --}}
                             <div class="flex items-center mb-4">
                                 <span class="text-sm mr-2">Rating:</span>
                                 <div class="rating rating-md">
@@ -184,6 +196,15 @@
                             </div>
                             <button type="submit"
                                 class="bg-blue-700 p-3 rounded text-sm text-white hover:bg-blue-800">Submit</button>
+                            {{-- <script>
+                                const now = new Date();
+                                        const year = now.getFullYear();
+                                        const month = String(now.getMonth() + 1).padStart(2, '0');
+                                        const day = String(now.getDate()).padStart(2, '0');
+                                        const datestamp = `${year}-${month}-${day}`;
+                                        
+                                        document.getElementById("date_created").value = datestamp;
+                            </script> --}}
                         </form>
                     </div>
                 </div>
@@ -206,13 +227,5 @@
 
     </div>
 
-    <script>
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const datestamp = `${year}-${month}-${day}`;
-        
-        document.getElementById("date_created").value = datestamp;
-    </script>
+
 </x-dash-layout>

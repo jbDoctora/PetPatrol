@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\Service;
@@ -32,8 +33,6 @@ class BookingController extends Controller
         } else {
             $service->status = "unavailable";
         }
-
-
         $service->save();
 
         $request_id = $request->input('request_id');
@@ -54,7 +53,12 @@ class BookingController extends Controller
         $formFields = $request->all();
 
         $rating = TrainerRating::create($formFields);
-        // dd($rating);
+
+        $bookingId = $request->input('book_id');
+        $rating = Booking::where('book_id', $bookingId)->first();
+        $rating->isRated = 1;
+        $rating->save();
+
         return redirect()->back()->with('message', 'Rating added');
     }
 
@@ -72,6 +76,7 @@ class BookingController extends Controller
             'booking.trainer_id',
             'booking.client_id',
             'booking.start_date',
+            'booking.isRated',
             'booking.end_date',
             'service.course',
             'service.availability',
@@ -81,20 +86,22 @@ class BookingController extends Controller
             ->join('users', 'users.id', '=', 'booking.client_id')
             ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.client_id', $clientId)
-            ->orderBy('status', 'asc')
+            ->orderBy('status', 'desc')
             ->paginate(5);
+
+
         // ->get();
-        // dd($request);
+        // dd($rating);
         return view('owner.show-bookings', [
-            'request' => $request
+            'request' => $request,
         ]);
     }
 
     public function showCheckout($id)
     {
-        $data = Booking::where('book_id', $id)->first();
+        $data = Booking::where('book_id', $id);
 
-        $request = Booking::select(
+        $requests = Booking::select(
             'booking.book_id',
             'booking.status',
             'booking.payment',
@@ -112,24 +119,25 @@ class BookingController extends Controller
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('users', 'users.id', '=', 'booking.trainer_id')
             ->join('service', 'service.id', 'booking.service_id')
+            ->where('booking.book_id', $id)
             // ->where('booking.trainer_id', $id)
-            ->first();
+            ->get();
 
         // dd($request);
 
-        return view('owner.checkout', compact('request'));
+        return view('owner.checkout', compact('requests'));
     }
 
     public function updatePayment(Request $request, $book_id)
     {
-        $book_id = Booking::findOrFail($book_id);
+        // dd($book_id);
+        $booking = Booking::where('book_id', $book_id)->first();
 
         $data = [
             'gcash_refnum' => $request->input('gcash_refnum')
         ];
 
-
-        $book_id->update($data);
+        $booking->update($data);
 
         return redirect('/bookings')->with('message', 'Payment Uploaded');
     }
@@ -137,7 +145,7 @@ class BookingController extends Controller
     public function showBooking($id)
     {
         $data = Booking::where('book_id', $id);
-
+        // dd($data);
         $request = Booking::select(
             'booking.book_id',
             'booking.status',

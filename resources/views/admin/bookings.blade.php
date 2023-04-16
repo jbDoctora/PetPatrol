@@ -25,7 +25,7 @@
                 @foreach($bookings as $booking)
                 <tr>
                     <td>
-                        <div class="my-2">{{$booking->book_id}}</div>
+                        <div class="my-2">{{$booking->code}}</div>
                     </td>
                     <td>{{$booking->client_name}}</td>
                     <td>{{$booking->pet_name}}</td>

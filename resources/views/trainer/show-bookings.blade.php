@@ -86,13 +86,14 @@
                             {{$requests->code}}
                         </td>
                         <td class="whitespace-nowrap hover:text-blue-700 border-b border-slate-200"><label
-                                for="pet-modal" class="cursor-pointer">{{
+                                for="pet-modal-{{$requests->book_id}}" class="cursor-pointer">{{
                                 $requests->pet_name}}</label></td>
                         <!-- Put this part before </body> tag -->
-                        <input type="checkbox" id="pet-modal" class="modal-toggle" />
+                        <input type="checkbox" id="pet-modal-{{$requests->book_id}}" class="modal-toggle" />
                         <div class="modal">
                             <div class="modal-box rounded w-max-4xl">
-                                <label for="pet-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <label for="pet-modal-{{$requests->book_id}}"
+                                    class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                 <h3 class="my-5 text-lg font-bold">Pet Information</h3>
                                 <div class="flex justify-center avatar bg-gray-300 py-3">
                                     <div class="w-24 rounded-full">
@@ -246,6 +247,7 @@
                                 <input type="hidden" name="status" value="completed" />
                                 <input type="hidden" name="service_id" value="{{$requests->service_id}}">
                                 <input type="hidden" name="pet_id" value="{{$requests->pet_id}}">
+                                <input type="hidden" name="trainer_id" value="{{$requests->trainer_id}}">
 
                                 <div class="flex justify-center"><a href="#"><button
                                             class="bg-blue-700 text-white px-4 py-2 rounded">Mark As Done</button></a>

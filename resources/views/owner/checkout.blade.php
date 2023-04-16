@@ -1,4 +1,5 @@
 <x-dash-layout>
+    @foreach($requests as $request)
     <div class="bg-white rounded m-5 h-full">
         <div class="container mx-auto py-10">
             <div class="flex flex-col md:flex-row gap-10">
@@ -11,8 +12,11 @@
                             <h2 class="text-xl font-bold">Order Summary</h2>
                         </div>
                     </div>
-
                     <div class="flex flex-col gap-2 mt-5">
+                        <div class="flex justify-between">
+                            <span class="font-bold">Reference Code:</span>
+                            <span class="text-gray-600">{{$request->code}}</span>
+                        </div>
                         <div class="flex justify-between">
                             <span class="font-bold">Course Package:</span>
                             <span class="text-gray-600">{{$request->course}}</span>
@@ -87,5 +91,5 @@
             </div>
         </div>
     </div>
-
+    @endforeach
 </x-dash-layout>

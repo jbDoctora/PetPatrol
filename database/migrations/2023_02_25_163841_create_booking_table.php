@@ -29,6 +29,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->boolean('isDone')->default(0);
             $table->string('gcash_refnum')->nullable();
+            $table->boolean('isRated')->default(0);
         });
     }
 

@@ -79,7 +79,7 @@
                 @csrf
                 <input type="checkbox" id="my-modal-{{ $match->user_id }}" class="modal-toggle h-fit" />
                 <div class="modal">
-                    <div class="modal-box w-11/12 max-w-5xl">
+                    <div class="modal-box w-11/12 max-w-2xl rounded">
                         <h3 class="font-bold text-sm tracking-wide p-2 text-left bg-blue-200 text-black rounded">
                             Booking Summary</h3>
                         <div class="flex flex-col text-sm gap-4 m-3">
@@ -97,6 +97,12 @@
                                         class="border border-gray-300 rounded py-1 px-3 w-full md:w-auto"
                                         x-model="startDate"
                                         x-on:change="endDate = days ? new Date(new Date(startDate).getTime() + days * 24 * 60 * 60 * 1000).toISOString().split('T')[0] : ''" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col md:flex-row md:justify-between items-center">
+                                <div class="mb-2 md:mb-0">End date:</div>
+                                <div>
+                                    <p x-text="endDate" class="py-1 px-3 w-full"></p>
                                 </div>
                             </div>
                         </div>
@@ -127,12 +133,12 @@
                         <div class="flex flex-col gap-4 p-5">
                             <div class="flex items-center">
                                 <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" />
-                                <label class="cursor-pointer label whitespace-nowrap">
+                                <label class="cursor-pointer label whitespace-nowrap text-sm">
                                     I agree to the <a class="text-blue-600 px-2">Terms and Conditions</a> and <a
                                         class="text-blue-600 px-2">Cancellation Policy</a>
                                 </label>
                             </div>
-                            <div class="text-red-500 text-sm" x-show="!checked">
+                            <div class="text-red-500 text-xs" x-show="!checked">
                                 Please agree to the Terms and Conditions and Cancellation Policy to proceed.
                             </div>
                         </div>
@@ -163,75 +169,3 @@
         </div>
     </div>
 </x-dash-layout>
-
-
-
-{{-- <form method="POST" action="/show-matched/book">
-    @csrf
-    <input type="checkbox" id="my-modal-{{ $match->user_id }}" class="modal-toggle h-fit" />
-    <div class="modal">
-        <div class="modal-box w-11/12 max-w-5xl">
-            <h3 class="font-bold text-sm tracking-wide p-2 text-left bg-blue-200 text-black rounded">
-                Summary</h3>
-            <div class="flex flex-col text-sm gap-2 m-3">
-                <div>Pet name: {{$match->pet_name}}</div>
-                <div>Client name: {{auth()->user()->name}}</div>
-                <div class=""> <label>Preferred start
-                        date:</label> <input type="date" name="start_date"
-                        class="border border-gray-300 rounded py-1 px-5" />
-                </div>
-            </div>
-            <div>
-                <table class="w-full text-sm px-40">
-                    <thead class="bg-blue-100">
-                        <tr>
-                            <th class="mx-6">Trainer name</th>
-                            <th class="px-6">Course package</th>
-                            <th class="px-6">Availability</th>
-                            <th class="px-6">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="px-6">{{$match->trainer_name}}</td>
-                            <td class="px-6">{{$match->course}}</td>
-                            <td class="px-6">{{$match->availability}}</td>
-                            <td class="px-6">{{$match->price}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="flex flex-col justify-center p-5">
-                <div class="flex flex-row justify-end">
-                    <div>Total Price:</div>
-                    <div class="ml-3">{{$match->price}}</div>
-                </div>
-            </div>
-
-            <div class="flex flex-row pt-8 text-sm justify-end ">
-                <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" />
-                <label class="cursor-pointer label whitespace-nowrap">
-                    I agree
-                    to
-                    the
-                    <a class="text-blue-600 px-2"> Terms and Conditions </a> and <a class="text-blue-600 px-2">
-                        Cancellation Policy </a>
-                </label>
-            </div>
-            <div class="modal-action flex justify-end p-4"> <label for="my-modal-{{ $match->user_id }}"
-                    class="tracking-wide rounded px-5 py-2  border border-gray-300 text-sm text-black font-normal hover:bg-gray-300">Cancel</label>
-                <button type="submit" :disabled="!checked" :class="{'bg-gray-400': !checked}"
-                    class="tracking-wide rounded px-6 py-2 bg-blue-700 text-white text-sm font-normal">Set</button>
-            </div>
-            <input type="hidden" name="pet_id" value="{{ $match->pet_id }}">
-            <input type="hidden" name="client_id" value="{{ auth()->id() }}">
-            <input type="hidden" name="trainer_id" value="{{ $match->user_id }}">
-            <input type="hidden" name="status" value="pending">
-            <input type="hidden" name="payment" value="unpaid">
-            <input type="hidden" name="service_id" value="{{$match->service_id}}" />
-            <input type="hidden" name="request_id" value="{{$request_id}}" />
-            <input type="hidden" name="client_name" value="{{auth()->user()->name}}" />
-            <input type="hidden" name="trainer_name" value="{{$match->trainer_name}}" />
-        </div>
-    </div>
-</form> --}}

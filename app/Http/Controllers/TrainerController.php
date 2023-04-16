@@ -41,6 +41,7 @@ class TrainerController extends Controller
 
         $request = Booking::select(
             'booking.book_id',
+            'booking.trainer_id',
             'booking.status',
             'booking.payment',
             'booking.gcash_refnum',
@@ -178,7 +179,7 @@ class TrainerController extends Controller
     public function updateTraining(Request $request, $book_id)
     {
         $booking = Booking::where('book_id', $book_id)->first();
-        $data = $request->only('status', 'service_id', 'pet_id');
+        $data = $request->only('status', 'service_id', 'pet_id', 'trainer_id');
         $booking->update($data);
 
         if ($booking->status === 'completed') {
@@ -202,6 +203,10 @@ class TrainerController extends Controller
             $pet = PetInfo::where('pet_id', $data['pet_id'])->first();
             $pet->book_status = 'inactive';
             $pet->save();
+
+            $trainerBooking = User::where('id', $data['trainer_id'])->first();
+            $trainerBooking->completedBooking += 1;
+            $trainerBooking->save();
         }
 
         return redirect()->back()->with('message', 'Successfully updated');

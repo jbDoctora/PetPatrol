@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('gcash_number')->nullable();
             $table->boolean('admin_approve')->default(0);
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('completedBooking')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
