@@ -4,7 +4,6 @@
         <form action="/bookings" method="GET">
             <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
                 <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
-                    <i class="fa-solid fa-magnifying-glass ml-2"></i>
                     <input type="text" placeholder="Search" name="search"
                         class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52"
                         value="{{ request('search') }}" />
@@ -12,7 +11,7 @@
                 <div>
                     <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded"
                         name="status">
-                        <option value="" {{ request('status')=='' ? 'selected' : '' }}>Status</option>
+                        <option value="" {{ request('status')=='' ? 'selected' : '' }}>Status(All)</option>
                         <option value="pending" {{ request('status')=='pending' ? 'selected' : '' }}>Pending</option>
                         <option value="approved" {{ request('status')=='approved' ? 'selected' : '' }}>Approved</option>
                         <option value="declined" {{ request('status')=='declined' ? 'selected' : '' }}>Declined</option>
@@ -23,7 +22,7 @@
                 <div>
                     <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type"
                         value="{{ request('pet_type') }}">
-                        <option value="">Pet type</option>
+                        <option value="">Pet type (All)</option>
                         <option value="Dog" {{request('pet_type')=='Dog' ? 'selected' : '' }}>Dog</option>
                         <option value="Cat" {{request('pet_type')=='Cat' ? 'selected' : '' }}>Cat</option>
                         <option value="Parrot" {{request('pet_type')=='Parrot' ? 'selected' : '' }}>Parrot</option>

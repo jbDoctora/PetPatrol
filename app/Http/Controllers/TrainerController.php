@@ -68,6 +68,7 @@ class TrainerController extends Controller
             ->join('service', 'service.id', 'booking.service_id')
             // ->where('users.role', 0)
             ->where('booking.trainer_id', $trainerId)
+            ->orderBy('booking.start_date')
             ->get();
         // dd($request);
 
@@ -75,21 +76,54 @@ class TrainerController extends Controller
             'request' => $request
         ]);
     }
+    // V1
+    // public function updateBooking(Request $request)
+    // {
+    //     $booking = Booking::where('book_id', $request->input('book_id'))->first();
+    //     $booking->status = $request->input('status');
+    //     $booking->payment = $request->input('payment');
+    //     $booking->reason_reject = $request->input('reason_reject');
+    //     $booking->save();
 
+    //     // $service = Service::where('id', $request->input('service_id'))->first();
+    //     // $service->status = $request->input('status');
+    //     //$service->save();
+
+
+    //     return redirect()->back();
+    // }
+    // V2
     public function updateBooking(Request $request)
     {
         $booking = Booking::where('book_id', $request->input('book_id'))->first();
         $booking->status = $request->input('status');
         $booking->payment = $request->input('payment');
         $booking->reason_reject = $request->input('reason_reject');
-        $booking->save();
 
-        // $service = Service::where('id', $request->input('service_id'))->first();
-        // $service->status = $request->input('status');
-        //$service->save();
+        // check if start_date and end_date are available
+        $trainerId = $booking->trainer_id;
+        $startDate = $booking->start_date;
+        $endDate = $booking->end_date;
+        $available = Booking::where('trainer_id', $trainerId)
+            ->whereNotIn('status', ['declined', 'cancelled', 'completed', 'pending'])
+            ->where(function ($query) use ($startDate, $endDate) {
+                $query->where(function ($q) use ($startDate, $endDate) {
+                    $q->where('start_date', '>=', $endDate)
+                        ->orWhere('end_date', '<=', $startDate);
+                })
+                    ->orWhere(function ($q) use ($startDate, $endDate) {
+                        $q->where('start_date', '<=', $startDate)
+                            ->where('end_date', '>=', $endDate);
+                    });
+            })->count();
 
+        if ($available === 0) {
+            $booking->save();
+        } else {
+            return redirect()->back()->with('error', 'There is a conflict with your schedule');
+        }
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successfull updated!');
     }
 
     public function showPayment()

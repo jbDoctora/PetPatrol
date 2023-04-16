@@ -259,10 +259,11 @@
                             </div>
                             @elseif($requests->status == 'pending')
                             <div class="flex justify-center"><a href="#"><button
-                                        class="bg-blue-700 text-white px-4 py-2 rounded" x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
+                                        class="bg-blue-700 text-white px-4 py-2 rounded"
+                                        x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
                                     '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
-                                    '{{$requests->payment}}' }">Update</button></a>
+                                    '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}' }">Update</button></a>
                             </div>
                             @endif
                         </td>
@@ -275,6 +276,8 @@
                     @method('PUT')
                     <input type="hidden" name="book_id" x-bind:value="showModal.book_id">
                     <input type="hidden" name="service_id" x-bind:value="showModal.service_id">
+                    <input type="hidden" name="start_date" x-bind:value="showModal.start_date">
+                    <input type="hidden" name="end_date" x-bind:value="showModal.end_date">
 
 
                     <div class="fixed z-50 inset-0 overflow-y-auto" x-show="showModal" x-transition>
