@@ -1,45 +1,64 @@
 <x-trainer-layout>
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
         class="bg-white my-5 mx-14 shadow-lg h-full rounded">
-        <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
-        <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
-            <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
-                <i class="fa-solid fa-magnifying-glass ml-2"></i>
-                <input type="search" placeholder="Search Keyword"
-                    class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52" />
+        <form action="/trainer/bookings">
+            <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
+            <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
+                <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
+                    <input type="text" placeholder="Search" name="search"
+                        class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52"
+                        value="{{ request('search') }}" />
+                </div>
+                <div>
+                    <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded"
+                        name="status">
+                        <option value="" {{ request('status')=='' ? 'selected' : '' }}>Status(All)</option>
+                        <option value="pending" {{ request('status')=='pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="approved" {{ request('status')=='approved' ? 'selected' : '' }}>Approved</option>
+                        <option value="declined" {{ request('status')=='declined' ? 'selected' : '' }}>Declined</option>
+                        <option value="completed" {{ request('status')=='completed' ? 'selected' : '' }}>Completed
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type"
+                        value="{{ request('pet_type') }}">
+                        <option value="">Pet type (All)</option>
+                        <option value="Dog" {{request('pet_type')=='Dog' ? 'selected' : '' }}>Dog</option>
+                        <option value="Cat" {{request('pet_type')=='Cat' ? 'selected' : '' }}>Cat</option>
+                        <option value="Parrot" {{request('pet_type')=='Parrot' ? 'selected' : '' }}>Parrot</option>
+                        <option value="Hamster" {{request('pet_type')=='Hamster' ? 'selected' : '' }}>Hamster</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="" class="mx-2">From</label>
+                    <input type="date" name="start_date"
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-44"
+                        value="{{ request('start_date') }}" />
+                </div>
+                <div>
+                    <label for="" class="mx-2">To</label>
+                    <input type="date" name="end_date" value="{{ request('end_date') }}"
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-44" />
+                </div>
+                <div>
+                    <button type="submit" class="bg-blue-700 px-7 py-3 text-white rounded">
+                        <i class="fa-solid fa-filter fa-lg pr-3"></i>Filter
+                    </button>
+                </div>
             </div>
-            <div>
-                <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded" name="" id="">
-                    <option disabled selected>Status</option>
-                    <option value="">Pending</option>
-                    <option value="">Approved</option>
-                    <option value="">Declined</option>
-                    <option value="">Completed</option>
-                </select>
-            </div>
-            <div>
-                <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="" id="">
-                    <option disabled selected>Pet type</option>
-                    <option value="">Dog</option>
-                    <option value="">Cat</option>
-                    <option value="">Parrot</option>
-                    <option value="">Hamster</option>
-                </select>
-            </div>
-            <div>
-                <input type="date" class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-44">
-            </div>
-            <div>
-                <button class="bg-blue-700 px-7 py-3 text-white font-bold rounded">
-                    Search
-                </button>
-            </div>
-        </div>
+        </form>
 
         <div class="flex justify-between items-center border-b border-slate-300">
-            <div class="py-3 px-4 text-sm"><span class="font-bold text-sm">{{ \App\Models\Booking::where('trainer_id',
-                    auth()->user()->id)->count() }}</span>
-                bookings found
+            <div class="py-3 px-4 text-sm flex items-center gap-5">
+                <div>
+                    <p>
+                        <span class="font-bold text-sm">
+                            {{ $filteredCount}}
+                        </span>
+                        booking/s found
+                    </p>
+                </div>
             </div>
             <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
                 <i class="fa-solid fa-arrows-rotate fa-xl mr-2"></i><span class="text-sm">Refresh</span>

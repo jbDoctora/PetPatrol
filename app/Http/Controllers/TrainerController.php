@@ -69,11 +69,21 @@ class TrainerController extends Controller
             // ->where('users.role', 0)
             ->where('booking.trainer_id', $trainerId)
             ->orderBy('booking.start_date')
-            ->get();
+            ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
+            ->orderByRaw("CASE booking.status
+                  WHEN 'approved' THEN 1
+                  WHEN 'pending' THEN 2
+                  WHEN 'in progress' THEN 3
+                  WHEN 'completed' THEN 4
+                  WHEN 'declined' THEN 5
+              END")
+            ->paginate(10);
         // dd($request);
+        $filteredCount = $request->total();
 
         return view('trainer.show-bookings', [
-            'request' => $request
+            'request' => $request,
+            'filteredCount' => $filteredCount,
         ]);
     }
     // V1
