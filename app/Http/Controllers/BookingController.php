@@ -169,6 +169,7 @@ class BookingController extends Controller
             ->join('users', 'users.id', '=', 'booking.trainer_id')
             ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.book_id', $id)
+            ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
             ->get();
 
         $service_id = $request->first()->service_id;

@@ -1,39 +1,53 @@
 <x-dash-layout>
     <div class="bg-white my-5 mx-14 shadow-lg h-full rounded">
         <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
-        <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
-            <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
-                <i class="fa-solid fa-magnifying-glass ml-2"></i>
-                <input type="text" placeholder="Search"
-                    class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52" />
+        <form action="/bookings" method="GET">
+            <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
+                <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
+                    <i class="fa-solid fa-magnifying-glass ml-2"></i>
+                    <input type="text" placeholder="Search" name="search"
+                        class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52"
+                        value="{{ request('search') }}" />
+                </div>
+                <div>
+                    <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded"
+                        name="status" value="{{request('status')}}">
+                        <option value="">Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="declined">Declined</option>
+                        <option value="completed">Completed
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type"
+                        value="{{old('pet_type')}}">
+                        <option value="">Pet type</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Parrot">Parrot</option>
+                        <option value="Hamster">Hamster</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="mx-2">From</label><input type="date" name="start_date"
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56"
+                        value="{{ request('start_date') }}" />
+                </div>
+                <div>
+                    <label class="mx-2">To</label>
+                    <input type="date" name="end_date"
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56"
+                        value="{{ request('end_date') }}" />
+                </div>
+                <div>
+                    <button type="submit" class="bg-blue-700 px-7 py-3 text-white font-bold rounded">
+                        Search
+                    </button>
+                </div>
             </div>
-            <div>
-                <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded" name="" id="">
-                    <option disabled selected>Status</option>
-                    <option value="">Pending</option>
-                    <option value="">Approved</option>
-                    <option value="">Declined</option>
-                    <option value="">Completed</option>
-                </select>
-            </div>
-            <div>
-                <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="" id="">
-                    <option disabled selected>Pet type</option>
-                    <option value="">Dog</option>
-                    <option value="">Cat</option>
-                    <option value="">Parrot</option>
-                    <option value="">Hamster</option>
-                </select>
-            </div>
-            <div>
-                <input type="date" class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56">
-            </div>
-            <div>
-                <button class="bg-blue-700 px-7 py-3 text-white font-bold rounded">
-                    Search
-                </button>
-            </div>
-        </div>
+        </form>
 
         <div class="flex justify-between items-center border-b border-slate-300">
             <div class="py-3 px-4 text-sm flex items-center gap-5">
@@ -43,18 +57,6 @@
                         </span>
                         bookings found
                     </p>
-                </div>
-                <div class="flex justify-start gap-5">
-                    <div class="badge bg-neutral-950 text-white text-xs">pending</div>
-                </div>
-                <div class="flex justify-start gap-5">
-                    <div class="badge bg-neutral-950 text-white text-xs">in progress</div>
-                </div>
-                <div class="flex justify-start gap-5">
-                    <div class="badge bg-neutral-950 text-white text-xs">declined</div>
-                </div>
-                <div class="flex justify-start gap-5">
-                    <div class="badge bg-neutral-950 text-white text-xs">completed</div>
                 </div>
             </div>
             <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
