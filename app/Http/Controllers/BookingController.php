@@ -87,6 +87,13 @@ class BookingController extends Controller
             ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.client_id', $clientId)
             ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
+            ->orderByRaw("CASE booking.status
+                  WHEN 'approved' THEN 1
+                  WHEN 'pending' THEN 2
+                  WHEN 'in progress' THEN 3
+                  WHEN 'completed' THEN 4
+                  WHEN 'declined' THEN 5
+              END")
             ->paginate(5);
 
         $filteredCount = $request->total();
@@ -96,6 +103,7 @@ class BookingController extends Controller
             'filteredCount' => $filteredCount,
         ]);
     }
+
     public function showCheckout($id)
     {
         $data = Booking::where('book_id', $id);

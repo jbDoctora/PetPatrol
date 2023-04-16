@@ -12,35 +12,38 @@
                 <div>
                     <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded"
                         name="status">
-                        <option value="">Status</option>
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
-                        <option value="declined">Declined</option>
-                        <option value="completed">Completed
+                        <option value="" {{ request('status')=='' ? 'selected' : '' }}>Status</option>
+                        <option value="pending" {{ request('status')=='pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="approved" {{ request('status')=='approved' ? 'selected' : '' }}>Approved</option>
+                        <option value="declined" {{ request('status')=='declined' ? 'selected' : '' }}>Declined</option>
+                        <option value="completed" {{ request('status')=='completed' ? 'selected' : '' }}>Completed
                         </option>
                     </select>
                 </div>
                 <div>
-                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type">
+                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type"
+                        value="{{ request('pet_type') }}">
                         <option value="">Pet type</option>
-                        <option value="Dog">Dog</option>
-                        <option value="Cat">Cat</option>
-                        <option value="Parrot">Parrot</option>
-                        <option value="Hamster">Hamster</option>
+                        <option value="Dog" {{request('pet_type')=='Dog' ? 'selected' : '' }}>Dog</option>
+                        <option value="Cat" {{request('pet_type')=='Cat' ? 'selected' : '' }}>Cat</option>
+                        <option value="Parrot" {{request('pet_type')=='Parrot' ? 'selected' : '' }}>Parrot</option>
+                        <option value="Hamster" {{request('pet_type')=='Hamster' ? 'selected' : '' }}>Hamster</option>
                     </select>
                 </div>
                 <div>
                     <label class="mx-2">From</label><input type="date" name="start_date"
+                        value="{{ request('start_date') }}"
                         class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" />
                 </div>
                 <div>
                     <label class="mx-2">To</label>
                     <input type="date" name="end_date"
-                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" />
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56"
+                        value="{{ request('end_date') }}" />
                 </div>
                 <div>
-                    <button type="submit" class="bg-blue-700 px-7 py-3 text-white font-bold rounded">
-                        Search
+                    <button type="submit" class="bg-blue-700 px-7 py-3 text-white rounded">
+                        <i class="fa-solid fa-filter fa-lg pr-3"></i>Filter
                     </button>
                 </div>
             </div>
@@ -211,14 +214,17 @@
                 @endif
 
             </div>
+
             @empty
             <div class="flex flex-col justify-center">
-                <div><img src="{{asset('images/empty.png')}}" alt="empty" class="h-96 w-96 mx-auto"></div>
+                <div><img src="{{asset('images/empty-search.png')}}" alt="empty" class="h-96 w-96 mx-auto"></div>
                 <div>
-                    <p class="text-lg text-center font-normal">Empty bookings as of the moment.</p>
+                    <p class="text-lg text-center font-normal">There are no bookings or the item you searched for cannot
+                        be found.</p>
                 </div>
             </div>
             @endforelse
+
         </div>
         <div class="flex justify-end p-3">
             {{ $request->links() }}

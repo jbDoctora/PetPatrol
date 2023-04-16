@@ -38,10 +38,10 @@ class Booking extends Model
             $query->where('pet_info.type', 'like', '%' . $filters['pet_type'] . '%');
         }
         if (isset($filters['start_date'])) {
-            $query->where('booking.start_date', '>=', $filters['start_date']);
+            $query->where('booking.start_date', '>=', date('Y-m-d', strtotime($filters['start_date'])));
         }
         if (isset($filters['end_date'])) {
-            $query->where('booking.end_date', '<=', $filters['end_date']);
+            $query->where('booking.end_date', '<=', date('Y-m-d', strtotime($filters['end_date'])));
         }
         if (isset($filters['search'])) {
             $query->where(function ($q) use ($filters) {
@@ -53,6 +53,7 @@ class Booking extends Model
 
         return $query; // return the query builder instance
     }
+
 
     protected $table = 'booking';
     public $timestamps = false;
