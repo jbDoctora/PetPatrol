@@ -11,7 +11,7 @@
                 </div>
                 <div>
                     <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded"
-                        name="status" value="{{request('status')}}">
+                        name="status">
                         <option value="">Status</option>
                         <option value="pending">Pending</option>
                         <option value="approved">Approved</option>
@@ -21,8 +21,7 @@
                     </select>
                 </div>
                 <div>
-                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type"
-                        value="{{old('pet_type')}}">
+                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type">
                         <option value="">Pet type</option>
                         <option value="Dog">Dog</option>
                         <option value="Cat">Cat</option>
@@ -32,14 +31,12 @@
                 </div>
                 <div>
                     <label class="mx-2">From</label><input type="date" name="start_date"
-                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56"
-                        value="{{ request('start_date') }}" />
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" />
                 </div>
                 <div>
                     <label class="mx-2">To</label>
                     <input type="date" name="end_date"
-                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56"
-                        value="{{ request('end_date') }}" />
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" />
                 </div>
                 <div>
                     <button type="submit" class="bg-blue-700 px-7 py-3 text-white font-bold rounded">
@@ -52,10 +49,11 @@
         <div class="flex justify-between items-center border-b border-slate-300">
             <div class="py-3 px-4 text-sm flex items-center gap-5">
                 <div>
-                    <p> <span class="font-bold text-sm">
-                            {{\App\Models\Booking::where('client_id',auth()->user()->id)->count() }}
+                    <p>
+                        <span class="font-bold text-sm">
+                            {{ $filteredCount}}
                         </span>
-                        bookings found
+                        booking/s found
                     </p>
                 </div>
             </div>

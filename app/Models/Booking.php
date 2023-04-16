@@ -32,26 +32,26 @@ class Booking extends Model
     public function scopeFilter($query, $filters)
     {
         if (isset($filters['status'])) {
-            $query->where('status', 'like', '%' . $filters['status'] . '%');
+            $query->where('booking.status', 'like', '%' . $filters['status'] . '%');
         }
         if (isset($filters['pet_type'])) {
-            $query->whereHas('pet_info', function ($q) use ($filters) {
-                $q->where('pet_type', $filters['pet_type']);
-            });
+            $query->where('pet_info.type', 'like', '%' . $filters['pet_type'] . '%');
         }
         if (isset($filters['start_date'])) {
-            $query->where('start_date', '>=', $filters['start_date']);
+            $query->where('booking.start_date', '>=', $filters['start_date']);
         }
         if (isset($filters['end_date'])) {
-            $query->where('end_date', '<=', $filters['end_date']);
+            $query->where('booking.end_date', '<=', $filters['end_date']);
         }
         if (isset($filters['search'])) {
             $query->where(function ($q) use ($filters) {
-                $q->where('trainer_name', 'like', '%' . $filters['search'] . '%')
+                $q->where('booking.trainer_name', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('booking.book_id', 'like', '%' . $filters['search'] . '%')
                     ->orWhere('pet_info.pet_name', 'like', '%' . $filters['search'] . '%');
             });
         }
-        return $query;
+
+        return $query; // return the query builder instance
     }
 
     protected $table = 'booking';

@@ -86,17 +86,16 @@ class BookingController extends Controller
             ->join('users', 'users.id', '=', 'booking.client_id')
             ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.client_id', $clientId)
-            ->orderBy('status', 'desc')
+            ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
             ->paginate(5);
 
+        $filteredCount = $request->total();
 
-        // ->get();
-        // dd($rating);
         return view('owner.show-bookings', [
             'request' => $request,
+            'filteredCount' => $filteredCount,
         ]);
     }
-
     public function showCheckout($id)
     {
         $data = Booking::where('book_id', $id);
@@ -169,7 +168,6 @@ class BookingController extends Controller
             ->join('users', 'users.id', '=', 'booking.trainer_id')
             ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.book_id', $id)
-            ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
             ->get();
 
         $service_id = $request->first()->service_id;
