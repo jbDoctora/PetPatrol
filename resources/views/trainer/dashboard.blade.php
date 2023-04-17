@@ -1,6 +1,12 @@
 <x-trainer-layout>
+    <div class="bg-neutral-700 rounded shadow-md p-6 my-3 h-24 m-5">
+        <div class="flex items-center justify-between">
+            <div class="text-lg font-bold text-white">Welcome back, Jillbert!</div>
+        </div>
+    </div>
     <div class="grid grid-cols-12 gap-6 m-5">
         <div class="col-span-12 md:col-span-8 xl:col-span-9">
+
             <!-- Trainer Rating Card -->
             <div class="bg-gray-200 rounded shadow-md p-6">
                 <div class="flex items-center justify-between">
@@ -21,7 +27,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
                 <!-- Total Completed Bookings Card -->
                 <div class="bg-gray-200 rounded shadow-md p-6">
-                    <div class="text-lg font-medium text-gray-800">Total Completed Bookings</div>
+                    <div class="text-base font-medium text-gray-800"><i
+                            class="fa-solid fa-calendar-check pr-3"></i>Total
+                        Completed Bookings</div>
                     <div class="mt-4 flex items-center justify-between">
                         <div class="text-4xl font-bold text-gray-800">38</div>
                         <div class="text-sm font-medium text-gray-500">This Month</div>
@@ -30,7 +38,8 @@
 
                 <!-- Pending Bookings Card -->
                 <div class="bg-gray-200 rounded-lg shadow-md p-6">
-                    <div class="text-lg font-medium text-gray-800">Pending Bookings</div>
+                    <div class="text-lg font-medium text-gray-800"><i class="fa-solid fa-calendar pr-3"></i>Pending
+                        Bookings</div>
                     <div class="mt-4 flex items-center justify-between">
                         <div class="text-4xl font-bold text-gray-800">2</div>
                         <div class="text-sm font-medium text-gray-500">Total</div>
@@ -39,7 +48,8 @@
 
                 <!-- In Progress Bookings Card -->
                 <div class="bg-gray-200 rounded shadow-md p-6">
-                    <div class="text-lg font-medium text-gray-800">In Progress Bookings</div>
+                    <div class="text-lg font-medium text-gray-800"><i class="fa-solid fa-calendar-days pr-3"></i>In
+                        Progress Bookings</div>
                     <div class="mt-4 flex items-center justify-between">
                         <div class="text-4xl font-bold text-gray-800">5</div>
                         <div class="text-sm font-medium text-gray-500">Total</div>

@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded">
+    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded border border-gray-300">
         <h3 class="text-blue-700 text-xl font-bold p-5 border-b border-slate-300">Recommended Trainers</h3>
         <div class="flex justify-between items-center border-b border-slate-300">
             <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">

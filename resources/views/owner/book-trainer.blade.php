@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <div class="mx-auto mb-6 h-full max-w-screen-sm py-10 sm:px-6 lg:px-8"
+    <div class="mx-auto mb-6 h-full max-w-screen-sm py-10 sm:px-6 lg:px-8 border border-gray-300 my-5 bg-gray-200"
         x-data="{ step: 1, percentComplete: 0, pet: '', course: '', info: '', sessions: '', date: '', location: '', pet_type: '' }">
 
         <div class="mx-auto mb-5 flex max-w-screen-xl items-center justify-center px-4">

@@ -54,7 +54,37 @@ class Booking extends Model
         return $query; // return the query builder instance
     }
 
+    public function save(array $options = [])
+    {
+        $originalStatus = $this->getOriginal('status');
+        $newStatus = $this->getAttribute('status');
+
+        if ($originalStatus !== $newStatus) {
+            // create notification
+            $notification = new UserNotification([
+                'message' => "Booking status for booking ID {$this->id} has changed to {$newStatus}."
+            ]);
+
+            // set notifiable type and ID
+            $notification->notifiable_type = 'App\Models\User';
+            $notification->notifiable_id = $this->client_id;
+
+            // save notification
+            $notification->save();
+        }
+
+        parent::save($options);
+    }
+
 
     protected $table = 'booking';
     public $timestamps = false;
+}
+
+trait Notificationable
+{
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
 }

@@ -93,7 +93,7 @@
                     </div>
 
                     @auth
-                    <div class="dropdown dropdown-end mx-2">
+                    {{-- <div class="dropdown dropdown-end mx-2">
                         <div class="indicator">
                             <span class="indicator-item badge border-0 bg-yellow-400 text-black font-bold">1</span>
                             <button tabindex="0" class="hover:text-yellow-400"><i
@@ -104,7 +104,45 @@
                             <li><a href="">--upcoming features--</a></li>
                             <li><a href="">--upcoming features--</a></li>
                         </ul>
+                    </div> --}}
+                    <div class="relative dropdown dropdown-end mx-2">
+                        <div class="indicator">
+                            <button tabindex="0" class="hover:text-yellow-400">
+                                <i class="fa-solid fa-bell fa-lg"></i>
+                                <span class="sr-only">Notifications</span>
+                                <span
+                                    class="indicator-item badge bg-yellow-400 text-black font-bold text-xs rounded-full absolute -top-1 -right-1">
+                                    {{ auth()->user()->notifications->count() }}
+                                </span>
+                            </button>
+                        </div>
+                        <ul tabindex="0" class="dropdown-content menu bg-white rounded shadow-lg py-1 w-64">
+                            <h6 class="text-sm text-gray-700 m-2">Notification</h6>
+                            @forelse(auth()->user()->notifications as $notification)
+
+                            <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <a href="/bookings">
+                                    <li
+                                        class="{{ $notification->read_at ? 'bg-gray-200' : 'bg-blue-200' }} rounded cursor-pointer border-b-2 border-gray-200 rounded my-1">
+
+                                        <button type="submit"
+                                            class="block px-4 py-2 text-xs hover:bg-blue-500 text-black">{{
+                                            $notification->message }}</button>
+                                    </li>
+                                </a>
+                            </form>
+
+                            @empty
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200 text-black">Empty
+                                    notification</a>
+                            </li>
+                            @endforelse
+                        </ul>
                     </div>
+
                     <div class="dropdown dropdown-end mx-2">
                         <button tabindex="0" class="hover:text-yellow-400"><i
                                 class="fa-solid fa-circle-question fa-lg"></i></button>

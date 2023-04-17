@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\Service;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\TrainerRating;
 use App\Models\RequestTrainer;

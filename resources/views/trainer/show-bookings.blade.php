@@ -1,6 +1,6 @@
 <x-trainer-layout>
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="bg-white my-5 mx-14 sm:mx-4 shadow-lg h-full rounded">
+        class="bg-white my-5 mx-14 sm:mx-4 shadow-lg h-full rounded border border-gray-300">
         <form action="/trainer/bookings">
             <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
             <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
