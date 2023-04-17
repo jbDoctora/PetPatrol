@@ -5,8 +5,7 @@
             <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
                 <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
                     <input type="text" placeholder="Search" name="search"
-                        class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52"
-                        value="{{ request('search') }}" />
+                        class="px-6 py-2 rounded-sm h-full text-xs w-80 md:w-52" value="{{ request('search') }}" />
                 </div>
                 <div>
                     <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded"

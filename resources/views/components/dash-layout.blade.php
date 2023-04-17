@@ -116,8 +116,8 @@
                                 </span>
                             </button>
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-white rounded shadow-lg py-1 w-64">
-                            <h6 class="text-sm text-gray-700 m-2">Notification</h6>
+                        <ul tabindex="0" class="dropdown-content menu bg-white rounded shadow-lg w-64">
+                            <h6 class="text-sm text-white bg-blue-500 p-2">Notification</h6>
                             @forelse(auth()->user()->notifications as $notification)
 
                             <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST">
@@ -125,10 +125,10 @@
                                 @method('PUT')
                                 <a href="/bookings">
                                     <li
-                                        class="{{ $notification->read_at ? 'bg-gray-200' : 'bg-blue-200' }} rounded cursor-pointer border-b-2 border-gray-200 rounded my-1">
+                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-100' }} rounded cursor-pointer border-b-2 border-gray-200 rounded">
 
                                         <button type="submit"
-                                            class="block px-4 py-2 text-xs hover:bg-blue-500 text-black">{{
+                                            class="block px-4 py-3 text-xs hover:bg-gray-400 text-black text-left">{{
                                             $notification->message }}</button>
                                     </li>
                                 </a>
