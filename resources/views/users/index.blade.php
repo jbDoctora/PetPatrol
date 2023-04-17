@@ -1,14 +1,10 @@
 <x-layout>
-    {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="top-0 left-0 right-0">
-        <path fill="#0099ff" fill-opacity="1"
-            d="M0,224L48,197.3C96,171,192,117,288,117.3C384,117,480,171,576,197.3C672,224,768,224,864,186.7C960,149,1056,75,1152,48C1248,21,1344,43,1392,53.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
-        </path>
-    </svg> --}}
+
     <div class="hero min-h-screen mt-16"
         style="background-image: url('/images/wave.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-position: top;">
         <div class="hero-content flex-col lg:flex-row-reverse">
             <img src="/images/test.png"
-                style="background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill; width: 600px; height:600px;" />
+                style="background-position: right; background-size: contain; background-repeat: no-repeat; object-fit: fill; width: 500px; height:500px;" />
             {{-- <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_o1JRaPxx1E.json"
                 background="transparent" speed="1" style="width: 600px; height: 600px; margin-bottom: 5px;" loop
                 autoplay></lottie-player> --}}

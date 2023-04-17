@@ -8,8 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.tiny.cloud/1/t3yr3j2qwq03mq0638f9ob1i3d97win8i57rt6ssmvj1p9ku/tinymce/6/content.min.css"
         rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+              initialView: 'dayGridMonth'
+            });
+            calendar.render();
+          });
+    
+    </script>
     <style>
         .tox-tinymce {
             height: 400px;
@@ -55,7 +67,7 @@
 
 </head>
 
-<body class="bg-slate-200 flex min-h-screen flex-col">
+<body class="bg-white flex min-h-screen flex-col">
     <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
@@ -168,7 +180,7 @@
         </aside>
         <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
-                <div class="navbar bg-white text-black shadow-lg pr-12">
+                <div class="navbar bg-blue-700 text-white shadow-lg pr-12">
                     <button class="mr-4 rounded-lg border-0 py-3 px-4"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
@@ -188,8 +200,8 @@
                     <div class="dropdown dropdown-end mx-2">
                         <div class="indicator">
                             <span
-                                class="indicator-item badge border-0 bg-blue-700 text-white font-bold text-xs">1</span>
-                            <button tabindex="0" class="hover:text-blue-400"><i
+                                class="indicator-item badge border-0 bg-yellow-500 text-black font-bold text-xs">1</span>
+                            <button tabindex="0" class="hover:text-yellow-400 text-white"><i
                                     class="fa-solid fa-bell fa-lg mr-1"></i></button>
                         </div>
                         <ul tabindex="0"
