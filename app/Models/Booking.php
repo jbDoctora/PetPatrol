@@ -19,15 +19,15 @@ class Booking extends Model
         return 'BOOK-00' . $this->book_id;
     }
 
-    public function getStartDateAttribute($value)
-    {
-        return Carbon::createFromFormat('Y-m-d', $value)->format('F d, Y');
-    }
+    // public function getStartDateAttribute($value)
+    // {
+    //     return Carbon::createFromFormat('Y-m-d', $value)->format('F d, Y');
+    // }
 
-    public function getEndDateAttribute($value)
-    {
-        return Carbon::createFromFormat('Y-m-d', $value)->format('F d, Y');
-    }
+    // public function getEndDateAttribute($value)
+    // {
+    //     return Carbon::createFromFormat('Y-m-d', $value)->format('F d, Y');
+    // }
 
     public function scopeFilter($query, $filters)
     {

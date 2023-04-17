@@ -95,45 +95,75 @@ class TrainerController extends Controller
     //     $booking->reason_reject = $request->input('reason_reject');
     //     $booking->save();
 
-    //     // $service = Service::where('id', $request->input('service_id'))->first();
-    //     // $service->status = $request->input('status');
+    //     //$service = Service::where('id', $request->input('service_id'))->first();
+    //     //$service->status = $request->input('status');
     //     //$service->save();
 
 
     //     return redirect()->back();
     // }
     // V2
+    // public function updateBooking(Request $request)
+    // {
+    //     $booking = Booking::where('book_id', $request->input('book_id'))->first();
+
+    //     // Check for scheduling conflicts
+    //     $conflicting_bookings = Booking::where('trainer_id', $booking->trainer_id)
+    //         ->where(function ($query) use ($request) {
+    //             $query->where('start_date', '>=', $request->input('start_date'))
+    //                 ->where('start_date', '<', $request->input('end_date'))
+    //                 ->orWhere('end_date', '>', $request->input('start_date'))
+    //                 ->where(
+    //                     'end_date',
+    //                     '<=',
+    //                     $request->input('end_date')
+    //                 );
+    //         })
+    //         ->where('book_id', '!=', $booking->book_id)
+    //         ->get();
+
+    //     if ($conflicting_bookings->count() > 0) {
+    //         return redirect()->back()->withErrors(['error' => 'Scheduling conflict detected.']);
+    //     }
+
+    //     $booking->status = $request->input('status');
+    //     $booking->payment = $request->input('payment');
+    //     $booking->reason_reject = $request->input('reason_reject');
+    //     $booking->save();
+
+    //     return redirect()->back();
+    // }
+    // V3(mao nani pero di e allow ang booking basta pending)
     public function updateBooking(Request $request)
     {
         $booking = Booking::where('book_id', $request->input('book_id'))->first();
+
+        // Check if trainer is available during the given date range
+        $trainer_id = $request->input('trainer_id');
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
+            ->whereNotIn('status', ['declined', 'cancelled', 'pending', 'completed'])
+            ->where(function ($query) use ($start_date, $end_date) {
+                $query->where('start_date', '<=', $end_date)
+                    ->where('end_date', '>=', $start_date);
+            })
+            ->where('book_id', '<>', $booking->book_id) // exclude current booking
+            ->get();
+
+        if ($conflicting_bookings->count() > 0) {
+            // There is a scheduling conflict
+            return redirect()->back()->with('error', 'Trainer is not available during the selected date range.');
+        }
+
+        // Update booking
         $booking->status = $request->input('status');
         $booking->payment = $request->input('payment');
         $booking->reason_reject = $request->input('reason_reject');
+        $booking->save();
 
-        // check if start_date and end_date are available
-        $trainerId = $booking->trainer_id;
-        $startDate = $booking->start_date;
-        $endDate = $booking->end_date;
-        $available = Booking::where('trainer_id', $trainerId)
-            ->whereNotIn('status', ['declined', 'cancelled', 'completed', 'pending'])
-            ->where(function ($query) use ($startDate, $endDate) {
-                $query->where(function ($q) use ($startDate, $endDate) {
-                    $q->where('start_date', '>=', $endDate)
-                        ->orWhere('end_date', '<=', $startDate);
-                })
-                    ->orWhere(function ($q) use ($startDate, $endDate) {
-                        $q->where('start_date', '<=', $startDate)
-                            ->where('end_date', '>=', $endDate);
-                    });
-            })->count();
-
-        if ($available === 0) {
-            $booking->save();
-        } else {
-            return redirect()->back()->with('error', 'There is a conflict with your schedule');
-        }
-
-        return redirect()->back()->with('message', 'Successfull updated!');
+        return redirect()->back()->with('message', 'Successfull approved');
     }
 
     public function showPayment()

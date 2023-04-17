@@ -1,16 +1,16 @@
 <x-trainer-layout>
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="bg-white my-5 mx-14 shadow-lg h-full rounded">
+        class="bg-white my-5 mx-14 sm:mx-4 shadow-lg h-full rounded">
         <form action="/trainer/bookings">
             <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
             <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
                 <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
                     <input type="text" placeholder="Search" name="search"
-                        class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52"
+                        class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52 sm:w-28"
                         value="{{ request('search') }}" />
                 </div>
                 <div>
-                    <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded"
+                    <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-32 rounded"
                         name="status">
                         <option value="" {{ request('status')=='' ? 'selected' : '' }}>Status(All)</option>
                         <option value="pending" {{ request('status')=='pending' ? 'selected' : '' }}>Pending</option>
@@ -21,8 +21,8 @@
                     </select>
                 </div>
                 <div>
-                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type"
-                        value="{{ request('pet_type') }}">
+                    <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-32"
+                        name="pet_type" value="{{ request('pet_type') }}">
                         <option value="">Pet type (All)</option>
                         <option value="Dog" {{request('pet_type')=='Dog' ? 'selected' : '' }}>Dog</option>
                         <option value="Cat" {{request('pet_type')=='Cat' ? 'selected' : '' }}>Cat</option>
@@ -33,13 +33,13 @@
                 <div>
                     <label for="" class="mx-2">From</label>
                     <input type="date" name="start_date"
-                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-44"
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-32"
                         value="{{ request('start_date') }}" />
                 </div>
                 <div>
                     <label for="" class="mx-2">To</label>
                     <input type="date" name="end_date" value="{{ request('end_date') }}"
-                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-44" />
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-32" />
                 </div>
                 <div>
                     <button type="submit" class="bg-blue-700 px-7 py-3 text-white rounded">
@@ -282,7 +282,7 @@
                                         x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
                                     '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
-                                    '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}' }">Update</button></a>
+                                    '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update</button></a>
                             </div>
                             @endif
                         </td>
@@ -297,7 +297,7 @@
                     <input type="hidden" name="service_id" x-bind:value="showModal.service_id">
                     <input type="hidden" name="start_date" x-bind:value="showModal.start_date">
                     <input type="hidden" name="end_date" x-bind:value="showModal.end_date">
-
+                    <input type="hidden" name="trainer_id" x-bind:value="showModal.trainer_id">
 
                     <div class="fixed z-50 inset-0 overflow-y-auto" x-show="showModal" x-transition>
                         <div
@@ -338,8 +338,10 @@
                                             <div class="font-bold">Training service:</div>
                                             <div x-text="showModal.course"></div>
                                             <div class="font-bold">Sessions:</div>
+                                            <div x-text="showModal.trainer_id"></div>
                                             <div x-text="showModal.availability"></div>
                                         </div> --}}
+
 
                                         <div x-data="{ isApproved: false }">
                                             {{-- <p class="mb-4 italic">Action:</p> --}}

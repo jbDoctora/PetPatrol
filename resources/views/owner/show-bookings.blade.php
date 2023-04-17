@@ -32,12 +32,12 @@
                 <div>
                     <label class="mx-2">From</label><input type="date" name="start_date"
                         value="{{ request('start_date') }}"
-                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" />
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-40" />
                 </div>
                 <div>
                     <label class="mx-2">To</label>
                     <input type="date" name="end_date"
-                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56"
+                        class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-40"
                         value="{{ request('end_date') }}" />
                 </div>
                 <div>
