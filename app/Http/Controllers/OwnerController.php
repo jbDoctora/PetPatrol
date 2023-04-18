@@ -60,7 +60,7 @@ class OwnerController extends Controller
             )
             ->where('request.request_id', $request_id)
             ->where('pet_info.book_status', 'requested')
-            ->get();
+            ->paginate(10);
 
         // dd($matched_services);
         return view('owner.show-matched', [

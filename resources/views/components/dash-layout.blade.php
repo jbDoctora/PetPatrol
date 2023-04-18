@@ -93,18 +93,6 @@
                     </div>
 
                     @auth
-                    {{-- <div class="dropdown dropdown-end mx-2">
-                        <div class="indicator">
-                            <span class="indicator-item badge border-0 bg-yellow-400 text-black font-bold">1</span>
-                            <button tabindex="0" class="hover:text-yellow-400"><i
-                                    class="fa-solid fa-bell fa-lg mr-2"></i></button>
-                        </div>
-                        <ul tabindex="0"
-                            class="dropdown-content menu bg-base-300 rounded-box w-52 p-2 text-black shadow">
-                            <li><a href="">--upcoming features--</a></li>
-                            <li><a href="">--upcoming features--</a></li>
-                        </ul>
-                    </div> --}}
                     <div class="relative dropdown dropdown-end mx-2">
                         <div class="indicator">
                             <button tabindex="0" class="hover:text-yellow-400">
@@ -116,7 +104,7 @@
                                 </span>
                             </button>
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-white rounded shadow-lg w-64">
+                        <ul tabindex="0" class="dropdown-content menu bg-white w-72">
                             <h6 class="text-sm text-white bg-blue-500 p-2">Notification</h6>
                             @forelse(auth()->user()->notifications as $notification)
 
@@ -125,7 +113,7 @@
                                 @method('PUT')
                                 <a href="/bookings">
                                     <li
-                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-100' }} rounded cursor-pointer border-b-2 border-gray-200 rounded">
+                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer border-b border-gray-300">
 
                                         <button type="submit"
                                             class="block px-4 py-3 text-xs hover:bg-gray-400 text-black text-left">{{

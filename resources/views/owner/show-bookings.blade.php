@@ -148,8 +148,7 @@
 
                 @if($requests->isRated == 1)
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                    <label class="hover:text-blue-700 text-sm">Done rating
-                        Trainer</label>
+                    <label class="text-sm">This is all set!</label>
                 </div>
                 @else
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">

@@ -20,4 +20,20 @@ class PetInfo extends Model
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
+
+    public function scopeFilter($query, $filters)
+    {
+        if (isset($filters['status'])) {
+            $query->where('pet_info.book_status', 'like', '%' . $filters['status'] . '%');
+        }
+        if (isset($filters['search'])) {
+            $query->where(function ($q) use ($filters) {
+                $q->where('pet_info.pet_name', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('booking.pet_id', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('pet_info.type', 'like', '%' . $filters['search'] . '%');
+            });
+        }
+
+        return $query; // return the query builder instance
+    }
 }

@@ -66,7 +66,7 @@
                                 class="text-xs rounded px-3 py-2 bg-blue-700 text-white my-auto hover:bg-blue-800">View
                                 Training Plan</a>
                             <label class="text-xs rounded px-3 py-2 bg-blue-700 text-white my-auto hover:bg-blue-800"
-                                for="my-modal-{{ $match->user_id }}">
+                                for="my-modal-{{ $match->service_id }}">
                                 Book now <i class="fa-solid fa-arrow-right ml-2"></i>
                             </label>
                         </div>
@@ -77,7 +77,7 @@
             <form method="POST" action="/show-matched/book"
                 x-data="{ days: {{ $match->days ?? 0 }}, startDate: '', endDate: '' }">
                 @csrf
-                <input type="checkbox" id="my-modal-{{ $match->user_id }}" class="modal-toggle h-fit" />
+                <input type="checkbox" id="my-modal-{{ $match->service_id }}" class="modal-toggle h-fit" />
                 <div class="modal">
                     <div class="modal-box w-11/12 max-w-2xl rounded">
                         <h3 class="font-bold text-sm tracking-wide p-2 text-left bg-blue-200 text-black rounded">
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <div class="modal-action flex justify-end p-4">
-                            <label for="my-modal-{{ $match->user_id }}"
+                            <label for="my-modal-{{ $match->service_id }}"
                                 class="tracking-wide rounded px-5 py-2 border border-gray-300 text-sm text-black font-normal hover:bg-gray-300">Cancel</label>
                             <button type="submit" :disabled="!checked"
                                 :class="{ 'bg-gray-400 hover:bg-gray-400': !checked }"

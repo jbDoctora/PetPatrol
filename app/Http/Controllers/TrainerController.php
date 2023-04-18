@@ -144,7 +144,9 @@ class TrainerController extends Controller
         $end_date = $request->input('end_date');
 
         $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
-            ->whereNotIn('status', ['declined', 'cancelled', 'pending', 'completed'])
+            // ->join('service', 'booking.book_id', '=', 'service.id')
+            ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
+            // ->where('current_capacity', '!=', '0')
             ->where(function ($query) use ($start_date, $end_date) {
                 $query->where('start_date', '<=', $end_date)
                     ->where('end_date', '>=', $start_date);
@@ -154,7 +156,7 @@ class TrainerController extends Controller
 
         if ($conflicting_bookings->count() > 0) {
             // There is a scheduling conflict
-            return redirect()->back()->with('error', 'Trainer is not available during the selected date range.');
+            return redirect()->back()->with('error', 'You are not available during the selected date range.');
         }
 
         // Update booking

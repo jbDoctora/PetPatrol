@@ -13,9 +13,7 @@
         </div>
         <div class="flex justify-start p-5 gap-4 text-xs mx-8">
             <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
-                <i class="fa-solid fa-magnifying-glass ml-2"></i>
-                <input type="text" placeholder="Search"
-                    class="px-6 py-2 bg-base-300 rounded-sm h-full text-xs w-80 md:w-52" />
+                <input type="text" placeholder="Search" class="px-6 py-2 rounded-sm h-full text-xs w-80 md:w-52" />
             </div>
             <div>
                 <select class="border border-slate-300 h-full px-3 py-2 text-left w-64 sm:w-40 rounded" name="" id="">
