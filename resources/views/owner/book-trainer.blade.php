@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <div class="mx-auto mb-6 h-full max-w-screen-sm py-10 sm:px-6 lg:px-8 border border-gray-300 my-5 bg-gray-200"
+    <div class="mx-auto mb-6 h-full max-w-screen-sm py-10 sm:px-6 lg:px-8 border border-gray-300 my-5 bg-white"
         x-data="{ step: 1, percentComplete: 0, pet: '', course: '', info: '', sessions: '', date: '', location: '', pet_type: '' }">
 
         <div class="mx-auto mb-5 flex max-w-screen-xl items-center justify-center px-4">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="flex items-center justify-center gap-4">
-                    <button class="rounded bg-neutral-950 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
+                    <button class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
                         @click.prevent="step--, percentComplete = 0">Back</button>
                     <button class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5"
                         @click.prevent="step++, percentComplete = 50" x-bind:disabled="!course.length"
@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="flex items-center justify-center gap-4">
-                    <button class="rounded bg-neutral-950 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
+                    <button class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
                         @click.prevent="step--, percentComplete = 25">Back</button>
                     <button class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5"
                         @click.prevent="step++, percentComplete = 75" x-bind:disabled="!sessions"
@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="flex items-center justify-center gap-4">
-                    <button class="rounded bg-neutral-950 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
+                    <button class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
                         @click.prevent="step--, percentComplete = 50">Back</button>
                     <button class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5"
                         @click.prevent="step++, percentComplete = 100" x-bind:disabled="!location"
@@ -175,7 +175,7 @@
                 </div>
                 <div class="flex items-center justify-center gap-4">
                     <label
-                        class="rounded bg-neutral-950 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-center text-sm mt-5"
+                        class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-center text-sm mt-5"
                         @click.prevent="step=1">Edit</label>
                     <button type="submit"
                         class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5">Confirm</button>

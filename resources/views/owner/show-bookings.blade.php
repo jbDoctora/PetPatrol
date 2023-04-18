@@ -16,6 +16,8 @@
                         <option value="declined" {{ request('status')=='declined' ? 'selected' : '' }}>Declined</option>
                         <option value="completed" {{ request('status')=='completed' ? 'selected' : '' }}>Completed
                         </option>
+                        <option value="in progress" {{ request('status')=='in progress' ? 'selected' : '' }}>In Progress
+                        </option>
                     </select>
                 </div>
                 <div>

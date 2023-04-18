@@ -62,7 +62,7 @@ class Booking extends Model
         if ($originalStatus !== $newStatus) {
             // create notification
             $notification = new UserNotification([
-                'message' => "Booking status for booking ID {$this->id} has changed to {$newStatus}."
+                'message' => "Booking status for booking ID {$this->book_id} has changed to {$newStatus}."
             ]);
 
             // set notifiable type and ID

@@ -8,20 +8,49 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.tiny.cloud/1/t3yr3j2qwq03mq0638f9ob1i3d97win8i57rt6ssmvj1p9ku/tinymce/6/content.min.css"
         rel="stylesheet">
+    {{--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-              initialView: 'dayGridMonth'
-            });
-            calendar.render();
-          });
-    
+    var calendarEl = document.getElementById('trainer-calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      allDaySlot: true,
+      slotEventOverlap: false,
+      timeFormat: '', // remove the time when viewing all-day events
+      events: {
+        url: '/events',
+        method: 'GET',
+        extraParams: {
+          '_token': '{{ csrf_token() }}',
+          'trainer_id': '{{ auth()->user()->id }}'
+        },
+      },
+      eventRender: function(info) {
+        var tooltip = new Tooltip(info.el, {
+          title: info.event.title,
+          placement: 'top',
+          trigger: 'hover',
+          container: 'body',
+          'z-index': 99999
+        });
+      },
+      eventClick: function(info) {
+        // handle click event here
+        alert(info.event.title);
+      }
+    });
+
+    calendar.render();
+  });
     </script>
+
     <style>
         .tox-tinymce {
             height: 400px;
@@ -67,7 +96,7 @@
 
 </head>
 
-<body class="bg-white flex min-h-screen flex-col">
+<body class="bg-gray-200 flex min-h-screen flex-col text-color-gray-900">
     <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"

@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <div class="grid grid-cols-12 gap-6 m-5">
+    <div class="grid grid-cols-12 gap-6 m-5 bg-white p-5">
         <div class="col-span-12 md:col-span-8 xl:col-span-9">
             <!-- Trainer Rating Card -->
             <div class="bg-gray-200 rounded shadow-md p-6">

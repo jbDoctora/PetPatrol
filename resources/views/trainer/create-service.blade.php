@@ -16,14 +16,13 @@
                 <table class="w-full text-xs">
                     <thead class="text-center bg-gray-200 text-gray-800">
                         <tr>
-                            <th class="py-3 text-xs font-normal">Id</th>
-                            <th class="text-xs font-normal">Training service</th>
+                            <th class="text-xs font-normal py-3">Training service</th>
                             <th class="text-xs font-normal">Pet type</th>
                             <th class="text-xs font-normal">Availability</th>
-                            <th class="text-xs font-normal">Weeks of training</th>
+                            <th class="text-xs font-normal">Days of training</th>
                             <th class="text-xs font-normal">Price</th>
                             <th class="text-xs font-normal">Capacity</th>
-                            <th class="text-xs font-normal">Current Capacity</th>
+                            <th class="text-xs font-normal">Number of clients availed</th>
                             <th class="text-xs font-normal">Status</th>
                             <th></th>
                         </tr>
@@ -31,10 +30,7 @@
                     <tbody class="text-center text-xs">
                         @forelse ($training as $trainings)
                         <tr>
-                            <td class="whitespace-nowrap text-xs border-b border-slate-200 px-4 py-7">
-                                {{$trainings->id}}
-                            </td>
-                            <td class="whitespace-nowrap  border-b border-slate-200">
+                            <td class="whitespace-nowrap  border-b border-slate-200 py-4">
                                 {{$trainings->course}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->pet_type}}</td>
@@ -45,10 +41,15 @@
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->price}}</td>
                             <td class="whitespace-nowrap border-b border-slate-200">{{$trainings->capacity}}</td>
-                            <td class="whitespace-nowrap border-b border-slate-200">{{$trainings->current_capacity}}
+                            <td class="whitespace-nowrap border-b border-slate-200">
+                                {{($trainings->capacity - $trainings->current_capacity)}}
                             </td>
                             <td class="whitespace-nowrap  border-b border-slate-2000">
-                                {{$trainings->status}}
+                                @if($trainings->status == "available")
+                                <p class="text-green-600 font-bold">{{$trainings->status}}</p>
+                                @else
+                                <p class="text-red-600 font-bold">full</p>
+                                @endif
                             </td>
                             <td class="whitespace-nowrap border-b border-slate-200">
                                 <div class="flex items-center justify-center gap-2">
@@ -163,7 +164,7 @@
                         <button type="submit"
                             class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Create</button>
                         <label for="my-modal"
-                            class="bg-neutral-950 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-neutral-800">Close</label>
+                            class="bg-neutral-900 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-neutral-800">Close</label>
                     </div>
                 </div>
             </div>

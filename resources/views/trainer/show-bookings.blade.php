@@ -18,6 +18,8 @@
                         <option value="declined" {{ request('status')=='declined' ? 'selected' : '' }}>Declined</option>
                         <option value="completed" {{ request('status')=='completed' ? 'selected' : '' }}>Completed
                         </option>
+                        <option value="in progress" {{ request('status')=='in progress' ? 'selected' : '' }}>In Progress
+                        </option>
                     </select>
                 </div>
                 <div>
@@ -245,10 +247,6 @@
                         <td class="whitespace-nowrap border-b border-slate-200">
                             @if($requests->status == 'approved')
                             <div class="flex justify-center items-center gap-4">
-                                <div class="flex justify-center"><a href="#"><button
-                                            class="bg-blue-700 text-white px-4 py-2 rounded" type="submit">View
-                                            training</button></a>
-                                </div>
                                 <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
                                     @csrf
                                     @method('PUT')

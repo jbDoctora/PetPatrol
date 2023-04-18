@@ -41,7 +41,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="flex min-h-screen flex-col">
+<body class="bg-gray-200 flex min-h-screen flex-col">
 
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"

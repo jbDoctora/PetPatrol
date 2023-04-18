@@ -10,6 +10,7 @@ use App\Models\AdminPetType;
 use App\Models\AdminService;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
+use App\Models\TrainerRating;
 use App\Models\RequestTrainer;
 use App\Models\TrainingDetails;
 use Illuminate\Validation\Rule;
@@ -21,7 +22,30 @@ class TrainerController extends Controller
 {
     public function index()
     {
-        return view('trainer.dashboard');
+        $trainer_ratings = TrainerRating::where('trainer_id', auth()->user()->id)->get();
+        $pending_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'pending')->count();
+        $completed_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'completed')->count();
+        $inprogress_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'in progress')->count();
+        $services = Service::where('user_id', auth()->user()->id)->where('status', '=', 'available')->count();
+
+        $total_stars = 0;
+        $count_ratings = count($trainer_ratings);
+
+        foreach ($trainer_ratings as $rating) {
+            $total_stars += $rating->stars;
+        }
+
+        $avg_rating = $count_ratings > 0 ? round($total_stars / $count_ratings, 2) : 0;
+
+        return view('trainer.dashboard', [
+            'trainer' => $trainer_ratings,
+            'avg_rating' => $avg_rating,
+            'count_ratings' => $count_ratings,
+            'pending' => $pending_bookings,
+            'completed' => $completed_bookings,
+            'inprogress' => $inprogress_bookings,
+            'services' => $services
+        ]);
     }
 
     public function showProfile(User $user)
@@ -64,7 +88,7 @@ class TrainerController extends Controller
             'users.phone_number'
         )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
-            ->join('users', 'users.id', '=', 'booking.client_id')
+            ->join('users', 'users.id', '=', 'booking.trainer_id')
             ->join('service', 'service.id', 'booking.service_id')
             // ->where('users.role', 0)
             ->where('booking.trainer_id', $trainerId)
@@ -77,7 +101,7 @@ class TrainerController extends Controller
                   WHEN 'completed' THEN 4
                   WHEN 'declined' THEN 5
               END")
-            ->paginate(10);
+            ->paginate(5);
         // dd($request);
         $filteredCount = $request->total();
 
@@ -87,22 +111,6 @@ class TrainerController extends Controller
         ]);
     }
     // V1
-    // public function updateBooking(Request $request)
-    // {
-    //     $booking = Booking::where('book_id', $request->input('book_id'))->first();
-    //     $booking->status = $request->input('status');
-    //     $booking->payment = $request->input('payment');
-    //     $booking->reason_reject = $request->input('reason_reject');
-    //     $booking->save();
-
-    //     //$service = Service::where('id', $request->input('service_id'))->first();
-    //     //$service->status = $request->input('status');
-    //     //$service->save();
-
-
-    //     return redirect()->back();
-    // }
-    // V2
     // public function updateBooking(Request $request)
     // {
     //     $booking = Booking::where('book_id', $request->input('book_id'))->first();
@@ -133,39 +141,89 @@ class TrainerController extends Controller
 
     //     return redirect()->back();
     // }
-    // V3(mao nani pero di e allow ang booking basta pending)
+    // V2(mao nani pero di e allow ang booking basta pending)
+    // public function updateBooking(Request $request)
+    // {
+    //     $booking = Booking::where('book_id', $request->input('book_id'))->first();
+
+    //     $trainer_id = $request->input('trainer_id');
+    //     $start_date = $request->input('start_date');
+    //     $end_date = $request->input('end_date');
+
+    //     $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
+    //         ->join('service', 'booking.book_id', '=', 'service.id')
+    //         ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
+    //         ->where('service.service_type', '=', 'public')
+    //         ->where(function ($query) use ($start_date, $end_date) {
+    //             $query->where('start_date', '<=', $end_date)
+    //                 ->where('end_date', '>=', $start_date);
+    //         })
+    //         ->where('book_id', '<>', $booking->book_id) // exclude current booking
+    //         ->get();
+
+    //     if ($conflicting_bookings->count() > 0) {
+    //         // There is a scheduling conflict
+    //         return redirect()->back()->with('error', 'You are not available during the selected date range.');
+    //     }
+
+    //     // Update booking
+    //     $booking->status = $request->input('status');
+    //     $booking->payment = $request->input('payment');
+    //     $booking->reason_reject = $request->input('reason_reject');
+    //     $booking->save();
+
+    //     return redirect()->back()->with('message', 'Successfull approved');
+    // }
+    // V3
     public function updateBooking(Request $request)
     {
         $booking = Booking::where('book_id', $request->input('book_id'))->first();
 
-        // Check if trainer is available during the given date range
         $trainer_id = $request->input('trainer_id');
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
 
-        $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
-            // ->join('service', 'booking.book_id', '=', 'service.id')
-            ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
-            // ->where('current_capacity', '!=', '0')
-            ->where(function ($query) use ($start_date, $end_date) {
-                $query->where('start_date', '<=', $end_date)
-                    ->where('end_date', '>=', $start_date);
-            })
-            ->where('book_id', '<>', $booking->book_id) // exclude current booking
-            ->get();
+        // Join the service table with the booking table
+        $service_type = Booking::join('service', 'booking.service_id', '=', 'service.id')
+            ->where('booking.book_id', $request->input('book_id'))
+            ->pluck('service.service_type')
+            ->first();
 
-        if ($conflicting_bookings->count() > 0) {
-            // There is a scheduling conflict
-            return redirect()->back()->with('error', 'You are not available during the selected date range.');
+        if ($service_type === 'public') {
+            // Update booking
+            $booking->status = $request->input('status');
+            $booking->payment = $request->input('payment');
+            $booking->reason_reject = $request->input('reason_reject');
+            $booking->save();
+
+            return redirect()->back()->with('message', 'Successfully approved');
+        } else if (
+            $service_type === 'private'
+        ) {
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+
+            $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
+                ->join('service', 'booking.service_id', '=', 'service.id')
+                ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
+                ->where(function ($query) use ($start_date, $end_date) {
+                    $query->where('start_date', '<=', $end_date)
+                        ->where('end_date', '>=', $start_date);
+                })
+                ->where('book_id', '<>', $booking->book_id) // exclude current booking
+                ->get();
+
+            if ($conflicting_bookings->count() > 0) {
+                // There is a scheduling conflict
+                return redirect()->back()->with('error', 'You are not available during the selected date range.');
+            }
+
+            // Update booking
+            $booking->status = $request->input('status');
+            $booking->payment = $request->input('payment');
+            $booking->reason_reject = $request->input('reason_reject');
+            $booking->save();
+
+            return redirect()->back()->with('message', 'Successfully approved');
         }
-
-        // Update booking
-        $booking->status = $request->input('status');
-        $booking->payment = $request->input('payment');
-        $booking->reason_reject = $request->input('reason_reject');
-        $booking->save();
-
-        return redirect()->back()->with('message', 'Successfull approved');
     }
 
     public function showPayment()
@@ -345,5 +403,26 @@ class TrainerController extends Controller
 
 
         return redirect('/trainer/portfolio')->with('message', 'Portfolio added successfully!');
+    }
+
+    public function getEvents()
+    {
+        $bookings = Booking::select('start_date', 'end_date', 'client_name', 'booking.status', 'service.course', 'booking.book_id')
+            ->join('service', 'booking.service_id', '=', 'service.id')
+            ->where('trainer_id', auth()->user()->id)
+            ->get();
+
+        $events = [];
+
+        foreach ($bookings as $booking) {
+            $events[] = [
+                'code' => $booking->code,
+                'title' => $booking->course . ' - ' . $booking->client_name,
+                'start' => $booking->start_date,
+                'end' => $booking->end_date
+            ];
+        }
+
+        return response()->json($events);
     }
 }

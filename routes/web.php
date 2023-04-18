@@ -80,6 +80,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {
     Route::post('/trainer/service/{service_id}/add-service/add', [TrainingDetailsController::class, 'store']);
     Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create']);
     Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
+    Route::get('/events', [TrainerController::class, 'getEvents']);
 });
 
 // Owner Routes
