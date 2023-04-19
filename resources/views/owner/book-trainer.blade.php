@@ -82,18 +82,13 @@
 
                 <div class="grid grid-cols-1 items-center gap-5">
                     <label class="inline-flex items-center rounded border border-gray-200 py-3 px-9 hover:bg-gray-100">
-                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500"
-                            value="Weekdays mornings" x-model="sessions" required />
-                        <span class="ml-2 text-xs font-medium">Weekdays mornings</span>
+                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500" value="Weekdays"
+                            x-model="sessions" required />
+                        <span class="ml-2 text-xs font-medium">Weekdays</span>
                     </label>
                     <label class="inline-flex items-center rounded border border-gray-200 py-3 px-9 hover:bg-gray-100">
-                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500"
-                            value="Weekdays afternoon" x-model="sessions" />
-                        <span class="ml-2 text-xs font-medium">Weekdays afternoon</span>
-                    </label>
-                    <label class="inline-flex items-center rounded border border-gray-200 py-3 px-9 hover:bg-gray-100">
-                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500"
-                            value="Saturday/Sunday" x-model="sessions" />
+                        <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500" value="Weekends"
+                            x-model="sessions" />
                         <span class="ml-2 text-xs font-medium">Weekends</span>
                     </label>
                 </div>

@@ -81,6 +81,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {
     Route::get('/trainer/service/add-service/{service_id}', [TrainingDetailsController::class, 'create']);
     Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
     Route::get('/events', [TrainerController::class, 'getEvents']);
+    Route::delete('/trainer/service/delete/{id}', [ServiceController::class, 'destroy']);
 });
 
 // Owner Routes

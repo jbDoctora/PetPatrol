@@ -17,7 +17,6 @@ class ServiceController extends Controller
             'days' => 'required',
             'price' => 'required|numeric',
             'status' => 'required',
-            'capacity' => 'required',
         ];
 
         $messages = [
@@ -28,14 +27,9 @@ class ServiceController extends Controller
             'price.required' => 'The price field is required.',
             'price.numeric' => 'The price field must be a number.',
             'status.required' => 'The status field is required.',
-            'capacity.required' => 'The capacity field is required.',
-            'service_type.required' => 'The Service Type field is required',
         ];
 
         $validatedData = $request->validate($rules, $messages);
-        $formFields['current_capacity'] = $request->input('current_capacity');
-        $formFields['service_type'] = $request->input('service_type');
-        $formFields['capacity'] = $validatedData['capacity'];
         $formFields['course'] = $validatedData['course'];
         $formFields['pet_type'] = $validatedData['pet_type'];
         $formFields['availability'] = $validatedData['availability'];
@@ -47,5 +41,14 @@ class ServiceController extends Controller
         Service::create($formFields);
 
         return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $service = Service::where('id', $id)->first();
+
+        $service->delete();
+
+        return redirect()->back()->with('message', 'Successfully deleted');
     }
 }

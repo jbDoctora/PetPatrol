@@ -23,18 +23,10 @@ class BookingController extends Controller
 
         $service_id = $request->input('service_id');
         $service = Service::find($service_id);
-
-        // Check if the capacity of the service is greater than 0
-        if ($service->current_capacity >= $service->capacity) {
-            $service->current_capacity -= 1;
-            $service->status = "available";
-        } elseif ($service->current_capacity == 1) {
-            $service->current_capacity -= 1;
-            $service->status = "unavailable";
-        } else {
-            $service->status = "unavailable";
-        }
+        $service->status = 'unavailable';
         $service->save();
+
+
 
         $request_id = $request->input('request_id');
         $requestTrainer = RequestTrainer::where('request_id', $request_id)->first();

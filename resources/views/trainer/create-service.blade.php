@@ -21,8 +21,6 @@
                             <th class="text-xs font-normal">Availability</th>
                             <th class="text-xs font-normal">Days of training</th>
                             <th class="text-xs font-normal">Price</th>
-                            <th class="text-xs font-normal">Capacity</th>
-                            <th class="text-xs font-normal">Number of clients availed</th>
                             <th class="text-xs font-normal">Status</th>
                             <th></th>
                         </tr>
@@ -40,10 +38,6 @@
                                 {{$trainings->days}} days</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->price}}</td>
-                            <td class="whitespace-nowrap border-b border-slate-200">{{$trainings->capacity}}</td>
-                            <td class="whitespace-nowrap border-b border-slate-200">
-                                {{($trainings->capacity - $trainings->current_capacity)}}
-                            </td>
                             <td class="whitespace-nowrap  border-b border-slate-2000">
                                 @if($trainings->status == "available")
                                 <p class="text-green-600 font-bold">{{$trainings->status}}</p>
@@ -53,12 +47,16 @@
                             </td>
                             <td class="whitespace-nowrap border-b border-slate-200">
                                 <div class="flex items-center justify-center gap-2">
-                                    <button class="bg-blue-700 text-white px-3 py-1 rounded"
+                                    <button class="bg-blue-700 text-white px-3 py-2 rounded"
                                         data-tip="view training plan"><a
                                             href="/trainer/service/add-service/{{ $trainings->id }}"><i
                                                 class="fa-solid fa-pen-to-square mr-2"></i>Edit plan</a></button>
-                                    <button class="bg-blue-700 text-white px-3 py-1 rounded"><i
-                                            class="fa-solid fa-trash mr-2"></i>Delete</button>
+                                    <form method="POST" action="/trainer/service/delete/{{$trainings->id}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="bg-blue-700 text-white px-3 py-2 rounded" type="submit"><i
+                                                class="fa-solid fa-trash mr-2"></i>Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -75,7 +73,7 @@
 
         {{-- Modal that asks user input --}}
         <form method="POST" action="/trainer/service/add-service/addService"
-            x-on:submit="price = price.replace(/,/g, '')" x-data="{ serviceType: 'private', capacity: 1, }">
+            x-on:submit="price = price.replace(/,/g, '')">
             @csrf
             <input type="checkbox" id="my-modal" class="modal-toggle flex items-center justify-center" />
             <div class="modal">
@@ -122,8 +120,7 @@
                             <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
                                 name="availability" required>
                                 <option disabled selected>Choose availability</option>
-                                <option>Weekdays mornings</option>
-                                <option>Weekdays afternoon</option>
+                                <option>Weekdays</option>
                                 <option>Weekends</option>
                             </select>
                             @error('availability')
@@ -138,28 +135,9 @@
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
                         </div>
-                        <div>
-                            <p class="text-sm">Service Type</p>
-                            <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                name="service_type" x-model="serviceType" required>
-                                <option value="private">Home Service(private)</option>
-                                <option value="public">Group Session(public)</option>
-                            </select>
-                            @error('service_type')
-                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
-                            @enderror
-                        </div>
-                        <div x-show="serviceType === 'public'">
-                            <p class="text-sm">Capacity</p>
-                            <input type="number" class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                name="capacity" value="1" min="1" x-model="capacity">
-                            @error('capacity')
-                            <p class="mt-1 text-xs text-red-500">{{$message}}</p>
-                            @enderror
-                        </div>
+
                     </div>
                     <input type="hidden" name="status" value="available" />
-                    <input type="hidden" name="current_capacity" x-model="capacity" />
                     <div class="modal-action flex items-center justify-end">
                         <button type="submit"
                             class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Create</button>

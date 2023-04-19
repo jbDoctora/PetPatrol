@@ -15,9 +15,6 @@ class Service extends Model
         'user_id',
         'price',
         'status',
-        'capacity',
-        'current_capacity',
-        'service_type'
     ];
 
     protected $table = 'service';

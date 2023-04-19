@@ -51,8 +51,8 @@ class OwnerController extends Controller
                     ->where('request.sessions', $availability)
                     ->where('request.pet_type', $type)
                     ->where('request.user_id', auth()->id())
-                    ->where('service.status', 'available')
-                    ->where('service.capacity', '>', 0);
+                    ->where('service.status', 'available');
+                // ->where('service.capacity', '>', 0);
             })
             ->join('users', function ($join) {
                 $join->on('service.user_id', '=', 'users.id')

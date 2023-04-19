@@ -39,12 +39,12 @@
                         <div class="rounded-full bg-green-400 w-3 h-3"></div>
                     </div>
                     @elseif($petinfos->book_status == "pending")
-                    <div class="m-2 tooltip tooltip-right" data-tip="pending request">
-                        <div class="rounded-full bg-yellow-400 w-3 h-3"></div>
-                    </div>
-                    @elseif($petinfos->book_status == "requested")
                     <div class="m-2 tooltip tooltip-right" data-tip="unavailable">
                         <div class="rounded-full bg-red-400 w-3 h-3"></div>
+                    </div>
+                    @elseif($petinfos->book_status == "requested")
+                    <div class="m-2 tooltip tooltip-right" data-tip="requested">
+                        <div class="rounded-full bg-yellow-400 w-3 h-3"></div>
                     </div>
                     @endif
                     <div class="dropdown dropdown-end rounded">

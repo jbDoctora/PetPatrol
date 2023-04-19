@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id('training_id');
             $table->foreignId('service_id')->onDelete('cascade');
             $table->string('lesson');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->longText('description');
             $table->boolean('hasDone')->default(0);
         });
     }

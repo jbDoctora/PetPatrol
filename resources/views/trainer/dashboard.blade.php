@@ -36,7 +36,7 @@
                 <!-- Total Completed Bookings Card -->
                 <a href="/trainer/bookings?search=&status=completed&pet_type=&start_date=&end_date=">
                     <div class="bg-green-100 rounded shadow-md p-6">
-                        <div class="text-sm font-medium text-gray-800"><i
+                        <div class="text-sm font-medium text-gray-800 sm:text-xs"><i
                                 class="fa-solid fa-calendar-check pr-3"></i>Total
                             Completed Bookings</div>
                         <div class="mt-4 flex items-center justify-between">

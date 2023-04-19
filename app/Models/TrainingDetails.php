@@ -9,20 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class TrainingDetails extends Model
 {
     protected $primaryKey = 'training_id';
-    protected $fillable = ['service_id', 'lesson', 'start_time', 'end_time', 'hasDone'];
+    protected $fillable = ['service_id', 'lesson', 'description', 'hasDone'];
 
     protected $table = 'training_details';
     public $timestamps = false;
 
-    public function getStartTimeAttribute($value)
-    {
-        return Carbon::createFromFormat('H:i:s', $value)->format('g:i A');
-    }
-
-    public function getEndTimeAttribute($value)
-    {
-        return Carbon::createFromFormat('H:i:s', $value)->format('g:i A');
-    }
 
     public function service()
     {
