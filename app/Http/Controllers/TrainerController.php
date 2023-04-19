@@ -419,7 +419,8 @@ class TrainerController extends Controller
                 'code' => $booking->code,
                 'title' => $booking->course . ' - ' . $booking->client_name,
                 'start' => $booking->start_date,
-                'end' => $booking->end_date
+                'end' => $booking->end_date,
+                'allDay' => true
             ];
         }
 

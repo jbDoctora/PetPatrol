@@ -181,7 +181,7 @@
                             <img
                                 src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}">
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-base-300 rounded-box w-52 p-2 shadow">
+                        <ul tabindex="0" class="dropdown-content menu rounded w-52 p-2 shadow bg-gray-200 text-sm">
                             <li><a href="/profile">Profile</a></li>
                             <li>
                                 <form method="POST" action="/logout">

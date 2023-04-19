@@ -7,7 +7,7 @@
         </div>
 
         <div class="inline-block align-baseline text-white text-sm mb-auto">
-            <a href="/profile">View Profile</a>
+            <a href="/profile" class="hover:text-yellow-300"><i class="fa-solid fa-gear pr-2"></i>Settings</a>
         </div>
 
     </div>
