@@ -183,8 +183,16 @@ class BookingController extends Controller
     {
         $booking = Booking::where('book_id', $id)->first();
 
-        $formFields = $request->only(['status']);
+        $formFields = $request->only(['status', 'service_id', 'pet_id']);
         $formFields['status'] = $request->input('status');
+
+        $service = Service::where('id', $formFields['service_id'])->first();
+        $service->status = 'available';
+        $service->update();
+
+        $pet = PetInfo::where('pet_id', $formFields['pet_id'])->first();
+        $pet->book_status = 'inactive';
+        $pet->update();
 
         $booking->update($formFields);
 

@@ -185,6 +185,8 @@
                                 <form method="POST" action="/bookings/{{$requests->book_id}}/update">
                                     @csrf
                                     @method('PUT')
+                                    <input type="hidden" name="service_id" value="{{$requests->service_id}}">
+                                    <input type="hidden" name="pet_id" value="{{$requests->pet_id}}">
                                     <input type="hidden" name="status" value="cancelled">
                                     <button type="submit">
                                         Cancel
