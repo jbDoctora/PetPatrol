@@ -48,7 +48,7 @@
                 {{-- --modal --}}
                 <input type="checkbox" id="pet-modal-{{$petinfos->pet_id}}" class="modal-toggle" />
                 <div class="modal">
-                    <form method="POST" action="/pet-info/{{auth()->user()->id}}">
+                    <form method="POST" action="/pet-info/{{auth()->user()->id}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-box relative rounded w-full max-w-4xl">
@@ -142,7 +142,8 @@
                             </div>
                             <div class="flex my-2 justify-end rounded">
                                 <div class="">
-                                    <button class="bg-blue-700 text-white px-4 py-2" type="submit">Update</button>
+                                    <button class="bg-blue-700 text-white px-4 py-2 hover:bg-blue-800"
+                                        type="submit">Update</button>
                                 </div>
                             </div>
                         </div>

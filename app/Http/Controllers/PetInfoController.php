@@ -77,8 +77,18 @@ class PetInfoController extends Controller
 
 
         $client_id->update($formFields);
-        dd($formFields);
+        // dd($formFields);
 
         return redirect()->back()->with('message', 'Successfully updated!');
+    }
+
+    public function updateStatus($pet_id)
+    {
+        $pet = PetInfo::where('pet_id', $pet_id)->first();
+
+        $data = $pet->book_status = 'deceased';
+        $pet->update($data);
+        dd($pet);
+        return redirect()->back()->with('message', 'We are sorry to hear about your pet');
     }
 }
