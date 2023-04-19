@@ -54,6 +54,35 @@
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <style>
+        .tox-tinymce {
+            height: 400px;
+            width: 90%;
+            margin-left: 5px;
+            margin-bottom: 5px;
+            padding: 5px;
+            border: 1px solid #928d8d;
+        }
+
+        .dataTables_filter input {
+            margin: 15px;
+        }
+
+        .dataTables_length select {
+            margin: 15px;
+        }
+
+        .dataTables_wrapper {
+            border: none;
+        }
+
+        table.dataTable thead th {
+            border-bottom: none;
+        }
+    </style>
 
 </head>
 
@@ -181,7 +210,8 @@
                     <span class="ml-9">Bookings</span>
                 </a>
 
-                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
+                <a href="/admin/reports"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
                     <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         assessment
                     </span>
