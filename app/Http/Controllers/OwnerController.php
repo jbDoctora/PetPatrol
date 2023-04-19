@@ -137,4 +137,12 @@ class OwnerController extends Controller
 
         return response()->json($events);
     }
+
+    public function destroyRequest($id)
+    {
+        $request_trainer = RequestTrainer::where('request_id', $id)->first();
+        $request_trainer->delete();
+
+        return redirect()->back()->with('message', 'Request Successfully Deleted');
+    }
 }

@@ -59,12 +59,31 @@
                                 class="tracking-wide rounded px-5 py-2 bg-blue-700 text-white text-xs font-medium hover:bg-blue-800"><a
                                     href="/show-matched/{{ $info->request_id }}"><i
                                         class="fa-solid fa-binoculars fa-lg"></i></a></button>
-                            <button
-                                class="tracking-wide rounded px-5 py-2 bg-white text-black text-xs font-medium border border-gray-300 hover:bg-red-700 hover:text-white"><i
-                                    class="fa-solid fa-trash fa-lg"></i></button>
-                            <button
-                                class="tracking-wide rounded px-5 py-2 bg-white text-black text-xs font-medium border border-gray-300 hover:bg-gray-300"><i
-                                    class="fa-solid fa-pen-to-square fa-lg"></i></button>
+
+                            <label
+                                class="tracking-wide rounded px-5 py-2 bg-white text-black text-xs font-medium border border-gray-300 hover:bg-red-700 hover:text-white"
+                                for="delete-modal-{{$info->request_id}}"><i class="fa-solid fa-trash fa-lg"></i></label>
+
+                            <input type="checkbox" id="delete-modal-{{$info->request_id}}" class="modal-toggle" />
+                            <div class="modal">
+                                <div class="modal-box">
+                                    <h3 class="font-bold text-lg">Confirm Deletion</h3>
+                                    <p class="py-4 text-sm">Are you sure you want to delete the request?</p>
+                                    <div class="modal-action">
+                                        <form method="POST" action="/request/delete/{{$info->request_id}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="bg-blue-700 px-4 py-2 rounded text-xs text-white"
+                                                type="submit">Yes</button>
+
+                                        </form>
+
+                                        <label class="bg-neutral-800 px-4 py-2 rounded text-xs text-white"
+                                            for="delete-modal-{{$info->request_id}}">No</label>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

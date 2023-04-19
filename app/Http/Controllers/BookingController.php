@@ -186,4 +186,16 @@ class BookingController extends Controller
         // dd($request);
         return view('owner.view-progress', compact('request', 'trainingDetails'));
     }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $booking = Booking::where('book_id', $id)->first();
+
+        $formFields = $request->only(['status']);
+        $formFields['status'] = $request->input('status');
+
+        $booking->update($formFields);
+
+        return redirect()->back()->with('message', 'Successfully Cancelled!');
+    }
 }

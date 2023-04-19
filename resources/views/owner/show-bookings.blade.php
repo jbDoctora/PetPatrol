@@ -81,27 +81,27 @@
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">
                     @if ($requests->status == 'pending')
-                    <span class="badge bg-yellow-400 text-black text-xs border-none">
+                    <span class="badge bg-yellow-400 text-yellow-900 text-xs border-none">
                         <i class="fa-solid fa-hourglass pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'approved')
-                    <span class="badge bg-green-400 text-black text-xs border-none">
+                    <span class="badge bg-green-400 text-slate-900 text-xs border-none">
                         <i class="fa-solid fa-thumbs-up pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'declined')
-                    <span class="badge bg-red-400 text-black text-xs">
+                    <span class="badge bg-red-400 text-red-900 text-xs">
                         <i class="fa-solid fa-times pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'in progress')
-                    <span class="badge bg-blue-400 text-blue-800 text-xs">
+                    <span class="badge bg-blue-500 text-blue-900 text-xs">
                         <i class="fa-solid fa-hourglass-end pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'completed')
-                    <span class="badge bg-green-400 text-green-800 text-xs">
+                    <span class="badge bg-green-400 text-green-900 text-xs">
                         <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}
                     </span> |
-                    @elseif ($requests->status == 'confirmed')
-                    <span class="badge bg-blue-700 text-white text-xs">
+                    @elseif ($requests->status == 'cancelled')
+                    <span class="badge bg-red-500 text-slate-200 text-xs">
                         <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}
                     </span> |
                     @endif
@@ -117,37 +117,82 @@
                     @endif
                 </div>
 
+                {{-- IF APPROVED STATUS --}}
                 @if($requests->status == 'approved')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <a href="/bookings/{{$requests->book_id}}">
                         <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
                                 class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
                     </a>
-                    <a href="/checkout/{{$requests->book_id}}">
-                        <button type="button" class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white">
-                            <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
-                        </button>
-                    </a>
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="p-5 cursor-pointer"><i
+                                class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
+                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded w-52 text-sm">
+                            <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
+                        </ul>
+                    </div>
                 </div>
+
+                {{-- IF DECLINED STATUS --}}
                 @elseif($requests->status == 'declined')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
 
                 </div>
-                @elseif($requests->status == 'in progress' || $requests->status == 'pending')
+
+                {{-- IF IN PROGRESS STATUS --}}
+                @elseif($requests->status == 'in progress')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <a href="/bookings/{{$requests->book_id}}">
-                        <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
+                        <button
+                            class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer w-42"><i
                                 class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
                     </a>
-                    <a href="/checkout/{{$requests->book_id}}">
-                        <button type="button" class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white">
-                            <i class="fa-solid fa-hand-holding-dollar fa-lg pr-3"></i>Pay
-                        </button>
-                    </a>
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="p-5 cursor-pointer"><i
+                                class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
+                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded w-52 text-sm">
+                            <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
+                        </ul>
+                    </div>
                 </div>
-                {{-- Rating form --}}
-                @elseif($requests->status == 'completed')
 
+                {{-- IF IN PROGRESS STATUS --}}
+                @elseif($requests->status == 'cancelled')
+                <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+                    <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+                        <label class="text-sm">This is all set!</label>
+                    </div>
+                </div>
+
+                {{-- IF PENDING STATUS --}}
+                @elseif($requests->status == 'pending')
+                <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
+                    <a href="/bookings/{{$requests->book_id}}">
+                        <button
+                            class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer w-42"><i
+                                class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
+                    </a>
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="p-5 cursor-pointer"><i
+                                class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
+                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded w-52 text-sm">
+                            <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
+                            <li>
+                                <form method="POST" action="/bookings/{{$requests->book_id}}/update">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="status" value="cancelled">
+                                    <button type="submit">
+                                        Cancel
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {{-- IF COMPLETED STATUS --}}
+                @elseif($requests->status == 'completed')
                 @if($requests->isRated == 1)
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <label class="text-sm">This is all set!</label>
@@ -158,10 +203,10 @@
                             class="fa-solid fa-star fa-md pr-2"></i>Rate
                         Trainer</label>
                 </div>
+
+
                 @endif
-
-
-
+                {{-- MODAL RATING --}}
                 <input type="checkbox" id="rating-modal-{{$requests->book_id}}" class="modal-toggle" />
                 <div class="modal">
                     <div class="modal-box relative rounded">
@@ -210,6 +255,7 @@
                         </form>
                     </div>
                 </div>
+                {{-- END OF RATING MODAL --}}
                 @endif
 
             </div>

@@ -98,6 +98,7 @@ Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::get('/show-matched/{request_id}', [OwnerController::class, 'show']);
     Route::post('/show-matched/book', [BookingController::class, 'store']);
     Route::get('/bookings', [BookingController::class, "show"]);
+    Route::put('/bookings/{id}/update', [BookingController::class, 'updateStatus']);
     Route::get('/show-matched/training-plan/{service_id}', [OwnerController::class, 'showTraining']);
     Route::get('/profile', [UserController::class, 'edit']);
     Route::get('/profile/change-password', [UserController::class, 'editPassword']);
@@ -108,6 +109,7 @@ Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::get('/bookings/{book_id}', [BookingController::class, 'showBooking']);
     Route::post('/bookings/add-rating', [BookingController::class, 'storeRating']);
     Route::get('/events/owner', [OwnerController::class, 'getEvents']);
+    Route::delete('/request/delete/{request_id}', [OwnerController::class, 'destroyRequest']);
 });
 
 // Admin Routes
