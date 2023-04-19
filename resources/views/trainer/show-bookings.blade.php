@@ -220,6 +220,9 @@
                             @elseif ($requests->status == 'in progress')
                             <span class="badge bg-blue-300 text-blue-800 text-xs">{{
                                 $requests->status }}</span>
+                            @elseif ($requests->status == 'cancelled')
+                            <span class="badge bg-red-400 text-slate-100 text-xs">{{
+                                $requests->status }}</span>
                             @elseif ($requests->status == 'completed')
                             <span class="badge bg-green-300 text-green-800 text-xs">{{
                                 $requests->status }}</span>

@@ -97,7 +97,7 @@
                         <i class="fa-solid fa-hourglass-end pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'completed')
-                    <span class="badge bg-green-400 text-green-900 text-xs">
+                    <span class="badge bg-green-400 text-slate-900 text-xs">
                         <i class="fa-solid fa-check pr-1"></i>{{ $requests->status }}
                     </span> |
                     @elseif ($requests->status == 'cancelled')
