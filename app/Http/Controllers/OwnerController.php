@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\Service;
 use App\Models\AdminService;
@@ -102,5 +103,26 @@ class OwnerController extends Controller
         $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet_name')->toArray();
         // dd($petinfo);
         return view('owner.book-trainer', compact('adminService', 'petinfo', 'requestedPetNames'));
+    }
+
+    public function getEvents()
+    {
+        $bookings = Booking::select('start_date', 'end_date', 'trainer_name', 'booking.status', 'service.course', 'booking.book_id')
+            ->join('service', 'booking.service_id', '=', 'service.id')
+            ->where('client_id', auth()->user()->id)
+            ->get();
+
+        $events = [];
+
+        foreach ($bookings as $booking) {
+            $events[] = [
+                'code' => $booking->code,
+                'title' => $booking->course . ' - ' . $booking->trainer_name,
+                'start' => $booking->start_date,
+                'end' => $booking->end_date
+            ];
+        }
+
+        return response()->json($events);
     }
 }

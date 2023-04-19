@@ -105,6 +105,7 @@ Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::put('/checkout/{book_id}/pay', [BookingController::class, 'updatePayment']);
     Route::get('/bookings/{book_id}', [BookingController::class, 'showBooking']);
     Route::post('/bookings/add-rating', [BookingController::class, 'storeRating']);
+    Route::get('/events/owner', [OwnerController::class, 'getEvents']);
 });
 
 // Admin Routes
