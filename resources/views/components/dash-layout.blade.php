@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
     <style>
         .class-name {
@@ -120,8 +121,9 @@
                                         -7 -114 -13 -15 -36 -16 -253 -10 -132 4 -243 9 -246 12 -10 11 0 164 15 231
                                         20 87 71 191 133 273 55 73 166 180 187 180 7 0 31 -37 53 -82z" />
                         </g>
-                    </svg><span class="text-2xl font-bold tracking-wide text-white text-center ml-3"
-                        style="font-family: 'Jost', sans-serif;">PETPATROL</span>
+                    </svg>
+                    <span class="text-xl font-bold tracking-wide text-white text-center ml-3"
+                        style="font-family: 'Lora', serif;">PETPATROL</span>
                     <div class="flex-1 bg-fixed">
 
                     </div>

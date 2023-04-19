@@ -232,6 +232,49 @@ class TrainerController extends Controller
         return view('trainer.settings-payment', ['user' => $user]);
     }
 
+    public function showReport()
+    {
+        $trainerId = auth()->id();
+
+        $request = Booking::select(
+            'booking.book_id',
+            'booking.trainer_id',
+            'booking.status',
+            'booking.payment',
+            'booking.gcash_refnum',
+            'pet_info.pet_id',
+            'pet_info.pet_name',
+            'pet_info.years',
+            'pet_info.months',
+            'pet_info.breed',
+            'pet_info.weight',
+            'pet_info.vaccine',
+            'pet_info.vaccine_list',
+            'pet_info.info',
+            'booking.client_name',
+            'booking.start_date',
+            'booking.end_date',
+            'service.course',
+            'service.price',
+            'service.availability',
+            'service.id as service_id',
+            'users.email',
+            'users.phone_number'
+        )
+            ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
+            ->join('users', 'users.id', '=', 'booking.trainer_id')
+            ->join('service', 'service.id', 'booking.service_id')
+            // ->where('users.role', 0)
+            ->where('booking.trainer_id', $trainerId)
+            ->where('booking.status', '=', 'completed')
+            ->paginate(10);
+        // dd($request);
+
+        return view('trainer.report', [
+            'request' => $request,
+        ]);
+    }
+
     public function updateProfile(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -421,7 +464,6 @@ class TrainerController extends Controller
                 'title' => $booking->course . ' - ' . $booking->client_name,
                 'start' => $booking->start_date,
                 'end' => $booking->end_date,
-                'allDay' => true
             ];
         }
 

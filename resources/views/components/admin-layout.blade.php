@@ -53,6 +53,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -99,9 +100,11 @@
                     </g>
                 </svg>
                 <div class="flex flex-col">
-                    <div class="text-xl font-black tracking-wide text-black text-center ml-3"
+                    {{-- <div class="text-xl font-black tracking-wide text-black text-center ml-3"
                         style="font-family: 'Jost', sans-serif;">PETPATROL
-                    </div>
+                    </div> --}}
+                    <span class="text-xl font-bold tracking-wide text-black text-center ml-3"
+                        style="font-family: 'Lora', serif;">PETPATROL</span>
                     <div class="text-xs text-black ml-3">Admin</div>
                 </div>
 

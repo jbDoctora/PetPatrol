@@ -93,10 +93,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
 
 </head>
 
 <body class="bg-gray-200 flex min-h-screen flex-col text-color-gray-900">
+
     <!-- NavBar -->
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"
@@ -142,13 +144,13 @@
                     </g>
                 </svg>
 
-                <div class="flex flex-col">
-                    <div class="text-xl font-black tracking-wide text-white text-center ml-3"
-                        style="font-family: 'Jost', sans-serif;">
-                        PETPATROL
-                    </div>
-                    <div class="text-xs text-white ml-3">Trainer</div>
-                </div>
+                {{-- <div class="text-xl font-black tracking-wide text-white text-center ml-3"
+                    style="font-family: 'Jost', sans-serif;">
+                    PETPATROL
+                </div> --}}
+                <span class="text-2xl font-bold tracking-wide text-white text-center"
+                    style="font-family: 'Lora', serif;">PETPATROL</span>
+
 
             </div>
             <nav
@@ -174,7 +176,7 @@
                     </span>
                     <span class="ml-9">Service</span>
                 </a>
-                <a href="#" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                <a href="/trainer/report" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         assessment
                     </span>
