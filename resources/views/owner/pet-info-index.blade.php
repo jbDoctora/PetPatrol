@@ -33,7 +33,20 @@
         <div class="mx-5 grid grid-cols-1 md:grid-cols-3 gap-3 rounded-lg px-3 text-xs">
             @forelse($petinfo as $petinfos)
             <div class="bg-gray-100 m-5 overflow-hidden rounded-md shadow-md">
-                <div class="flex justify-end m-5 hover:bg">
+                <div class="flex justify-between items-center m-5 hover:bg">
+                    @if($petinfos->book_status == "inactive")
+                    <div class="m-2 tooltip tooltip-right" data-tip="available">
+                        <div class="rounded-full bg-green-400 w-3 h-3"></div>
+                    </div>
+                    @elseif($petinfos->book_status == "pending")
+                    <div class="m-2 tooltip tooltip-right" data-tip="pending request">
+                        <div class="rounded-full bg-yellow-400 w-3 h-3"></div>
+                    </div>
+                    @elseif($petinfos->book_status == "requested")
+                    <div class="m-2 tooltip tooltip-right" data-tip="unavailable">
+                        <div class="rounded-full bg-red-400 w-3 h-3"></div>
+                    </div>
+                    @endif
                     <div class="dropdown dropdown-end rounded">
                         <label tabindex="0" class="cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>

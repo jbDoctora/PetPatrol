@@ -67,7 +67,7 @@
 
         <div class="flex flex-col gap-3 my-3 py-3">
             @forelse($request as $requests)
-            <div class="flex flex-row justify-between gap-2 bg-gray-200 rounded mx-4">
+            <div class="flex flex-row justify-between gap-2 border border-gray-500 rounded mx-4">
                 <div class="flex flex-col gap-3 p-3 w-96">
                     <a href="/bookings/{{$requests->book_id}}">
                         <h2 class="font-bold text-xl hover:text-blue-600">{{$requests->course}}</h2>
@@ -127,7 +127,8 @@
                     <div class="dropdown dropdown-end">
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
-                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded w-52 text-sm">
+                        <ul tabindex="0"
+                            class="dropdown-content menu p-1 shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
                             <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
                         </ul>
                     </div>
@@ -150,7 +151,8 @@
                     <div class="dropdown dropdown-end">
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
-                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded w-52 text-sm">
+                        <ul tabindex="0"
+                            class="dropdown-content menu p-1 shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
                             <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
                         </ul>
                     </div>
@@ -175,7 +177,8 @@
                     <div class="dropdown dropdown-end">
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
-                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded w-52 text-sm">
+                        <ul tabindex="0"
+                            class="dropdown-content menu p-1 shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
                             <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
                             <li>
                                 <form method="POST" action="/bookings/{{$requests->book_id}}/update">

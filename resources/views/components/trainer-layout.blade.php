@@ -153,11 +153,14 @@
             </div>
             <nav
                 class="flex flex-col items-center w-full h-full bg-blue-700 text-xs font-medium subpixel-antialiased border-r border-gray-300">
-                <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white indicator">
                     <span class="material-icons" style="font-size: 25px;">
                         donut_small
                     </span>
-                    <span class=" ml-9">Dashboard</span>
+                    <div class=" ml-9 ">Dashboard</div>
+                    {{-- <div class="ml-auto">
+                        <div class="rounded-full bg-yellow-400 w-3 h-3"></div>
+                    </div> --}}
                 </a>
                 <a href="/trainer/bookings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons" style="font-size: 25px">
