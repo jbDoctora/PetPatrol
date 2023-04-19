@@ -21,7 +21,7 @@ class OwnerController extends Controller
         $pending_bookings = Booking::where('client_id', auth()->user()->id)->where('status', '=', 'pending')->count();
         $completed_bookings = Booking::where('client_id', auth()->user()->id)->where('status', '=', 'completed')->count();
         $inprogress_bookings = Booking::where('client_id', auth()->user()->id)->where('status', '=', 'in progress')->count();
-        $request = RequestTrainer::where('user_id', auth()->user()->id)->where('request_status', '=', 'inactive')->get();
+        $request = RequestTrainer::where('user_id', auth()->user()->id)->where('request_status', '=', 'active')->get();
 
 
 

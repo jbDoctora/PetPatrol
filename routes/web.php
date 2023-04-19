@@ -87,6 +87,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {
 Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
     Route::get('/owner', [OwnerController::class, 'index']);
     Route::get('/pet-info', [PetInfoController::class, 'index']);
+    Route::put('/pet-info/{id}', [PetInfoController::class, 'edit']);
     Route::get('/pet/add-info', [PetInfoController::class, 'create']);
     Route::post('/pet/add-info/add', [PetInfoController::class, 'store']);
     Route::get('/book-trainer', [OwnerController::class, 'create']);

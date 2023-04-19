@@ -61,4 +61,24 @@ class PetInfoController extends Controller
 
         return redirect('/pet-info')->with('message', 'Pet added successfully!');
     }
+
+    public function edit(Request $request, $id)
+    {
+        $client_id = PetInfo::where('owner_id', $id)->first();
+        // $formFields = $request->validate([
+        //     'image' => 'nullable',
+        // ]);
+
+        $formFields = $request->only(['months', 'years', 'breed', 'weight', 'info', 'vaccine', 'vaccine_list', 'pet_name', 'image']);
+
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('pet_photo', 'public');
+        }
+
+
+        $client_id->update($formFields);
+        dd($formFields);
+
+        return redirect()->back()->with('message', 'Successfully updated!');
+    }
 }

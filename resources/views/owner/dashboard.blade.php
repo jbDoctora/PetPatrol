@@ -69,8 +69,8 @@
                 <div class="mt-4 space-y-4">
                     @forelse($request as $req)
                     <div class="flex items-center justify-between">
-                        <div class="text-sm font-medium text-gray-500">{{$req->pet_name}}</div>
-                        <div class="text-sm font-medium text-green-500">{{$req->course}}</div>
+                        <div class="text-xs font-medium text-gray-500">{{$req->pet_name}}</div>
+                        <div class="text-xs font-medium text-green-500">{{$req->course}}</div>
                     </div>
                     @empty
                     <div class="flex items-center justify-center text-sm">No Pending request</div>
