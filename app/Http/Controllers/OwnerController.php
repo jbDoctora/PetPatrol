@@ -122,6 +122,7 @@ class OwnerController extends Controller
         $bookings = Booking::select('start_date', 'end_date', 'trainer_name', 'booking.status', 'service.course', 'booking.book_id')
             ->join('service', 'booking.service_id', '=', 'service.id')
             ->where('client_id', auth()->user()->id)
+            ->whereIn('booking.status', ['in progress', 'approved'])
             ->get();
 
         $events = [];

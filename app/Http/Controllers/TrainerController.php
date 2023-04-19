@@ -182,48 +182,48 @@ class TrainerController extends Controller
         $trainer_id = $request->input('trainer_id');
 
         // Join the service table with the booking table
-        $service_type = Booking::join('service', 'booking.service_id', '=', 'service.id')
-            ->where('booking.book_id', $request->input('book_id'))
-            ->pluck('service.service_type')
-            ->first();
+        // $service_type = Booking::join('service', 'booking.service_id', '=', 'service.id')
+        //     ->where('booking.book_id', $request->input('book_id'))
+        //     ->pluck('service.service_type')
+        //     ->first();
 
-        if ($service_type === 'public') {
-            // Update booking
-            $booking->status = $request->input('status');
-            $booking->payment = $request->input('payment');
-            $booking->reason_reject = $request->input('reason_reject');
-            $booking->save();
+        // if ($service_type === 'public') {
+        //     // Update booking
+        //     $booking->status = $request->input('status');
+        //     $booking->payment = $request->input('payment');
+        //     $booking->reason_reject = $request->input('reason_reject');
+        //     $booking->save();
 
-            return redirect()->back()->with('message', 'Successfully approved');
-        } else if (
-            $service_type === 'private'
-        ) {
-            $start_date = $request->input('start_date');
-            $end_date = $request->input('end_date');
+        //     return redirect()->back()->with('message', 'Successfully approved');
+        // } else if (
+        //     $service_type === 'private'
+        // ) {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
 
-            $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
-                ->join('service', 'booking.service_id', '=', 'service.id')
-                ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
-                ->where(function ($query) use ($start_date, $end_date) {
-                    $query->where('start_date', '<=', $end_date)
-                        ->where('end_date', '>=', $start_date);
-                })
-                ->where('book_id', '<>', $booking->book_id) // exclude current booking
-                ->get();
+        $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
+            ->join('service', 'booking.service_id', '=', 'service.id')
+            ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
+            ->where(function ($query) use ($start_date, $end_date) {
+                $query->where('start_date', '<=', $end_date)
+                    ->where('end_date', '>=', $start_date);
+            })
+            ->where('book_id', '<>', $booking->book_id) // exclude current booking
+            ->get();
 
-            if ($conflicting_bookings->count() > 0) {
-                // There is a scheduling conflict
-                return redirect()->back()->with('error', 'You are not available during the selected date range.');
-            }
-
-            // Update booking
-            $booking->status = $request->input('status');
-            $booking->payment = $request->input('payment');
-            $booking->reason_reject = $request->input('reason_reject');
-            $booking->save();
-
-            return redirect()->back()->with('message', 'Successfully approved');
+        if ($conflicting_bookings->count() > 0) {
+            // There is a scheduling conflict
+            return redirect()->back()->with('error', 'You are not available during the selected date range.');
         }
+
+        // Update booking
+        $booking->status = $request->input('status');
+        $booking->payment = $request->input('payment');
+        $booking->reason_reject = $request->input('reason_reject');
+        $booking->save();
+
+        return redirect()->back()->with('message', 'Successfully approved');
+        // }
     }
 
     public function showPayment()
@@ -321,18 +321,18 @@ class TrainerController extends Controller
                 'id',
                 $data['service_id']
             )->first();
-            if ($service->status === 'unavailable') {
-                $service->status = 'available';
-                $service->save();
-            }
+            // if ($service->status === 'unavailable') {
+            $service->status = 'available';
+            $service->save();
+            // }
 
-            $currentCapacity = $service->current_capacity;
-            $capacity = $service->capacity;
+            // $currentCapacity = $service->current_capacity;
+            // $capacity = $service->capacity;
 
-            if ($currentCapacity < $capacity) {
-                $service->current_capacity = $currentCapacity + 1;
-                $service->save();
-            }
+            // if ($currentCapacity < $capacity) {
+            //     $service->current_capacity = $currentCapacity + 1;
+            //     $service->save();
+            // }
 
             $pet = PetInfo::where('pet_id', $data['pet_id'])->first();
             $pet->book_status = 'inactive';
@@ -410,6 +410,7 @@ class TrainerController extends Controller
         $bookings = Booking::select('start_date', 'end_date', 'client_name', 'booking.status', 'service.course', 'booking.book_id')
             ->join('service', 'booking.service_id', '=', 'service.id')
             ->where('trainer_id', auth()->user()->id)
+            ->whereIn('booking.status', ['in progress', 'approved'])
             ->get();
 
         $events = [];
