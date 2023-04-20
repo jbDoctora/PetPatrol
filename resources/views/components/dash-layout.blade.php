@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
     @vite('resources/css/app.css')
     <style>
         .class-name {
@@ -16,39 +17,45 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('owner-calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
-          allDaySlot: true,
-          slotEventOverlap: false,
-          timeFormat: '', // remove the time when viewing all-day events
-          events: {
-            url: '/events/owner',
-            method: 'GET',
-            extraParams: {
-              '_token': '{{ csrf_token() }}',
-              'client_id': '{{ auth()->user()->id }}'
-            },
-          },
-          eventRender: function(info) {
-            var tooltip = new Tooltip(info.el, {
-              title: info.event.title,
-              placement: 'top',
-              trigger: 'hover',
-              container: 'body',
-              'z-index': 99999
+            var calendarEl = document.getElementById('owner-calendar');
+            if (!calendarEl) return;
+            
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                allDaySlot: true,
+                slotEventOverlap: false,
+                eventTimeFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    meridiem: true,
+                    hour12: false
+                },
+                events: {
+                    url: '/events/owner',
+                    method: 'GET',
+                    extraParams: {
+                        '_token': '{{ csrf_token() }}',
+                        'client_id': '{{ auth()->user()->id }}'
+                    },
+                },
+                // eventRender: function(info) {
+                //     var tooltip = new Tooltip(info.el, {
+                //         title: info.event.title,
+                //         placement: 'top',
+                //         trigger: 'hover',
+                //         container: 'body',
+                //         'z-index': 99999
+                //     });
+                // },
+                eventClick: function(info) {
+                    // handle click event here
+                    alert(info.event.title);
+                }
             });
-          },
-          eventClick: function(info) {
-            // handle click event here
-            alert(info.event.title);
-          }
-        });
     
-        calendar.render();
-      });
+            calendar.render();
+        });
     </script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -74,6 +81,7 @@
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
         type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="bg-gray-200 flex min-h-screen flex-col">

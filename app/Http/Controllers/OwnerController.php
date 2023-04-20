@@ -144,6 +144,8 @@ class OwnerController extends Controller
         $request_trainer = RequestTrainer::where('request_id', $id)->first();
         $request_trainer->delete();
 
+
+
         return redirect()->back()->with('message', 'Request Successfully Deleted');
     }
 }

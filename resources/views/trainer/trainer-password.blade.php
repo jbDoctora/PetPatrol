@@ -4,17 +4,19 @@
         @csrf
         @method('PUT')
         <h3 class="text-blue-700 text-xl">Settings</h3>
-        <div class="text-xs breadcrumbs mt-2">
-            <ul>
-                <li><i class="fa-solid fa-pen-to-square mr-2"></i><a href="/trainer/profile">Edit
-                        Profile</a></li>
-                <li class="text-blue-700 font-bold"><i class="fa-solid fa-lock mr-2"></i><a
-                        href="/trainer/profile/change-password">Change Password</a>
-                </li>
-                <li><i class="fa-solid fa-cash-register mr-2"></i><a href="/settings/payment">Edit Payment Details</a>
-                </li>
-            </ul>
+
+        <div class="tabs my-3">
+            <a class="tab tab-bordered text-xs" href="/trainer/profile"><i
+                    class="fa-solid fa-pen-to-square mr-2"></i>Profile</a>
+            <a class="tab tab-bordered tab-active text-xs" href="/trainer/profile/change-password"><i
+                    class="fa-solid fa-lock mr-2"></i>Change
+                Password</a>
+            <a class="tab tab-bordered text-xs" href="/settings/payment"><i
+                    class="fa-solid fa-cash-register mr-2"></i>Edit
+                Gcash Details</a>
         </div>
+
+
         <div class="flex flex-col justify-start my-7">
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="password">Password</label>
                 <input

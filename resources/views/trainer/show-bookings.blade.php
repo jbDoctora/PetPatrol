@@ -248,46 +248,90 @@
                         <td class="whitespace-nowrap border-b border-slate-200">{{ $requests->start_date }}</td>
                         <td class="whitespace-nowrap border-b border-slate-200">{{ $requests->end_date }}</td>
                         <td class="whitespace-nowrap border-b border-slate-200">
+
+                            {{-- IF APPROVED --}}
                             @if($requests->status == 'approved')
                             <div class="flex justify-center items-center gap-4">
                                 <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="status" value="in progress" />
-                                    <div class="flex justify-center"><a href="#"><button
-                                                class="bg-blue-700 text-white px-4 py-2 rounded" type="submit">Start
-                                                training</button></a>
+                                    <div class="dropdown dropdown-left">
+                                        <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                        <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                            <li><button type="submit">Start
+                                                    training</button></li>
+                                        </ul>
                                     </div>
                                 </form>
                             </div>
-                            @elseif($requests->status == 'in progress')
-                            <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
-                                @csrf
-                                @method('PUT')
-                                <input type="hidden" name="status" value="completed" />
-                                <input type="hidden" name="service_id" value="{{$requests->service_id}}">
-                                <input type="hidden" name="pet_id" value="{{$requests->pet_id}}">
-                                <input type="hidden" name="trainer_id" value="{{$requests->trainer_id}}">
 
-                                <div class="flex justify-center"><a href="#"><button
-                                            class="bg-blue-700 text-white px-4 py-2 rounded">Mark As Done</button></a>
-                                </div>
-                            </form>
+                            {{-- IF IN PROGRESS --}}
+                            @elseif($requests->status == 'in progress')
+
+
+                            <div class="flex justify-center"><a href="#">
+                                    <label for="done-modal-{{$requests->book_id}}"
+                                        class="bg-blue-700 text-white px-4 py-2 rounded">Mark As Done</label></a>
+                            </div>
+
+
+
+                            {{-- IF DECLINED --}}
                             @elseif($requests->status == 'declined')
                             <div class="flex justify-center"><a href="#"><button
                                         class="bg-gray-400 text-white px-4 py-2 rounded" disabled>Update</button></a>
                             </div>
+
+                            {{-- IF PENDING --}}
                             @elseif($requests->status == 'pending')
-                            <div class="flex justify-center"><a href="#"><button
-                                        class="bg-blue-700 text-white px-4 py-2 rounded"
+                            <div class="flex justify-center"><a href="#">
+                                    <div class="dropdown dropdown-left">
+                                        <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                        <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                            <li><button
+                                                    x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
+                                    '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
+                                    '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
+                                    '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{-- <button class="bg-blue-700 text-white px-4 py-2 rounded"
                                         x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
                                     '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
-                                    '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update</button></a>
+                                    '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update
+                                    </button> --}}
+                                </a>
                             </div>
                             @endif
                         </td>
                     </tr>
+                    {{-- MODAL FOR CONFIRM MARK AS DONE --}}
+                    <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="status" value="completed" />
+                        <input type="hidden" name="service_id" value="{{$requests->service_id}}">
+                        <input type="hidden" name="pet_id" value="{{$requests->pet_id}}">
+                        <input type="hidden" name="trainer_id" value="{{$requests->trainer_id}}">
+                        <input type="checkbox" id="done-modal-{{$requests->book_id}}" class="modal-toggle" />
+                        <div class="modal">
+                            <div class="modal-box relative">
+                                <label for="done-modal-{{$requests->book_id}}"
+                                    class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <h3 class="text-lg font-bold">Confirm</h3>
+                                <p class="py-4">Please confirm that the training is done. This cannot be undone.
+                                    Proceed?
+                                </p>
+                                <div class="flex justify-end">
+                                    <button
+                                        class="rounded bg-blue-700 text-white text-sm px-3 py-2 hover:bg-blue-800">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     @endforeach
                     @endif
                 </tbody>

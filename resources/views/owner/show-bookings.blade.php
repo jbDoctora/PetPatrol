@@ -67,7 +67,7 @@
 
         <div class="flex flex-col gap-3 my-3 py-3">
             @forelse($request as $requests)
-            <div class="flex flex-row justify-between gap-2 border border-gray-500 rounded mx-4">
+            <div class="flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
                 <div class="flex flex-col gap-3 p-3 w-96">
                     <a href="/bookings/{{$requests->book_id}}">
                         <h2 class="font-bold text-xl hover:text-blue-600">{{$requests->course}}</h2>
@@ -162,7 +162,7 @@
                 @elseif($requests->status == 'cancelled')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                        <label class="text-sm px-3 py-2 bg-green-600 text-white rounded"><i
+                        <label class="text-xs px-3 py-2 bg-green-600 text-white rounded"><i
                                 class="fa-solid fa-print pr-3"></i>Print</label>
                     </div>
                 </div>
@@ -182,16 +182,11 @@
                             class="dropdown-content menu p-1 shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
                             {{-- <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li> --}}
                             <li>
-                                <form method="POST" action="/bookings/{{$requests->book_id}}/update">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="service_id" value="{{$requests->service_id}}">
-                                    <input type="hidden" name="pet_id" value="{{$requests->pet_id}}">
-                                    <input type="hidden" name="status" value="cancelled">
-                                    <button type="submit">
-                                        Cancel
-                                    </button>
-                                </form>
+
+                                <label for="confirm-modal-{{$requests->book_id}}">
+                                    Cancel
+                                </label>
+
                             </li>
                         </ul>
                     </div>
@@ -266,6 +261,27 @@
                 @endif
 
             </div>
+            {{-- MODAL FOR CONFIRM DELETION --}}
+            <form method="POST" action="/bookings/{{$requests->book_id}}/update">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="service_id" value="{{$requests->service_id}}">
+                <input type="hidden" name="pet_id" value="{{$requests->pet_id}}">
+                <input type="hidden" name="status" value="cancelled">
+                <input type="checkbox" id="confirm-modal-{{$requests->book_id}}" class="modal-toggle" />
+                <div class="modal">
+                    <div class="modal-box relative">
+                        <label for="confirm-modal-{{$requests->book_id}}"
+                            class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <h3 class="text-lg font-bold">Confirm Deletion</h3>
+                        <p class="py-4">This action cannot be undone. Proceed?</p>
+                        <div class="flex justify-end">
+                            <button class="bg-red-700 text-white px-3 py-2 text-sm">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {{-- END OF CONFIRM DELETION MODAL --}}
 
             @empty
             <div class="flex flex-col justify-center">
