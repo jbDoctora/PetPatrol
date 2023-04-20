@@ -146,13 +146,13 @@ class UserController extends Controller
             $request->session()->regenerate();
             $user = auth()->user();
             if ($user->role == 0) {
-                return redirect('/owner')->with('message', 'You are now logged in as an owner!');
+                return redirect('/owner');
             } elseif ($user->role == 1) {
-                return redirect('/trainer')->with('message', 'You are now logged in as a trainer!');
+                return redirect('/trainer');
             } elseif ($user->role == 3) {
-                return redirect('/admin')->with('message', 'Welcome Admin!');
+                return redirect('/admin');
             } else {
-                return redirect('/')->with('message', 'You are now logged in!');
+                return redirect('/');
             }
         }
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');

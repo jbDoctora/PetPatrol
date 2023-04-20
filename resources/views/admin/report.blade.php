@@ -18,7 +18,7 @@
             </div>
         </div> --}}
 
-        <div class="mt-2 overflow-hidden rounded-none mx-4">
+        <div class="overflow-hidden rounded-none m-2">
             <table class="w-full border border-gray-300 mb-5" id="myTable">
                 <thead class="table-auto">
                     <tr class="bg-blue-700 text-white text-xs font-normal">
@@ -37,7 +37,7 @@
                     @forelse($request as $req)
                     <tr class="text-xs text-center">
                         <td>
-                            <div class="my-4 mx-0">{{$req->code}}</div>
+                            <div class="my-3 mx-0">{{$req->code}}</div>
                         </td>
                         <td>{{$req->client_name}}</td>
                         <td>

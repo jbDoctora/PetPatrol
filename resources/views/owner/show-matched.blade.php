@@ -45,18 +45,11 @@
                         <div class="mt-4">
                             <h3 class="text-blue-400 font-bold text-sm">Reviews</h3>
                             <div class="mt-2 flex items-center">
-                                <div class="rating rating-sm">
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                        checked />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                </div>
-                                <p class="text-sm text-blue-500 mr-2">(2)</p>
+                                {{-- <p class="text-xs text-blue-500 mr-2">{{$avg_rating}}</p> --}}
 
-                                <div class="text-green-600 text-sm px-2">
-                                    <i class="fa-solid fa-calendar-check"></i> 3 completed bookings
+                                <div class="text-green-600 text-xs px-2">
+                                    <i class="fa-solid fa-calendar-check"></i> ({{$match->completedBooking}}) completed
+                                    bookings
                                 </div>
                             </div>
 

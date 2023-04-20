@@ -151,4 +151,13 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'User successfully banned');
     }
+
+    public function showFeedbacks()
+    {
+        $trainer = User::where('role', '=', '1')
+            ->join('rating', 'users.id', '=', 'rating.trainer_id')
+            ->get();
+
+        return view('admin.trainer-feedback', compact('trainer'));
+    }
 }

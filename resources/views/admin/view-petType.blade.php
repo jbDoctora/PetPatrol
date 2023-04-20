@@ -4,9 +4,8 @@
             <div>
                 <h2 class="text-blue-700 text-xl">Manage Pet Type</h2>
             </div>
-            <div>
-                <label for="add-modal"
-                    class="bg-blue-700 border border-gray-300 rounded text-white text-sm px-4 py-3 hover:bg-blue-800">
+            <div class="m-3">
+                <label for="add-modal" class="bg-blue-700 rounded text-white text-xs px-3 py-2 hover:bg-blue-800">
                     <i class="fa-solid fa-plus mr-2"></i>Add new pet type
                 </label>
             </div>

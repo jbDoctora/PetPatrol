@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\AdminService;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
+use App\Models\TrainerRating;
 use App\Models\RequestTrainer;
 use App\Models\TrainingDetails;
 use Illuminate\Support\Facades\DB;
@@ -52,7 +53,6 @@ class OwnerController extends Controller
                     ->where('request.pet_type', $type)
                     ->where('request.user_id', auth()->id())
                     ->where('service.status', 'available');
-                // ->where('service.capacity', '>', 0);
             })
             ->join('users', function ($join) {
                 $join->on('service.user_id', '=', 'users.id')
@@ -63,6 +63,7 @@ class OwnerController extends Controller
                 'users.id as user_id',
                 'users.email',
                 'users.address',
+                'users.completedBooking',
                 'users.profile_photo',
                 'users.name as trainer_name',
                 'service.id as service_id',
@@ -79,7 +80,8 @@ class OwnerController extends Controller
         return view('owner.show-matched', [
             'matchedservices' => $matched_services,
             'request' => $request,
-            'request_id' => $request_id
+            'request_id' => $request_id,
+            // 'avg_rating' => $avg_rating,
         ]);
     }
 

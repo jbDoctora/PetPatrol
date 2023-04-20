@@ -129,6 +129,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/bookings', [AdminController::class, 'showBookings']);
     Route::get('/admin/reports', [AdminController::class, 'showReport']);
     Route::put('/admin/monitor/users/update', [AdminController::class, 'updateBan']);
+    Route::get('/admin/feedbacks', [AdminController::class, 'showFeedbacks']);
 });
 
 // Default Route
