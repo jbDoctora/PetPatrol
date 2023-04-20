@@ -128,6 +128,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/admin/service/add', [AdminController::class, 'storeService']);
     Route::get('/admin/bookings', [AdminController::class, 'showBookings']);
     Route::get('/admin/reports', [AdminController::class, 'showReport']);
+    Route::put('/admin/monitor/users/update', [AdminController::class, 'updateBan']);
 });
 
 // Default Route

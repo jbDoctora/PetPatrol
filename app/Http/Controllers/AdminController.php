@@ -142,4 +142,13 @@ class AdminController extends Controller
             'request' => $request,
         ]);
     }
+
+    public function updateBan(Request $request)
+    {
+        $userId = $request->input('user_id');
+        $user = User::where('id', $userId)->first();
+        $user->update($request->only('isBanned'));
+
+        return redirect()->back()->with('message', 'User successfully banned');
+    }
 }
