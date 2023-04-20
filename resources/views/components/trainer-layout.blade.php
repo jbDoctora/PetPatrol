@@ -240,7 +240,7 @@
                                     class="fa-solid fa-bell fa-lg mr-1"></i></button>
                         </div>
                         <ul tabindex="0"
-                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
+                            class="dropdown-content menu bg-gray-200 rounded w-52 text-black shadow text-sm">
                             <li><a href="">--upcoming features--</a></li>
                             <li><a href="">--upcoming features--</a></li>
                         </ul>
@@ -262,7 +262,7 @@
                                 class="bg-base-300">
                             {{-- <img src="/images/placeholder.png" /> --}}
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
+                        <ul tabindex="0" class="dropdown-content menu bg-gray-200 rounded w-52 shadow">
                             <li><a>Profile</a></li>
                             <li>
                                 <form method="POST" action="/logout">

@@ -61,8 +61,10 @@ Route::put('/notifications/{notification}', function (Notification $notification
 
 Route::get('/trainer/waiting-approval', [TrainerController::class, 'showWaitingApproval'])->middleware('auth');
 
+Route::get('/banned', [UserController::class, 'showBanned'])->middleware('auth')->name('banned');
+
 // Trainer Routes
-Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {
+Route::middleware(['auth', 'isTrainer', 'checkApproval', 'banned'])->group(function () {
     Route::get('/trainer', [TrainerController::class, 'index']);
     Route::put('/trainer/bookings/update', [TrainerController::class, 'updateBooking']);
     Route::get('/trainer/bookings', [TrainerController::class, 'showBooking']);
@@ -86,7 +88,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval'])->group(function () {
 });
 
 // Owner Routes
-Route::middleware(['auth', 'verified', 'isOwner'])->group(function () {
+Route::middleware(['auth', 'verified', 'isOwner', 'banned'])->group(function () {
     Route::get('/owner', [OwnerController::class, 'index']);
     Route::get('/pet-info', [PetInfoController::class, 'index']);
     Route::put('/pet-info/{id}', [PetInfoController::class, 'edit']);

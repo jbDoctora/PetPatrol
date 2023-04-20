@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'isOwner' => \App\Http\Middleware\isOwner::class,
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
         'checkApproval' => \App\Http\Middleware\checkApproval::class,
+        'banned' => \App\Http\Middleware\UserBanned::class,
     ];
 }

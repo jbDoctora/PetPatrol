@@ -4,13 +4,20 @@
         @csrf
         @method('PUT')
         <h3 class="text-blue-700 text-xl">Profile Manager</h3>
-        <div class="text-xs breadcrumbs mt-2">
+        {{-- <div class="text-xs breadcrumbs mt-2">
             <ul>
                 <li class="text-blue-700 font-bold"><i class="fa-solid fa-pen-to-square mr-2"></i><a
                         href="/profile">Edit
                         Profile</a></li>
                 <li><i class="fa-solid fa-lock mr-2"></i><a href="/profile/change-password">Change Password</a></li>
             </ul>
+        </div> --}}
+        <div class="tabs my-3">
+            <a class="tab tab-bordered tab-active text-xs" href="/profile"><i
+                    class="fa-solid fa-pen-to-square mr-2"></i>Profile</a>
+            <a class="tab tab-bordered text-xs" href="/profile/change-password"><i
+                    class=" fa-solid fa-lock mr-2"></i>Change
+                Password</a>
         </div>
 
         <div class="flex flex-col items-center justify-center mb-5 bg-blue-700 w-full rounded h-56 text-white">

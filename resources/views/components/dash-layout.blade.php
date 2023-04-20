@@ -200,7 +200,7 @@
                         <button tabindex="0" class="hover:text-yellow-400"><i
                                 class="fa-solid fa-circle-question fa-lg"></i></button>
                         <ul tabindex="0"
-                            class="dropdown-content menu bg-base-300 rounded-box w-52 p-2 text-black shadow">
+                            class="dropdown-content menu bg-base-300 rounded w-52 text-black shadow text-sm">
                             <li><a href="">About us</a></li>
                             <li><a href="">Need Help?</a></li>
                             <li><a href="">Be a Pet Patroller</a></li>
@@ -212,7 +212,7 @@
                             <img
                                 src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}">
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu rounded w-52 p-2 shadow bg-gray-200 text-sm">
+                        <ul tabindex="0" class="dropdown-content menu rounded w-52 shadow bg-gray-200 text-sm">
                             <li><a href="/profile">Profile</a></li>
                             <li>
                                 <form method="POST" action="/logout">

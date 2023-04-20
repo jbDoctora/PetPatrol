@@ -157,4 +157,9 @@ class UserController extends Controller
         }
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
+
+    public function showBanned()
+    {
+        return view('errors.banned');
+    }
 }
