@@ -35,6 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'admin_approve',
         'completedBooking',
         'isBanned',
+        'avg_rating',
     ];
 
     /**

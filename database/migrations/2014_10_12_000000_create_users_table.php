@@ -31,6 +31,7 @@ return new class extends Migration
             $table->integer('completedBooking')->nullable();
             $table->string('password');
             $table->boolean('isBanned')->default(0);
+            $table->float('avg_rating')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

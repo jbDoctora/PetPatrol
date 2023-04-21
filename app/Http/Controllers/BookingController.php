@@ -47,10 +47,25 @@ class BookingController extends Controller
 
         $rating = TrainerRating::create($formFields);
 
+        // update trainer's avg rating
+        $trainer_id = $rating->trainer_id;
+        $trainer_ratings = TrainerRating::where('trainer_id', $trainer_id)->get();
+        $total_stars = 0;
+        $count_ratings = count($trainer_ratings);
+        foreach ($trainer_ratings as $rating) {
+            $total_stars += $rating->stars;
+        }
+        $avg_rating = $count_ratings > 0 ? round($total_stars / $count_ratings, 2) : 0;
+
+        $trainer = User::where('id', $trainer_id)->first();
+        $trainer->avg_rating = $avg_rating;
+        $trainer->save();
+
+        // update booking status
         $bookingId = $request->input('book_id');
-        $rating = Booking::where('book_id', $bookingId)->first();
-        $rating->isRated = 1;
-        $rating->save();
+        $booking = Booking::where('book_id', $bookingId)->first();
+        $booking->isRated = 1;
+        $booking->save();
 
         return redirect()->back()->with('message', 'Rating added');
     }

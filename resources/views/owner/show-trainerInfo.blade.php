@@ -4,26 +4,35 @@
         <div class="px-5 py-3 border-b border-slate-300">
             <h4 class="text-lg font-medium">Personal Details</h4>
             @foreach ($showInfo as $showInfos)
-            <div class="grid grid-cols-2 gap-4 mt-4">
-                <div>
-                    <p class="text-sm font-medium text-gray-600">Name</p>
-                    <p class="text-lg font-bold">{{ $showInfos->name }}</p>
+            <div class="flex">
+                <div class="flex items-center py-5 px-8">
+                    <div class="flex my-auto w-32 h-32">
+                        <img
+                            src="{{ $showInfos->profile_photo ? asset('storage/' . $showInfos->profile_photo) : asset('/images/placeholder.png') }}">
+                    </div>
                 </div>
-                <div>
-                    <p class="text-sm font-medium text-gray-600">Email</p>
-                    <p class="text-lg font-bold">{{ $showInfos->email }}</p>
-                </div>
-                <div>
-                    <p class="text-sm font-medium text-gray-600">Address</p>
-                    <p class="text-lg font-bold">{{ $showInfos->address }}</p>
-                </div>
-                <div>
-                    <p class="text-sm font-medium text-gray-600">Sex</p>
-                    <p class="text-lg font-bold">{{ $showInfos->sex }}</p>
-                </div>
-                <div>
-                    <p class="text-sm font-medium text-gray-600">Phone Number</p>
-                    <p class="text-lg font-bold">{{ $showInfos->phone_number }}</p>
+
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Name</p>
+                        <p class="text-lg font-bold">{{ $showInfos->name }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Email</p>
+                        <p class="text-lg font-bold">{{ $showInfos->email }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Address</p>
+                        <p class="text-lg font-bold">{{ $showInfos->address }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Sex</p>
+                        <p class="text-lg font-bold">{{ $showInfos->sex }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Phone Number</p>
+                        <p class="text-lg font-bold">{{ $showInfos->phone_number }}</p>
+                    </div>
                 </div>
             </div>
             @endforeach
@@ -31,7 +40,7 @@
 
         <div class="px-5 py-3 border-b border-slate-300 my-4">
             <h4 class="text-lg font-medium">Pet Experience</h4>
-            @foreach ($portfolio as $portfolios)
+            @forelse ($portfolio as $portfolios)
             <div class="grid grid-cols-2 gap-4 mt-4">
                 <div class="w-full">
                     <h5 class="text-lg font-medium text-gray-600 mb-2">About me</h5>
@@ -73,6 +82,42 @@
                         src="{{ $portfolios->journey_photos ? asset('storage/' . $portfolios->journey_photos) : asset('/images/placeholder.png') }}"
                         alt="Photos">
                 </div>
+            </div>
+            @empty
+            <div class="text-center my-3">Pet Trainer have not yet added a Portfolio</div>
+            @endforelse
+        </div>
+
+        <div class="flex flex-col bg-blue-100 m-5">
+            <div>
+                <h3 class="px-5 pt-5">Trainer Ratings</h3>
+            </div>
+            <div class="px-5 pt-3 pb-2">
+                @foreach($showInfo as $informat)
+                <template x-for="i in 5">
+                    <i class="fa-solid fa-star fa-sm text-gray-400"
+                        :class="{'text-yellow-500': (i <= {{$informat->avg_rating}})}"></i>
+                </template>
+                <p class="text-xl font-bold text-blue-500">{{$informat->avg_rating}} out of 5</p>
+                @endforeach
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            @foreach($rating as $rate)
+
+            <div class="p-3 m-3 border border-gray-300 rounded">
+                <div class="flex items-center gap-5 my-2">
+                    <div class="w-9 h-9 rounded-full">
+                        <img
+                            src="{{ $rate->profile_photo ? asset('storage/' . $rate->profile_photo) : asset('/images/placeholder.png') }}">
+                    </div>
+                    <p>{{$rate->name}}</p>
+                </div>
+                <template x-for="i in 5" class="my-2">
+                    <i class="fa-solid fa-star fa-sm text-gray-400"
+                        :class="{'text-yellow-500': (i <= {{$rate->stars}})}"></i>
+                </template>
+                <p class="text-justify text-sm">{{$rate->comment}}</p>
             </div>
             @endforeach
         </div>

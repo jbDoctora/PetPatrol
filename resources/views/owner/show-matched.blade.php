@@ -45,11 +45,20 @@
                         <div class="mt-4">
                             <h3 class="text-blue-400 font-bold text-sm">Reviews</h3>
                             <div class="mt-2 flex items-center">
-                                {{-- <p class="text-xs text-blue-500 mr-2">{{$avg_rating}}</p> --}}
+                                <template x-for="i in 5">
+                                    <i class="fa-solid fa-star fa-sm text-gray-400"
+                                        :class="{'text-yellow-500': (i <= {{$match->avg_rating}})}"></i>
+                                </template>
+                                <p class="text-xs text-blue-500 mr-3">({{$match->avg_rating}})</p>
 
                                 <div class="text-green-600 text-xs px-2">
+                                    @if($match->completedBooking == null)
+                                    <i class="fa-solid fa-calendar-check"></i> (0) completed
+                                    booking
+                                    @else
                                     <i class="fa-solid fa-calendar-check"></i> ({{$match->completedBooking}}) completed
                                     bookings
+                                    @endif
                                 </div>
                             </div>
 

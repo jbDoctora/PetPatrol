@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('client_id')->onDelete('cascade');
             $table->foreignId('trainer_id')->onDelete('cascade');
             $table->foreignId('book_id')->onDelete('cascade');
-            $table->string('comment');
+            $table->longText('comment');
             $table->date('date_created')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('image')->nullable();
         });

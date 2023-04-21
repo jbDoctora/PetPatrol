@@ -71,6 +71,7 @@ class OwnerController extends Controller
                 'pet_info.pet_name',
                 'pet_info.pet_id',
                 'request.request_id',
+                'users.avg_rating',
             )
             ->where('request.request_id', $request_id)
             ->where('pet_info.book_status', 'requested')
@@ -100,10 +101,14 @@ class OwnerController extends Controller
             ->limit(1)
             ->get();
         $portfolio = TrainerModel::where('user_id', $user_id)->get();
+        $rating = TrainerRating::where('trainer_id', $user_id)
+            ->join('users', 'users.id', '=', 'client_id')
+            ->get();
 
         return view('owner.show-trainerInfo', [
             'showInfo' => $showInfo,
-            'portfolio' => $portfolio
+            'portfolio' => $portfolio,
+            'rating' => $rating,
         ]);
     }
 
