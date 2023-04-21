@@ -48,6 +48,48 @@ class TrainerController extends Controller
         ]);
     }
 
+    public function showPortfolioEdit()
+    {
+        $portfolio = TrainerModel::where('user_id', auth()->user()->id)->first();
+        // dd($portfolio);
+
+        return view('trainer.edit-portfolio', [
+            'portfolio' => $portfolio,
+        ]);
+    }
+
+    public function editPortfolio(Request $request)
+    {
+        $trainer = TrainerModel::where('user_id', auth()->user()->id)->first();
+        $data = $request->only(['about_me', 'services', 'experience', 'type', 'certificates', 'journey_photos']);
+        $data['type'] = $request->input('type');
+        $data['services'] = $request->input('services');
+        // dd($data);
+        if ($request->hasFile('certificates')) {
+            $certificates = $request->file('certificates');
+            $certificatesPaths = [];
+            foreach ($certificates as $certificate) {
+                $path = $certificate->store('certs', 'public');
+                $certificatesPaths[] = $path;
+            }
+            $data['certificates'] = serialize($certificatesPaths);
+        }
+
+        if ($request->hasFile('journey_photos')) {
+            $photos = $request->file('journey_photos');
+            $photosPaths = [];
+            foreach ($photos as $photo) {
+                $path = $photo->store('exp_photos', 'public');
+                $photosPaths[] = $path;
+            }
+            $data['journey_photos'] = serialize($photosPaths);
+        }
+
+        $trainer->update($data);
+
+        return redirect('/trainer/portfolio')->with('message', 'Portfolio updated successfully');
+    }
+
     public function showProfile(User $user)
     {
         $user = auth()->user();
@@ -394,11 +436,25 @@ class TrainerController extends Controller
         return view('trainer.trainer-password');
     }
 
+    // public function show()
+    // {
+
+    //     return view('trainer.portfolio', [
+    //         'portfolio' => TrainerModel::where('user_id', auth()->id())->get()
+    //     ]);
+    // }
     public function show()
     {
+        $portfolio = TrainerModel::where('user_id', auth()->id())->get();
+        foreach ($portfolio as $item) {
+            $item->certificates = unserialize($item->certificates);
+            $item->journey_photos = unserialize($item->journey_photos);
+        }
+        $user = User::where('id', auth()->user()->id)->first();
 
         return view('trainer.portfolio', [
-            'portfolio' => TrainerModel::where('user_id', auth()->id())->get()
+            'portfolio' => $portfolio,
+            'trainer' => $user
         ]);
     }
 
@@ -428,14 +484,33 @@ class TrainerController extends Controller
             'about_me' => 'required',
             'certificates' => 'required',
             'experience' => 'required',
+            'services' => 'required',
+            'type' => 'required',
+            'certificates' => 'required',
+            'journey_photos' => 'required'
+        ], [
+            'services.required' => 'Please select at least one of the services checkbox',
+            'type.required' => 'Please select at least one of the type checkbox above'
         ]);
 
         if ($request->hasFile('certificates')) {
-            $formFields['certificates'] = $request->file('certificates')->store('certs', 'public');
+            $certificates = $request->file('certificates');
+            $certificatesPaths = [];
+            foreach ($certificates as $certificate) {
+                $path = $certificate->store('certs', 'public');
+                $certificatesPaths[] = $path;
+            }
+            $formFields['certificates'] = serialize($certificatesPaths);
         }
 
         if ($request->hasFile('journey_photos')) {
-            $formFields['journey_photos'] = $request->file('journey_photos')->store('journey_photos', 'public');
+            $photos = $request->file('journey_photos');
+            $photosPaths = [];
+            foreach ($photos as $photo) {
+                $path = $photo->store('exp_photos', 'public');
+                $photosPaths[] = $path;
+            }
+            $formFields['journey_photos'] = serialize($photosPaths);
         }
 
         $formFields['services'] = $request->input('services');

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->longText('about_me');
             $table->string('services');
             $table->string('type');
-            $table->string('certificates');
+            $table->longText('certificates');
             $table->longText('experience');
-            $table->string('journey_photos')->nullable();
+            $table->longText('journey_photos');
         });
     }
 

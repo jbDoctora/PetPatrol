@@ -90,7 +90,7 @@
 
         <div class="flex flex-col bg-blue-100 m-5">
             <div>
-                <h3 class="px-5 pt-5">Trainer Ratings</h3>
+                <h3 class="px-5 pt-5 text-lg">Trainer Ratings</h3>
             </div>
             <div class="px-5 pt-3 pb-2">
                 @foreach($showInfo as $informat)
@@ -102,7 +102,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-5">
+        <div class="flex flex-col gap-1">
             @foreach($rating as $rate)
 
             <div class="p-3 m-3 border border-gray-300 rounded">

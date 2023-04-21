@@ -14,8 +14,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $all_users = User::where('isBanned', '0')->get();
-        $active_bookings = Booking::whereIn('status', ['pending', 'approved', 'in progress'])->get();
+        $all_users = User::where('isBanned', '0')
+            ->whereIn('role', ['1', '0'])
+            ->get();
+        $active_bookings = Booking::whereIn('status', ['pending', 'approved', 'in progress'])
+            ->get();
 
         $count_users = count($all_users);
         $count_active_bookings = count($active_bookings);

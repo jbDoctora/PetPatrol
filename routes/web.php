@@ -76,6 +76,8 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval', 'banned'])->group(funct
     Route::get('/trainer/profile/change-password', [TrainerController::class, 'showPasswordChange']);
     Route::get('/trainer/portfolio/create', [TrainerController::class, 'create']);
     Route::post('/trainer/portfolio/add', [TrainerController::class, 'store']);
+    Route::get('/trainer/portfolio/edit', [TrainerController::class, 'showPortfolioEdit']);
+    Route::put('/trainer/portfolio/edit/update', [TrainerController::class, 'editPortfolio']);
     Route::get('/trainer/service/add', [TrainerController::class, 'showService']);
     Route::get('/settings/payment', [TrainerController::class, 'showPayment']);
     Route::put('/settings/payment/{id}', [TrainerController::class, 'updatePayment']);

@@ -25,11 +25,11 @@ class RequestTrainerController extends Controller
             ->where('request_status', 'active')
             ->get();
 
-        $request = RequestTrainer::find($requestinfo->first()->request_id);
+        // $request = RequestTrainer::find($requestinfo->first()->request_id);
 
-        $course = $request->course;
-        $availability = $request->sessions;
-        $type = $request->pet_type;
+        // $course = $request->course;
+        // $availability = $request->sessions;
+        // $type = $request->pet_type;
 
         // $matched_services = DB::table('request')
         //     ->join('service', function ($join) use ($course, $availability, $type) {

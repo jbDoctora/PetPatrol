@@ -169,25 +169,33 @@
                     <span class="material-icons" style="font-size: 25px">
                         bookmark
                     </span>
-                    <span class="ml-9">Bookings</span>
+                    <div class="ml-9">Bookings</div>
                 </a>
                 <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons" style="font-size: 25px;">
                         home_repair_service
                     </span>
-                    <span class="ml-9">Service</span>
+                    <div class="ml-9">Service</div>
+                </a>
+                <a href="/trainer/portfolio" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
+                    <span class="material-icons md-36" style="font-size: 25px;">
+                        hub
+                    </span>
+                    <div class="ml-9">Portfolio</div>
                 </a>
                 <a href="/trainer/report" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         assessment
                     </span>
-                    <span class="ml-9">Report</span>
+                    <div class="ml-9">Report</div>
                 </a>
                 <a href="/trainer/profile" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons md-36" style="font-size: 25px;">
                         settings
                     </span>
-                    <span class="ml-9">Settings</span>
+
+                    <div class="ml-9">Settings</div>
+
                 </a>
 
                 <a class="flex items-center w-full px-8 py-4 text-xs text-white"></a>

@@ -1,12 +1,15 @@
 <x-trainer-layout>
     <div x-data="{ service: [], type: [] }" class="bg-white m-5 p-5 rounded">
         <p class="text-xs text-red-500">fields marked * are required</p>
-        <form method="POST" action="/trainer/portfolio/add" enctype="multipart/form-data">
+
+        <form method="POST" action="/trainer/portfolio/edit/update" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
+            {{-- @foreach($portfolio as $portfolios) --}}
+            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
             <div class="m-3 rounded-xl bg-white">
-                <input type="hidden" value="{{ auth()->id() }}" name="user_id">
                 <h2 class="p-5 text-xl font-normal"><span class="text-red-500">*</span>About Me</h2>
-                <textarea id="myeditorinstance" name="about_me" rows="5"></textarea>
+                <textarea id="myeditorinstance" name="about_me" rows="5">{{$portfolio->about_me}}</textarea>
                 @error('about_me')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
@@ -14,7 +17,8 @@
 
             <div class="m-3 rounded-xl bg-white">
                 <h2 class="p-5 text-xl font-normal"><span class="text-red-500">*</span>Pet Training Experience</h2>
-                <textarea id="myeditorinstance" class="h-64 w-64" name="experience" rows="5"></textarea>
+                <textarea id="myeditorinstance" class="h-64 w-64" name="experience"
+                    rows="5">{{$portfolio->experience}}</textarea>
                 @error('experience')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
@@ -109,4 +113,7 @@
                     Submit
                 </button>
             </div>
+            {{-- @endforeach --}}
+        </form>
+
 </x-trainer-layout>
