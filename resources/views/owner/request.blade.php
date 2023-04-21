@@ -30,12 +30,20 @@
                                 <p class="font-medium text-gray-600">Sessions</p>
                                 <p class="font-semibold text-gray-900">{{ $info->sessions }}</p>
                             </div>
+                            <div class="w-1/2 text-center">
+                                <p class="font-medium text-gray-600">Sessions</p>
+                                @if($info->location == 'public')
+                                <p class="font-semibold text-gray-900">In House</p>
+                                @else
+                                <p class="font-semibold text-gray-900">Group Session</p>
+                                @endif
+                            </div>
                         </div>
                         <div class="my-4 border-t border-gray-200"></div>
-
+                        {{--
                         <div class="my-4">
                             <p class="text-left text-xs font-bold text-gray-700">Status:</p>
-                            {{-- @if (!$matchedservices->isEmpty()) --}}
+                            @if (!$match_count >= 1)
                             <div class="flex flex-row justify-between">
                                 <p class="text-center text-xs font-bold text-green-500">Active Match</p>
                                 <div class="tooltip tooltip-left"
@@ -43,21 +51,21 @@
                                     <i class="fa-solid fa-circle-info fa-lg"></i>
                                 </div>
                             </div>
-                            {{-- @else
+                            @else
                             <div class="flex flex-row justify-between">
                                 <p class="text-center text-xs font-bold text-red-500">No Active Match</p>
                                 <div class="tooltip tooltip-left" data-tip="No active trainer matched, come back later">
                                     <i class="fa-solid fa-circle-info" style="font-size: 1.25rem;"></i>
                                 </div>
                             </div>
-                            @endif --}}
-                        </div>
+                            @endif
+                        </div> --}}
 
 
                         <div class="mt-6 flex flex-row justify-end gap-2">
                             <button
-                                class="tracking-wide rounded px-5 py-2 bg-blue-700 text-white text-xs font-medium hover:bg-blue-800"><a
-                                    href="/show-matched/{{ $info->request_id }}"><i
+                                class="tracking-wide rounded px-5 py-2 bg-blue-700 text-white text-xs font-medium hover:bg-blue-800 tooltip"
+                                data-tip="View matched trainers"><a href="/show-matched/{{ $info->request_id }}"><i
                                         class="fa-solid fa-binoculars fa-lg"></i></a></button>
 
                             <label

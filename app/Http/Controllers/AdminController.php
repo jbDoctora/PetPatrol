@@ -14,7 +14,16 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $all_users = User::where('isBanned', '0')->get();
+        $active_bookings = Booking::whereIn('status', ['pending', 'approved', 'in progress'])->get();
+
+        $count_users = count($all_users);
+        $count_active_bookings = count($active_bookings);
+
+        return view('admin.dashboard', [
+            'all_users' => $count_users,
+            'active_bookings' => $count_active_bookings,
+        ]);
     }
 
     public function showTrainerApproval()
@@ -157,7 +166,34 @@ class AdminController extends Controller
         $trainer = User::where('role', '=', '1')
             ->join('rating', 'users.id', '=', 'rating.trainer_id')
             ->get();
-
+        // dd($trainer);
         return view('admin.trainer-feedback', compact('trainer'));
+    }
+
+    public function showBanned()
+    {
+        $banned_user = User::where('isBanned', '1')->get();
+
+        return view('admin.view-banned', compact('banned_user'));
+    }
+
+    public function getBookingEndpoint()
+    {
+        $bookings = Booking::select('book_id', 'start_date', 'end_date', 'client_name', 'booking.status',  'booking.book_id')
+            ->get();
+
+        $dataPoints = [];
+
+        foreach ($bookings as $booking) {
+            $dataPoints[] = [
+                'y' => $booking->book_id,
+                'label' => $booking->client_name,
+                'start_date' => $booking->start_date,
+                'end_date' => $booking->end_date,
+                'status' => $booking->status
+            ];
+        }
+
+        return response()->json($dataPoints);
     }
 }

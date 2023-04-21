@@ -15,7 +15,6 @@
         <table id="myTable">
             <thead class="bg-blue-700 text-white text-xs">
                 <tr>
-                    <th>Id</th>
                     <th>Photo</th>
                     <th>Trainer Name</th>
                     <th>Email</th>
@@ -26,80 +25,12 @@
             <tbody class="text-xs text-gray-600">
                 @foreach($trainer as $train)
                 <tr>
-                    <td>
-                        <div class="my-2">{{$train->id}}</div>
-                    </td>
-                    <td><img src="{{$train->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+                    <td><img src="{{$train->profile_photo ? asset('storage/' . $train->profile_photo) : asset('/images/placeholder.png') }}"
                             alt="Profile photo" class="h-14 w-14 rounded-full bg-white object-cover"></td>
                     <td>{{$train->name}}</td>
                     <td>{{$train->email}}</td>
                     <td>
-                        @if($train->stars == 1)
-                        <div class="rating rating-sm">
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" checked />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                        </div>
-                        @elseif($train->stars == 2)
-                        <div class="rating rating-sm">
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" checked />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                        </div>
-                        @elseif($train->stars == 3)
-                        <div class="rating rating-sm">
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" checked />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                        </div>
-                        @elseif($train->stars == 4)
-                        <div class="rating rating-sm">
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" checked />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                        </div>
-                        @elseif($train->stars == 5)
-                        <div class="rating rating-sm">
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" />
-                            <input type="radio" name="rating-6"
-                                class="mask mask-star-2 bg-orange-400 pointer-events-none" checked />
-                        </div>
-                        @endif
+                        <i class="fa-solid fa-star fa-lg pr-3 text-yellow-400"></i>{{$train->stars}}
                     </td>
                     <td>{{$train->comment}}</td>
                 </tr>

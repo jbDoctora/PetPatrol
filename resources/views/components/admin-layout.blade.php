@@ -61,11 +61,10 @@
 
 
     <x-head.tinymce-config />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
         rel="stylesheet">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
@@ -77,6 +76,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
 </head>
@@ -172,7 +172,7 @@
                         </span>
                         <span class="ml-9">Trainer Feedbacks</span>
                     </a>
-                    <a href="#"
+                    <a href="/admin/monitor/showBannedUsers"
                         class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black bg-gray-200">
                         <span class="material-icons-outlined" style="font-size: 25px">
                             block
