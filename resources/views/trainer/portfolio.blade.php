@@ -6,9 +6,13 @@
                 <span class="text-gray-900 text-xl my-auto tooltip" data-tip="This is what the Pet Owner See"><i
                         class="fa-solid fa-circle-info ml-3"></i></span>
             </div>
+
+            @if($count_portfolio == 1)
             <div class="text-sm">
                 <a href="/trainer/portfolio/edit"><i class="fa-solid fa-pen-to-square fa-xl pr-3"></i>Edit Portfolio</a>
             </div>
+            @else
+            @endif
         </div>
         @forelse ($portfolio as $portfolios)
         <section class="container mx-auto mt-6 p-3">

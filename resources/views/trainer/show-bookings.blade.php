@@ -83,6 +83,7 @@
                             Payment Status
                         </th>
                         <th class="text-xs font-normal">Gcash Reference Number</th>
+                        <th class="text-xs font-normal">Venue</th>
                         <th class="text-xs font-normal">
                             Start Date</th>
                         <th class="text-xs font-normal">End Date</th>
@@ -243,6 +244,13 @@
                             <p>payment not uploaded</p>
                             @else
                             <p class="font-bold">{{$requests->gcash_refnum}}</p>
+                            @endif
+                        </td>
+                        <td class="whitespace-nowrap border-b border-slate-200">
+                            @if($requests->location == "public")
+                            <p>Trainer's House</p>
+                            @else
+                            <p>Home Service</p>
                             @endif
                         </td>
                         <td class="whitespace-nowrap border-b border-slate-200">{{ $requests->start_date }}</td>

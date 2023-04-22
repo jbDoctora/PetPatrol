@@ -37,3 +37,25 @@ import "./bootstrap";
 
 //     calendar.render();
 // });
+$(document).on(
+    "click",
+    ".dropdown-content.menu .dropdown-item",
+    function (event) {
+        event.preventDefault();
+        var notificationId = $(this).data("id");
+        var notificationUrl = $(this).data("url");
+        $.ajax({
+            url: notificationUrl,
+            type: "PUT",
+            data: {
+                id: notificationId,
+            },
+            success: function () {
+                window.location.href = $(this).data("booking-url");
+            },
+            error: function () {
+                alert("Failed to mark notification as read.");
+            },
+        });
+    }
+);

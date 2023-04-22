@@ -18,14 +18,26 @@
 
 
         <div class="flex flex-col justify-start my-7">
-            <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="password">Password</label>
+            <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="old-password">Old
+                    Password</label>
+                <input
+                    class="focus:shadow-outline w-80 appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                    type="password" name="old_password">
+            </div>
+            @error('old_password')
+            <p class="text-xs text-red-500">{{ $message }}</p>
+            @enderror
+
+            <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="new-password">New
+                    Password</label>
                 <input
                     class="focus:shadow-outline w-80 appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     type="password" name="password">
             </div>
             @error('password')
-            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+            <p class="text-xs text-red-500">{{ $message }}</p>
             @enderror
+
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="password_confirmation">Confirm
                     Password</label>
                 <input
@@ -33,7 +45,7 @@
                     type="password" name="password_confirmation">
             </div>
             @error('password_confirmation')
-            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+            <p class="text-xs text-red-500">{{ $message }}</p>
             @enderror
         </div>
 

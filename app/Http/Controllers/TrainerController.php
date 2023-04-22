@@ -127,11 +127,13 @@ class TrainerController extends Controller
             'service.availability',
             'service.id as service_id',
             'users.email',
-            'users.phone_number'
+            'users.phone_number',
+            'request.location'
         )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('users', 'users.id', '=', 'booking.trainer_id')
             ->join('service', 'service.id', 'booking.service_id')
+            ->join('request', 'request.request_id', 'booking.request_id')
             // ->where('users.role', 0)
             ->where('booking.trainer_id', $trainerId)
             ->orderBy('booking.start_date')
@@ -335,13 +337,32 @@ class TrainerController extends Controller
         return redirect()->back()->with('message', 'User updated successfully.');
     }
 
+    // public function updatePassword(Request $request, $id)
+    // {
+    //     $user = User::findOrFail($id);
+
+    //     $request->validate([
+    //         'password' => 'required|confirmed|min:6',
+    //     ]);
+
+    //     $user->password = Hash::make($request->password);
+    //     $user->save();
+
+    //     return back()->with('message', 'Password updated successfully.');
+    // }
     public function updatePassword(Request $request, $id)
     {
         $user = User::findOrFail($id);
 
         $request->validate([
+            'old_password' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
+
+        // Verify old password
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'The old password is incorrect.']);
+        }
 
         $user->password = Hash::make($request->password);
         $user->save();
@@ -451,10 +472,12 @@ class TrainerController extends Controller
             $item->journey_photos = unserialize($item->journey_photos);
         }
         $user = User::where('id', auth()->user()->id)->first();
+        $count_portfolio = count($portfolio);
 
         return view('trainer.portfolio', [
             'portfolio' => $portfolio,
-            'trainer' => $user
+            'trainer' => $user,
+            'count_portfolio' => $count_portfolio,
         ]);
     }
 

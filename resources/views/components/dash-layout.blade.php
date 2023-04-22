@@ -162,10 +162,12 @@
                             <button tabindex="0" class="hover:text-yellow-400">
                                 <i class="fa-solid fa-bell fa-lg"></i>
                                 <span class="sr-only">Notifications</span>
+                                @if(auth()->user()->notifications->count() > 0)
                                 <span
                                     class="indicator-item badge bg-yellow-400 text-black font-bold text-xs rounded-full absolute -top-1 -right-1">
                                     {{ auth()->user()->notifications->count() }}
                                 </span>
+                                @endif
                             </button>
                         </div>
                         <ul tabindex="0" class="dropdown-content menu bg-white w-72">
@@ -176,9 +178,9 @@
                                 @method('PUT')
                                 <a href="/bookings">
                                     <li
-                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer border-b border-gray-300">
+                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer">
                                         <button type="submit"
-                                            class="block px-4 py-3 text-xs hover:bg-gray-400 text-black text-left">{{
+                                            class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">{{
                                             $notification->message }}</button>
                                     </li>
                                 </a>
@@ -195,7 +197,7 @@
                             <form action="{{ route('notifications.markAllAsRead') }}" method="POST">
                                 @csrf
                                 <button type="submit"
-                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-200 text-blue-700">
+                                    class="block w-full text-center px-4 py-2 text-xs hover:bg-gray-200 bg-green-100 text-green-700">
                                     Mark All as Read
                                 </button>
                             </form>
@@ -206,7 +208,7 @@
                             <form action="{{ route('notifications.clearAll') }}" method="POST">
                                 @csrf
                                 <button type="submit"
-                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-200 text-red-700">
+                                    class="block w-full text-center px-4 py-2 text-xs hover:bg-gray-200 bg-red-100 text-red-700">
                                     Clear All Notifications
                                 </button>
                             </form>

@@ -61,16 +61,22 @@ class UserController extends Controller
 
     public function updatePassword(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         $request->validate([
+            'old_password' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
+
+        // Verify old password
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'The old password is incorrect.']);
+        }
 
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->back()->with('message', 'Password updated successfully.');
+        return back()->with('message', 'Password updated successfully.');
     }
 
     public function store(Request $request)

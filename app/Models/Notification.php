@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Notification extends Model
 {
@@ -25,11 +26,21 @@ class Notification extends Model
         return $this->morphTo();
     }
 
+    // public function markAsRead()
+    // {
+    //     $this->read_at = now();
+    //     $this->save();
+
+    //     return redirect('/bookings');
+    // }
     public function markAsRead()
     {
         $this->read_at = now();
         $this->save();
-
-        return redirect('/bookings');
+        if (Auth::user()->role == 1) {
+            return redirect('/trainer/bookings');
+        } elseif (Auth::user()->role == 0) {
+            return redirect('/bookings');
+        }
     }
 }
