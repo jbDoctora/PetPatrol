@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\GcashPaymentNotification;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
@@ -60,35 +61,36 @@ class Booking extends Model
         return $query; // return the query builder instance
     }
 
-    public function save(array $options = [])
-    {
-        $originalStatus = $this->getOriginal('status');
-        $newStatus = $this->getAttribute('status');
+    // public function save(array $options = [])
+    // {
+    //     $originalStatus = $this->getOriginal('status');
+    //     $newStatus = $this->getAttribute('status');
 
-        if ($originalStatus !== $newStatus && $newStatus !== 'pending') {
-            // create status notification
-            $statusNotification = new UserNotification([
-                'message' => "Booking status for booking ID {$this->book_id} has changed to {$newStatus}."
-            ]);
+    //     if ($originalStatus !== $newStatus && $newStatus !== 'pending') {
+    //         // create status notification
+    //         $statusNotification = new UserNotification([
+    //             'message' => "Booking status for booking ID {$this->book_id} has changed to {$newStatus}."
+    //         ]);
 
-            // set notifiable type and ID
-            $statusNotification->notifiable_type = 'App\Models\User';
-            $statusNotification->notifiable_id = $this->client_id;
+    //         // set notifiable type and ID
+    //         $statusNotification->notifiable_type = 'App\Models\User';
+    //         $statusNotification->notifiable_id = $this->client_id;
 
-            // save status notification
-            $statusNotification->save();
-        }
-        parent::save($options);
-    }
+    //         // save status notification
+    //         $statusNotification->save();
+    //     }
+    //     parent::save($options);
+    // }
+
 
     protected $table = 'booking';
     public $timestamps = false;
 }
 
-trait Notificationable
-{
-    public function notifications()
-    {
-        return $this->morphMany(Notification::class, 'notifiable');
-    }
-}
+// trait Notificationable
+// {
+//     public function notifications()
+//     {
+//         return $this->morphMany(Notification::class, 'notifiable');
+//     }
+// }

@@ -11,6 +11,11 @@
                         class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
                         training
                         service</label>
+                    @elseif(empty(auth()->user()->gcash_number || auth()->user()->gcash_qr))
+                    <label for="error-modal-2"
+                        class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
+                        training
+                        service</label>
                     @else
                     <label for="my-modal"
                         class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
@@ -167,6 +172,20 @@
                 Package</p>
             <div class="flex justify-end">
                 <a href="/trainer/portfolio">
+                    <button class="rounded bg-blue-700 text-white text-sm px-3 py-2">Ok</button></a>
+            </div>
+        </div>
+    </div>
+
+    {{-- MODAL FOR CREATING A PORTFOLIO --}}
+    <input type="checkbox" id="error-modal-2" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative rounded">
+            <label for="error-modal-2" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Create Gcash Details</h3>
+            <p class="py-4 text-sm">You need to create your gcash details</p>
+            <div class="flex justify-end">
+                <a href="/settings/payment">
                     <button class="rounded bg-blue-700 text-white text-sm px-3 py-2">Ok</button></a>
             </div>
         </div>

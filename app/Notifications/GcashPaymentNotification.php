@@ -18,12 +18,12 @@ class GcashPaymentNotification extends Notification
      * @return void
      */
 
-    public $booking;
+    private $bookingData;
 
-    public function __construct($booking)
+    public function __construct($bookingData)
     {
         //
-        $this->booking = $booking;
+        $this->bookingData = $bookingData;
     }
 
     /**
@@ -34,7 +34,7 @@ class GcashPaymentNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -46,9 +46,10 @@ class GcashPaymentNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->line($this->bookingData['body'])
+            ->subject($this->bookingData['subject'])
+            ->action($this->bookingData['bookingStatus'], $this->bookingData['url'])
+            ->line($this->bookingData['endingMessage']);
     }
 
     /**
@@ -59,14 +60,18 @@ class GcashPaymentNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            'booking_id' => $this->booking->book_id,
-            'message' => 'Payment received via GCash RefNum: ' . $this->booking->gcash_refnum,
-        ];
+        // return [
+        //     'booking_id' => $this->bookingData->book_id,
+        //     'message' => 'Payment received via GCash RefNum: ' . $this->bookingData->gcash_refnum,
+        // ];
     }
 
     public function toDatabase($notifiable)
     {
         //
+        return [
+            'book_id' => $this->bookingData['book_id'],
+            'message' => $this->bookingData['message'],
+        ];
     }
 }

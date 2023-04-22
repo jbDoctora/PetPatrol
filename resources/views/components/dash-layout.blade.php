@@ -181,7 +181,7 @@
                                         class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer">
                                         <button type="submit"
                                             class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">{{
-                                            $notification->message }}</button>
+                                            $notification->data['message'] }}</button>
                                     </li>
                                 </a>
                             </form>
@@ -199,17 +199,6 @@
                                 <button type="submit"
                                     class="block w-full text-center px-4 py-2 text-xs hover:bg-gray-200 bg-green-100 text-green-700">
                                     Mark All as Read
-                                </button>
-                            </form>
-                            @endif
-
-                            {{-- Clear All Notifications --}}
-                            @if (auth()->user()->notifications->count() > 0)
-                            <form action="{{ route('notifications.clearAll') }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="block w-full text-center px-4 py-2 text-xs hover:bg-gray-200 bg-red-100 text-red-700">
-                                    Clear All Notifications
                                 </button>
                             </form>
                             @endif

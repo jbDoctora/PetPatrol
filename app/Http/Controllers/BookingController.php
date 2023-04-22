@@ -13,6 +13,7 @@ use App\Models\TrainerRating;
 use App\Models\RequestTrainer;
 use App\Models\TrainingDetails;
 use App\Http\Controllers\Controller;
+use App\Notifications\GcashPaymentNotification;
 
 class BookingController extends Controller
 {
@@ -143,40 +144,30 @@ class BookingController extends Controller
         return view('owner.checkout', compact('requests'));
     }
 
-    // public function updatePayment(Request $request, $book_id)
-    // {
-    //     // dd($book_id);
-    //     $booking = Booking::where('book_id', $book_id)->first();
 
-    //     $data = [
-    //         'gcash_refnum' => $request->input('gcash_refnum')
-    //     ];
-
-    //     $booking->update($data);
-
-    //     return redirect('/bookings')->with('message', 'Payment Uploaded');
-    // }
     public function updatePayment(Request $request, $book_id)
     {
         $booking = Booking::where('book_id', $book_id)->first();
-
+        $user = User::where('id', $booking['trainer_id'])->first();
         $data = [
             'gcash_refnum' => $request->input('gcash_refnum')
         ];
 
         $booking->update($data);
 
-        // Create a new notification for this update
-        $notification = new Notification();
-        $notification->message = "Payment uploaded for booking " . $booking->getCodeAttribute();
-        $notification->notifiable_type = 'App\Models\User';
-        $notification->notifiable_id = $booking->client_id;
-        $notification->save();
+        $bookingData = [
+            'body' => 'Dear ' . $booking['trainer_name'] . ', The client has uploaded the Gcash reference number. Please dont forget to verify the payment by changing the payment status in the booking manager',
+            'subject' => 'Gcash Reference Number Uploaded for ' . $booking['code'],
+            'bookingStatus' => 'Click here to view',
+            'url' => url('/trainer/bookings'),
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'book_id' => $booking->code,
+            'message' => 'Payment has been uploaded by the client.'
 
-        return redirect('/bookings')->with(
-            'message',
-            'Payment Uploaded'
-        );
+        ];
+        $user->notify(new GcashPaymentNotification($bookingData));
+
+        return redirect('/bookings')->with('message', 'Payment Uploaded');
     }
 
     public function showBooking($id)
