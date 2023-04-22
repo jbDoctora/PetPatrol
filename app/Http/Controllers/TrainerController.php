@@ -464,12 +464,16 @@ class TrainerController extends Controller
         $training = Service::where('user_id', auth()->id())->get();
         $adminService = AdminService::where('isPosted', 1)->get();
         $adminPetType = AdminPetType::where('isPosted', 1)->get();
+        $portfolio = TrainerModel::where('user_id', auth()->user()->id)->get();
+
+        $portfolio_count = count($portfolio);
 
         return view('trainer.create-service', [
             'service' => $service,
             'training' => $training,
             'adminService' => $adminService,
-            'adminPetType' => $adminPetType
+            'adminPetType' => $adminPetType,
+            'portfolio' => $portfolio_count
         ]);
     }
 

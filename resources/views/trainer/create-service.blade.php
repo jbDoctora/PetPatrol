@@ -5,10 +5,18 @@
                 <div>
                     <h3>Training Class</h3>
                 </div>
-                <div><label for="my-modal"
+                <div>
+                    @if($portfolio == 0)
+                    <label for="error-modal"
                         class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
                         training
                         service</label>
+                    @else
+                    <label for="my-modal"
+                        class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
+                        training
+                        service</label>
+                    @endif
                 </div>
             </div>
 
@@ -147,5 +155,20 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    {{-- MODAL FOR CREATING A PORTFOLIO --}}
+    <input type="checkbox" id="error-modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box relative rounded">
+            <label for="error-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <h3 class="text-lg font-bold">Create Portfolio</h3>
+            <p class="py-4 text-sm">You need to create your portfolio first before creating a Training
+                Package</p>
+            <div class="flex justify-end">
+                <a href="/trainer/portfolio">
+                    <button class="rounded bg-blue-700 text-white text-sm px-3 py-2">Ok</button></a>
+            </div>
+        </div>
     </div>
 </x-trainer-layout>
