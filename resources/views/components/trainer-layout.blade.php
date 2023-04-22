@@ -240,17 +240,60 @@
                     </div>
 
                     @auth
-                    <div class="dropdown dropdown-end mx-2">
+                    <div class="relative dropdown dropdown-end mx-2">
                         <div class="indicator">
-                            <span
-                                class="indicator-item badge border-0 bg-yellow-500 text-black font-bold text-xs">1</span>
-                            <button tabindex="0" class="hover:text-yellow-400 text-white"><i
-                                    class="fa-solid fa-bell fa-lg mr-1"></i></button>
+                            <button tabindex="0" class="hover:text-yellow-400">
+                                <i class="fa-solid fa-bell fa-lg"></i>
+                                <span class="sr-only">Notifications</span>
+                                <span
+                                    class="indicator-item badge bg-yellow-400 text-black font-bold text-xs rounded-full absolute -top-1 -right-1">
+                                    {{ auth()->user()->notifications->count() }}
+                                </span>
+                            </button>
                         </div>
-                        <ul tabindex="0"
-                            class="dropdown-content menu bg-gray-200 rounded w-52 text-black shadow text-sm">
-                            <li><a href="">--upcoming features--</a></li>
-                            <li><a href="">--upcoming features--</a></li>
+                        <ul tabindex="0" class="dropdown-content menu bg-white w-72">
+                            <h6 class="text-sm text-white bg-blue-500 p-2">Notification</h6>
+                            @forelse(auth()->user()->notifications as $notification)
+                            <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <a href="/bookings">
+                                    <li
+                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer border-b border-gray-300">
+                                        <button type="submit"
+                                            class="block px-4 py-3 text-xs hover:bg-gray-400 text-black text-left">{{
+                                            $notification->message }}</button>
+                                    </li>
+                                </a>
+                            </form>
+                            @empty
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200 text-black">Empty
+                                    notification</a>
+                            </li>
+                            @endforelse
+
+                            {{-- Mark All as Read --}}
+                            @if (auth()->user()->unreadNotifications->count() > 0)
+                            <form action="{{ route('notifications.markAllAsRead') }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-200 text-blue-700">
+                                    Mark All as Read
+                                </button>
+                            </form>
+                            @endif
+
+                            {{-- Clear All Notifications --}}
+                            @if (auth()->user()->notifications->count() > 0)
+                            <form action="{{ route('notifications.clearAll') }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-200 text-red-700">
+                                    Clear All Notifications
+                                </button>
+                            </form>
+                            @endif
                         </ul>
                     </div>
                     {{-- <div class="dropdown dropdown-end mx-2">

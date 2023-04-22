@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\GcashPaymentNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+
 
 class Booking extends Model
 {
+    use HasFactory, Notifiable;
+
     protected $primaryKey = 'book_id';
     protected $fillable = [
         'pet_id', 'client_id', 'trainer_id', 'status', 'start_date', 'end_date', 'payment', 'client_name',
@@ -59,23 +65,21 @@ class Booking extends Model
         $originalStatus = $this->getOriginal('status');
         $newStatus = $this->getAttribute('status');
 
-        if ($originalStatus !== $newStatus) {
-            // create notification
-            $notification = new UserNotification([
+        if ($originalStatus !== $newStatus && $newStatus !== 'pending') {
+            // create status notification
+            $statusNotification = new UserNotification([
                 'message' => "Booking status for booking ID {$this->book_id} has changed to {$newStatus}."
             ]);
 
             // set notifiable type and ID
-            $notification->notifiable_type = 'App\Models\User';
-            $notification->notifiable_id = $this->client_id;
+            $statusNotification->notifiable_type = 'App\Models\User';
+            $statusNotification->notifiable_id = $this->client_id;
 
-            // save notification
-            $notification->save();
+            // save status notification
+            $statusNotification->save();
         }
-
         parent::save($options);
     }
-
 
     protected $table = 'booking';
     public $timestamps = false;

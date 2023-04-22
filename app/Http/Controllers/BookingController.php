@@ -143,9 +143,21 @@ class BookingController extends Controller
         return view('owner.checkout', compact('requests'));
     }
 
+    // public function updatePayment(Request $request, $book_id)
+    // {
+    //     // dd($book_id);
+    //     $booking = Booking::where('book_id', $book_id)->first();
+
+    //     $data = [
+    //         'gcash_refnum' => $request->input('gcash_refnum')
+    //     ];
+
+    //     $booking->update($data);
+
+    //     return redirect('/bookings')->with('message', 'Payment Uploaded');
+    // }
     public function updatePayment(Request $request, $book_id)
     {
-        // dd($book_id);
         $booking = Booking::where('book_id', $book_id)->first();
 
         $data = [
@@ -154,7 +166,17 @@ class BookingController extends Controller
 
         $booking->update($data);
 
-        return redirect('/bookings')->with('message', 'Payment Uploaded');
+        // Create a new notification for this update
+        $notification = new Notification();
+        $notification->message = "Payment uploaded for booking " . $booking->getCodeAttribute();
+        $notification->notifiable_type = 'App\Models\User';
+        $notification->notifiable_id = $booking->client_id;
+        $notification->save();
+
+        return redirect('/bookings')->with(
+            'message',
+            'Payment Uploaded'
+        );
     }
 
     public function showBooking($id)
@@ -210,6 +232,11 @@ class BookingController extends Controller
         $pet->update();
 
         $booking->update($formFields);
+        $notification = new Notification();
+        $notification->message = "Booking is cancelled for " . $booking->getCodeAttribute();
+        $notification->notifiable_type = 'App\Models\User';
+        $notification->notifiable_id = $booking->trainer_id;
+        $notification->save();
 
         return redirect()->back()->with('message', 'Successfully Cancelled!');
     }

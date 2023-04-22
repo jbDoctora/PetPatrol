@@ -1,6 +1,6 @@
 <x-trainer-layout>
     <div x-data="{ service: [], type: [] }" class="bg-white m-5 p-5 rounded">
-        <p class="text-xs text-red-500">fields marked * are required</p>
+        <p class="text-xs text-gray-800"><span class="text-red-500 text-sm mr-2">*</span>Indicates a required field</p>
         <form method="POST" action="/trainer/portfolio/add" enctype="multipart/form-data">
             @csrf
             <div class="m-3 rounded-xl bg-white">

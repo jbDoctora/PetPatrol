@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserNotification extends Notification
+class UserNotification extends Model
 {
+    use HasFactory;
     // define table name and primary key
     protected $table = 'notifications';
     protected $primaryKey = 'id';
@@ -16,7 +17,7 @@ class UserNotification extends Notification
         'notifiable_type',
         'notifiable_id',
         'message',
-        'read_at'
+        'read_at',
     ];
 
     // define relationships

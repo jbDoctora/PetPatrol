@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('months');
             $table->string('breed')->default('none');
             $table->string('weight');
-            $table->longText('info');
+            $table->longText('info')->nullable();
             $table->string('vaccine');
             $table->string('vaccine_list');
             $table->string('book_status')->nullable();

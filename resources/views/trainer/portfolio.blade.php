@@ -97,13 +97,12 @@
             @empty
             <div class="flex justify-center">
                 {{-- <img class="h-72 w-96" src="{{ asset('images/bored.png') }}" /> --}}
-                <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_eq1aIIplXI.json"
-                    background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay>
-                </lottie-player>
+                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_BUWVPL.json" background="transparent"
+                    speed="1" style="width: 400px; height: 350px;" loop autoplay></lottie-player>
             </div>
             <div class="m-2 flex flex-col">
                 <div class="mb-4 flex justify-center font-medium">
-                    No Portfolio yet!, Add now to for client to view
+                    No Portfolio yet!, Add yours now to increase connections with the Pet Owner
                 </div>
                 <div class="flex justify-center">
                     <button class="rounded px-3 py-2 bg-blue-700 text-white text-sm hover:bg-blue-800"><a

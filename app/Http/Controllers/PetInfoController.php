@@ -40,6 +40,11 @@ class PetInfoController extends Controller
             'years' => 'required',
             'months' => 'required',
             'breed' => 'required',
+            'info' => 'nullable',
+            'vaccine' => 'required',
+            'vaccine_list' => 'required',
+            'type' => 'required',
+            'weight' => 'required',
         ], [
             'name.unique' => 'The pet name already exists on your end.',
         ]);
