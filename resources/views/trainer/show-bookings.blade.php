@@ -316,6 +316,7 @@
                             @endif
                         </td>
                     </tr>
+
                     {{-- MODAL FOR CONFIRM MARK AS DONE --}}
                     <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
                         @csrf

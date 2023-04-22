@@ -13,6 +13,7 @@ use App\Models\TrainerRating;
 use App\Models\RequestTrainer;
 use App\Models\TrainingDetails;
 use App\Http\Controllers\Controller;
+use App\Notifications\BookingStatusChange;
 use App\Notifications\GcashPaymentNotification;
 
 class BookingController extends Controller
@@ -20,14 +21,13 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->all();
-        Booking::create($formFields);
+        $booking = Booking::create($formFields);
+        $user_to_notify = User::where('id', $booking['client_id'])->first();
 
         $service_id = $request->input('service_id');
         $service = Service::find($service_id);
         $service->status = 'unavailable';
         $service->save();
-
-
 
         $request_id = $request->input('request_id');
         $requestTrainer = RequestTrainer::where('request_id', $request_id)->first();
@@ -38,6 +38,19 @@ class BookingController extends Controller
         $pet_status = PetInfo::where('pet_id', $pet_id)->first();
         $pet_status->book_status = 'pending';
         $pet_status->save();
+
+        //NOTIFY
+        $bookingData = [
+            'body' => ' Hello, ' . auth()->user()->name . ' .Your booking order was placed, please wait for an email regarding the status of your order',
+            'subject' => 'Booking Order Successful',
+            'bookingStatus' => 'View Booking',
+            'url' => url('/bookings'),
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'message' => 'Your Booking order was placed. Please wait for status update'
+
+        ];
+        $user_to_notify->notify(new BookingStatusChange($bookingData));
+
 
         return redirect('/bookings')->with('message', 'Booking is now placed!');
     }
@@ -210,6 +223,7 @@ class BookingController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $booking = Booking::where('book_id', $id)->first();
+        $user_to_notify = User::where('id', $booking['client_id'])->first();
 
         $formFields = $request->only(['status', 'service_id', 'pet_id']);
         $formFields['status'] = $request->input('status');
@@ -223,11 +237,20 @@ class BookingController extends Controller
         $pet->update();
 
         $booking->update($formFields);
-        $notification = new Notification();
-        $notification->message = "Booking is cancelled for " . $booking->getCodeAttribute();
-        $notification->notifiable_type = 'App\Models\User';
-        $notification->notifiable_id = $booking->trainer_id;
-        $notification->save();
+
+        //NOTIFY CLIENT
+        $bookingData = [
+            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . ' is ' . $booking['status'],
+            'subject' => $booking['code'] . ' Moved to ' . $booking['status'] . ' by the trainer',
+            'bookingStatus' => 'Click here to view',
+            'url' => action('BookingController@showBooking', $booking['id']),
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'book_id' => $booking['code'],
+            'message' => $booking['code'] . ' is ' . $booking['status'],
+
+        ];
+        $user_to_notify->notify(new BookingStatusChange($bookingData));
+
 
         return redirect()->back()->with('message', 'Successfully Cancelled!');
     }

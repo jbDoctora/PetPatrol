@@ -63,8 +63,12 @@ Route::put('/notifications/{notification}', function (Notification $notification
     return redirect('/bookings');
 })->name('notifications.markAsRead');
 
-Route::post('/notifications/mark-all-as-read', [App\Http\Controllers\NotificationController::class, 'markAllAsRead'])->name('notifications.markAllAsRead');
-Route::post('/notifications/clear-all', [App\Http\Controllers\NotificationController::class, 'clearAll'])->name('notifications.clearAll');
+//NOTIFICATION MARK AS READ AND CLEAR
+Route::post('/notifications/markAllAsRead', function () {
+    auth()->user()->unreadNotifications->markAsRead();
+    return back();
+})->name('notifications.markAllAsRead');
+Route::post('/notifications/clearAll', [NotificationController::class, 'clearAll'])->name('notifications.clearAll');
 
 //Trainer Application
 Route::get('/trainer/waiting-approval', [TrainerController::class, 'showWaitingApproval'])->middleware('auth');

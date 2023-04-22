@@ -17,6 +17,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\BookingStatusChange;
 
 class TrainerController extends Controller
 {
@@ -36,6 +37,10 @@ class TrainerController extends Controller
         }
 
         $avg_rating = $count_ratings > 0 ? round($total_stars / $count_ratings, 2) : 0;
+
+        // $user = User::where('id', auth()->user()->id)->first();
+        // $user()->unreadNotifications->markAsRead();
+        // $user()->notifications()->markAsRead();
 
         return view('trainer.dashboard', [
             'trainer' => $trainer_ratings,
@@ -222,7 +227,7 @@ class TrainerController extends Controller
     public function updateBooking(Request $request)
     {
         $booking = Booking::where('book_id', $request->input('book_id'))->first();
-
+        $user_to_notify = User::where('id', $booking['client_id'])->first();
         $trainer_id = $request->input('trainer_id');
 
         // Join the service table with the booking table
@@ -265,6 +270,20 @@ class TrainerController extends Controller
         $booking->payment = $request->input('payment');
         $booking->reason_reject = $request->input('reason_reject');
         $booking->save();
+
+        //NOTIFY
+        $bookingData = [
+            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . ' is ' . $booking['status'],
+            'subject' => $booking['code'] .  $booking['status'] . ' by the trainer',
+            'bookingStatus' => 'Click here to view',
+            'url' => url('/bookings'),
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'book_id' => $booking['code'],
+            'message' => $booking['code'] . ' is ' . $booking['status'],
+            'reason_reject' => $booking['reason_reject'],
+
+        ];
+        $user_to_notify->notify(new BookingStatusChange($bookingData));
 
         return redirect()->back()->with('message', 'Successfully approved');
         // }
@@ -419,8 +438,22 @@ class TrainerController extends Controller
     public function updateTraining(Request $request, $book_id)
     {
         $booking = Booking::where('book_id', $book_id)->first();
+        $user_to_notify = User::where('id', $booking['client_id'])->first();
         $data = $request->only('status', 'service_id', 'pet_id', 'trainer_id');
         $booking->update($data);
+
+        $bookingData = [
+            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . 'was  ' . $booking['status'],
+            'subject' => $booking['code'] .  $booking['status'] . ' by the trainer',
+            'bookingStatus' => 'Click here to view',
+            'url' => url('/bookings'),
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'book_id' => $booking['code'],
+            'message' => $booking['code'] . ' was ' . $booking['status'],
+            'reason_reject' => $booking['reason_reject'],
+
+        ];
+        $user_to_notify->notify(new BookingStatusChange($bookingData));
 
         if ($booking->status === 'completed') {
             $service = Service::where(
@@ -447,6 +480,20 @@ class TrainerController extends Controller
             $trainerBooking = User::where('id', $data['trainer_id'])->first();
             $trainerBooking->completedBooking += 1;
             $trainerBooking->save();
+
+            //NOTIFY
+            $bookingData = [
+                'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . 'was  ' . $booking['status'],
+                'subject' => $booking['code'] .  $booking['status'] . ' by the trainer',
+                'bookingStatus' => 'Click here to view',
+                'url' => url('/bookings'),
+                'endingMessage' => 'Thank you for continued support from PetPatrol',
+                'book_id' => $booking['code'],
+                'message' => $booking['code'] . ' was ' . $booking['status'],
+                'reason_reject' => $booking['reason_reject'],
+
+            ];
+            $user_to_notify->notify(new BookingStatusChange($bookingData));
         }
 
         return redirect()->back()->with('message', 'Successfully updated');
