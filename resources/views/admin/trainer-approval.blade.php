@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <table id="myTable">
+        <table id="simpleTable">
             <thead class="bg-blue-700 text-white text-xs">
                 <tr>
                     <th>Id</th>

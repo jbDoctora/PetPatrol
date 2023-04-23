@@ -4,10 +4,6 @@
             <div class="p-5">
                 <h3 class="text-2xl text-blue-700 font-bold">Report</h3>
             </div>
-            <div class="p-5">
-                <button class="text-sm bg-green-700 text-white rounded px-3 py-2"><i
-                        class="fa-solid fa-print fa-md pr-3"></i>Print</button>
-            </div>
         </div>
         {{-- <div class="flex gap-5 m-5">
             <div class="card w-96 bg-gray-200 shadow-xl">
@@ -19,7 +15,7 @@
         </div> --}}
 
         <div class="mt-2 overflow-hidden rounded-none mx-6">
-            <table class="w-full border border-gray-300 mb-5">
+            <table class="w-full border border-gray-300 mb-5" id="reportTable">
                 <thead class="table-auto">
                     <tr class="font-normal text-sm text-slate-100 bg-blue-700">
                         <th>
