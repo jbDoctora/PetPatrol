@@ -200,6 +200,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/feedbacks', [AdminController::class, 'showFeedbacks']);
     Route::get('/admin/monitor/showBannedUsers', [AdminController::class, 'showBanned']);
     Route::get('/api/bookings', [AdminController::class, 'getBookingEndpoint']);
+    Route::put('/admin/pet-type/update', [AdminController::class, 'updatePetType']);
 });
 
 // Default Route

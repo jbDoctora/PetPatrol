@@ -22,39 +22,62 @@
             </thead>
             <tbody class="text-xs text-gray-600 text-center">
                 @foreach($petType as $pet)
+
                 <tr>
                     <td>
                         <div class="my-2">{{$pet->id}}</div>
                     </td>
                     <td>{{$pet->admin_petType}}</td>
                     <td>{{$pet->isPosted == 0? 'unposted': 'posted'}}</td>
-                    <td><label for="action-modal-{{$pet->id}}" class="text-white bg-blue-700 py-2 px-3 rounded"><i
-                                class="fa-solid fa-pen-to-square fa-md"></i></label></td>
+                    <td>
+                        {{-- MODAL FOR PET TYPE UPDATE --}}
+                        <form method="POST" action="/admin/pet-type/update">
+                            @csrf
+                            @method('PUT')
+                            <input type="checkbox" id="action-modal-{{$pet->id}}" class="modal-toggle" />
+                            <div class="modal">
+                                <div class="modal-box relative rounded">
+                                    <label for="action-modal-{{$pet->id}}"
+                                        class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                    <h3 class="text-lg font-bold"><i
+                                            class="fa-solid fa-pen-to-square fa-lg mr-3"></i>Edit
+                                        Pet
+                                        Type
+                                    </h3>
+                                    <input type="hidden" name="id" value="{{$pet->id}}">
+                                    <div class="flex flex-col gap-5">
+                                        <div class="flex justify-between items-center">
+                                            <label for="" class="text-sm">Pet Type: </label>
+                                            <input type="text" value="{{$pet->admin_petType}}" name="admin_petType"
+                                                class="rounded border border-gray-300 px-3 py-2 text-xs w-40" />
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <label for="" class="text-sm">Action: </label>
+                                            <select name="" id="" name="isPosted"
+                                                class="rounded border border-gray-300 px-3 py-2 text-xs w-40">
+                                                <option value="1">Post</option>
+                                                <option value="0">Unpost</option>
+                                            </select>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button type="submit"
+                                                class="bg-blue-700 text-sm text-white px-3 py-2 hover:bg-blue-800">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <label for="action-modal-{{$pet->id}}" class="text-white bg-blue-700 py-2 px-3 rounded"><i
+                                class="fa-solid fa-pen-to-square fa-md"></i></label>
+                    </td>
                 </tr>
-                <input type="checkbox" id="action-modal-{{$pet->id}}" class="modal-toggle" />
-                <div class="modal">
-                    <div class="modal-box relative rounded">
-                        <label for="action-modal-{{$pet->id}}"
-                            class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-                        <p class="py-4">You've been selected for a chance to get one year of subscription to use
-                            Wikipedia for free!</p>
-                    </div>
-                </div>
-                <input type="checkbox" id="action-modal-{{$pet->id}}" class="modal-toggle" />
-                <div class="modal">
-                    <div class="modal-box relative rounded">
-                        <label for="action-modal-{{$pet->id}}"
-                            class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-                        <p class="py-4">You've been selected for a chance to get one year of subscription to use
-                            Wikipedia for free!</p>
-                    </div>
-                </div>
+
                 @endforeach
             </tbody>
         </table>
     </div>
+
+
     <form method="POST" action="/admin/pet-type/add">
         @csrf
         <input type="checkbox" id="add-modal" class="modal-toggle" />

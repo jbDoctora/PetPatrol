@@ -199,4 +199,14 @@ class AdminController extends Controller
 
         return response()->json($dataPoints);
     }
+
+    public function updatePetType(Request $request)
+    {
+        $pet_type = AdminPetType::where('id', $request->input('id'))->first();
+
+        $data = $request->all();
+        $pet_type->update($data);
+
+        return redirect()->back()->with('message', 'Pet type updated');
+    }
 }
