@@ -162,8 +162,8 @@
                 @elseif($requests->status == 'cancelled')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                        <label class="text-xs px-3 py-2 bg-green-600 text-white rounded"><i
-                                class="fa-solid fa-print pr-3"></i>Print</label>
+                        {{-- <label class="text-xs px-3 py-2 bg-green-600 text-white rounded"><i
+                                class="fa-solid fa-print pr-3"></i>Print</label> --}}
                     </div>
                 </div>
 
@@ -179,14 +179,12 @@
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
                         <ul tabindex="0"
-                            class="dropdown-content menu p-1 shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
+                            class="dropdown-content menu shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
                             {{-- <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li> --}}
                             <li>
-
                                 <label for="confirm-modal-{{$requests->book_id}}">
                                     Cancel
                                 </label>
-
                             </li>
                         </ul>
                     </div>
@@ -196,8 +194,8 @@
                 @elseif($requests->status == 'completed')
                 @if($requests->isRated == 1)
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                    <label class="text-sm px-3 py-2 bg-green-600 text-white rounded"><i
-                            class="fa-solid fa-print pr-3"></i>Print</label>
+                    {{-- <label class="text-sm px-3 py-2 bg-green-600 text-white rounded"><i
+                            class="fa-solid fa-print pr-3"></i></label> --}}
                 </div>
                 @else
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">

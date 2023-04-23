@@ -59,7 +59,7 @@ class OwnerController extends Controller
                 $join->on('service.user_id', '=', 'users.id')
                     ->where('users.role', 1);
             })
-            ->join('pet_info', 'request.pet_name', '=', 'pet_info.pet_name')
+            ->join('pet_info', 'request.pet_id', '=', 'pet_info.pet_id')
             ->select(
                 'users.id as user_id',
                 'users.email',
@@ -135,9 +135,9 @@ class OwnerController extends Controller
         $petinfo = PetInfo::where('owner_id', auth()->id())
             ->whereNotIn('book_status', ['pending', 'requested'])
             ->paginate(9);
-        $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet_name')->toArray();
+        // $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet_name')->toArray();
         // dd($petinfo);
-        return view('owner.book-trainer', compact('adminService', 'petinfo', 'requestedPetNames'));
+        return view('owner.book-trainer', compact('adminService', 'petinfo'));
     }
 
     public function getEvents()

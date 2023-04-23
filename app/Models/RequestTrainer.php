@@ -9,7 +9,7 @@ class RequestTrainer extends Model
 {
     protected $primaryKey = 'request_id';
     protected $fillable = [
-        'pet_name', 'course', 'sessions', 'location', 'user_id', 'pet_type', 'request_status'
+        'pet_name', 'course', 'sessions', 'location', 'user_id', 'pet_type', 'request_status', 'pet_id'
     ];
     protected $table = "request";
     public $timestamps = false;

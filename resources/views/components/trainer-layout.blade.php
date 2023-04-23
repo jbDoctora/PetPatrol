@@ -5,43 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('trainer-calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      allDaySlot: true,
-      slotEventOverlap: false,
-      timeFormat: '', // remove the time when viewing all-day events
-      events: {
-        url: '/events',
-        method: 'GET',
-        extraParams: {
-          '_token': '{{ csrf_token() }}',
-          'trainer_id': '{{ auth()->user()->id }}'
-        },
-      },
-      eventRender: function(info) {
-        var tooltip = new Tooltip(info.el, {
-          title: info.event.title,
-          placement: 'top',
-          trigger: 'hover',
-          container: 'body',
-          'z-index': 99999
-        });
-      },
-      eventClick: function(info) {
-        // handle click event here
-        alert(info.event.title);
-      }
-    });
-
-    calendar.render();
-  });
-    </script>
-
     <style>
         .tox-tinymce {
             height: 400px;
@@ -68,8 +32,40 @@
             border-bottom: none;
         }
     </style>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize the calendar
+            $('#calendar').fullCalendar({
+                events: {
+                    url: '{{ url('/events/owner') }}',
+                    type: 'GET',
+                    error: function() {
+                        alert('There was an error while fetching events.');
+                    }
+                },
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                defaultView: 'month',
+                editable: false,
+                eventLimit: true,
+                navLinks: true,
+                timezone: 'local',
+                timeFormat: 'h:mm a',
+                slotEventOverlap: false, // set this option to false to make events cover the whole grid
+                allDaySlot: true, // set this option to true to show the slot for the whole day
+                height: 'parent', // set this option to 'parent' to make the calendar fit the whole container
+                eventRender: function(event, element) {
+                    element.find('.fc-title').text(event.title.split(' - ')[0]); // remove time from event title
+                }
+            });
+        });
+    </script>
+
     <x-head.tinymce-config />
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://kit.fontawesome.com/ceb9fb7eba.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
@@ -85,7 +81,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.tiny.cloud/1/t3yr3j2qwq03mq0638f9ob1i3d97win8i57rt6ssmvj1p9ku/tinymce/6/content.min.css"
         rel="stylesheet">
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
 
     <!-- CSS files FOR DATATABLE -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
@@ -101,6 +96,13 @@
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+
+    {{-- FULLCALENDAR CDN --}}
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.print.min.css' rel='stylesheet'
+        media='print' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
 </head>
 
 

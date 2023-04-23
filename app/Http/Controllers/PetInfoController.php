@@ -69,7 +69,7 @@ class PetInfoController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $client_id = PetInfo::where('owner_id', $id)->first();
+        $pet_to_update = PetInfo::where('pet_id', $id)->first();
         // $formFields = $request->validate([
         //     'image' => 'nullable',
         // ]);
@@ -81,7 +81,7 @@ class PetInfoController extends Controller
         }
 
 
-        $client_id->update($formFields);
+        $pet_to_update->update($formFields);
         // dd($formFields);
 
         return redirect()->back()->with('message', 'Successfully updated!');

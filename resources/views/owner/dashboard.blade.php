@@ -58,7 +58,7 @@
 
             <!-- Calendar -->
             <div class="mt-6 bg-white rounded shadow-md p-6">
-                <div id="owner-calendar"></div>
+                <div id="calendar"></div>
             </div>
         </div>
 

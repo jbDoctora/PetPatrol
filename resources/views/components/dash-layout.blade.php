@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js'></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
@@ -24,6 +22,12 @@
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
         type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+    {{-- FULLCALENDAR CDN --}}
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.print.min.css' rel='stylesheet'
+        media='print' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
     @vite('resources/css/app.css')
     <style>
         .class-name {
@@ -31,54 +35,29 @@
         }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('owner-calendar');
-            if (!calendarEl) return;
-            
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                allDaySlot: true,
-                slotEventOverlap: false,
-                eventTimeFormat: {
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    meridiem: true,
-                    hour12: false
-                },
-                events: {
-                    url: '/events/owner',
-                    method: 'GET',
-                    extraParams: {
-                        '_token': '{{ csrf_token() }}',
-                        'client_id': '{{ auth()->user()->id }}'
-                    },
-                },
-                // eventRender: function(info) {
-                //     var tooltip = new Tooltip(info.el, {
-                //         title: info.event.title,
-                //         placement: 'top',
-                //         trigger: 'hover',
-                //         container: 'body',
-                //         'z-index': 99999
-                //     });
-                // },
-                eventClick: function(info) {
-                    // handle click event here
-                    alert(info.event.title);
+        $(document).ready(function() {
+        // Initialize the calendar
+        $('#calendar').fullCalendar({
+            events: {
+                url: '{{ url('/events/owner') }}',
+                type: 'GET',
+                error: function() {
+                    alert('There was an error while fetching events.');
                 }
-            });
-    
-            calendar.render();
+            },
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+            defaultView: 'month',
+            editable: false,
+            eventLimit: true,
+            navLinks: true,
+            timezone: 'local',
+            timeFormat: 'h:mm a',
         });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth'
     });
-    calendar.render();
-  });
     </script>
 
 </head>

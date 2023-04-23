@@ -92,6 +92,7 @@ class RequestTrainerController extends Controller
         $formFields['user_id'] = $request->input('user_id');
         $formFields['request_status'] = $request->input('request_status');
         $formFields['pet_type'] = $request->input('pet_type');
+        $formFields['pet_id'] = $request->input('pet_id');
         RequestTrainer::create($formFields);
 
         $pet_id = $request->input('pet_id');

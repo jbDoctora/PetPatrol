@@ -60,7 +60,8 @@
             @enderror
 
             <div class="mb-5">
-                <label for="qr-modal" class="bg-blue-700 rounded text-white text-sm px-3 py-2 hover:bg-blue-800">View QR
+                <label for="qr-modal" class="bg-blue-700 rounded text-white text-sm px-3 py-2 hover:bg-blue-800">View
+                    Current QR
                     Code</label>
             </div>
         </div>

@@ -102,7 +102,7 @@
 
             <!-- Calendar -->
             <div class="mt-6 bg-white rounded shadow-md p-6 w-full">
-                <div id="trainer-calendar" class="w-full"></div>
+                <div id="calendar"></div>
             </div>
         </div>
 
