@@ -88,7 +88,7 @@
     <div x-data="{ isOpen: false }">
         <div class="fixed right-0 bottom-0 m-1">
             <button @click="isOpen = true"
-                class="bg-blue-500 text-white px-4 py-3 rounded-l-lg rounded-t-lg focus:outline-none text-lg"><i
+                class="bg-blue-700 text-white px-4 py-3 rounded-l-lg rounded-t-lg focus:outline-none text-lg"><i
                     class="fa-regular fa-life-ring pr-3"></i>Need
                 Help</button>
         </div>
@@ -100,8 +100,10 @@
                     <iframe src="https://ora.sh/embed/d64b5f6a-6d36-42c9-8777-4d40fab62bc5" width="100%" height="100%"
                         style="border:0; border-radius: 4px"></iframe>
                 </div>
-                <button @click="isOpen = false"
-                    class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 focus:outline-none">Close</button>
+                <div class="flex justify-end">
+                    <button @click="isOpen = false"
+                        class="bg-blue-700 text-white px-4 py-2 rounded-lg mt-4 focus:outline-none hover:bg-blue-800">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -171,17 +173,20 @@
                             </button>
                         </div>
                         <ul tabindex="0" class="dropdown-content menu bg-white w-72">
-                            <h6 class="text-sm text-white bg-blue-500 p-2">Notification</h6>
+                            <h6 class="text-base text-blue-700 bg-white p-2 border-b border-gray-300">Notification
+                            </h6>
                             @forelse(auth()->user()->notifications as $notification)
                             <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <a href="/bookings">
                                     <li
-                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer">
+                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700 rounded' }} rounded cursor-pointer border-b border-gray-300">
                                         <button type="submit"
-                                            class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">{{
-                                            $notification->data['message'] }}</button>
+                                            class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">
+                                            {{ $notification->data['message'] . ' Ref #: ' .
+                                            $notification->data['book_id'] }}
+                                        </button>
                                     </li>
                                 </a>
                             </form>
