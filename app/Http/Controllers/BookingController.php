@@ -15,6 +15,7 @@ use App\Models\TrainingDetails;
 use App\Http\Controllers\Controller;
 use App\Notifications\BookingStatusChange;
 use App\Notifications\GcashPaymentNotification;
+use App\Notifications\TrainerBookingStatusChange;
 
 class BookingController extends Controller
 {
@@ -22,7 +23,8 @@ class BookingController extends Controller
     {
         $formFields = $request->all();
         $booking = Booking::create($formFields);
-        $user_to_notify = User::where('id', $booking['client_id'])->first();
+        $user_to_notify_client = User::where('id', $booking['client_id'])->first();
+        $user_to_notify_trainer = user::where('id', $booking['trainer_id'])->first();
 
         $service_id = $request->input('service_id');
         $service = Service::find($service_id);
@@ -50,7 +52,19 @@ class BookingController extends Controller
             'message' => 'Your Booking order was placed. Please wait for status update'
 
         ];
-        $user_to_notify->notify(new BookingStatusChange($bookingData));
+
+        $trainerBookingData = [
+            'body' => ' Hello, ' . $booking['trainer_name'] . ' .A Client has availed your service. Please update the status if it suits your schedule. Thanks!',
+            'subject' => 'A Client Availed Your Service Ref #: ' . $booking['code'],
+            'bookingStatus' => 'View Booking',
+            'url' => url('/trainer/bookings'),
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'book_id' => $booking['code'],
+            'message' => 'A client has booked your service'
+        ];
+
+        $user_to_notify_client->notify(new BookingStatusChange($bookingData));
+        $user_to_notify_trainer->notify(new TrainerBookingStatusChange($trainerBookingData));
 
 
         return redirect('/bookings')->with('message', 'Booking is now placed!');

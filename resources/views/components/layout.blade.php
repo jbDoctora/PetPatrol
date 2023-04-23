@@ -87,24 +87,21 @@
         </div>
 
         @auth
-        <div class="dropdown dropdown-end">
-            <div class="indicator">
-                <span class="indicator-item badge bg-yellow-400 outline-0 text-black font-bold mr-2">99+</span>
-                <button tabindex="0" class="fa-solid fa-bell fa-lg my-4 mr-5 text-white hover:text-yellow-400"></button>
-            </div>
-            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
-                <li><a href="">--upcoming features--</a></li>
-                <li><a href="">--upcoming features--</a></li>
-            </ul>
-        </div>
+
 
         <div class="avatar dropdown dropdown-end">
-            <div tabindex="0" class="avatar mx-4 h-9 w-9 rounded-full bg-white">
+            <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">
                 <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
                     class="bg-base-300">
             </div>
-            <ul tabindex="0" class="dropdown-content menu rounded-box w-52 bg-base-200 p-2 shadow">
-                <li><a>Profile</a></li>
+            <ul tabindex="0" class="dropdown-content menu rounded w-52 bg-gray-200 shadow">
+                <li>
+                    @if(auth()->user()->role == 1)
+                    <a href="/trainer/profile">Profile</a>
+                    @elseif(auth()->user()->role == 0)
+                    <a href="/profile">Profile</a>
+                    @endif
+                </li>
                 <li>
                     <form method="POST" action="/logout">
                         @csrf
@@ -114,7 +111,19 @@
             </ul>
         </div>
         <div class="mr-3">
-            <p class="font-medium text-white text-xs">Hi, {{ auth()->user()->name }}</p>
+            @if(auth()->user()->role == 1)
+            <a href="/trainer" class="text-white hover:text-yellow-400 text-sm"><i
+                    class="fa-solid fa-gauge fa-lg mr-2"></i>My
+                Dashboard</a>
+            @elseif(auth()->user()->role == 0)
+            <a href="/trainer" class="text-white hover:text-yellow-400 text-sm"><i
+                    class="fa-solid fa-gauge fa-lg mr-2"></i>My
+                Dashboard</a>
+            @elseif(auth()->user()->role == 3)
+            <a href="/trainer" class="text-white hover:text-yellow-400 text-sm"><i
+                    class="fa-solid fa-gauge fa-lg mr-2"></i>My
+                Dashboard</a>
+            @endif
         </div>
         @else
         <div class="flex gap-2">
