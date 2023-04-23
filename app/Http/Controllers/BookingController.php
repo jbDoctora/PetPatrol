@@ -74,6 +74,10 @@ class BookingController extends Controller
         $formFields = $request->validate([
             'stars' => 'required',
             'comment' => 'required',
+            'service_id' => 'required',
+            'client_id' => 'required',
+            'trainer_id' => 'required',
+            'book_id' => 'required'
         ]);
 
         $rating = TrainerRating::create($formFields);
