@@ -45,7 +45,10 @@
                 <div class="w-full">
                     <h5 class="text-lg font-medium text-gray-600 mb-2">About me</h5>
                     <div class="rounded-lg border border-slate-300 p-4 h-fit">
-                        <p class="text-base leading-7">{!! html_entity_decode($portfolios->about_me) !!}</p>
+                        <p class="text-base leading-7">
+                            {!! str_replace('
+                        <ul>', '<ul class="list-disc">', html_entity_decode($portfolios->about_me)) !!}
+                                </p>
                     </div>
                 </div>
                 <div>
@@ -70,33 +73,52 @@
                         </template>
                     </div>
                 </div>
-                <div>
-                    {{-- @if (is_array($item->certificates))
-                    <div class="container my-4 rounded-sm bg-gray-100 p-6 border-l-4 border-blue-500">
-                        <h2 class="mb-6 text-2xl font-normal">Certificates</h2>
-                        <div class="grid grid-cols-3 gap-4">
-                            @foreach ($item->certificates as $certificate)
-                            <div class="relative">
-                                <img src="{{ asset('storage/' . $certificate) }}" alt="Certificate"
-                                    class="rounded-lg object-cover w-full h-48 sm:h-40 md:h-48 lg:h-56">
-                                <div class="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition-opacity">
-                                    <div class="flex items-center justify-center h-full">
-                                        <a href="{{ asset('storage/' . $certificate) }}" target="_blank" rel="noopener"
-                                            class="text-white font-medium text-lg">View Certificate</a>
-                                    </div>
+
+
+                @foreach ($portfolio as $item)
+                <!-- Display certificates -->
+                @if (is_array($item->certificates))
+                <div class="container my-4 rounded-sm bg-gray-100 p-6 ">
+                    <h2 class="mb-6 text-2xl font-normal">Certificates</h2>
+                    <div class="grid grid-cols-3 gap-4">
+                        @foreach ($item->certificates as $certificate)
+                        <div class="relative">
+                            <img src="{{ asset('storage/' . $certificate) }}" alt="Certificate"
+                                class="rounded-lg object-cover w-full h-48 sm:h-40 md:h-48 lg:h-56">
+                            <div class="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition-opacity">
+                                <div class="flex items-center justify-center h-full">
+                                    <a href="{{ asset('storage/' . $certificate) }}" target="_blank" rel="noopener"
+                                        class="text-white font-medium text-lg">View Certificate</a>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
+                        @endforeach
                     </div>
-                    @endif --}}
                 </div>
-                <div>
-                    <h5 class="text-lg font-medium text-gray-600 mb-2">Photos</h5>
-                    {{-- <img class="w-full h-48 object-cover rounded-lg"
-                        src="{{ $portfolios->journey_photos ? asset('storage/' . $portfolios->journey_photos) : asset('/images/placeholder.png') }}"
-                        alt="Photos"> --}}
+                @endif
+
+                <!-- Display journey photos -->
+                @if (is_array($item->journey_photos))
+                <div class="container my-4 rounded-sm bg-gray-100 p-6">
+                    <h2 class="mb-6 text-2xl font-normal">Journey Photos</h2>
+                    <div class="grid grid-cols-3 gap-4">
+                        @foreach ($item->journey_photos as $photo)
+                        <div class="relative">
+                            <img src="{{ asset('storage/' . $photo) }}" alt="Journey Photo"
+                                class="rounded-lg object-cover w-full h-48 sm:h-40 md:h-48 lg:h-56">
+                            <div class="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition-opacity">
+                                <div class="flex items-center justify-center h-full">
+                                    <a href="{{ asset('storage/' . $photo) }}" target="_blank" rel="noopener"
+                                        class="text-white font-medium text-lg">View Photo</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
+                @endif
+                @endforeach
+
             </div>
             @empty
             <div class="text-center my-3">Pet Trainer have not yet added a Portfolio</div>

@@ -233,10 +233,16 @@
                                     <input type="radio" name="stars" value="5" class="mask mask-star-2 bg-orange-400" />
                                 </div>
                             </div>
+                            @error('stars')
+                            <p class="text-red-500 text-sm font-normal">{{$message}}</p>
+                            @enderror
                             <div class="flex flex-col mb-4">
                                 <label for="comment" class="text-sm">Comment:</label>
                                 <textarea id="comment" name="comment" class="border rounded p-2"></textarea>
                             </div>
+                            @error('comment')
+                            <p class="text-red-500 text-sm font-normal">{{$message}}</p>
+                            @enderror
                             <div class="flex flex-col mb-4">
                                 <label for="image" class="text-sm">Image:</label>
                                 <input type="file" id="image" name="image" accept="image/*" class="border rounded p-2">

@@ -99,8 +99,12 @@ class OwnerController extends Controller
     public function showTraining($service_id)
     {
         return view('owner.service-plan', [
-            'trainingDet' => TrainingDetails::where('service_id', $service_id)->get(),
+            'trainingDet' => TrainingDetails::where('service_id', $service_id)
+                ->join('service', 'service.id', '=', 'training_details.service_id')
+                ->get(),
             'service' => Service::find($service_id)
+                ->join('users', 'users.id', '=', 'service.user_id')
+                ->first(),
         ]);
     }
 

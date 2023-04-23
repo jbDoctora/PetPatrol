@@ -38,7 +38,7 @@
             // Initialize the calendar
             $('#calendar').fullCalendar({
                 events: {
-                    url: '{{ url('/events/owner') }}',
+                    url: '{{ url('/events') }}',
                     type: 'GET',
                     error: function() {
                         alert('There was an error while fetching events.');
@@ -273,8 +273,7 @@
                                         class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer border-b border-gray-300">
                                         <button type="submit"
                                             class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">
-                                            {{ $notification->data['message'] . ' Ref #: ' .
-                                            $notification->data['book_id'] }}
+                                            {{ $notification->data['message'] }}
                                         </button>
                                     </li>
                                 </a>

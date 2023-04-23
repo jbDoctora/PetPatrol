@@ -182,8 +182,6 @@ Route::middleware(['auth', 'verified', 'isOwner', 'banned'])->group(function () 
     Route::post('/bookings/add-rating', [BookingController::class, 'storeRating']);
     Route::get('/events/owner', [OwnerController::class, 'getEvents']);
     Route::delete('/request/delete/{request_id}', [OwnerController::class, 'destroyRequest']);
-    //for testing email notification
-    // Route::get('/send-email')
 });
 
 // Admin Routes

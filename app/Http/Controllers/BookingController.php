@@ -50,7 +50,6 @@ class BookingController extends Controller
             'endingMessage' => 'Thank you for continued support from PetPatrol',
             'book_id' => $booking['code'],
             'message' => 'Your Booking order was placed. Please wait for status update'
-
         ];
 
         $trainerBookingData = [
@@ -72,7 +71,10 @@ class BookingController extends Controller
 
     public function storeRating(Request $request)
     {
-        $formFields = $request->all();
+        $formFields = $request->validate([
+            'stars' => 'required',
+            'comment' => 'required',
+        ]);
 
         $rating = TrainerRating::create($formFields);
 
