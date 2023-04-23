@@ -2,8 +2,8 @@
     <div class="bg-white p-3 my-5 mx-14 shadow-lg h-full rounded">
         <div class="flex justify-between items-center border-b border-slate-300">
             <div>
-                <h1 class="text-2xl font-extrabold p-4 text-blue-700">Create Training
-                    Details
+                <h1 class="text-2xl font-extrabold p-4 text-blue-700">Manage Training
+                    Lesson
                 </h1>
             </div>
             <div class="bg-blue-700 rounded px-4 py-2 text-sm text-white m-4 hover:bg-blue-800">

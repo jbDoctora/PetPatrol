@@ -258,7 +258,7 @@ class BookingController extends Controller
             'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . ' is ' . $booking['status'],
             'subject' => $booking['code'] . ' Moved to ' . $booking['status'] . ' by the trainer',
             'bookingStatus' => 'Click here to view',
-            'url' => action('BookingController@showBooking', $booking['id']),
+            'url' => url('/trainer/booking'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
             'book_id' => $booking['code'],
             'message' => $booking['code'] . ' is ' . $booking['status'],

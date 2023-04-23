@@ -19,7 +19,7 @@
             <div
                 class="container mb-9 flex items-center rounded bg-gradient-to-r from-green-400 to-blue-500 bg-cover bg-center bg-no-repeat p-9">
                 <div class="h-24 w-24 overflow-hidden rounded-full border-4 border-white">
-                    <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auih()->user()->profile_photo) : asset('/images/placeholder.png') }}"
+                    <img src="{{ auth()->user()->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
                         alt="Profile Photo" class="h-full w-full object-cover">
                 </div>
                 <div class="ml-9 text-white">

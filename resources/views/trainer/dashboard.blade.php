@@ -27,7 +27,33 @@
                         <span class="text-lg font-bold text-gray-800">{{$avg_rating}}</span>
                     </div>
                     <div class="text-gray-500 mb-2">Based on {{$count_ratings}} reviews</div>
-                    <a href="#" class="text-blue-500 hover:text-blue-700">View All Reviews</a>
+                    <label for="reviews-modal" class="text-blue-500 hover:text-blue-700">View All Reviews</label>
+                    <input type="checkbox" id="reviews-modal" class="modal-toggle" />
+                    <div class="modal">
+                        <div class="modal-box relative rounded">
+                            <label for="reviews-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                            <h3 class="text-lg font-bold">Trainer Reviews</h3>
+                            <div class="flex flex-col gap-1">
+                                @foreach($trainer as $rate)
+
+                                <div class="p-3 m-3 border border-gray-300 rounded">
+                                    <div class="flex items-center gap-5 my-2">
+                                        <div class="w-9 h-9 rounded-full">
+                                            <img
+                                                src="{{ $rate->profile_photo ? asset('storage/' . $rate->profile_photo) : asset('/images/placeholder.png') }}">
+                                        </div>
+                                        <p>{{$rate->name}}</p>
+                                    </div>
+                                    <template x-for="i in 5" class="my-2">
+                                        <i class="fa-solid fa-star fa-sm text-gray-400"
+                                            :class="{'text-yellow-500': (i <= {{$rate->stars}})}"></i>
+                                    </template>
+                                    <p class="text-justify text-sm">{{$rate->comment}}</p>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

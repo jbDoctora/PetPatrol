@@ -94,7 +94,7 @@
                 <tbody class="text-center text-xs">
                     @if(count($request) == 0)
                     <tr>
-                        <td colspan="9">
+                        <td colspan="10">
                             <lottie-player class="mx-auto"
                                 src="https://assets6.lottiefiles.com/private_files/lf30_e3pteeho.json"
                                 background="transparent" speed="0.5" style="width: 400px; height: 400px;" loop autoplay>

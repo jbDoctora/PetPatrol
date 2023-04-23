@@ -101,6 +101,12 @@ class OwnerController extends Controller
             ->limit(1)
             ->get();
         $portfolio = TrainerModel::where('user_id', $user_id)->get();
+
+        foreach ($portfolio as $item) {
+            $item->certificates = unserialize($item->certificates);
+            $item->journey_photos = unserialize($item->journey_photos);
+        }
+
         $rating = TrainerRating::where('trainer_id', $user_id)
             ->join('users', 'users.id', '=', 'client_id')
             ->get();

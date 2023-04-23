@@ -23,7 +23,9 @@ class TrainerController extends Controller
 {
     public function index()
     {
-        $trainer_ratings = TrainerRating::where('trainer_id', auth()->user()->id)->get();
+        $trainer_ratings = TrainerRating::where('trainer_id', auth()->user()->id)
+            ->join('users', 'users.id', '=', 'rating.client_id')
+            ->get();
         $pending_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'pending')->count();
         $completed_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'completed')->count();
         $inprogress_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'in progress')->count();
