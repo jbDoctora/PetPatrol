@@ -34,14 +34,15 @@ class OwnerController extends Controller
         ]);
     }
 
-
-    public function show($request_id)
+    public function show($request_id, Request $request_input)
     {
         $request = RequestTrainer::where('request_id', $request_id)->first();
 
         $course = $request->course;
         $availability = $request->sessions;
         $type = $request->pet_type;
+
+        $search = $request_input->input('search'); // get search query from the request
 
         $matched_services = DB::table('request')
             ->join('service', function ($join) use ($course, $availability, $type) {
@@ -75,16 +76,25 @@ class OwnerController extends Controller
             )
             ->where('request.request_id', $request_id)
             ->where('pet_info.book_status', 'requested')
+            ->when($search, function ($query, $search) {
+                return $query->where(function ($query) use ($search) {
+                    $query->where('users.name', 'like', '%' . $search . '%')
+                        ->orWhere('service.course', 'like', '%' . $search . '%')
+                        ->orWhere('service.price', 'like', '%' . $search . '%');
+                });
+            })
             ->paginate(10);
 
         // dd($matched_services);
+
         return view('owner.show-matched', [
             'matchedservices' => $matched_services,
             'request' => $request,
             'request_id' => $request_id,
-            // 'avg_rating' => $avg_rating,
+            'search' => $search, // pass the search query to the view
         ]);
     }
+
 
     public function showTraining($service_id)
     {

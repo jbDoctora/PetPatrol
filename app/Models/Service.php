@@ -25,6 +25,7 @@ class Service extends Model
         return $this->hasMany(TrainingDetails::class, 'service_id');
     }
 
+
     // If mo error ang relationship, e change ang function name
     public function user()
     {

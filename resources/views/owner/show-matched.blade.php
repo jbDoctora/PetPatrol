@@ -1,11 +1,30 @@
 <x-dash-layout>
-    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded border border-gray-300">
-        <h3 class="text-blue-700 text-xl font-bold p-5 border-b border-slate-300">Recommended Trainers</h3>
-        <div class="flex justify-between items-center border-b border-slate-300">
-            <div class="p-3 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
+    <div class="bg-white my-5 mx-14 shadow-lg h-full rounded border border-gray-300">
+        <div class="flex items-center justify-between">
+            <h3 class="text-blue-700 text-xl font-bold p-5 border-b border-slate-300"><i
+                    class="fa-solid fa-store fa-lg mr-2"></i>Trainer Marketplace</h3>
+            <div class="p-3 mr-4 text-xs text-blue-700 cursor-pointer" x-on:click="window.location.reload()">
                 <i class="fa-solid fa-arrows-rotate fa-xl mr-2"></i><span class="text-sm">Refresh</span>
             </div>
         </div>
+
+        <div class="bg-blue-600 w-full px-5 py-8">
+            <form action="/show-matched/{{ $request_id }}" method="GET">
+                <div class="flex justify-center gap-5">
+                    <div class="flex flex-col text-xs">
+                        <label for="search" class="text-white">Search Trainer</label>
+                        <input type="search" id="search" name="search" class="rounded px-3 py-2 w-96"
+                            value="{{ $search ?? '' }}">
+                    </div>
+                    <div class="flex flex-col text-white text-xs items-center">
+                        <label for="submit" class="bg-blue-600 text-blue-600">a</label>
+                        <button type="submit" id="submit"
+                            class="rounded px-3 py-2 w-40 text-gray-900 bg-yellow-400 font-normal hover:bg-yellow-500">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="grid grid-flow-col auto-cols-max px-1 my-4 rounded" x-data="{checked: false}">
             @foreach ($matchedservices as $match)
 
@@ -60,7 +79,8 @@
                                     <i class="fa-solid fa-calendar-check"></i> (0) completed
                                     booking
                                     @else
-                                    <i class="fa-solid fa-calendar-check"></i> ({{$match->completedBooking}}) completed
+                                    <i class="fa-solid fa-calendar-check"></i> ({{$match->completedBooking}})
+                                    completed
                                     bookings
                                     @endif
                                 </div>
