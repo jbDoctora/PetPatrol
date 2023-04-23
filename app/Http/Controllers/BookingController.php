@@ -46,6 +46,7 @@ class BookingController extends Controller
             'bookingStatus' => 'View Booking',
             'url' => url('/bookings'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'book_id' => $booking['code'],
             'message' => 'Your Booking order was placed. Please wait for status update'
 
         ];

@@ -11,10 +11,8 @@
                 <div class="max-w-xl lg:max-w-3xl">
 
                     <h1 class="mt-6 text-2xl font-bold text-blue-700 sm:text-3xl md:text-4xl">
-                        Welcome Back!
+                        Sign in
                     </h1>
-
-                    <p class="mt-2 text-sm text-gray-500">Please sign in to continue.</p>
 
                     <form method="POST" action="/users/authenticate" class="mt-8 grid grid-cols-1 gap-6">
                         @csrf
