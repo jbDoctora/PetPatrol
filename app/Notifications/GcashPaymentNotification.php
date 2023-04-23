@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\Booking;
 
-class GcashPaymentNotification extends Notification
+class GcashPaymentNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
