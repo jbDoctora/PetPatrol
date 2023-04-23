@@ -53,9 +53,9 @@
                                 {{$trainings->price}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-2000">
                                 @if($trainings->status == "available")
-                                <p class="text-green-600 font-bold">{{$trainings->status}}</p>
+                                <p class="text-green-500 font-normal">{{$trainings->status}}</p>
                                 @else
-                                <p class="text-red-600 font-bold">full</p>
+                                <p class="text-red-500 font-normal">unavailable</p>
                                 @endif
                             </td>
                             <td class="whitespace-nowrap border-b border-slate-200">
@@ -67,8 +67,14 @@
                                     <form method="POST" action="/trainer/service/delete/{{$trainings->id}}">
                                         @csrf
                                         @method('DELETE')
+                                        @if($trainings->status == 'available')
                                         <button class="bg-blue-700 text-white px-3 py-2 rounded" type="submit"><i
                                                 class="fa-solid fa-trash mr-2"></i>Delete</button>
+                                        @else
+                                        <button class="bg-gray-300 text-gray-500 px-3 py-2 rounded tooltip tooltip-xs"
+                                            data-tip="Service is Currently booked" disabled><i
+                                                class="fa-solid fa-trash mr-2"></i>Delete</button>
+                                        @endif
                                     </form>
                                 </div>
                             </td>

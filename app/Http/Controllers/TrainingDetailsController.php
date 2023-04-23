@@ -33,4 +33,25 @@ class TrainingDetailsController extends Controller
 
         return redirect()->back()->with('message', 'Successfully added');
     }
+
+    public function updateDetails(Request $request)
+    {
+        $trainingDetails = TrainingDetails::where('training_id', $request->input('training_id'))->first();
+
+        $trainingDetails->update($request->all());
+
+        return redirect()->back()->with('message', 'Lesson successfully updated!');
+    }
+
+    public function delete($training_id)
+    {
+        $trainingDetails = TrainingDetails::where('training_id', $training_id)->first();
+
+        if ($trainingDetails) {
+            $trainingDetails->delete();
+            return redirect()->back()->with('message', 'Lesson successfully deleted!');
+        } else {
+            return redirect()->back()->with('error', 'Lesson not found!');
+        }
+    }
 }

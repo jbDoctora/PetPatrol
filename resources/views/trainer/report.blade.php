@@ -5,14 +5,6 @@
                 <h3 class="text-2xl text-blue-700 font-bold">Report</h3>
             </div>
         </div>
-        {{-- <div class="flex gap-5 m-5">
-            <div class="card w-96 bg-gray-200 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">Card title!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                </div>
-            </div>
-        </div> --}}
 
         <div class="mt-2 overflow-hidden rounded-none mx-6">
             <table class="w-full border border-gray-300 mb-5" id="reportTable">
