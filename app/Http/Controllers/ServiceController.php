@@ -51,4 +51,13 @@ class ServiceController extends Controller
 
         return redirect()->back()->with('message', 'Successfully deleted');
     }
+
+    public function updateService(Request $request, $service_id)
+    {
+        $service = Service::where('id', $service_id)->first();
+        $data = $request->all();
+        $service->update($data);
+
+        return redirect()->back()->with('message', 'Service Successfully udpated');
+    }
 }

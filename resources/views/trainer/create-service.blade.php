@@ -63,22 +63,105 @@
                                     <button class="bg-blue-700 text-white px-3 py-2 rounded"
                                         data-tip="view training plan"><a
                                             href="/trainer/service/add-service/{{ $trainings->id }}"><i
-                                                class="fa-solid fa-pen-to-square mr-2"></i>Edit plan</a></button>
-                                    <form method="POST" action="/trainer/service/delete/{{$trainings->id}}">
+                                                class="fa-solid fa-eye"></i></a></button>
+
+                                    @if($trainings->status == 'available')
+                                    <label for="update-modal-{{$trainings->id}}"
+                                        class="bg-blue-700 text-white px-3 py-2 rounded" type="submit"><i
+                                            class="fa-solid fa-edit"></i></label>
+                                    @else
+                                    <button class="bg-gray-300 text-gray-500 px-3 py-2 rounded tooltip tooltip-xs"
+                                        data-tip="Service is Currently booked" disabled><i
+                                            class="fa-solid fa-edit"></i></button>
+                                    @endif
+
+                                    {{-- MODAL FOR UPDATE --}}
+                                    <form method="POST" action="/trainer/service/update/{{$trainings->id}}">
                                         @csrf
-                                        @method('DELETE')
-                                        @if($trainings->status == 'available')
-                                        <button class="bg-blue-700 text-white px-3 py-2 rounded" type="submit"><i
-                                                class="fa-solid fa-trash mr-2"></i>Delete</button>
-                                        @else
-                                        <button class="bg-gray-300 text-gray-500 px-3 py-2 rounded tooltip tooltip-xs"
-                                            data-tip="Service is Currently booked" disabled><i
-                                                class="fa-solid fa-trash mr-2"></i>Delete</button>
-                                        @endif
+                                        @method('PUT')
+                                        <input type="checkbox" id="update-modal-{{$trainings->id}}"
+                                            class="modal-toggle flex items-center justify-center" />
+                                        <div class="modal">
+                                            <div class="modal-box max-w-5xl rounded">
+                                                <label for="update-modal-{{$trainings->id}}"
+                                                    class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                                <h1 class="my-5 text-lg text-left font-bold">Input course details:</h1>
+                                                <div class="grid grid-cols-2 gap-6 items-center">
+                                                    <div>
+                                                        <p class="text-sm text-left">Price</p>
+                                                        <input type="text" value="{{$trainings->price}}"
+                                                            class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                                            name="price">
+                                                        @error('price')
+                                                        <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-sm text-left">Training Service</p>
+                                                        <select
+                                                            class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                                            name="course" value="{{$trainings->course}}" required>
+                                                            <option disabled selected>Choose training course</option>
+                                                            @foreach($adminService as $service)
+                                                            <option>{{$service->admin_service}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('course')
+                                                        <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-sm text-left">Pet Type</p>
+                                                        <select
+                                                            class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                                            name="pet_type" value="{{$trainings->pet_type}}" required>
+                                                            <option disabled selected>Choose pet type</option>
+                                                            @foreach($adminPetType as $petType)
+                                                            <option>{{$petType->admin_petType}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('pet_type')
+                                                        <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-sm text-left">Session</p>
+                                                        <select
+                                                            class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                                            name="availability" required>
+                                                            <option disabled selected>Choose availability</option>
+                                                            <option>Weekdays</option>
+                                                            <option>Weekends</option>
+                                                        </select>
+                                                        @error('availability')
+                                                        <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-sm text-left">Days of Training</p>
+                                                        <input type="number"
+                                                            class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                                            name="days" value="{{$trainings->days}}">
+                                                        @error('days')
+                                                        <p class="mt-1 text-xs text-red-500">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="status" value="available" />
+                                                <div class="modal-action flex items-center justify-end">
+                                                    <button type="submit"
+                                                        class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Update</button>
+                                                    <label for="my-modal"
+                                                        class="bg-neutral-900 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-neutral-800">Close</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
+
                                 </div>
                             </td>
                         </tr>
+
                         @empty
                         <tr>
                             <td colspan="8" class="text-center py-4">No service created yet</td>

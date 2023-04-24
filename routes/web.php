@@ -150,6 +150,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval', 'banned'])->group(funct
     Route::post('/trainer/service/add-service/addService', [ServiceController::class, 'store']);
     Route::get('/events', [TrainerController::class, 'getEvents']);
     Route::delete('/trainer/service/delete/{id}', [ServiceController::class, 'destroy']);
+    Route::put('/trainer/service/update/{service_id}', [ServiceController::class, 'updateService']);
     Route::get('/trainer/report', [TrainerController::class, 'showReport']);
     Route::put('/trainer/service/edit', [TrainingDetailsController::class, 'updateDetails']);
     Route::delete('/trainer/service_details/delete/{train_id}', [TrainingDetailsController::class, 'delete']);
