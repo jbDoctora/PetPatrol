@@ -217,7 +217,7 @@
                         lightbulb
                     </span>
                     <span class="ml-9">About us</span></a>
-                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
+                <a href="/help-center" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
                         class="material-icons" style="font-size: 25px;">
                         contact_support
                     </span>

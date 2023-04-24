@@ -12,4 +12,9 @@ class ReportSuggestions extends Model
     ];
     protected $table = 'report_suggestions';
     public $timestamps = false;
+
+    public function getCodeAttribute()
+    {
+        return 'RPT-' . $this->id;
+    }
 }

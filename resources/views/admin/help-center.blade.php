@@ -17,7 +17,7 @@
                     @foreach($report as $reports)
                     <tr class="text-center">
                         <th>
-                            <div class="my-3">{{$reports->id}}</div>
+                            <div class="my-3">{{$reports->code}}</div>
                         </th>
                         <td>{{$reports->name}}</td>
                         <td>{{$reports->description}}</td>
