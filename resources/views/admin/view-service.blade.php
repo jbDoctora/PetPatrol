@@ -28,19 +28,48 @@
                     </td>
                     <td>{{$services->admin_service}}</td>
                     <td>{{$services->isPosted == 0? 'unposted': 'posted'}}</td>
-                    <td><label for="action-modal-{{$services->id}}" class="text-white bg-blue-700 py-2 px-3 rounded"><i
-                                class="fa-solid fa-pen-to-square fa-md"></i></label></td>
+                    <td>
+                        <form method="POST" action="/admin/adminService/update">
+                            @csrf
+                            @method('PUT')
+                            <input type="checkbox" id="action-modal-{{$services->id}}" class="modal-toggle" />
+                            <div class="modal">
+                                <div class="modal-box relative rounded">
+                                    <label for="action-modal-{{$services->id}}"
+                                        class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                    <h3 class="text-lg text-left font-bold"><i
+                                            class="fa-solid fa-pen-to-square fa-lg mr-3"></i>Edit
+                                        Pet
+                                        Type
+                                    </h3>
+                                    <input type="hidden" name="id" value="{{$services->id}}">
+                                    <div class="flex flex-col gap-5">
+                                        <div class="flex justify-between items-center">
+                                            <label for="" class="text-sm">Pet Type: </label>
+                                            <input type="text" value="{{$services->admin_service}}" name="admin_service"
+                                                class="rounded border border-gray-300 px-3 py-2 text-xs w-40" />
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <label for="" class="text-sm">Action: </label>
+                                            <select name="" id="" name="isPosted"
+                                                class="rounded border border-gray-300 px-3 py-2 text-xs w-40">
+                                                <option value="1">Post</option>
+                                                <option value="0">Unpost</option>
+                                            </select>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button type="submit"
+                                                class="bg-blue-700 text-sm text-white px-3 py-2 hover:bg-blue-800">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <label for="action-modal-{{$services->id}}" class="text-white bg-blue-700 py-2 px-3 rounded"><i
+                                class="fa-solid fa-pen-to-square fa-md"></i>
+                        </label>
+                    </td>
                 </tr>
-                <input type="checkbox" id="action-modal-{{$services->id}}" class="modal-toggle" />
-                <div class="modal">
-                    <div class="modal-box relative rounded">
-                        <label for="action-modal-{{$services->id}}"
-                            class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-                        <p class="py-4">You've been selected for a chance to get one year of subscription to use
-                            Wikipedia for free!</p>
-                    </div>
-                </div>
                 @endforeach
             </tbody>
         </table>

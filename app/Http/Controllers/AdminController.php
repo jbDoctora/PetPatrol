@@ -209,4 +209,14 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Pet type updated');
     }
+
+    public function updateService(Request $request)
+    {
+        $service = AdminService::where('id', $request->input('id'))->first();
+
+        $data = $request->all();
+        $service->update($data);
+
+        return redirect()->back()->with('message', 'Service updated');
+    }
 }
