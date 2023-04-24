@@ -1,12 +1,17 @@
 <?php
 
+use Illuminate\Support\Str;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Models\ReportSuggestions;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OwnerController;
+use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PetInfoController;
 use App\Http\Controllers\ServiceController;
@@ -14,11 +19,8 @@ use App\Http\Controllers\TrainerController;
 use Symfony\Component\Routing\RequestContext;
 use App\Http\Controllers\RequestTrainerController;
 use App\Http\Controllers\TrainingDetailsController;
+use App\Http\Controllers\ReportSuggestionsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 //use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -203,10 +205,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/api/bookings', [AdminController::class, 'getBookingEndpoint']);
     Route::put('/admin/pet-type/update', [AdminController::class, 'updatePetType']);
     Route::put('/admin/adminService/update', [AdminController::class, 'updateService']);
+    Route::get('/admin/help-center', [ReportSuggestionsController::class, 'showHelp']);
 });
 
 // Default Route
 Route::get('/', [UserController::class, 'index']);
+Route::get('/help-center', [ReportSuggestionsController::class, 'showHelpCenter']);
+Route::post('help-center/add', [ReportSuggestionsController::class, 'storeReport']);
 
 // Unauthorized Route
 Route::get('/unauthorized', function () {

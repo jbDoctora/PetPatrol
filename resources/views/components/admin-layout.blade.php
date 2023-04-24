@@ -98,7 +98,8 @@
 
     <div x-data="{ open: false }" class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col transition-all duration-300">
-            <div class="flex h-28 flex-row items-center justify-center bg-white text-white border-r border-gray-300">
+            <div
+                class="flex h-16 p-2 flex-row items-center justify-center bg-white text-white border-r border-gray-300">
                 <svg version="1.0" class="flex justify-between items-center" xmlns="http://www.w3.org/2000/svg"
                     width="44.000000pt" height="44.000000pt" viewBox="0 0 206.000000 196.000000"
                     preserveAspectRatio="xMidYMid meet">
@@ -216,6 +217,14 @@
                         bookmark_border
                     </span>
                     <span class="ml-9">Bookings</span>
+                </a>
+
+                <a href="/admin/help-center"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
+                    <span class="material-icons-outlined md-36" style="font-size: 25px;">
+                        support
+                    </span>
+                    <span class="ml-9">Help Center</span>
                 </a>
 
                 <a href="/admin/reports"
