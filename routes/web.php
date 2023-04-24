@@ -181,7 +181,7 @@ Route::middleware(['auth', 'verified', 'isOwner', 'banned'])->group(function () 
     Route::get('/bookings/{book_id}', [BookingController::class, 'showBooking']);
     Route::post('/bookings/add-rating', [BookingController::class, 'storeRating']);
     Route::get('/events/owner', [OwnerController::class, 'getEvents']);
-    Route::delete('/request/delete/{request_id}', [OwnerController::class, 'destroyRequest']);
+    Route::put('/request/delete/{request_id}', [OwnerController::class, 'updateRequest']);
 });
 
 // Admin Routes

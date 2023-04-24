@@ -80,7 +80,9 @@
                                     <div class="modal-action">
                                         <form method="POST" action="/request/delete/{{$info->request_id}}">
                                             @csrf
-                                            @method('DELETE')
+                                            @method('PUT')
+                                            <input type="hidden" name="request_status" value="disabled">
+                                            <input type="hidden" name="pet_id" value="{{$info->pet_id}}">
                                             <button class="bg-blue-700 px-4 py-2 rounded text-xs text-white"
                                                 type="submit">Yes</button>
 

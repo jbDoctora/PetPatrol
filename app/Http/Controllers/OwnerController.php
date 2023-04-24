@@ -166,12 +166,16 @@ class OwnerController extends Controller
         return response()->json($events);
     }
 
-    public function destroyRequest($id)
+    public function updateRequest(Request $request, $id)
     {
         $request_trainer = RequestTrainer::where('request_id', $id)->first();
-        $request_trainer->delete();
+        $data = $request->all();
 
+        $pet_status = PetInfo::where('pet_id', $request->input('pet_id'))->first();
+        $pet_status->book_status = 'inactive';
+        $pet_status->save();
 
+        $request_trainer->update($data);
 
         return redirect()->back()->with('message', 'Request Successfully Deleted');
     }

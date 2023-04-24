@@ -39,7 +39,7 @@
                                 <div class="modal-box relative rounded">
                                     <label for="action-modal-{{$pet->id}}"
                                         class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                    <h3 class="text-lg font-bold"><i
+                                    <h3 class="text-lg text-left font-bold"><i
                                             class="fa-solid fa-pen-to-square fa-lg mr-3"></i>Edit
                                         Pet
                                         Type
