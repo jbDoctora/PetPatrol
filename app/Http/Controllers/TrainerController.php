@@ -145,13 +145,7 @@ class TrainerController extends Controller
             ->where('booking.trainer_id', $trainerId)
             ->orderBy('booking.start_date')
             ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
-            ->orderByRaw("CASE booking.status
-                  WHEN 'approved' THEN 1
-                  WHEN 'pending' THEN 2
-                  WHEN 'in progress' THEN 3
-                  WHEN 'completed' THEN 4
-                  WHEN 'declined' THEN 5
-              END")
+            ->orderByRaw("FIELD(booking.status, 'pending', 'in progress', 'approved', 'completed', 'declined', 'cancelled') ASC")
             ->paginate(5);
         // dd($request);
         $filteredCount = $request->total();
