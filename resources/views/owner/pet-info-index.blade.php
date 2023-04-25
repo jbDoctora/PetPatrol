@@ -204,8 +204,9 @@
 
         </div>
 
-        <div class="pagination justify-center p-5">
+        <div class="p-5">
             {{ $petinfo->links() }}
         </div>
+
     </div>
 </x-dash-layout>
