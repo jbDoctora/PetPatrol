@@ -201,11 +201,11 @@
                 </div>
             </div>
             @endforelse
-            <div class="pagination justify-center p-5">
-                {{ $petinfo->links() }}
-            </div>
+
         </div>
 
-
+        <div class="pagination justify-center p-5">
+            {{ $petinfo->links() }}
+        </div>
     </div>
 </x-dash-layout>

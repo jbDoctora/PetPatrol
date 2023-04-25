@@ -1,6 +1,6 @@
 <x-dash-layout>
 
-    <div class="bg-white my-5 mx-14 shadow-lg h-screen rounded border border-gray-300">
+    <div class="bg-white my-5 mx-14 shadow-lg h-full rounded border border-gray-300">
         <div class="flex items-center justify-between text-2xl font-bold p-4 border-b border-slate-300 text-blue-700">
             <h3>Request Manager</h3>
             <div>
