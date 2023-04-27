@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\Service;
+use App\Models\AdminPetType;
+use App\Models\AdminService;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\TrainerRating;
@@ -135,9 +137,12 @@ class BookingController extends Controller
 
         $filteredCount = $request->total();
 
+        $admin_petType = AdminPetType::where('isPosted', '1')->get();
+
         return view('owner.show-bookings', [
             'request' => $request,
             'filteredCount' => $filteredCount,
+            'admin_pet' => $admin_petType,
         ]);
     }
 

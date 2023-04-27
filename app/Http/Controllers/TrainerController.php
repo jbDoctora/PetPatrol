@@ -150,9 +150,12 @@ class TrainerController extends Controller
         // dd($request);
         $filteredCount = $request->total();
 
+        $adminPetType = AdminPetType::where('isPosted', '1')->get();
+
         return view('trainer.show-bookings', [
             'request' => $request,
             'filteredCount' => $filteredCount,
+            'admin_pet' => $adminPetType,
         ]);
     }
     // V1
@@ -226,23 +229,6 @@ class TrainerController extends Controller
         $user_to_notify = User::where('id', $booking['client_id'])->first();
         $trainer_id = $request->input('trainer_id');
 
-        // Join the service table with the booking table
-        // $service_type = Booking::join('service', 'booking.service_id', '=', 'service.id')
-        //     ->where('booking.book_id', $request->input('book_id'))
-        //     ->pluck('service.service_type')
-        //     ->first();
-
-        // if ($service_type === 'public') {
-        //     // Update booking
-        //     $booking->status = $request->input('status');
-        //     $booking->payment = $request->input('payment');
-        //     $booking->reason_reject = $request->input('reason_reject');
-        //     $booking->save();
-
-        //     return redirect()->back()->with('message', 'Successfully approved');
-        // } else if (
-        //     $service_type === 'private'
-        // ) {
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
 
@@ -253,19 +239,25 @@ class TrainerController extends Controller
                 $query->where('start_date', '<=', $end_date)
                     ->where('end_date', '>=', $start_date);
             })
-            ->where('book_id', '<>', $booking->book_id) // exclude current booking
+            ->where('book_id', '<>', $booking->book_id)
             ->get();
 
         if ($conflicting_bookings->count() > 0) {
-            // There is a scheduling conflict
             return redirect()->back()->with('error', 'You are not available during the selected date range.');
         }
 
-        // Update booking
+
         $booking->status = $request->input('status');
         $booking->payment = $request->input('payment');
         $booking->reason_reject = $request->input('reason_reject');
         $booking->save();
+
+        if ($booking->status == 'declined') {
+            $pet = PetInfo::where('pet_id', $request->input('pet_id'))->first();
+            $pet->book_status = 'inactive';
+            $pet->save();
+        }
+
 
         //NOTIFY
         $bookingData = [
@@ -352,19 +344,6 @@ class TrainerController extends Controller
         return redirect()->back()->with('message', 'User updated successfully.');
     }
 
-    // public function updatePassword(Request $request, $id)
-    // {
-    //     $user = User::findOrFail($id);
-
-    //     $request->validate([
-    //         'password' => 'required|confirmed|min:6',
-    //     ]);
-
-    //     $user->password = Hash::make($request->password);
-    //     $user->save();
-
-    //     return back()->with('message', 'Password updated successfully.');
-    // }
     public function updatePassword(Request $request, $id)
     {
         $user = User::findOrFail($id);

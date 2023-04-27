@@ -24,10 +24,10 @@
                     <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56" name="pet_type"
                         value="{{ request('pet_type') }}">
                         <option value="">Pet type (All)</option>
-                        <option value="Dog" {{request('pet_type')=='Dog' ? 'selected' : '' }}>Dog</option>
-                        <option value="Cat" {{request('pet_type')=='Cat' ? 'selected' : '' }}>Cat</option>
-                        <option value="Parrot" {{request('pet_type')=='Parrot' ? 'selected' : '' }}>Parrot</option>
-                        <option value="Hamster" {{request('pet_type')=='Hamster' ? 'selected' : '' }}>Hamster</option>
+                        @foreach($admin_pet as $type)
+                        <option value="{{$type->admin_petType}}" {{ request('pet_type')==$type->admin_petType ?
+                            'selected' : '' }}>{{$type->admin_petType}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>
@@ -128,7 +128,7 @@
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
                         <ul tabindex="0"
-                            class="dropdown-content menu p-1 shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
+                            class="dropdown-content menu shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
                             <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
                         </ul>
                     </div>

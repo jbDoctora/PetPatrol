@@ -26,10 +26,10 @@
                     <select class="border border-slate-300 h-full rounded px-3 py-2 text-left w-56 sm:w-32"
                         name="pet_type" value="{{ request('pet_type') }}">
                         <option value="">Pet type (All)</option>
-                        <option value="Dog" {{request('pet_type')=='Dog' ? 'selected' : '' }}>Dog</option>
-                        <option value="Cat" {{request('pet_type')=='Cat' ? 'selected' : '' }}>Cat</option>
-                        <option value="Parrot" {{request('pet_type')=='Parrot' ? 'selected' : '' }}>Parrot</option>
-                        <option value="Hamster" {{request('pet_type')=='Hamster' ? 'selected' : '' }}>Hamster</option>
+                        @foreach($admin_pet as $type)
+                        <option value="{{$type->admin_petType}}" {{ request('pet_type')==$type->admin_petType ?
+                            'selected' : '' }}>{{$type->admin_petType}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>
@@ -298,19 +298,13 @@
                                         <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
                                         <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
                                             <li><button
-                                                    x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
+                                                    x-on:click.prevent="showModal = { course: '{{ $requests->course }}', pet_id: '{{ $requests->pet_id }}',availability:
                                     '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
                                     '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update</button>
                                             </li>
                                         </ul>
                                     </div>
-                                    {{-- <button class="bg-blue-700 text-white px-4 py-2 rounded"
-                                        x-on:click.prevent="showModal = { course: '{{ $requests->course }}', availability:
-                                    '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
-                                    '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
-                                    '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update
-                                    </button> --}}
                                 </a>
                             </div>
                             @endif
@@ -352,6 +346,7 @@
                     <input type="hidden" name="start_date" x-bind:value="showModal.start_date">
                     <input type="hidden" name="end_date" x-bind:value="showModal.end_date">
                     <input type="hidden" name="trainer_id" x-bind:value="showModal.trainer_id">
+                    <input type="hidden" name="pet_id" x-bind:value="showModal.pet_id">
 
                     <div class="fixed z-50 inset-0 overflow-y-auto" x-show="showModal" x-transition>
                         <div
@@ -359,11 +354,9 @@
                             <!-- Background overlay -->
                             <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
 
-                            <!-- Modal content -->
                             <div
                                 class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg">
                                 <div class="px-4 py-6">
-                                    <!-- Close button -->
                                     <div class="absolute top-0 right-0 p-2">
                                         <button class="bg-gray-300 hover:bg-gray-400 rounded-full p-2"
                                             @click.prevent="showModal = false">
@@ -417,18 +410,6 @@
                                                 class="border border-slate-300"></textarea>
                                         </div>
 
-                                        {{-- <div class="flex items-center">
-                                            <div class="tooltip tooltip-right"
-                                                data-tip="You can't revert your decision once marked as paid">
-                                                <input type="checkbox" name="payment" value="paid" class="mr-3"
-                                                    x-bind:checked="showModal.payment === 'paid' ? true : false"
-                                                    x-bind:disabled="showModal.payment === 'paid' ? true : false">
-                                            </div>
-                                            <p class="mr-5"
-                                                x-text="showModal.payment === 'paid' ? 'Marked as paid' : 'Mark as paid'">
-                                                Mark as paid
-                                            </p>
-                                        </div> --}}
                                         <div>
                                             <h3 class="my-4 text-sm">Payment status</h3>
                                             <select name="payment"

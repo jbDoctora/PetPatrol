@@ -64,29 +64,6 @@
 </head>
 
 <body class="bg-gray-200 flex min-h-screen flex-col">
-    {{-- CHATBOT --}}
-    {{-- <div x-data="{ isOpen: false }">
-        <div class="fixed right-0 bottom-0 m-1">
-            <button @click="isOpen = true"
-                class="bg-blue-700 text-white px-4 py-3 rounded-l-lg rounded-t-lg focus:outline-none text-lg"><i
-                    class="fa-regular fa-life-ring pr-3"></i>Need
-                Help</button>
-        </div>
-
-        <div x-show="isOpen"
-            class="fixed right-0 bottom-0 h-screen w-screen bg-gray-900 bg-opacity-75 z-50 flex justify-center items-center">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div style="height:400px; width:400px">
-                    <iframe src="https://ora.sh/embed/d64b5f6a-6d36-42c9-8777-4d40fab62bc5" width="100%" height="100%"
-                        style="border:0; border-radius: 4px"></iframe>
-                </div>
-                <div class="flex justify-end">
-                    <button @click="isOpen = false"
-                        class="bg-blue-700 text-white px-4 py-2 rounded-lg mt-4 focus:outline-none hover:bg-blue-800">Close</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"

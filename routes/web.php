@@ -211,6 +211,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // Default Route
 Route::get('/', [UserController::class, 'index']);
 Route::get('/help-center', [ReportSuggestionsController::class, 'showHelpCenter']);
+Route::get('/about-us', [ReportSuggestionsController::class, 'showAboutUs']);
 Route::post('help-center/add', [ReportSuggestionsController::class, 'storeReport']);
 
 // Unauthorized Route
