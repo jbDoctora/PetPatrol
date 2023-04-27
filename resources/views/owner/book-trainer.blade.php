@@ -121,12 +121,12 @@
                     <label class="inline-flex items-center rounded border border-gray-200 py-3 px-9 hover:bg-gray-100">
                         <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500" value="private"
                             x-model="location" required />
-                        <span class="ml-2 text-xs font-medium">Home Service(private)</span>
+                        <span class="ml-2 text-xs font-medium">Home Service</span>
                     </label>
                     <label class="inline-flex items-center rounded border border-gray-200 py-3 px-9 hover:bg-gray-100">
                         <input type="radio" name="radio-8" class="radio radio-sm checked:bg-blue-500" value="public"
                             x-model="location" required />
-                        <span class="ml-2 text-xs font-medium">Group Session(public)</span>
+                        <span class="ml-2 text-xs font-medium">Trainer's Studio</span>
                     </label>
                 </div>
 

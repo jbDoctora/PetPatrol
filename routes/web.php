@@ -60,9 +60,14 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::put('/notifications/{notification}', function (Notification $notification) {
+Route::put('/notifications/{notification}', function (Illuminate\Notifications\DatabaseNotification $notification) {
     $notification->markAsRead();
-    return redirect('/bookings');
+
+    if (auth()->user()->role == 1) {
+        return redirect('/trainer/bookings');
+    } else {
+        return redirect('/bookings');
+    }
 })->name('notifications.markAsRead');
 
 //NOTIFICATION MARK AS READ AND CLEAR
@@ -156,6 +161,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval', 'banned'])->group(funct
     Route::get('/trainer/report', [TrainerController::class, 'showReport']);
     Route::put('/trainer/service/edit', [TrainingDetailsController::class, 'updateDetails']);
     Route::delete('/trainer/service_details/delete/{train_id}', [TrainingDetailsController::class, 'delete']);
+    Route::get('/trainer/notifications', [TrainerController::class, 'showNotifications']);
 });
 
 // Owner Routes
@@ -185,6 +191,7 @@ Route::middleware(['auth', 'verified', 'isOwner', 'banned'])->group(function () 
     Route::post('/bookings/add-rating', [BookingController::class, 'storeRating']);
     Route::get('/events/owner', [OwnerController::class, 'getEvents']);
     Route::put('/request/delete/{request_id}', [OwnerController::class, 'updateRequest']);
+    Route::get('/owner/notifications', [OwnerController::class, 'showNotifications']);
 });
 
 // Admin Routes

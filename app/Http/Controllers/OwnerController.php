@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\Service;
 use App\Models\AdminService;
+use App\Models\Notification;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
 use App\Models\TrainerRating;
@@ -178,5 +179,11 @@ class OwnerController extends Controller
         $request_trainer->update($data);
 
         return redirect()->back()->with('message', 'Request Successfully Deleted');
+    }
+
+    public function showNotifications()
+    {
+        $notifications = Notification::where('notifiable_id', auth()->user()->id)->paginate(10);
+        return view('owner.notifications', compact('notifications'));
     }
 }

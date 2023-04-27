@@ -246,32 +246,36 @@
                             <button tabindex="0" class="hover:text-yellow-400">
                                 <i class="fa-solid fa-bell fa-lg"></i>
                                 <span class="sr-only">Notifications</span>
-                                @if(auth()->user()->notifications->count() > 0)
+                                @if(auth()->user()->unreadNotifications->count() > 0)
                                 <span
                                     class="indicator-item badge bg-yellow-400 text-black font-bold text-xs rounded-full absolute -top-1 -right-1">
-                                    {{ auth()->user()->notifications->count() }}
+                                    {{ auth()->user()->unreadNotifications->count() }}
                                 </span>
                                 @endif
                             </button>
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-white w-72">
-                            <h6 class="text-base text-blue-700 bg-white p-2 border-b border-gray-300">Notification</h6>
-                            @forelse(auth()->user()->notifications as $notification)
+                        <ul tabindex="0" class="dropdown-content menu bg-white w-96">
+                            <div class="flex justify-between items-center p-2">
+                                <div>
+                                    <h6 class="text-base text-gray-900 bg-white">Notification</h6>
+                                </div>
+                                <div><a href="/trainer/notifications" class="text-blue-700 text-xs">View all
+                                        notifications</a></div>
+                            </div>
+                            @forelse(auth()->user()->unreadNotifications->take(5) as $notification)
                             <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <a href="/bookings">
+                                <a href="/trainer/bookings">
                                     <li
                                         class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300' }} rounded cursor-pointer m-1">
                                         <button type="submit"
                                             class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">
-
                                             <div class="flex justify-between items-center mt-3">
-                                                <span
-                                                    class="{{ $notification->read_at ? 'font-normal' : 'font-bold' }}">{{
+                                                <span class="{{ $notification->read_at}}">{{
                                                     $notification->data['message'] }}</span>
                                                 <span class="text-gray-500 text-xs">{{
-                                                    $notification->created_at->format('M d, Y') }}</span>
+                                                    $notification->created_at->diffForHumans() }}</span>
                                             </div>
                                         </button>
                                     </li>
@@ -296,7 +300,6 @@
                             @endif
                         </ul>
                     </div>
-
 
                     <div class="avatar dropdown dropdown-end text-black">
                         <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">

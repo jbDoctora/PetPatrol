@@ -8,6 +8,7 @@ use App\Models\PetInfo;
 use App\Models\Service;
 use App\Models\AdminPetType;
 use App\Models\AdminService;
+use App\Models\Notification;
 use App\Models\TrainerModel;
 use Illuminate\Http\Request;
 use App\Models\TrainerRating;
@@ -592,5 +593,12 @@ class TrainerController extends Controller
         }
 
         return response()->json($events);
+    }
+
+    public function showNotifications()
+    {
+        $notifications = Notification::where('notifiable_id', auth()->user()->id)->paginate(10);
+
+        return view('trainer.notifications', compact('notifications'));
     }
 }
