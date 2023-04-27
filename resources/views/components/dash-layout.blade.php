@@ -39,6 +39,7 @@
         // Initialize the calendar
         $('#calendar').fullCalendar({
             events: {
+                allDay: true,
                 url: '{{ url('/events/owner') }}',
                 type: 'GET',
                 error: function() {
@@ -50,6 +51,7 @@
                 center: 'title',
                 right: 'month,basicWeek,basicDay'
             },
+            displayEventTime: false,
             defaultView: 'month',
             editable: false,
             eventLimit: true,

@@ -122,7 +122,8 @@
                                 <div><input type="date" name="start_date"
                                         class="border border-gray-300 rounded py-1 px-3 w-full md:w-auto"
                                         x-model="startDate"
-                                        x-on:change="endDate = days ? new Date(new Date(startDate).getTime() + days * 24 * 60 * 60 * 1000).toISOString().split('T')[0] : ''" />
+                                        x-on:change="endDate = days ? new Date(new Date(startDate).getTime() + days * 24 * 60 * 60 * 1000).toISOString().split('T')[0] : ''"
+                                        :min="new Date().toISOString().split('T')[0]" />
                                 </div>
                             </div>
                             <div class="flex flex-col md:flex-row md:justify-between items-center">

@@ -18,7 +18,7 @@
                     <form method="POST" action="/users" class="mt-5 flex flex-col gap-4" enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700">
+                            <label for="name" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Full Name
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
@@ -37,7 +37,7 @@
                         <input type="hidden" name="id_verify" value="null">
 
                         <div>
-                            <label for="address" class="block text-sm font-medium text-gray-700">
+                            <label for="address" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Address
                             </label>
 
@@ -50,7 +50,7 @@
                         </div>
 
                         <div>
-                            <label for="phone_number" class="block text-sm font-medium text-gray-700">
+                            <label for="phone_number" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Phone number
                             </label>
 
@@ -63,7 +63,7 @@
                         </div>
 
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">
+                            <label for="email" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Email
                             </label>
 
@@ -77,7 +77,7 @@
                         </div>
 
                         <div>
-                            <label for="password" class="block text-sm font-medium text-gray-700">
+                            <label for="password" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Password
                             </label>
 
@@ -91,7 +91,7 @@
                         </div>
 
                         <div>
-                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
+                            <label for="password_confirmation" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Password Confirmation
                             </label>
 
@@ -109,11 +109,11 @@
 
                         <div class="flex flex-col items-center justify-center">
                             <button type="submit"
-                                class="bg-blue-700 px-4 py-3 text-white font-bold rounded text-sm hover:bg-blue-900">
+                                class="bg-blue-700 px-4 py-2 text-white font-medium rounded-full text-sm hover:bg-blue-900">
                                 Create account
                             </button>
 
-                            <p class="mt-4 text-sm text-gray-500 sm:mt-0">
+                            <p class="mt-5 text-xs text-gray-500 sm:mt-3">
                                 Already have an account?
                                 <a href="#" class="text-gray-700 underline">Log in</a>.
                             </p>

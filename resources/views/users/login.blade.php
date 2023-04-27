@@ -22,7 +22,7 @@
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-80 text-sm" />
                             @error('email')
                             <div>
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -36,8 +36,8 @@
                             </label>
 
                             <input type="password" name="password" value="{{ old('password') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
-                            <div class="mt-2 text-sm text-blue-700 text-right mr-auto"><a
+                                class="rounded border border-gray-300 py-2 px-3 w-80 text-sm" />
+                            <div class="mt-2 text-xs text-blue-700 text-right mr-auto"><a
                                     href="{{ route('password.request') }}">Forgot
                                     Password?</a></div>
                             @error('password')
@@ -45,16 +45,23 @@
                             @enderror
                         </div>
 
-                        <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+                        <div class="col-span-7 flex flex-col">
                             <button type="submit" {{-- class="btn btn-primary" --}}
-                                class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-full sm:w-auto text-sm">
+                                class="rounded-full bg-blue-700 text-white py-2 px-5 hover:bg-blue-800 w-60 text-sm mx-auto">
                                 Login
                             </button>
 
-                            <div class="mt-4 sm:mt-0">
-                                <p class="text-sm text-gray-500">Don't have an account?
-                                    <a href="/register-owner" class="text-blue-700 underline">Register</a>.
-                                </p>
+                            <div class="flex flex-col justify-center items-center gap-2 my-3">
+                                <div>
+                                    <p class="text-xs text-gray-500">Don't have an account?
+                                        <a href="/register-owner" class="text-blue-700 hover:underline">Register</a>.
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500"><a href="/register-trainer"
+                                            class="text-blue-700 hover:underline">Register as a Pet
+                                            Trainer</a></p>
+                                </div>
                             </div>
                         </div>
                     </form>

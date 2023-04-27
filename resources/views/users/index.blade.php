@@ -17,7 +17,7 @@
                     Expert
                     Training Services
                 </p>
-                <button class="bg-blue-700 px-4 py-3 text-white font-bold rounded text-sm hover:bg-blue-900"><a
+                <button class="bg-blue-700 px-4 py-3 text-white font-medium rounded-full text-sm hover:bg-blue-900"><a
                         href="/register-owner">Get
                         Started<i class="fa-solid fa-paper-plane ml-3"></i></a></button>
             </div>

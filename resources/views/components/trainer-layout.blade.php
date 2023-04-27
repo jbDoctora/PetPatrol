@@ -153,10 +153,6 @@
                     </g>
                 </svg>
 
-                {{-- <div class="text-xl font-black tracking-wide text-white text-center ml-3"
-                    style="font-family: 'Jost', sans-serif;">
-                    PETPATROL
-                </div> --}}
                 <span class="text-2xl font-bold tracking-wide text-white text-center"
                     style="font-family: 'Lora', serif;">PETPATROL</span>
 
@@ -169,9 +165,6 @@
                         donut_small
                     </span>
                     <div class=" ml-9 ">Dashboard</div>
-                    {{-- <div class="ml-auto">
-                        <div class="rounded-full bg-yellow-400 w-3 h-3"></div>
-                    </div> --}}
                 </a>
                 <a href="/trainer/bookings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
                     <span class="material-icons" style="font-size: 25px">
@@ -262,18 +255,24 @@
                             </button>
                         </div>
                         <ul tabindex="0" class="dropdown-content menu bg-white w-72">
-                            <h6 class="text-base text-blue-700 bg-white p-2 border-b border-gray-300">Notification
-                            </h6>
+                            <h6 class="text-base text-blue-700 bg-white p-2 border-b border-gray-300">Notification</h6>
                             @forelse(auth()->user()->notifications as $notification)
                             <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <a href="/bookings">
                                     <li
-                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700' }} rounded cursor-pointer border-b border-gray-300">
+                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300' }} rounded cursor-pointer m-1">
                                         <button type="submit"
                                             class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">
-                                            {{ $notification->data['message'] }}
+
+                                            <div class="flex justify-between items-center mt-3">
+                                                <span
+                                                    class="{{ $notification->read_at ? 'font-normal' : 'font-bold' }}">{{
+                                                    $notification->data['message'] }}</span>
+                                                <span class="text-gray-500 text-xs">{{
+                                                    $notification->created_at->format('M d, Y') }}</span>
+                                            </div>
                                         </button>
                                     </li>
                                 </a>
@@ -297,16 +296,7 @@
                             @endif
                         </ul>
                     </div>
-                    {{-- <div class="dropdown dropdown-end mx-2">
-                        <button tabindex="0" class="hover:text-blue-400"><i
-                                class="fa-solid fa-circle-question fa-lg"></i></button>
-                        <ul tabindex="0"
-                            class="dropdown-content menu bg-base-100 rounded-box w-52 p-2 text-black shadow">
-                            <li><a href="">About us</a></li>
-                            <li><a href="">Need Help?</a></li>
-                            <li><a href="">Be a Pet Patroller</a></li>
-                        </ul>
-                    </div> --}}
+
 
                     <div class="avatar dropdown dropdown-end text-black">
                         <div tabindex="0" class="avatar mx-4 h-11 w-11 rounded-full bg-white">

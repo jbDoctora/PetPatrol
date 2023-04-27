@@ -23,12 +23,12 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="col-span-6">
-                            <label for="email" class="block text-sm font-medium text-gray-700">
+                            <label for="email" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Email
                             </label>
 
                             <input type="email" name="email" value="{{ old('email') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('email')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="name" class="block text-sm font-medium text-gray-700">
+                            <label for="name" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Name
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
@@ -50,12 +50,12 @@
                         </div>
 
                         <div class="col-span-3">
-                            <label for="name" class="block text-sm font-medium text-gray-700">
+                            <label for="name" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Birthday
                             </label>
 
                             <input type="date" name="birthday" value="{{ old('birthday') ?? '' }}"
-                                class="mt-1 h-10 w-full px-3 py-2 rounded border border-gray-400 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="mt-1 h-10 w-full px-3 py-2 rounded border border-gray-400 bg-white text-xs text-gray-700 shadow-sm" />
 
                             @error('birthday')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -64,11 +64,11 @@
                         </div>
 
                         <div class="col-span-3">
-                            <label for="sex" class="block text-sm font-medium text-gray-700">
+                            <label for="sex" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Sex
                             </label>
                             <select
-                                class="mt-1 h-10 w-full px-3 py-2 rounded border border-gray-400 bg-white text-sm text-gray-700 shadow-sm"
+                                class="mt-1 h-10 w-full px-3 py-2 rounded border border-gray-400 bg-white text-xs text-gray-700 shadow-sm"
                                 id="sex" name="sex" required value="{{ old('sex') }}">
                                 <option value=""><span class="text-sm">Select a gender</span></option>
                                 <option value="male">Male</option>
@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="address" class="block text-sm font-medium text-gray-700">
+                            <label for="address" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Address
                             </label>
 
@@ -95,12 +95,12 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="phone_number" class="block text-sm font-medium text-gray-700">
+                            <label for="phone_number" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Phone number
                             </label>
 
                             <input type="text" name="phone_number" value="{{ old('phone_number') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-full text-xs" />
                             @error('phone_number')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
@@ -108,13 +108,13 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="id_verify" class="block text-sm font-medium text-gray-700">
+                            <label for="id_verify" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Please attach Valid ID
                             </label>
 
                             <div class="relative">
                                 <input type="file" name="id_verify" value="{{ old('id_verify') }}"
-                                    class="rounded border border-gray-300 py-2 px-3 w-full text-sm">
+                                    class="rounded border border-gray-300 py-2 px-3 w-full text-xs">
 
                                 @error('id_verify')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -125,7 +125,7 @@
 
 
                         <div class="col-span-6">
-                            <label for="password" class="block text-sm font-medium text-gray-700">
+                            <label for="password" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Password
                             </label>
 
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
+                            <label for="password_confirmation" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Password Confirmation
                             </label>
 
@@ -155,13 +155,13 @@
 
                         <input type="hidden" name="role" value="1" />
 
-                        <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+                        <div class="col-span-6 flex flex-col justify-center items-center">
                             <button type="submit"
-                                class="bg-blue-700 px-4 py-3 text-white font-bold rounded text-sm hover:bg-blue-900">
+                                class="bg-blue-700 px-4 py-2 text-white font-medium rounded-full text-sm hover:bg-blue-900 w-60">
                                 Create an account
                             </button>
 
-                            <p class="mt-4 text-sm text-gray-500 sm:mt-0">
+                            <p class="mt-4 text-xs text-gray-500 sm:mt-3">
                                 Already have an account?
                                 <a href="/login" class="text-gray-700 underline">Log in</a>.
                             </p>
