@@ -24,13 +24,18 @@
                     </label>
                     @empty
 
-                    <p class="col-span-2 text-justify text-sm">You have not registered a pet, or training requests have
-                        already
-                        been made
-                        for your pets.</p>
-                    <a href="/pet/add-info" class="underline text-blue-500 text-center">
-                        Add pet
-                    </a>
+                    <div class="col-span-2 flex flex-col justify-center items-center">
+                        <img src="{{asset('images/no-pet.png')}}" alt="" class="h-64 w-64">
+                        <div>
+                            <p class="text-lg">No available pet at the moment.</p>
+                        </div>
+                        <div class="mt-3">
+                            <a href="/pet/add-info" class="hover:underline text-blue-500 text-center">
+                                Add pet
+                            </a>
+                        </div>
+                    </div>
+
                     @endforelse
                 </div>
 
