@@ -38,6 +38,7 @@
             // Initialize the calendar
             $('#calendar').fullCalendar({
                 events: {
+                    allDay: true,
                     url: '{{ url('/events') }}',
                     type: 'GET',
                     error: function() {
@@ -47,20 +48,14 @@
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'month,basicWeek,basicDay'
                 },
+                displayEventTime: false,
                 defaultView: 'month',
                 editable: false,
                 eventLimit: true,
                 navLinks: true,
                 timezone: 'local',
                 timeFormat: 'h:mm a',
-                slotEventOverlap: false, // set this option to false to make events cover the whole grid
-                allDaySlot: true, // set this option to true to show the slot for the whole day
-                height: 'parent', // set this option to 'parent' to make the calendar fit the whole container
-                eventRender: function(event, element) {
-                    element.find('.fc-title').text(event.title.split(' - ')[0]); // remove time from event title
-                }
             });
         });
     </script>
@@ -72,13 +67,11 @@
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
-    <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
-        type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+
     <link href="https://cdn.tiny.cloud/1/t3yr3j2qwq03mq0638f9ob1i3d97win8i57rt6ssmvj1p9ku/tinymce/6/content.min.css"
         rel="stylesheet">
 
@@ -283,8 +276,14 @@
                             </form>
                             @empty
                             <li>
-                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200 text-black">Empty
-                                    notification</a>
+                                <div class="flex flex-col items-center justify-center">
+                                    <div>
+                                        <img src="{{asset('/images/no-notif.png')}}" alt="" class="h-36 w-36">
+                                    </div>
+                                    <div>
+                                        <p class="text-lg text-gray-900">You're all caught up!</p>
+                                    </div>
+                                </div>
                             </li>
                             @endforelse
 

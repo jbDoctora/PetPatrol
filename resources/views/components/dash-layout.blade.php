@@ -16,7 +16,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/apple-touch-icon-72x72.png" />
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="//db.onlinewebfonts.com/c/a575313c6dc4fd00c1a9506e1c3ea4fc?family=Euclid+Circular+A" rel="stylesheet"
@@ -158,8 +157,14 @@
                             </form>
                             @empty
                             <li>
-                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200 text-black">Empty
-                                    notification</a>
+                                <div class="flex flex-col items-center justify-center">
+                                    <div>
+                                        <img src="{{asset('/images/no-notif.png')}}" alt="" class="h-36 w-36">
+                                    </div>
+                                    <div>
+                                        <p class="text-lg text-gray-900">You're all caught up!</p>
+                                    </div>
+                                </div>
                             </li>
                             @endforelse
 

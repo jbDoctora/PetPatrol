@@ -95,7 +95,7 @@
                 <div class="p-4 md:w-1/2 xl:w-1/4">
                     <div class="rounded-lg bg-gray-100 p-6">
                         <img class="mb-6 h-40 w-full rounded object-cover object-center"
-                            src="images/card images/shopping.png" alt="content">
+                            src="{{asset('/images/card images/book.png')}}" alt="content">
                         <h3 class="title-font text-3xl font-medium tracking-widest text-yellow-400">1</h3>
                         <h2 class="title-font mb-4 text-lg font-medium text-gray-900">Book a request</h2>
                         <p class="text-base leading-relaxed">Answer a few quick questions about the pet service you
@@ -105,17 +105,17 @@
                 <div class="p-4 md:w-1/2 xl:w-1/4">
                     <div class="rounded-lg bg-gray-100 p-6">
                         <img class="mb-6 h-40 w-full rounded object-cover object-center"
-                            src="images/card images/searching.png" alt="content">
+                            src="{{asset('/images/card images/connect.png')}}" alt="content">
                         <h3 class="title-font text-3xl font-medium tracking-widest text-yellow-400">2</h3>
                         <h2 class="title-font mb-4 text-lg font-medium text-gray-900">Match with Patroller.</h2>
-                        <p class="text-base leading-relaxed">Instanly matcher with registered pet trainers in your local
+                        <p class="text-base leading-relaxed">Instanly matche with registered pet trainers in your local
                             area.</p>
                     </div>
                 </div>
                 <div class="p-4 md:w-1/2 xl:w-1/4">
                     <div class="rounded-lg bg-gray-100 p-6">
                         <img class="mb-6 h-40 w-full rounded object-cover object-center"
-                            src="images/card images/no-yet.png" alt="content">
+                            src="{{asset('/images/card images/meet.png')}}" alt="content">
                         <h3 class="title-font text-3xl font-medium tracking-widest text-yellow-400">3</h3>
                         <h2 class="title-font mb-4 text-lg font-medium text-gray-900">Book to meet</h2>
                         <p class="text-base leading-relaxed"> Choose a Patroller and place a deposit to schedule a meet
@@ -125,7 +125,7 @@
                 <div class="p-4 md:w-1/2 xl:w-1/4">
                     <div class="rounded-lg bg-gray-100 p-6">
                         <img class="mb-6 h-40 w-full rounded object-cover object-center"
-                            src="images/card images/we-are-hiring.png" alt="content">
+                            src="{{asset('/images/card images/confirm.png')}}" alt="content">
                         <h3 class="title-font text-3xl font-medium tracking-widest text-yellow-400">4</h3>
                         <h2 class="title-font mb-4 text-lg font-medium text-gray-900">Confirm the Patroller.</h2>
                         <p class="text-base leading-relaxed">Proceed with the Backer if suitable otherwise inform us to
