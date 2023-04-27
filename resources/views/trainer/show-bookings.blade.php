@@ -388,26 +388,23 @@
                                             <div x-text="showModal.trainer_id"></div>
                                             <div x-text="showModal.availability"></div>
                                         </div> --}}
-
-
                                         <div x-data="{ isApproved: false }">
-                                            {{-- <p class="mb-4 italic">Action:</p> --}}
                                             <div class="flex flex-col justify-center gap-3 mb-3 text-xs">
                                                 <div>
                                                     <input type="radio" name="status" class="mx-2" value="approved"
-                                                        @click="isApproved = true" />
+                                                        x-model="isApproved" />
                                                     Approve
                                                 </div>
                                                 <div>
                                                     <input type="radio" name="status" class="mx-2" value="declined"
-                                                        @click="isApproved = false" />
+                                                        x-model="isApproved" />
                                                     Decline
                                                 </div>
                                             </div>
                                             <p class="mb-4 text-sm">Reason for decline:</p>
                                             <textarea name="reason_reject" id="" cols="50" rows="5"
-                                                x-bind:disabled="isApproved || !document.querySelector('input[name=status]:checked')"
-                                                class="border border-slate-300"></textarea>
+                                                x-bind:disabled="!isApproved || (isApproved === 'approved')"
+                                                class="border border-slate-300 p-3 text-xs"></textarea>
                                         </div>
 
                                         <div>
