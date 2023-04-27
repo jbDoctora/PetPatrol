@@ -49,7 +49,6 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,basicWeek,basicDay'
             },
             displayEventTime: false,
             defaultView: 'month',
@@ -66,7 +65,7 @@
 
 <body class="bg-gray-200 flex min-h-screen flex-col">
     {{-- CHATBOT --}}
-    <div x-data="{ isOpen: false }">
+    {{-- <div x-data="{ isOpen: false }">
         <div class="fixed right-0 bottom-0 m-1">
             <button @click="isOpen = true"
                 class="bg-blue-700 text-white px-4 py-3 rounded-l-lg rounded-t-lg focus:outline-none text-lg"><i
@@ -87,7 +86,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }"
         x-init="() => { sidebarOpen ? null : localStorage.setItem('sidebarOpen', false) }"

@@ -24,29 +24,99 @@
         </div>
     </div>
 
+
+    <div class="flex">
+        <div class="h-26 w-26"><img src="{{asset('images/dog-index-1.jpg')}}" class="h-full w-full object-cover" alt="">
+        </div>
+        <div class="h-26 w-26"><img src="{{asset('images/dog-index-2.jpg')}}" class="h-full w-full object-cover" alt="">
+        </div>
+        <div class="h-26 w-26"><img src="{{asset('images/cat-index-1.webp')}}" class="h-full w-full object-cover"
+                alt="">
+        </div>
+        <div class="h-26 w-26"><img src="{{asset('images/cat-index-3.jpg')}}" class="h-full w-full object-cover" alt="">
+        </div>
+        <div class="h-26 w-26"><img src="{{asset('images/cat-index-4.webp')}}" class="h-full w-full object-cover"
+                alt="">
+        </div>
+    </div>
+
+    <div class="mt-16 mx-16">
+        <h3 class="text-2xl font-semibold mb-4 text-center">Our Pet Training Programs</h3>
+        <div class="grid grid-cols-2 gap-5">
+            <div class="bg-white rounded-lg p-4 shadow-lg">
+                <h4 class="text-lg font-semibold mb-2">Obedience Training</h4>
+                <p class="text-gray-700 text-justify text-sm">Our Obedience Training program is designed to help your
+                    pet become a
+                    well-behaved companion. Whether you have a new addition to your family or need to address behavior
+                    issues, our
+                    training techniques are tailored to suit all pets.</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-lg">
+                <h4 class="text-lg font-semibold mb-2">Agility Training</h4>
+                <p class="text-gray-700 text-justify text-sm">Unleash your pet's athleticism with our Agility Training
+                    program. Improve
+                    coordination, speed, and agility through fun
+                    exercises. Our experienced trainers guide pets through jumps, tunnels, and weave poles, fostering
+                    confidence and
+                    enhancing physical abilities. Suitable for all pets. Watch them shine!</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-lg">
+                <h4 class="text-lg font-semibold mb-2">Potty Training</h4>
+                <p class="text-gray-700 text-justify text-sm">Say goodbye to accidents and embrace hassle-free living
+                    with our Potty Training
+                    program. We understand the importance of
+                    a clean and comfortable environment for both you and your pet. Our expert trainers will provide
+                    effective strategies and
+                    guidance to help your pet learn proper potty habits. From crate training to establishing routines,
+                    we'll equip you with
+                    the tools and knowledge to successfully potty train your pet. Experience the freedom and peace of
+                    mind that comes with a
+                    well-trained pet. Enroll in our Potty Training program today!</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-lg">
+                <h4 class="text-lg font-semibold mb-2">Tricks Training</h4>
+                <p class="text-gray-700 text-justify text-sm">Discover the joy of teaching your pet impressive tricks
+                    and commands. Our
+                    skilled trainers will guide you through
+                    step-by-step training techniques to help your pet master various tricks, from basic commands to more
+                    advanced feats.
+                    Strengthen the bond with your furry friend while having a blast together. Join our Tricks Training
+                    program and watch
+                    your pet's skills and confidence soar!</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="text-center text-2xl my-5">And more!!</h3>
+
     <!-- CTA -->
     <section class="body-font text-gray-600">
         <div class="container mx-auto px-5 py-24">
             <div class="mb-12 flex w-full flex-col text-center">
-                <h1 class="title-font mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">Send us an inquiry for your
+                <h1 class="title-font mb-4 text-xl font-medium text-gray-900 sm:text-2xl">Send us an inquiry for your
                     questions</h1>
                 <p class="mx-auto text-base leading-relaxed lg:w-2/3">We will get back to you as soon as possible for
                     you to start booking.</p>
             </div>
-            <div
-                class="mx-auto flex w-full flex-col items-end space-y-4 px-8 sm:flex-row sm:space-x-4 sm:space-y-0 sm:px-0 lg:w-2/3">
-                <div class="relative w-full flex-grow">
-                    <label for="full-name" class="text-sm leading-7 text-gray-600">Full Name</label>
-                    <input type="text" id="full-name" name="full-name"
-                        class="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+            <form method="POST" action="help-center/add">
+                @csrf
+                <input type="hidden" value="inquiry" name="report_type">
+                <div
+                    class="mx-auto flex w-full flex-col items-end space-y-4 px-8 sm:flex-row sm:space-x-4 sm:space-y-0 sm:px-0 lg:w-2/3">
+                    <div class="relative w-full flex-grow">
+                        <label for="full-name" class="text-sm leading-7 text-gray-600">Full Name</label>
+                        <input type="text" id="full-name" name="name"
+                            class="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+                    </div>
+                    <div class="relative w-full flex-grow">
+                        <label for="email" class="text-sm leading-7 text-gray-600">Short Description</label>
+                        <input type="text" id="email" name="description"
+                            class="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
+                    </div>
+                    <button type="submit"
+                        class="rounded-full px-5 py-3 bg-blue-700 text-sm text-white hover:bg-blue-800">Send</button>
                 </div>
-                <div class="relative w-full flex-grow">
-                    <label for="email" class="text-sm leading-7 text-gray-600">Email</label>
-                    <input type="email" id="email" name="email"
-                        class="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200">
-                </div>
-                <button class="btn btn-primary">Send</button>
-            </div>
+            </form>
         </div>
     </section>
 
@@ -110,49 +180,4 @@
         </div>
     </section>
 
-    <!-- 2nd section -->
-
-    <section class="body-font text-gray-600">
-        <div class="container mx-auto flex flex-col px-5 py-24">
-            <div class="mx-auto lg:w-4/6">
-                <div class="h-64 overflow-hidden rounded-lg">
-                    <img alt="content" class="h-full w-full object-cover object-center"
-                        src="{{ asset('images/no-image.png') }}">
-                </div>
-                <div class="mt-10 flex flex-col sm:flex-row">
-                    <div class="text-center sm:w-1/3 sm:py-8 sm:pr-8">
-                        <div
-                            class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-200 text-gray-400">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="h-10 w-10" viewBox="0 0 24 24">
-                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <div class="flex flex-col items-center justify-center text-center">
-                            <h2 class="title-font mt-4 text-lg font-medium text-gray-900">Phoebe Caulfield</h2>
-                            <div class="mt-2 mb-4 h-1 w-12 rounded bg-indigo-500"></div>
-                            <p class="text-base">Raclette knausgaard hella meggs normcore williamsburg enamel pin
-                                sartorial venmo tbh hot chicken gentrify portland.</p>
-                        </div>
-                    </div>
-                    <div
-                        class="mt-4 border-t border-gray-200 pt-4 text-center sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left">
-                        <p class="mb-4 text-lg leading-relaxed">Meggings portland fingerstache lyft, post-ironic fixie
-                            man bun banh mi umami everyday carry hexagon locavore direct trade art party. Locavore small
-                            batch listicle gastropub farm-to-table lumbersexual salvia messenger bag. Coloring book
-                            flannel truffaut craft beer drinking vinegar sartorial, disrupt fashion axe normcore meh
-                            butcher. Portland 90's scenester vexillologist forage post-ironic asymmetrical, chartreuse
-                            disrupt butcher paleo intelligentsia pabst before they sold out four loko. 3 wolf moon
-                            brooklyn.</p>
-                        <a class="inline-flex items-center text-indigo-500">Learn More
-                            {{-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg> --}}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
 </x-layout>

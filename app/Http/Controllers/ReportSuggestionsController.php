@@ -23,6 +23,11 @@ class ReportSuggestionsController extends Controller
         return view('admin.help-center', compact('report'));
     }
 
+    public function showAboutUs()
+    {
+        return view('users.about-us');
+    }
+
     public function storeReport(Request $request)
     {
         $data = $request->validate([

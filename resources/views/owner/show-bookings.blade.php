@@ -67,8 +67,7 @@
 
         <div class="flex flex-col gap-3 my-3 py-3">
             @forelse($request as $requests)
-            <div
-                class="{{$requests->isRated == '1' ? '' : 'hidden' }} flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
+            <div class="flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
                 <div class="flex flex-col gap-3 p-3 w-96">
                     <a href="/bookings/{{$requests->book_id}}">
                         <h2 class="font-bold text-xl hover:text-blue-600">{{$requests->course}}</h2>

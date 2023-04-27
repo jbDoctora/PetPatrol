@@ -33,8 +33,8 @@
                     <td>
                         <div class="my-3">{{$user->id}}</div>
                     </td>
-                    <td><img src="{{$user->profile_photo ? asset('storage/' . auth()->user()->profile_photo) : asset('/images/placeholder.png') }}"
-                            alt="Profile photo" class="h-12 w-12 rounded-full bg-white object-cover"></td>
+                    <td><img src="{{$user->profile_photo ? asset('storage/' . $user->profile_photo) : asset('/images/placeholder.png') }}"
+                            alt="Profile photo" class="h-16 w-16 rounded-full bg-white object-cover"></td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->address}}</td>
