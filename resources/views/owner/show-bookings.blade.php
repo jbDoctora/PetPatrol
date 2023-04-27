@@ -4,7 +4,7 @@
         <form action="/bookings" method="GET">
             <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
                 <div class="shrink border border-slate-300 bg-base-300 rounded flex items-center">
-                    <input type="text" placeholder="Search" name="search"
+                    <input type="search" placeholder="Search" name="search"
                         class="px-6 py-2 rounded-sm h-full text-xs w-80 md:w-52" value="{{ request('search') }}" />
                 </div>
                 <div>
@@ -67,7 +67,8 @@
 
         <div class="flex flex-col gap-3 my-3 py-3">
             @forelse($request as $requests)
-            <div class="flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
+            <div
+                class="{{$requests->isRated == '1' ? '' : 'hidden' }} flex flex-row justify-between gap-2 border border-gray-300 rounded mx-4">
                 <div class="flex flex-col gap-3 p-3 w-96">
                     <a href="/bookings/{{$requests->book_id}}">
                         <h2 class="font-bold text-xl hover:text-blue-600">{{$requests->course}}</h2>

@@ -154,18 +154,23 @@
                             </button>
                         </div>
                         <ul tabindex="0" class="dropdown-content menu bg-white w-72">
-                            <h6 class="text-base text-blue-700 bg-white p-2 border-b border-gray-300">Notification
-                            </h6>
+                            <h6 class="text-base text-blue-700 bg-white p-2 border-b border-gray-300">Notification</h6>
                             @forelse(auth()->user()->notifications as $notification)
                             <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <a href="/bookings">
                                     <li
-                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300 border-l-4 border-blue-700 rounded' }} rounded cursor-pointer border-b border-gray-300">
+                                        class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300' }} rounded cursor-pointer m-1">
                                         <button type="submit"
                                             class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">
-                                            {{ $notification->data['message']}}
+
+                                            <div class="flex justify-between items-center mt-3">
+                                                <span class="{{ $notification->read_at}}">{{
+                                                    $notification->data['message'] }}</span>
+                                                <span class="text-gray-500 text-xs">{{
+                                                    $notification->created_at->format('M d, Y') }}</span>
+                                            </div>
                                         </button>
                                     </li>
                                 </a>
