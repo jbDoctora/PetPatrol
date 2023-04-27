@@ -39,9 +39,9 @@
                                         {{ $match->trainer_name }}</h2>
                                 </a>
                             </div>
-                            <div class="w-20 h-20">
-                                <img
-                                    src="{{ $match->profile_photo ? asset('storage/' . $match->profile_photo) : asset('/images/placeholder.png') }}">
+                            <div class="w-20 h-20 rounded-full">
+                                <img src="{{ $match->profile_photo ? asset('storage/' . $match->profile_photo) : asset('/images/placeholder.png') }}"
+                                    class="rounded-full">
                             </div>
                         </div>
                         <p class="text-xs mb-4"><i class="fa-solid fa-envelope"></i> {{ $match->email }}</p>
