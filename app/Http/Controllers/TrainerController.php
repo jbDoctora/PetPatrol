@@ -69,9 +69,17 @@ class TrainerController extends Controller
     public function editPortfolio(Request $request)
     {
         $trainer = TrainerModel::where('user_id', auth()->user()->id)->first();
-        $data = $request->only(['about_me', 'services', 'experience', 'type', 'certificates', 'journey_photos']);
+        $data = $request->validate([
+            'about_me' => 'required',
+            'services' => 'required',
+            'experience' => 'required',
+            'type' => 'required',
+            'certificates' => 'required',
+            'journey_photos' => 'required'
+        ]);
         $data['type'] = $request->input('type');
         $data['services'] = $request->input('services');
+
         // dd($data);
         if ($request->hasFile('certificates')) {
             $certificates = $request->file('certificates');

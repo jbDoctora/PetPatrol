@@ -205,7 +205,11 @@ class AdminController extends Controller
     {
         $pet_type = AdminPetType::where('id', $request->input('id'))->first();
 
-        $data = $request->all();
+        $data = $request->validate([
+            'admin_petType' => 'required',
+        ]);
+        $pet_type->isPosted = $request->input('isPosted');
+
         $pet_type->update($data);
 
         return redirect()->back()->with('message', 'Pet type updated');
@@ -215,7 +219,10 @@ class AdminController extends Controller
     {
         $service = AdminService::where('id', $request->input('id'))->first();
 
-        $data = $request->all();
+        $data = $request->validate([
+            'admin_service' => 'required',
+        ]);
+        $service->isPosted = $request->input('isPosted');
         $service->update($data);
 
         return redirect()->back()->with('message', 'Service updated');

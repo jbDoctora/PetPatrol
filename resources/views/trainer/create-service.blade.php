@@ -60,20 +60,33 @@
                             </td>
                             <td class="whitespace-nowrap border-b border-slate-200">
                                 <div class="flex items-center justify-center gap-2">
-                                    <button class="bg-blue-700 text-white px-3 py-2 rounded"
+                                    <button class="bg-blue-700 text-white px-3 py-2 rounded hover:bg-blue-800"
                                         data-tip="view training plan"><a
                                             href="/trainer/service/add-service/{{ $trainings->id }}"><i
                                                 class="fa-solid fa-eye"></i></a></button>
 
                                     @if($trainings->status == 'available')
                                     <label for="update-modal-{{$trainings->id}}"
-                                        class="bg-blue-700 text-white px-3 py-2 rounded" type="submit"><i
-                                            class="fa-solid fa-edit"></i></label>
+                                        class="bg-blue-700 text-white px-3 py-2 rounded cursor-pointer hover:bg-blue-800"
+                                        type="submit"><i class="fa-solid fa-edit"></i></label>
+                                    {{-- DESTROY --}}
+                                    <form method="POST" action="/trainer/service/delete/{{$trainings->id}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            class="bg-blue-700 text-white px-3 py-2 rounded cursor-pointer hover:bg-blue-800"
+                                            type="submit"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
                                     @else
                                     <button class="bg-gray-300 text-gray-500 px-3 py-2 rounded tooltip tooltip-xs"
                                         data-tip="Service is Currently booked" disabled><i
                                             class="fa-solid fa-edit"></i></button>
+                                    <button class="bg-gray-300 text-gray-500 px-3 py-2 rounded tooltip tooltip-xs"
+                                        data-tip="Service is Currently booked" disabled><i
+                                            class="fa-solid fa-trash"></i></button>
                                     @endif
+
+
 
                                     {{-- MODAL FOR UPDATE --}}
                                     <form method="POST" action="/trainer/service/update/{{$trainings->id}}">

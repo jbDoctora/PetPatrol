@@ -30,12 +30,12 @@
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="name">Name</label>
                 <input
                     class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    type="text" placeholder="Enter your name" value="{{ $user->name }}" name="name">
+                    type="text" placeholder="Enter your name" value="{{ $user->name }}" name="name" required>
             </div>
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="sex">Sex</label>
                 <div class="relative inline-block w-full">
                     <select
-                        class="focus:shadow-outline block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none"
+                        class="focus:shadow-outline block w-full appearance-none rounded bg-white px-4 py-2 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none"
                         name="sex">
                         <option value="Male" {{ $user->sex == 'Male' ? 'selected' : '' }}>Male</option>
                         <option value="Female" {{ $user->sex == 'Female' ? 'selected' : '' }}>Female
@@ -48,19 +48,21 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="address">Address</label> <input
-                    class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+            <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="address">Address</label>
+                <input
+                    class="focus:shadow-outline w-full appearance-none rounded  py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     id="address" type="text" value="{{ $user->address }}" placeholder="Enter your address"
-                    name="address"> </div>
+                    name="address" required />
+            </div>
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="email">Birthday</label> <input
                     class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                    id="email" type="date" value="{{ $user->birthday }}" name="birthday">
+                    id="email" type="date" value="{{ $user->birthday }}" name="birthday" required />
             </div>
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="phone">Phone Number</label>
                 <input
                     class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
                     id="phone" type="text" placeholder="Enter your phone number" value="{{ $user->phone_number }}"
-                    name="phone_number">
+                    name="phone_number" required />
             </div>
             <div class="mb-5"> <label class="mb-2 block font-medium text-gray-700" for="email">Email</label> <input
                     class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none bg-gray-100"

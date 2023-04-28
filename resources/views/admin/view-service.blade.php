@@ -49,9 +49,12 @@
                                             <input type="text" value="{{$services->admin_service}}" name="admin_service"
                                                 class="rounded border border-gray-300 px-3 py-2 text-xs w-40" />
                                         </div>
+                                        @error('admin_service')
+                                        <p class="text-red-500 text-xs text-right"></p>
+                                        @enderror
                                         <div class="flex justify-between items-center">
                                             <label for="" class="text-sm">Action: </label>
-                                            <select name="" id="" name="isPosted"
+                                            <select id="" name="isPosted"
                                                 class="rounded border border-gray-300 px-3 py-2 text-xs w-40">
                                                 <option value="1">Post</option>
                                                 <option value="0">Unpost</option>

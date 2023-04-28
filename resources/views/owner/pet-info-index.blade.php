@@ -119,7 +119,7 @@
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Vaccine</label>
                                         <select type="text" class="border border-gray-200 rounded p-3 bg-gray-100 w-44"
-                                            name="weight" value="{{$petinfos->vaccine}}">
+                                            name="vaccine" value="{{$petinfos->vaccine}}">
                                             <option value="Vaccinated">vaccinated</option>
                                             <option value="Unvaccinated">unvaccinated</option>
                                         </select>
