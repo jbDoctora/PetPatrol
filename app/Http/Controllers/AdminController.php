@@ -9,6 +9,7 @@ use App\Models\AdminService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -218,5 +219,30 @@ class AdminController extends Controller
         $service->update($data);
 
         return redirect()->back()->with('message', 'Service updated');
+    }
+
+    public function showChangePass()
+    {
+        return view('admin.change-password');
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        // Verify old password
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'The old password is incorrect.']);
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('message', 'Password updated successfully.');
     }
 }

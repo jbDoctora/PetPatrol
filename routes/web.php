@@ -215,6 +215,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('/admin/pet-type/update', [AdminController::class, 'updatePetType']);
     Route::put('/admin/adminService/update', [AdminController::class, 'updateService']);
     Route::get('/admin/help-center', [ReportSuggestionsController::class, 'showHelp']);
+    Route::get('/admin/change-password', [AdminController::class, 'showChangePass']);
+    Route::put('/admin/{id}/change-password', [AdminController::class, 'updatePassword']);
 });
 
 // Default Route

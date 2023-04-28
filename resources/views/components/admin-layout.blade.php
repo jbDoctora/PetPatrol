@@ -235,6 +235,14 @@
                     <span class="ml-9">Manage Reports</span>
                 </a>
 
+                <a href="/admin/change-password"
+                    class="flex items-center w-full px-8 py-3 hover:bg-blue-400 hover:text-white text-black">
+                    <span class="material-icons-outlined md-36" style="font-size: 25px;">
+                        settings
+                    </span>
+                    <span class="ml-9">Settings</span>
+                </a>
+
                 <form method="POST" action="/logout"
                     class="flex items-center w-full px-8 py-3 my-5 hover:bg-blue-400 hover:text-white text-black mt-auto">
                     @csrf
