@@ -42,4 +42,9 @@ class ReportSuggestionsController extends Controller
 
         return redirect()->back()->with('message', 'Report/Inquiry successfully submitted');
     }
+
+    public function showCancellation()
+    {
+        return view('users.cancellation-policy');
+    }
 }

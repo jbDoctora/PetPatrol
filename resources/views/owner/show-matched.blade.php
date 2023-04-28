@@ -161,12 +161,12 @@
                             <div class="flex items-center">
                                 <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" />
                                 <label class="cursor-pointer label whitespace-nowrap text-sm">
-                                    I agree to the <a class="text-blue-600 px-2">Terms and Conditions</a> and <a
-                                        class="text-blue-600 px-2">Cancellation Policy</a>
+                                    I agree to the<a href="/cancellation-policy" class="text-blue-600 px-2">Cancellation
+                                        Policy</a>
                                 </label>
                             </div>
                             <div class="text-red-500 text-xs" x-show="!checked">
-                                Please agree to the Terms and Conditions and Cancellation Policy to proceed.
+                                Please agree to the Cancellation Policy to proceed.
                             </div>
                         </div>
                         <div class="modal-action flex justify-end p-4">
@@ -195,4 +195,5 @@
             @endforeach
         </div>
     </div>
+
 </x-dash-layout>
