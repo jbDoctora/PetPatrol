@@ -117,8 +117,7 @@ class PetInfoController extends Controller
     public function showHistory($pet_id)
     {
         $pet = Booking::where('pet_id', $pet_id)
-            ->select('booking.status', 'booking.trainer_name', 'service.course', 'booking.book_id')
-            ->join('service', 'service.id', '=', 'booking.service_id')
+            ->select('booking.status', 'booking.trainer_name', 'booking.book_id')
             ->get();
 
         return view('owner.petTraining-history', compact('pet'));
