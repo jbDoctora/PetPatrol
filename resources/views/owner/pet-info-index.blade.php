@@ -4,7 +4,7 @@
             <h3>Pet Profile</h3>
             <div>
                 <button
-                    class="bg-blue-700 px-4 py-3 text-white font-bold rounded hover:bg-blue-800 transition-all text-xs">
+                    class="bg-blue-700 px-4 py-3 text-white font-medium rounded hover:bg-blue-800 transition-all text-sm">
                     <a href="/pet/add-info" target="_parent"><span class="hidden md:inline-block">Add
                             Pet</span></a>
                     <i class="fa-solid fa-circle-plus mx-2"></i>

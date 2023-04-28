@@ -43,11 +43,12 @@
                     <td>{{$user->sex}}</td>
                     <td>{{$user->phone_number}}</td>
                     <td>
-                        <label for="id-modal-{{$user->id}}">View
+                        <label for="id-modal-{{$user->id}}" class="text-blue-700 cursor-pointer">View
                             ID</label>
                     </td>
                     <td>
-                        <label for="trainer-docu-modal-{{$user->id}}">View Document</label>
+                        <label for="trainer-docu-modal-{{$user->id}}" class="text-blue-700 cursor-pointer">View
+                            Document</label>
                     </td>
                     <td>
                         <form method="POST" action="/admin/trainer-approval/{{$user->id}}">

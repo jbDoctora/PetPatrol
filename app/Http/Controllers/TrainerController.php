@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Booking;
 use App\Models\PetInfo;
@@ -231,14 +232,15 @@ class TrainerController extends Controller
     //     return redirect()->back()->with('message', 'Successfull approved');
     // }
     // V3
+
     public function updateBooking(Request $request)
     {
         $booking = Booking::where('book_id', $request->input('book_id'))->first();
         $user_to_notify = User::where('id', $booking['client_id'])->first();
         $trainer_id = $request->input('trainer_id');
 
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
+        $start_date = Carbon::parse($request->input('start_date'));
+        $end_date = Carbon::parse($request->input('end_date'));
 
         $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
             ->join('service', 'booking.service_id', '=', 'service.id')
@@ -252,17 +254,12 @@ class TrainerController extends Controller
 
         if ($conflicting_bookings->count() > 0) {
             return redirect()->back()->with('error', 'You are not available during the selected date range.');
-        }
-        $booking->status = $request->input('status');
-        $booking->payment = $request->input('payment');
-        $booking->reason_reject = $request->input('reason_reject');
-        $booking->save();
+        } else {
 
-
-        if ($booking->status == 'declined') {
-            $pet = PetInfo::where('pet_id', $request->input('pet_id'))->first();
-            $pet->book_status = 'inactive';
-            $pet->save();
+            $booking->status = $request->input('status');
+            $booking->payment = $request->input('payment');
+            $booking->reason_reject = $request->input('reason_reject');
+            $booking->save();
         }
 
 
@@ -281,8 +278,9 @@ class TrainerController extends Controller
         $user_to_notify->notify(new BookingStatusChange($bookingData));
 
         return redirect()->back()->with('message', 'Successfully approved');
-        // }
     }
+    // V4
+
 
     public function showPayment()
     {

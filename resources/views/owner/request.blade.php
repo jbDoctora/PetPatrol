@@ -5,7 +5,7 @@
             <h3>Request Manager</h3>
             <div>
                 <button
-                    class="bg-blue-700 px-4 py-3 text-white font-bold rounded hover:bg-blue-800 transition-all text-xs">
+                    class="bg-blue-700 px-4 py-3 text-white font-medium rounded hover:bg-blue-800 transition-all text-sm">
                     <a href="/book-trainer" target="_parent"><span class="hidden md:inline-block">Request Trainer
                         </span></a>
                 </button>
