@@ -41,7 +41,7 @@
 
                 <div class="flex items-center justify-center">
                     <button class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5"
-                        @click.prevent="step++, percentComplete = 25" x-bind:disabled="!pet"
+                        @click.prevent="step++, percentComplete = 35" x-bind:disabled="!pet"
                         x-bind:class="{ 'bg-gray-400 hover:bg-gray-400': !pet }">Next</button>
                 </div>
             </form>
@@ -70,14 +70,14 @@
                     <button class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
                         @click.prevent="step--, percentComplete = 0">Back</button>
                     <button class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5"
-                        @click.prevent="step++, percentComplete = 50" x-bind:disabled="!course.length"
+                        @click.prevent="step++, percentComplete = 65" x-bind:disabled="!course.length"
                         x-bind:class="{ 'bg-gray-400 hover:bg-gray-400': !course }">Next</button>
                 </div>
 
             </form>
         </div>
 
-        <div x-show="step === 3">
+        {{-- <div x-show="step === 3">
             <form class="mt-2 mb-0 space-y-4 rounded p-8 bg-white">
                 <div class="mb-4 flex items-center">
                     <label for="" class="my-3 block text-left text-sm">
@@ -107,9 +107,9 @@
                 </div>
 
             </form>
-        </div>
+        </div> --}}
 
-        <div x-show="step === 4">
+        <div x-show="step === 3">
             <form class="mt-2 mb-0 space-y-4 rounded p-8 bg-white">
                 <div class="mb-4 flex items-center">
                     <label for="" class="my-3 block text-left text-sm">
@@ -132,7 +132,7 @@
 
                 <div class="flex items-center justify-center gap-4">
                     <button class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
-                        @click.prevent="step--, percentComplete = 50">Back</button>
+                        @click.prevent="step--, percentComplete = 65">Back</button>
                     <button class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5"
                         @click.prevent="step++, percentComplete = 100" x-bind:disabled="!location"
                         x-bind:class="{ 'bg-gray-400 hover:bg-gray-400': !location }">Next</button>
@@ -141,7 +141,7 @@
             </form>
         </div>
 
-        <div x-show="step === 5">
+        <div x-show="step === 4">
             <form method="POST" action="/book-trainer/add" class="mt-2 mb-0 space-y-4 rounded p-8 bg-white">
                 @csrf
                 <input type="hidden" name="request_status" value="active">
@@ -163,11 +163,11 @@
                     <p class="text-sm font-semibold" x-text="course"></p>
                     <input type="hidden" name="course" id="course" x-model="course" />
                 </div>
-                <div>
+                {{-- <div>
                     <label for="" class="text-sm">3. Pick the sessions you are available for. </label>
                     <p class="text-sm font-semibold" x-text="sessions"></p>
                     <input type="hidden" name="sessions" id="sessions" x-model="sessions" />
-                </div>
+                </div> --}}
                 <div>
                     <label for="" class="text-sm">4. Which location would you prefer to train? </label>
                     <p class="text-sm font-semibold" x-text="location"></p>

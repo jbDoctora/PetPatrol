@@ -27,22 +27,4 @@ class Notification extends Model
     {
         return $this->morphTo();
     }
-
-    // public function markAsRead()
-    // {
-    //     $this->read_at = now();
-    //     $this->save();
-
-    //     return redirect('/bookings');
-    // }
-    // public function markAsRead()
-    // {
-    //     $this->read_at = now();
-    //     $this->save();
-    //     if (Auth::user()->role == 1) {
-    //         return redirect('/trainer/bookings');
-    //     } elseif (Auth::user()->role == 0) {
-    //         return redirect('/bookings');
-    //     }
-    // }
 }
