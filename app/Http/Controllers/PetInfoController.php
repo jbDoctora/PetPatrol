@@ -62,8 +62,7 @@ class PetInfoController extends Controller
         $formFields['owner_id'] = auth()->id() ?? null;
 
         PetInfo::create($formFields);
-        // $pet = new PetInfo($formFields);
-        // $pet->save();
+
 
         return redirect('/pet-info')->with('message', 'Pet added successfully!');
     }

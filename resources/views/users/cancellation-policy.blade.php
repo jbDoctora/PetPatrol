@@ -1,6 +1,6 @@
 <x-noNav>
     <div class="flex justify-center items-center">
-        <div class="bg-white m-12 text-left rounded">
+        <div class="bg-white m-12 text-left rounded" style="font-family: 'Times New Roman', Times, serif">
             <h5>Cancellation Policy:</h5>
             <ol class="list-decimal">
                 <li>Once a booking is approved by the pet trainer, it cannot be cancelled.</li>

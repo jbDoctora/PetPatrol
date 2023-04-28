@@ -266,7 +266,7 @@ class BookingController extends Controller
             'url' => url('/trainer/booking'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
             'book_id' => $booking['code'],
-            'message' => $booking['code'] . ' is ' . $booking['status'],
+            'message' => $booking['code'] . ' status was changed to ' . $booking['status'],
 
         ];
         $user_to_notify->notify(new BookingStatusChange($bookingData));
