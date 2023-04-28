@@ -70,7 +70,7 @@
                             class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <div class="flex justify-center items-center">
                             <img src="{{$user->id_verify ? asset('storage/' . $user->id_verify) : asset('/images/placeholder.png') }}"
-                                alt="id photo" class="h-72 w-96 object-cover">
+                                alt="id photo" class="h-full w-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <div class="flex justify-center items-center">
                             <img src="{{$user->trainer_document ? asset('storage/' . $user->trainer_document) : asset('/images/placeholder.png') }}"
-                                alt="trainer document" class="h-72 w-96 object-cover">
+                                alt="trainer document" class="h-full w-full object-cover">
                         </div>
                     </div>
                 </div>

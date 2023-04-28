@@ -132,7 +132,7 @@
 
                 <div class="flex items-center justify-center gap-4">
                     <button class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-sm mt-5"
-                        @click.prevent="step--, percentComplete = 65">Back</button>
+                        @click.prevent="step--, percentComplete = 35">Back</button>
                     <button class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5"
                         @click.prevent="step++, percentComplete = 100" x-bind:disabled="!location"
                         x-bind:class="{ 'bg-gray-400 hover:bg-gray-400': !location }">Next</button>
@@ -176,7 +176,7 @@
                 <div class="flex items-center justify-center gap-4">
                     <label
                         class="rounded bg-neutral-900 text-white py-2 px-3 hover:bg-neutral-800 w-24 text-center text-sm mt-5"
-                        @click.prevent="step=1">Edit</label>
+                        @click.prevent="step=1, percentComplete = 0">Edit</label>
                     <button type="submit"
                         class="rounded bg-blue-700 text-white py-2 px-3 hover:bg-blue-800 w-24 text-sm mt-5">Confirm</button>
                 </div>

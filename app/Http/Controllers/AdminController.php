@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\AdminApprovedNotification;
 
 class AdminController extends Controller
 {
@@ -40,7 +41,19 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
 
+
         $user->update($request->only(['admin_approve']));
+
+        $userdata = [
+            'body' => 'Hello, ' . $user['name'] . ' You have been verified by the Admin. Please click the link below to open your dashboard.',
+            'subject' => '',
+            'link' => 'Click here to view',
+            'url' => url('/trainer'),
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'message' => 'You have been verified by the Admin. Thank you for joining Pet Patrol',
+
+        ];
+        $user->notify(new AdminApprovedNotification($userdata));
 
         return redirect()->back()->with('message', 'Updated Successfully!');
     }
