@@ -104,7 +104,7 @@
                                                         <p class="text-sm text-left">Price</p>
                                                         <input type="text" value="{{$trainings->price}}"
                                                             class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                                            name="price">
+                                                            name="price" required>
                                                         @error('price')
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror
@@ -154,7 +154,7 @@
                                                         <p class="text-sm text-left">Days of Training</p>
                                                         <input type="number"
                                                             class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                                            name="days" value="{{$trainings->days}}">
+                                                            name="days" value="{{$trainings->days}}" required>
                                                         @error('days')
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror
