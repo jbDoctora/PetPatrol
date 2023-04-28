@@ -32,14 +32,19 @@
                     <div class="dropdown dropdown-end rounded">
                         <label tabindex="0" class="cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
-                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded w-52">
+                        <ul tabindex="0" class="dropdown-content menu shadow bg-base-100 rounded w-52">
                             <li>
                                 <label for="pet-modal-{{$petinfos->pet_id}}"
                                     class="p-2 hover:bg-blue-700 hover:text-white">Update</label>
                             </li>
+                            <li>
+                                <a href="/pet-info/history/{{$petinfos->pet_id}}"
+                                    class="p-2 hover:bg-blue-700 hover:text-white">Pet Training History</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
                 {{-- --modal --}}
                 <input type="checkbox" id="pet-modal-{{$petinfos->pet_id}}" class="modal-toggle" />
                 <div class="modal">
@@ -145,6 +150,7 @@
                     </form>
                 </div>
                 {{-- end of modal --}}
+
                 <div class="flex justify-center avatar p-3">
                     <div class="w-24 rounded-full ring ring-blue-700 ring-offset-base-100 ring-offset-2">
                         <img src="{{ $petinfos->image ? asset('storage/' . $petinfos->image) : asset('/images/no-image.png') }}"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\PetInfo;
 use App\Models\AdminPetType;
 use Illuminate\Http\Request;
@@ -95,5 +96,15 @@ class PetInfoController extends Controller
         $pet->update($data);
         dd($pet);
         return redirect()->back()->with('message', 'We are sorry to hear about your pet');
+    }
+
+    public function showHistory($pet_id)
+    {
+        $pet = Booking::where('pet_id', $pet_id)
+            ->select('booking.status', 'booking.trainer_name', 'service.course', 'booking.book_id')
+            ->join('service', 'service.id', '=', 'booking.service_id')
+            ->get();
+
+        return view('owner.petTraining-history', compact('pet'));
     }
 }

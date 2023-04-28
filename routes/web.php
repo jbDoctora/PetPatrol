@@ -193,6 +193,7 @@ Route::middleware(['auth', 'verified', 'isOwner', 'banned'])->group(function () 
     Route::get('/events/owner', [OwnerController::class, 'getEvents']);
     Route::put('/request/delete/{request_id}', [OwnerController::class, 'updateRequest']);
     Route::get('/owner/notifications', [OwnerController::class, 'showNotifications']);
+    Route::get('/pet-info/history/{pet_id}', [PetInfoController::class, 'showHistory']);
 });
 
 // Admin Routes
