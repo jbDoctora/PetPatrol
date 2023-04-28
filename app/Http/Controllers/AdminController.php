@@ -90,7 +90,7 @@ class AdminController extends Controller
             'booking.client_name',
             'booking.start_date',
             'service.course',
-            'service.availability',
+            'service.description',
             'service.id as service_id'
         )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
@@ -150,7 +150,7 @@ class AdminController extends Controller
             'booking.end_date',
             'service.course',
             'service.price',
-            'service.availability',
+            'service.description',
             'service.id as service_id',
             'users.email',
             'users.phone_number'

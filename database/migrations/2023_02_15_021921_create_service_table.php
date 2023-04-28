@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('course');
             $table->integer('price');
             $table->string('pet_type');
-            $table->string('availability');
+            $table->longText('description');
+            // $table->string('availability');
             $table->integer('days');
             $table->string('status');
         });

@@ -10,7 +10,7 @@ class Service extends Model
     protected $fillable = [
         'course',
         'pet_type',
-        'availability',
+        'description',
         'days',
         'user_id',
         'price',

@@ -32,6 +32,7 @@ class TrainerController extends Controller
         $completed_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'completed')->count();
         $inprogress_bookings = Booking::where('trainer_id', auth()->user()->id)->where('status', '=', 'in progress')->count();
         $services = Service::where('user_id', auth()->user()->id)->where('status', '=', 'available')->count();
+        $all_pending_bookings = Booking::where('trainer_id', auth()->user()->id)->whereIn('status', ['pending', 'in progress', 'approved'])->get();
 
         $total_stars = 0;
         $count_ratings = count($trainer_ratings);
@@ -50,7 +51,8 @@ class TrainerController extends Controller
             'pending' => $pending_bookings,
             'completed' => $completed_bookings,
             'inprogress' => $inprogress_bookings,
-            'services' => $services
+            'services' => $services,
+            'all_pending' => $all_pending_bookings
         ]);
     }
 
@@ -143,7 +145,7 @@ class TrainerController extends Controller
             'booking.start_date',
             'booking.end_date',
             'service.course',
-            'service.availability',
+            'service.description',
             'service.id as service_id',
             'users.email',
             'users.phone_number',
@@ -313,7 +315,7 @@ class TrainerController extends Controller
             'booking.end_date',
             'service.course',
             'service.price',
-            'service.availability',
+            'service.description',
             'service.id as service_id',
             'users.email',
             'users.phone_number'

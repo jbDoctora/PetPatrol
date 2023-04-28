@@ -427,8 +427,8 @@
                                         </li>
                                         <li>
                                             <button
-                                                x-on:click.prevent="showModal = { course: '{{ $requests->course }}', pet_id: '{{ $requests->pet_id }}',availability:
-                                    '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
+                                                x-on:click.prevent="showModal = { course: '{{ $requests->course }}', pet_id: '{{ $requests->pet_id }}',description:
+                                    '{{ $requests->description }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
                                     '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update</button>
                                         </li>

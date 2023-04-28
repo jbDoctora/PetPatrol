@@ -15,7 +15,7 @@
                     <th>Pet Type</th>
                     <th>Trainer Name</th>
                     <th>Course Availed</th>
-                    <th>Session</th>
+                    <th>Description</th>
                     <th>Start Date</th>
                     <th>Status</th>
                     <th>Payment Status</th>
@@ -32,7 +32,7 @@
                     <td>{{$booking->type}}</td>
                     <td>{{$booking->trainer_name}}</td>
                     <td>{{$booking->course}}</td>
-                    <td>{{$booking->availability}}</td>
+                    <td>{{$booking->desription}}</td>
                     <td>{{$booking->start_date}}</td>
                     <td>{{$booking->status}}</td>
                     <td>{{$booking->payment}}</td>

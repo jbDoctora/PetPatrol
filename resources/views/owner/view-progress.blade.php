@@ -8,7 +8,7 @@
                     <p class="text-sm">Reference Code: {{$requests->code}}</p>
                     <p class="text-sm">Pet: {{$requests->pet_name}}</p>
                     <p class="text-sm">Trainer: {{$requests->trainer_name}}</p>
-                    <p class="text-sm">Session: {{$requests->availability}}</p>
+                    <p class="text-sm">Session: {{$requests->description}}</p>
                     <p class="text-sm">Date: {{$requests->start_date}} - {{$requests->end_date}}</p>
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">

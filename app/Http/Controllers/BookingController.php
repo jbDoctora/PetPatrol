@@ -123,7 +123,7 @@ class BookingController extends Controller
             'booking.isRated',
             'booking.end_date',
             'service.course',
-            'service.availability',
+            'service.description',
             'service.id as service_id'
         )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
@@ -158,7 +158,7 @@ class BookingController extends Controller
             'booking.trainer_name',
             'booking.start_date',
             'service.course',
-            'service.availability',
+            'service.description',
             'service.id as service_id',
             'users.gcash_qr',
             'users.gcash_number',
@@ -217,7 +217,7 @@ class BookingController extends Controller
             'booking.start_date',
             'booking.end_date',
             'service.course',
-            'service.availability',
+            'service.description',
             'service.id as service_id',
             'users.gcash_qr',
             'users.gcash_number',

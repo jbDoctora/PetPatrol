@@ -57,7 +57,7 @@
                             </div>
                             <div class="flex justify-start items-center">
                                 <i class="fa-solid fa-calendar mr-2"></i>
-                                <p class="text-xs">{{ $match->availability }}</p>
+                                <p class="text-xs">{{ $match->description }}</p>
                             </div>
                         </div>
                         <div class="flex justify-between items-center mb-4">
@@ -147,7 +147,7 @@
                                     <tr>
                                         <td class="px-4 py-2">{{$match->trainer_name}}</td>
                                         <td class="px-4 py-2">{{$match->course}}</td>
-                                        <td class="px-4 py-2">{{$match->availability}}</td>
+                                        <td class="px-4 py-2">{{$match->description}}</td>
                                         <td class="px-4 py-2">{{$match->price}}</td>
                                     </tr>
                                 </tbody>

@@ -139,14 +139,9 @@
                                                     </div>
                                                     <div>
                                                         <p class="text-sm text-left">Session</p>
-                                                        <select
-                                                            class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                                            name="availability" required>
-                                                            <option disabled selected>Choose availability</option>
-                                                            <option>Weekdays</option>
-                                                            <option>Weekends</option>
-                                                        </select>
-                                                        @error('availability')
+                                                        <textarea name="description" id="" cols="3" rows="3"
+                                                            class="w-full rounded broder border-gray-200"></textarea>
+                                                        @error('description')
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror
                                                     </div>
@@ -231,14 +226,10 @@
                             @enderror
                         </div>
                         <div>
-                            <p class="text-sm">Session</p>
-                            <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                name="availability" required>
-                                <option disabled selected>Choose availability</option>
-                                <option>Weekdays</option>
-                                <option>Weekends</option>
-                            </select>
-                            @error('availability')
+                            <p class="text-sm">Training Service Description</p>
+                            <textarea name="description" id="" cols="2" rows="3"
+                                class="w-full rounded border border-gray-200"></textarea>
+                            @error('description')
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
                         </div>
