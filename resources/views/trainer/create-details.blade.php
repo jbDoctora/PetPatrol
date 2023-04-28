@@ -127,7 +127,7 @@
                     <div class="my-2">
                         <p>Description</p>
                         <textarea name="description" id="" cols="10" rows="5"
-                            class="border border-gray-300 bg-gray-100 w-full"></textarea>
+                            class="border border-gray-300 bg-gray-100 w-full p-3"></textarea>
                     </div>
                     <div class="flex justify-end">
                         <button class="bg-blue-700 text-white text-sm px-3 py-2 rounded" type="submit">Add

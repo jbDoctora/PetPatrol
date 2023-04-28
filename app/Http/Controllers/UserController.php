@@ -97,6 +97,10 @@ class UserController extends Controller
             $formFields['id_verify'] = $request->file('id_verify')->store('id_verification', 'public');
         }
 
+        if ($request->hasFile('trainer_document')) {
+            $formFields['trainer_document'] = $request->file('trainer_document')->store('trainer_documents', 'public');
+        }
+
         $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);

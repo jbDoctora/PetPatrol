@@ -24,6 +24,7 @@
                     <th>Sex</th>
                     <th>Phone Number</th>
                     <th>ID Photo</th>
+                    <th>Trainer Document</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -42,9 +43,11 @@
                     <td>{{$user->sex}}</td>
                     <td>{{$user->phone_number}}</td>
                     <td>
-                        <label for="id-modal-{{$user->id}}"
-                            class="bg-gray-300 rounded text-gray-600 text-sm md:text-xs md:p-2 px-1 py-2 hover:bg-gray-700 hover:text-white">View
+                        <label for="id-modal-{{$user->id}}">View
                             ID</label>
+                    </td>
+                    <td>
+                        <label for="trainer-docu-modal-{{$user->id}}">View Document</label>
                     </td>
                     <td>
                         <form method="POST" action="/admin/trainer-approval/{{$user->id}}">
@@ -57,6 +60,8 @@
                         </form>
                     </td>
                 </tr>
+
+                {{-- SHOW ID MODAL --}}
                 <input type="checkbox" id="id-modal-{{$user->id}}" class="modal-toggle" />
                 <div class="modal">
                     <div class="modal-box relative rounded">
@@ -64,10 +69,24 @@
                             class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <div class="flex justify-center items-center">
                             <img src="{{$user->id_verify ? asset('storage/' . $user->id_verify) : asset('/images/placeholder.png') }}"
-                                alt="id photo">
+                                alt="id photo" class="h-72 w-96 object-cover">
                         </div>
                     </div>
                 </div>
+
+                {{-- SHOW TRAINER DOCUMENT MODAL --}}
+                <input type="checkbox" id="trainer-docu-modal-{{$user->id}}" class="modal-toggle" />
+                <div class="modal">
+                    <div class="modal-box relative rounded">
+                        <label for="trainer-docu-modal-{{$user->id}}"
+                            class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <div class="flex justify-center items-center">
+                            <img src="{{$user->trainer_document ? asset('storage/' . $user->trainer_document) : asset('/images/placeholder.png') }}"
+                                alt="trainer document" class="h-72 w-96 object-cover">
+                        </div>
+                    </div>
+                </div>
+
                 @endforeach
             </tbody>
         </table>

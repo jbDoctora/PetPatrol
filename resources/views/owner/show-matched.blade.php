@@ -161,7 +161,8 @@
                             <div class="flex items-center">
                                 <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" />
                                 <label class="cursor-pointer label whitespace-nowrap text-sm">
-                                    I agree to the<a href="/cancellation-policy" class="text-blue-600 px-2">Cancellation
+                                    I agree to the<a href="/cancellation-policy" target="_blank"
+                                        class="text-blue-600 px-2">Cancellation
                                         Policy</a>
                                 </label>
                             </div>

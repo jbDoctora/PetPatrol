@@ -38,6 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail, ShouldQueue
         'completedBooking',
         'isBanned',
         'avg_rating',
+        'trainer_document',
     ];
 
     /**

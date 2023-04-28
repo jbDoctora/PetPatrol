@@ -30,6 +30,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('completedBooking')->nullable();
             $table->string('password');
+            $table->string('trainer_document')->nullable();
             $table->boolean('isBanned')->default(0);
             $table->float('avg_rating')->nullable();
             $table->rememberToken();
