@@ -144,7 +144,6 @@ class TrainerController extends Controller
             ->join('request', 'request.request_id', 'booking.request_id')
             // ->where('users.role', 0)
             ->where('booking.trainer_id', $trainerId)
-            ->orderBy('booking.start_date')
             ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
             ->orderByRaw("FIELD(booking.status, 'pending', 'in progress', 'approved', 'completed', 'declined', 'cancelled') ASC")
             ->paginate(5);
@@ -600,5 +599,15 @@ class TrainerController extends Controller
         $notifications = Notification::where('notifiable_id', auth()->user()->id)->paginate(10);
 
         return view('trainer.notifications', compact('notifications'));
+    }
+
+    public function updatePaymentStatus(Request $request, $book_id)
+    {
+        $booking_payment = Booking::where('book_id', $book_id)->first();
+        $data = $request->only('payment');
+        $booking_payment->payment = $request->input('payment');
+        $booking_payment->update($data);
+
+        return redirect()->back()->with('message', 'Payment successfully updated');
     }
 }

@@ -110,7 +110,6 @@
                         <td class="whitespace-nowrap hover:text-blue-700 border-b border-slate-200"><label
                                 for="pet-modal-{{$requests->book_id}}" class="cursor-pointer">{{
                                 $requests->pet_name}}</label></td>
-                        <!-- Put this part before </body> tag -->
                         <input type="checkbox" id="pet-modal-{{$requests->book_id}}" class="modal-toggle" />
                         <div class="modal">
                             <div class="modal-box rounded w-max-4xl">
@@ -260,52 +259,119 @@
                             {{-- IF APPROVED --}}
                             @if($requests->status == 'approved')
                             <div class="flex justify-center items-center gap-4">
-                                <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="status" value="in progress" />
-                                    <div class="dropdown dropdown-left">
-                                        <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
-                                        <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+
+                                <div class="dropdown dropdown-left">
+                                    <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                    <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                        <form method="POST"
+                                            action="/trainer/bookings/startTraining/{{$requests->book_id}}">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status" value="in progress" />
                                             <li><button type="submit">Start
                                                     training</button></li>
-                                        </ul>
+                                            <li><label for="update-modal-{{$requests->book_id}}">Update Payment</label>
+                                            </li>
+                                            <li><a href="/help-center">Report</a></li>
+                                        </form>
+                                    </ul>
+                                </div>
+
+
+                                {{-- UPDATE PENDING MODAL --}}
+                                <input type="checkbox" id="update-modal-{{$requests->book_id}}" class="modal-toggle" />
+                                <form method="POST" action="/trainer/bookings/updatePayment/{{$requests->book_id}}">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="modal">
+                                        <div class="modal-box relative rounded">
+                                            <label for="update-modal-{{$requests->book_id}}"
+                                                class=" btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                            <h3 class="text-lg font-bold text-left">Update Payment Status
+                                            </h3>
+                                            <div class="flex flex-col text-sm gap-5">
+                                                <div class="mr-auto mt-5">
+                                                    <input type="radio" name="payment" value="unpaid"
+                                                        class="mr-2" />Unpaid
+                                                </div>
+                                                <div class="mr-auto">
+                                                    <input type="radio" name="payment" value="paid" class="mr-2" />Paid
+                                                </div>
+                                                <div class="flex justify-end">
+                                                    <button type="submit"
+                                                        class="rounded bg-blue-700 px-3 py-2 text-white text-sm">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
+
                             </div>
 
                             {{-- IF IN PROGRESS --}}
                             @elseif($requests->status == 'in progress')
 
-
-                            <div class="flex justify-center"><a href="#">
-                                    <label for="done-modal-{{$requests->book_id}}"
-                                        class="bg-blue-700 text-white px-4 py-2 rounded">Mark As Done</label></a>
+                            <div class="dropdown dropdown-end">
+                                <label tabindex="0" class="p-1"><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                <ul tabindex="0" class="dropdown-content menu shadow bg-base-100 rounded w-52">
+                                    <li><label for="done-modal-{{$requests->book_id}}">Mark as done</label></li>
+                                    <li><a href="/help-center">Report</a></li>
+                                </ul>
                             </div>
 
 
 
                             {{-- IF DECLINED --}}
                             @elseif($requests->status == 'declined')
-                            <div class="flex justify-center"><a href="#"><button
-                                        class="bg-gray-400 text-white px-4 py-2 rounded" disabled>Update</button></a>
+                            <input type="hidden" name="status" value="in progress" />
+                            <div class="dropdown dropdown-left">
+                                <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                    <li><a href="/help-center">Report</a></li>
+                                </ul>
+                            </div>
+
+                            {{-- IF COMPLETED --}}
+                            @elseif($requests->status == 'completed')
+                            <input type="hidden" name="status" value="in progress" />
+                            <div class="dropdown dropdown-left">
+                                <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                    <li><a href="/help-center">Report</a></li>
+                                </ul>
+                            </div>
+
+                            {{-- IF CANCELLED --}}
+                            @elseif($requests->status == 'cancelled')
+                            <input type="hidden" name="status" value="in progress" />
+                            <div class="dropdown dropdown-left">
+                                <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                    <li><a href="/help-center">Report</a></li>
+                                </ul>
                             </div>
 
                             {{-- IF PENDING --}}
                             @elseif($requests->status == 'pending')
-                            <div class="flex justify-center"><a href="#">
-                                    <div class="dropdown dropdown-left">
-                                        <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
-                                        <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
-                                            <li><button
-                                                    x-on:click.prevent="showModal = { course: '{{ $requests->course }}', pet_id: '{{ $requests->pet_id }}',availability:
+                            <div class="flex justify-center items-center">
+                                <div class="dropdown dropdown-left">
+                                    <label tabindex="0" class="cursor-pointer"><i
+                                            class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                    <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                        <li>
+                                            <a href="/help-center">Report</a>
+                                        </li>
+                                        <li>
+                                            <button
+                                                x-on:click.prevent="showModal = { course: '{{ $requests->course }}', pet_id: '{{ $requests->pet_id }}',availability:
                                     '{{ $requests->availability }}', name: '{{ $requests->client_name }}', book_id:
                                     '{{$requests->book_id}}', service_id: '{{$requests->service_id}}', payment:
                                     '{{$requests->payment}}', start_date:'{{$requests->start_date}}', end_date:'{{$requests->end_date}}', trainer_id:'{{$requests->trainer_id}}' }">Update</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
                             </div>
                             @endif
                         </td>
@@ -338,6 +404,7 @@
                     @endforeach
                     @endif
                 </tbody>
+
                 <form method="POST" action="/trainer/bookings/update">
                     @csrf
                     @method('PUT')
@@ -351,7 +418,6 @@
                     <div class="fixed z-50 inset-0 overflow-y-auto" x-show="showModal" x-transition>
                         <div
                             class="flex items-center justify-center min-h-screen px-4 pt-6 pb-20 text-center sm:block sm:p-0">
-                            <!-- Background overlay -->
                             <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
 
                             <div
@@ -368,7 +434,7 @@
                                         </button>
                                     </div>
 
-                                    <!-- Modal content -->
+
                                     <div>
                                         <div class="flex items-center justify-start gap-3 my-3">
                                             <div>
@@ -378,16 +444,7 @@
                                                 <h3 class="text-lg font-bold">Action</h3>
                                             </div>
                                         </div>
-                                        {{-- <div
-                                            class="grid grid-cols-2 gap-4 mb-4 bg-base-300 text-sm rounded-lg p-5">
-                                            <div class="font-bold">Client name:</div>
-                                            <div x-text="showModal.name"></div>
-                                            <div class="font-bold">Training service:</div>
-                                            <div x-text="showModal.course"></div>
-                                            <div class="font-bold">Sessions:</div>
-                                            <div x-text="showModal.trainer_id"></div>
-                                            <div x-text="showModal.availability"></div>
-                                        </div> --}}
+
                                         <div x-data="{ isApproved: false }">
                                             <div class="flex flex-col justify-center gap-3 mb-3 text-xs">
                                                 <div>
