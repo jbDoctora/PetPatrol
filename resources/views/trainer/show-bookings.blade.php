@@ -1,6 +1,6 @@
 <x-trainer-layout>
     <div x-data="{ showModal: false }" x-on:keydown.window.escape="showModal = false"
-        class="bg-white my-5 mx-14 sm:mx-4 shadow-lg h-full rounded border border-gray-300">
+        class="bg-white my-9 mx-14 sm:mx-4 shadow-lg h-full rounded border border-gray-300">
         <form action="/trainer/bookings">
             <h1 class="text-2xl font-extrabold p-4 border-b border-slate-300 text-blue-700">Booking Manager</h1>
             <div class="flex flex-row justify-start gap-3 text-xs py-3 px-4 border-b border-slate-300">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="mt-2 overflow-hidden rounded-none">
+        <div class="mt-2 rounded-none">
             <table class="w-full text-xs">
                 <thead class="text-center bg-gray-200 text-gray-800">
                     <tr>
@@ -264,11 +264,14 @@
                                     @method('PUT')
                                     <div class="dropdown dropdown-left">
                                         <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
-                                        <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
+                                        <ul tabindex="0"
+                                            class="dropdown-content menu shadow bg-gray-200 rounded w-52 overflow-visible ">
 
                                             <input type="hidden" name="status" value="in progress" />
-                                            <li><button type="submit">Start
-                                                    training</button></li>
+                                            <li>
+                                                <button type="submit">Start
+                                                    training</button>
+                                            </li>
                                             <li><label for="update-modal-{{$requests->book_id}}">Update Payment</label>
                                             </li>
                                             <li><a href="/help-center">Report</a></li>
@@ -313,7 +316,7 @@
                             {{-- IF IN PROGRESS --}}
                             @elseif($requests->status == 'in progress')
 
-                            <div class="dropdown dropdown-end">
+                            <div class="dropdown dropdown-left dropdown-end">
                                 <label tabindex="0" class="p-1"><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
                                 <ul tabindex="0" class="dropdown-content menu shadow bg-base-100 rounded w-52">
                                     <li><label for="done-modal-{{$requests->book_id}}">Mark as done</label></li>
@@ -356,7 +359,7 @@
                             {{-- IF DECLINED --}}
                             @elseif($requests->status == 'declined')
                             <input type="hidden" name="status" value="in progress" />
-                            <div class="dropdown dropdown-left flex justify-center items-center">
+                            <div class="dropdown dropdown-left dropdown-end flex justify-center items-center">
                                 <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
                                 <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
                                     <li><a href="/help-center">Report</a></li>
@@ -366,7 +369,7 @@
                             {{-- IF COMPLETED --}}
                             @elseif($requests->status == 'completed')
                             <input type="hidden" name="status" value="in progress" />
-                            <div class="dropdown dropdown-left">
+                            <div class="dropdown dropdown-left dropdown-end">
                                 <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
                                 <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
                                     <li><a href="/help-center">Report</a></li>
@@ -386,7 +389,7 @@
                             {{-- IF PENDING --}}
                             @elseif($requests->status == 'pending')
                             <div class="flex justify-center items-center">
-                                <div class="dropdown dropdown-left">
+                                <div class="dropdown dropdown-left dropdown-end">
                                     <label tabindex="0" class="cursor-pointer"><i
                                             class="fa-solid fa-ellipsis fa-2xl"></i></label>
                                     <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">

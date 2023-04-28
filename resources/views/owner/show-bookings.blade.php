@@ -124,12 +124,13 @@
                         <button class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer"><i
                                 class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
                     </a>
-                    <div class="dropdown dropdown-end">
+                    <div class="dropdown dropdown-left dropdown-end">
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
                         <ul tabindex="0"
-                            class="dropdown-content menu shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
+                            class="dropdown-content menu shadow bg-base-100 rounded w-52 text-xs bg-gray-200">
                             <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
+                            <li><a href="/help-center">Report</a></li>
                         </ul>
                     </div>
                 </div>
@@ -137,7 +138,14 @@
                 {{-- IF DECLINED STATUS --}}
                 @elseif($requests->status == 'declined')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="p-5 cursor-pointer"><i
+                                class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
+                        <ul tabindex="0"
+                            class="dropdown-content menu shadow bg-base-100 rounded w-52 text-xs bg-gray-200">
+                            <li><a href="/help-center">Report</a></li>
+                        </ul>
+                    </div>
                 </div>
 
                 {{-- IF IN PROGRESS STATUS --}}
@@ -151,9 +159,9 @@
                     <div class="dropdown dropdown-end">
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
-                        <ul tabindex="0"
-                            class="dropdown-content menu p-1 shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
+                        <ul tabindex="0" class="dropdown-content menu shadow  rounded w-52 text-xs bg-gray-200">
                             <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li>
+                            <li><a href="/help-center">Report</a></li>
                         </ul>
                     </div>
                 </div>
@@ -162,8 +170,15 @@
                 @elseif($requests->status == 'cancelled')
                 <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
                     <div class="flex items-center justify-center px-5 text-xs w-80 gap-3">
-                        {{-- <label class="text-xs px-3 py-2 bg-green-600 text-white rounded"><i
-                                class="fa-solid fa-print pr-3"></i>Print</label> --}}
+                        <div class="dropdown dropdown-top dropdown-end">
+                            <label tabindex="0" class="p-5 cursor-pointer"><i
+                                    class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
+                            <ul tabindex="0"
+                                class="dropdown-content menu shadow bg-base-100 rounded w-52 text-xs bg-gray-200">
+                                {{-- <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li> --}}
+                                <li><a href="/help-center">Report</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -175,17 +190,18 @@
                             class="bg-blue-700 py-2 px-3 rounded hover:bg-blue-800 text-white cursor-pointer w-42"><i
                                 class="fa-solid fa-pen-to-square pr-3 fa-lg"></i>View</button>
                     </a>
-                    <div class="dropdown dropdown-end">
+                    <div class="dropdown dropdown-top dropdown-end">
                         <label tabindex="0" class="p-5 cursor-pointer"><i
                                 class="fa-solid fa-ellipsis-vertical fa-xl"></i></label>
                         <ul tabindex="0"
-                            class="dropdown-content menu shadow bg-base-100 rounded w-52 text-sm bg-gray-200">
+                            class="dropdown-content menu shadow bg-base-100 rounded w-52 text-xs bg-gray-200">
                             {{-- <li><a href="/checkout/{{$requests->book_id}}">Pay</a></li> --}}
                             <li>
                                 <label for="confirm-modal-{{$requests->book_id}}">
                                     Cancel
                                 </label>
                             </li>
+                            <li><a href="/help-center">Report</a></li>
                         </ul>
                     </div>
                 </div>
