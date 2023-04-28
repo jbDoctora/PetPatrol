@@ -14,7 +14,8 @@
                         Sign in
                     </h1>
 
-                    <form method="POST" action="/users/authenticate" class="mt-8 grid grid-cols-1 gap-6">
+                    <form method="POST" action="/users/authenticate" class="mt-8 grid grid-cols-1 gap-6"
+                        onsubmit="document.getElementById('loginButton').disabled = true;">
                         @csrf
                         <div class="col-span-6">
                             <label for="email" class="mb-2 block text-sm text-gray-700">
@@ -46,7 +47,7 @@
                         </div>
 
                         <div class="col-span-7 flex flex-col">
-                            <button type="submit" {{-- class="btn btn-primary" --}}
+                            <button type="submit" {{-- class="btn btn-primary" --}} id="loginButton"
                                 class="rounded-full bg-blue-700 text-white py-2 px-5 hover:bg-blue-800 w-60 text-sm mx-auto">
                                 Login
                             </button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Booking;
@@ -109,7 +110,7 @@ class BookingController extends Controller
 
     public function show()
     {
-        $clientId = auth()->id();
+        $clientId = auth()->user()->id;
 
         $request = Booking::select(
             'booking.book_id',
@@ -129,12 +130,13 @@ class BookingController extends Controller
         )
             ->join('pet_info', 'pet_info.pet_id', '=', 'booking.pet_id')
             ->join('users', 'users.id', '=', 'booking.client_id')
-            ->join('service', 'service.id', 'booking.service_id')
+            ->crossjoin('service', 'service.id', 'booking.service_id')
             ->where('booking.client_id', $clientId)
             ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
             ->orderByRaw("FIELD(booking.status, 'pending', 'in progress', 'approved', 'completed', 'declined', 'cancelled') ASC")
-            ->paginate(5);
+            ->paginate(10);
 
+        // dd($request);
         $filteredCount = $request->total();
 
         $admin_petType = AdminPetType::where('isPosted', '1')->get();
