@@ -259,36 +259,35 @@
                             {{-- IF APPROVED --}}
                             @if($requests->status == 'approved')
                             <div class="flex justify-center items-center gap-4">
+                                <form method="POST" action="/trainer/bookings/startTraining/{{$requests->book_id}}">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="dropdown dropdown-left">
+                                        <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
+                                        <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
 
-                                <div class="dropdown dropdown-left">
-                                    <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
-                                    <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
-                                        <form method="POST"
-                                            action="/trainer/bookings/startTraining/{{$requests->book_id}}">
-                                            @csrf
-                                            @method('PUT')
                                             <input type="hidden" name="status" value="in progress" />
                                             <li><button type="submit">Start
                                                     training</button></li>
                                             <li><label for="update-modal-{{$requests->book_id}}">Update Payment</label>
                                             </li>
                                             <li><a href="/help-center">Report</a></li>
-                                        </form>
-                                    </ul>
-                                </div>
+                                        </ul>
+                                    </div>
+                                </form>
 
-
-                                {{-- UPDATE PENDING MODAL --}}
+                                {{-- UPDATE PAYMENT IN PENDING MODAL --}}
                                 <input type="checkbox" id="update-modal-{{$requests->book_id}}" class="modal-toggle" />
-                                <form method="POST" action="/trainer/bookings/updatePayment/{{$requests->book_id}}">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="modal">
-                                        <div class="modal-box relative rounded">
-                                            <label for="update-modal-{{$requests->book_id}}"
-                                                class=" btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                            <h3 class="text-lg font-bold text-left">Update Payment Status
-                                            </h3>
+                                <div class="modal">
+                                    <div class="modal-box relative rounded">
+                                        <label for="update-modal-{{$requests->book_id}}"
+                                            class=" btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                        <h3 class="text-lg font-bold text-left">Update Payment Status
+                                        </h3>
+                                        <form method="POST"
+                                            action="/trainer/bookings/updatePayment/{{$requests->book_id}}">
+                                            @csrf
+                                            @method('PUT')
                                             <div class="flex flex-col text-sm gap-5">
                                                 <div class="mr-auto mt-5">
                                                     <input type="radio" name="payment" value="unpaid"
@@ -302,11 +301,14 @@
                                                         class="rounded bg-blue-700 px-3 py-2 text-white text-sm">Update</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
 
                             </div>
+
+
+
 
                             {{-- IF IN PROGRESS --}}
                             @elseif($requests->status == 'in progress')
@@ -315,8 +317,38 @@
                                 <label tabindex="0" class="p-1"><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
                                 <ul tabindex="0" class="dropdown-content menu shadow bg-base-100 rounded w-52">
                                     <li><label for="done-modal-{{$requests->book_id}}">Mark as done</label></li>
+                                    <li><label for="update-inprogress-modal-{{$requests->book_id}}">Update
+                                            Payment</label></li>
                                     <li><a href="/help-center">Report</a></li>
                                 </ul>
+                            </div>
+
+                            {{-- UPDATE PAYMENT IN "IN PROGRESS" MODAL --}}
+                            <input type="checkbox" id="update-inprogress-modal-{{$requests->book_id}}"
+                                class="modal-toggle" />
+                            <div class="modal">
+                                <div class="modal-box relative rounded">
+                                    <label for="update-inprogress-modal-{{$requests->book_id}}"
+                                        class=" btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                    <h3 class="text-lg font-bold text-left">Update Payment Status
+                                    </h3>
+                                    <form method="POST" action="/trainer/bookings/updatePayment/{{$requests->book_id}}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="flex flex-col text-sm gap-5">
+                                            <div class="mr-auto mt-5">
+                                                <input type="radio" name="payment" value="unpaid" class="mr-2" />Unpaid
+                                            </div>
+                                            <div class="mr-auto">
+                                                <input type="radio" name="payment" value="paid" class="mr-2" />Paid
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <button type="submit"
+                                                    class="rounded bg-blue-700 px-3 py-2 text-white text-sm">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
 
 
@@ -324,7 +356,7 @@
                             {{-- IF DECLINED --}}
                             @elseif($requests->status == 'declined')
                             <input type="hidden" name="status" value="in progress" />
-                            <div class="dropdown dropdown-left">
+                            <div class="dropdown dropdown-left flex justify-center items-center">
                                 <label tabindex="0" class=""><i class="fa-solid fa-ellipsis fa-2xl"></i></label>
                                 <ul tabindex="0" class="dropdown-content menu shadow bg-gray-200 rounded w-52">
                                     <li><a href="/help-center">Report</a></li>
@@ -371,9 +403,9 @@
 
                                     </ul>
                                 </div>
-
                             </div>
                             @endif
+
                         </td>
                     </tr>
 

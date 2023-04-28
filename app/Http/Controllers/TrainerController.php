@@ -245,12 +245,11 @@ class TrainerController extends Controller
         if ($conflicting_bookings->count() > 0) {
             return redirect()->back()->with('error', 'You are not available during the selected date range.');
         }
-
-
         $booking->status = $request->input('status');
         $booking->payment = $request->input('payment');
         $booking->reason_reject = $request->input('reason_reject');
         $booking->save();
+
 
         if ($booking->status == 'declined') {
             $pet = PetInfo::where('pet_id', $request->input('pet_id'))->first();

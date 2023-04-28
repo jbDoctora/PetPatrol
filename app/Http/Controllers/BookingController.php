@@ -132,7 +132,7 @@ class BookingController extends Controller
             ->join('service', 'service.id', 'booking.service_id')
             ->where('booking.client_id', $clientId)
             ->filter(request()->only(['status', 'pet_type', 'start_date', 'end_date', 'search']))
-            ->orderByRaw("FIELD(booking.status, 'pending', 'in progress', 'approved', 'declined', 'completed', 'cancelled') ASC")
+            ->orderByRaw("FIELD(booking.status, 'pending', 'in progress', 'approved', 'completed', 'declined', 'cancelled') ASC")
             ->paginate(5);
 
         $filteredCount = $request->total();

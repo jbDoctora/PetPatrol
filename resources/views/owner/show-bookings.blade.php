@@ -243,21 +243,9 @@
                             @error('comment')
                             <p class="text-red-500 text-sm font-normal">{{$message}}</p>
                             @enderror
-                            <div class="flex flex-col mb-4">
-                                <label for="image" class="text-sm">Image:</label>
-                                <input type="file" id="image" name="image" accept="image/*" class="border rounded p-2">
-                            </div>
                             <button type="submit"
                                 class="bg-blue-700 p-3 rounded text-sm text-white hover:bg-blue-800">Submit</button>
-                            {{-- <script>
-                                const now = new Date();
-                                        const year = now.getFullYear();
-                                        const month = String(now.getMonth() + 1).padStart(2, '0');
-                                        const day = String(now.getDate()).padStart(2, '0');
-                                        const datestamp = `${year}-${month}-${day}`;
-                                        
-                                        document.getElementById("date_created").value = datestamp;
-                            </script> --}}
+
                         </form>
                     </div>
                 </div>
