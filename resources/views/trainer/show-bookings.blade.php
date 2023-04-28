@@ -116,12 +116,12 @@
                                 <label for="pet-modal-{{$requests->book_id}}"
                                     class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                 <h3 class="my-5 text-lg font-bold">Pet Information</h3>
-                                <div class="flex justify-center avatar bg-gray-300 py-3">
+                                {{-- <div class="flex justify-center avatar bg-gray-300 py-3">
                                     <div class="w-24 rounded-full">
                                         <img src="{{ $requests->image ? asset('storage/' . $requests->image) : asset('/images/no-image.png') }}"
                                             alt="Pet image">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="m-3">
                                     <p class="text-sm">Pet Name</p>
                                     <div class="rounded border border-gray-300 px-3 py-2 w-full text-xs">
@@ -170,12 +170,15 @@
                                         class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                     <h3 class="my-5 text-lg font-bold text-left">Client Information</h3>
                                     <div class="text-left">
-                                        <div class="flex justify-center avatar bg-gray-300 py-3">
+                                        {{-- <div class="flex justify-center avatar bg-gray-300 py-3">
                                             <div class="w-24 rounded-full">
-                                                <img src="{{ $requests->image ? asset('storage/' . $requests->image) : asset('/images/no-image.png') }}"
-                                                    alt="Pet image">
+                                                <div
+                                                    class="w-24 rounded-full ring ring-blue-700 ring-offset-base-100 ring-offset-2">
+                                                    <img src="{{ $requests->image ? asset('storage/' . $requests->image) : asset('/images/no-image.png') }}"
+                                                        alt="Pet image" class="h-full w-full object-cover">
+                                                </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="m-3">
                                             <div class="flex items-center gap-2 my-2">
                                                 <i class="fa-solid fa-user fa-sm"></i>

@@ -79,7 +79,7 @@
             <h3 class="text-lg font-bold">Current QR Code</h3>
             <div>
                 <img src="{{$user->gcash_qr ? asset('storage/' . $user->gcash_qr) : asset('/images/placeholder.png') }}"
-                    alt="gcash-qr code">
+                    alt="gcash-qr code" class="h-full w-full object-cover">
             </div>
         </div>
     </div>
