@@ -31,7 +31,7 @@
                         <tr>
                             <th class="text-xs font-normal py-3">Training service</th>
                             <th class="text-xs font-normal">Pet type</th>
-                            <th class="text-xs font-normal">Availability</th>
+                            <th class="text-xs font-normal">Description</th>
                             <th class="text-xs font-normal">Days of training</th>
                             <th class="text-xs font-normal">Price</th>
                             <th class="text-xs font-normal">Status</th>
@@ -46,7 +46,7 @@
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->pet_type}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
-                                {{$trainings->availability}}</td>
+                                {{$trainings->description}}</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
                                 {{$trainings->days}} days</td>
                             <td class="whitespace-nowrap  border-b border-slate-200">
@@ -140,7 +140,7 @@
                                                     <div>
                                                         <p class="text-sm text-left">Session</p>
                                                         <textarea name="description" id="" cols="3" rows="3"
-                                                            class="w-full rounded broder border-gray-200"></textarea>
+                                                            class="w-full rounded broder border-gray-200 p-2 text-sm"></textarea>
                                                         @error('description')
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror

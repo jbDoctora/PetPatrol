@@ -96,12 +96,13 @@
                     <h3 class="text-lg">Bookings</h3>
                     <a href="/trainer/bookings" class="text-sm text-blue-600">View All bookings</a>
                 </div>
-                <table class="table w-full mt-3">
+                <table class="table w-full mt-3 text-xs">
                     <thead>
                         <tr>
                             <th>Reference Code</th>
                             <th>Client Name</th>
                             <th>Payment Status</th>
+                            <th>Status</th>
                             <th>Schedule</th>
                         </tr>
                     </thead>
@@ -111,6 +112,7 @@
                             <td>{{$pending->code}}</td>
                             <td>{{$pending->client_name}}</td>
                             <td>{{$pending->payment}}</td>
+                            <td>{{$pending->status}}</td>
                             <td>{{$pending->start_date}} - {{$pending->end_date}}</td>
                         </tr>
                         @endforeach

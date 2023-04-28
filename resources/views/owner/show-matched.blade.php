@@ -55,8 +55,7 @@
                                 <i class="text-gray-700 fas fa-paw mr-2"></i>
                                 <p class="text-xs">{{ $match->pet_type }}</p>
                             </div>
-                            <div class="flex justify-start items-center">
-                                <i class="fa-solid fa-calendar mr-2"></i>
+                            <div class="flex justify-start items-center text-justify">
                                 <p class="text-xs">{{ $match->description }}</p>
                             </div>
                         </div>

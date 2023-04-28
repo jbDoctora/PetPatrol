@@ -222,7 +222,7 @@
                             x-data="{ vaccines: '{{ $petinfos->vaccine_list }}'.split(',') }">
                             <template x-for="(vaccine, index) in vaccines" :key="index">
                                 <span
-                                    class="inline-block bg-blue-700 text-white rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2">
+                                    class="inline-block bg-blue-700 text-white rounded-full px-3 py-1 text-xs font-medium mr-2 mb-2">
                                     <span x-text="vaccine.trim()"></span>
                                 </span>
                             </template>

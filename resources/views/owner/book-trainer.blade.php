@@ -169,7 +169,7 @@
                     <input type="hidden" name="sessions" id="sessions" x-model="sessions" />
                 </div> --}}
                 <div>
-                    <label for="" class="text-sm">4. Which location would you prefer to train? </label>
+                    <label for="" class="text-sm">3. Which location would you prefer to train? </label>
                     <p class="text-sm font-semibold" x-text="location"></p>
                     <input type="hidden" name="location" id="location" x-model="location" />
                 </div>

@@ -198,7 +198,7 @@
                         class="flex items-center w-full px-24 py-6 md:py-3 text-xs text-white border-t-2 border-gray-400"></a>
                 </div>
                 <a class="flex items-center w-full px-8 py-3 text-xs text-yellow-400"></a>
-                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
+                <a href="/about-us" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
                         class="material-icons" style="font-size: 25px;">
                         lightbulb
                     </span>
@@ -208,11 +208,6 @@
                         contact_support
                     </span>
                     <span class="ml-9">Need help?</span></a>
-                <a href="" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
-                        class="material-icons" style="font-size: 25px;">
-                        fitness_center
-                    </span>
-                    <span class="ml-9">Become a trainer</span></a>
             </nav>
         </aside>
         <div class="flex-1 overflow-x-scroll">
@@ -306,7 +301,7 @@
                                 class="bg-base-300">
                             {{-- <img src="/images/placeholder.png" /> --}}
                         </div>
-                        <ul tabindex="0" class="dropdown-content menu bg-gray-200 rounded w-52 shadow">
+                        <ul tabindex="0" class="dropdown-content menu bg-gray-200 rounded w-52 shadow text-sm">
                             <li><a>Profile</a></li>
                             <li>
                                 <form method="POST" action="/logout"

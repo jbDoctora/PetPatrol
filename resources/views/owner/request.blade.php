@@ -26,10 +26,10 @@
                                 <p class="font-medium text-gray-600">Preferred Course</p>
                                 <p class="font-semibold text-gray-900">{{ $info->course }}</p>
                             </div>
-                            <div class="w-1/2 text-center">
+                            {{-- <div class="w-1/2 text-center">
                                 <p class="font-medium text-gray-600">Sessions</p>
                                 <p class="font-semibold text-gray-900">{{ $info->sessions }}</p>
-                            </div>
+                            </div> --}}
                             <div class="w-1/2 text-center">
                                 <p class="font-medium text-gray-600">Sessions</p>
                                 @if($info->location == 'public')
