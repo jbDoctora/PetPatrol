@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
+use App\Jobs\SendEmailVerificationNotification;
 
 class UserController extends Controller
 {
@@ -107,7 +108,8 @@ class UserController extends Controller
         // delete niya ni
         // event(new Registered($user));
         if ($user->role == 0) {
-            $user->sendEmailVerificationNotification();
+            // $user->sendEmailVerificationNotification();
+            SendEmailVerificationNotification::dispatch($user);
         }
 
         auth()->login($user);
