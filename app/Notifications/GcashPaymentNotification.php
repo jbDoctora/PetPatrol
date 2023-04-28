@@ -70,7 +70,6 @@ class GcashPaymentNotification extends Notification implements ShouldQueue
     {
         //
         return [
-            'book_id' => $this->bookingData['book_id'],
             'message' => $this->bookingData['message'],
         ];
     }

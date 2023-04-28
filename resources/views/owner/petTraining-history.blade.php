@@ -24,6 +24,12 @@
                             <div class="badge bg-green-700 text-xs">{{$pets->status}}</div>
                             @elseif($pets->status == 'cancelled')
                             <div class="badge bg-red-500 text-xs">{{$pets->status}}</div>
+                            @elseif($pets->status == 'approved')
+                            <div class="badge bg-green-500 text-xs">{{$pets->status}}</div>
+                            @elseif($pets->status == 'in progress')
+                            <div class="badge bg-blue-500 text-xs">{{$pets->status}}</div>
+                            @elseif($pets->status == 'pending')
+                            <div class="badge bg-yellow-500 text-xs">{{$pets->status}}</div>
                             @endif
                         </td>
                     </tr>

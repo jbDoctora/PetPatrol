@@ -243,14 +243,14 @@
                     <span class="ml-9">Settings</span>
                 </a>
 
-                <form method="POST" action="/logout"
+                <form method="POST" action="/logout" onsubmit="document.getElementById('logoutButton').disabled = true;"
                     class="flex items-center w-full px-8 py-3 my-5 hover:bg-blue-400 hover:text-white text-black mt-auto">
                     @csrf
                     <button class="flex items-center">
                         <span class="material-icons md-36" style="font-size: 25px;">
                             logout
                         </span>
-                        <span class="ml-4">Logout</span>
+                        <span class="ml-4" id="logoutButton">Logout</span>
                     </button>
                 </form>
 

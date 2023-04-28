@@ -267,13 +267,12 @@ class TrainerController extends Controller
 
         //NOTIFY
         $bookingData = [
-            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . ' is ' . $booking['status'],
-            'subject' => $booking['code'] .  $booking['status'] . ' by the trainer',
+            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . ' was changed to ' . $booking['status'],
+            'subject' => $booking['code'] . '  ' .  $booking['status'] . ' ' . ' by the trainer',
             'bookingStatus' => 'Click here to view',
             'url' => url('/bookings'),
-            'endingMessage' => 'Thank you for continued support from PetPatrol',
-            'book_id' => $booking['code'],
-            'message' => $booking['code'] . ' is ' . $booking['status'],
+            'endingMessage' => 'Thank you for your support from PetPatrol',
+            'message' => $booking['code'] . ' was changed to ' . $booking['status'],
             'reason_reject' => $booking['reason_reject'],
 
         ];
@@ -425,11 +424,11 @@ class TrainerController extends Controller
         $booking->update($data);
 
         $bookingData = [
-            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . 'was  ' . $booking['status'],
-            'subject' => $booking['code'] .  $booking['status'] . ' by the trainer',
+            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . 'was changed to ' . $booking['status'],
+            'subject' => $booking['code'] . ' ' .  $booking['status'] . ' by the trainer',
             'bookingStatus' => 'Click here to view',
             'url' => url('/bookings'),
-            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'endingMessage' => 'Thank you for your support from PetPatrol',
             'book_id' => $booking['code'],
             'message' => $booking['code'] . ' was ' . $booking['status'],
             'reason_reject' => $booking['reason_reject'],
@@ -466,12 +465,12 @@ class TrainerController extends Controller
             //NOTIFY
             $bookingData = [
                 'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . 'was  ' . $booking['status'],
-                'subject' => $booking['code'] .  $booking['status'] . ' by the trainer',
+                'subject' => $booking['code'] . '  ',  $booking['status'] . ' by the trainer',
                 'bookingStatus' => 'Click here to view',
                 'url' => url('/bookings'),
                 'endingMessage' => 'Thank you for continued support from PetPatrol',
                 'book_id' => $booking['code'],
-                'message' => $booking['code'] . ' was ' . $booking['status'],
+                'message' => $booking['code'] . ' was changed to ' . $booking['status'],
                 'reason_reject' => $booking['reason_reject'],
 
             ];

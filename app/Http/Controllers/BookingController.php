@@ -51,7 +51,6 @@ class BookingController extends Controller
             'bookingStatus' => 'View Booking',
             'url' => url('/bookings'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
-            'book_id' => $booking['code'],
             'message' => 'Your Booking order was placed. Please wait for status update'
         ];
 
@@ -61,7 +60,6 @@ class BookingController extends Controller
             'bookingStatus' => 'View Booking',
             'url' => url('/trainer/bookings'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
-            'book_id' => $booking['code'],
             'message' => 'A client has booked your service'
         ];
 
@@ -196,8 +194,7 @@ class BookingController extends Controller
             'bookingStatus' => 'Click here to view',
             'url' => url('/trainer/bookings'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
-            'book_id' => $booking->code,
-            'message' => 'Payment has been uploaded by the client.'
+            'message' => 'Payment has been uploaded by the client. ' . $booking['code'],
 
         ];
         $user->notify(new GcashPaymentNotification($bookingData));
@@ -262,12 +259,11 @@ class BookingController extends Controller
 
         //NOTIFY CLIENT
         $bookingData = [
-            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . ' is ' . $booking['status'],
+            'body' => 'Hello, ' . $booking['client_name'] . ' Your booking  ' . $booking['code'] . ' was changed to ' . $booking['status'],
             'subject' => $booking['code'] . ' Moved to ' . $booking['status'] . ' by the trainer',
             'bookingStatus' => 'Click here to view',
             'url' => url('/trainer/booking'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
-            'book_id' => $booking['code'],
             'message' => $booking['code'] . ' status was changed to ' . $booking['status'],
 
         ];

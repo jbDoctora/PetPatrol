@@ -200,9 +200,10 @@
                         <ul tabindex="0" class="dropdown-content menu rounded w-52 shadow bg-gray-200 text-sm">
                             <li><a href="/profile">Profile</a></li>
                             <li>
-                                <form method="POST" action="/logout">
+                                <form method="POST" action="/logout"
+                                    onsubmit="document.getElementById('logoutButton').disabled = true;">
                                     @csrf
-                                    <button type="submit">Logout</button>
+                                    <button type="submit" id="logoutButton">Logout</button>
                                 </form>
                             </li>
                         </ul>

@@ -1,16 +1,4 @@
 <x-dash-layout>
-    <div class="bg-blue-500 rounded shadow-md p-6 my-3 mx-5 mt-5 flex justify-between">
-        <div class="text-3xl font-bold text-white mb-3" x-data="{ firstName: '' }">
-            Welcome back,
-            <div class="text-xl font-medium text-white">{{auth()->user()->name}}
-            </div>
-        </div>
-
-        <div class="inline-block align-baseline text-white text-sm mb-auto">
-            <a href="/profile" class="hover:text-yellow-300"><i class="fa-solid fa-gear pr-2"></i>Settings</a>
-        </div>
-
-    </div>
     <div class="grid grid-cols-12 gap-6 mx-5 mb-5 bg-gray-20 p-5">
         <div class="col-span-12 md:col-span-8 xl:col-span-9">
 

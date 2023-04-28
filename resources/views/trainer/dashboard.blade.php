@@ -1,14 +1,4 @@
 <x-trainer-layout>
-    <div class="bg-blue-500 rounded shadow-md p-6 my-3 mx-5 mt-5 flex justify-between">
-        <div class="text-3xl font-bold text-white mb-3">Welcome back,
-            <div class="text-xl font-medium text-white">{{ auth()->user()->name }}</div>
-        </div>
-
-        <div class="inline-block align-baseline text-white text-sm mb-auto">
-            <a href="/trainer/profile">View Profile</a>
-        </div>
-
-    </div>
     <div class="grid grid-cols-12 gap-6 md:gap-4 mx-5 mt-2 bg-gray-200 p-5 rounded">
         <div class="col-span-12 md:col-span-8 xl:col-span-9">
 

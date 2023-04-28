@@ -58,9 +58,7 @@ class BookingStatusChange extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'book_id' => $this->bookingData['book_id'],
             'message' => $this->bookingData['message'],
-            'reason_reject' => $this->bookingData['reason_reject'],
         ];
     }
 }

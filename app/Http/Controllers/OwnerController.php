@@ -43,7 +43,7 @@ class OwnerController extends Controller
         $availability = $request->sessions;
         $type = $request->pet_type;
 
-        $search = $request_input->input('search'); // get search query from the request
+        $search = $request_input->input('search');
 
         $matched_services = DB::table('request')
             ->join('service', function ($join) use ($course, $availability, $type) {

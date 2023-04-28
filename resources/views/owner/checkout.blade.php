@@ -75,8 +75,8 @@
                             class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <h3 class="text-lg font-bold">Image</h3>
                         <div>
-                            <img
-                                src="{{ $request->gcash_qr ? asset('storage/' . $request->gcash_qr) : asset('/images/placeholder.png') }}">
+                            <img src="{{ $request->gcash_qr ? asset('storage/' . $request->gcash_qr) : asset('/images/placeholder.png') }}"
+                                class="w-full h-64 object-cover">
 
                         </div>
                     </div>
