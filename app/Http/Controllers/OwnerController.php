@@ -138,7 +138,7 @@ class OwnerController extends Controller
         $adminService = AdminService::where('isPosted', 1)->get();
 
         $petinfo = PetInfo::where('owner_id', auth()->id())
-            ->whereNotIn('book_status', ['pending', 'requested'])
+            ->whereNotIn('book_status', ['pending', 'requested', 'disabled'])
             ->paginate(9);
         // $requestedPetNames = RequestTrainer::where('user_id', auth()->id())->pluck('pet_name')->toArray();
         // dd($petinfo);

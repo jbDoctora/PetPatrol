@@ -41,7 +41,44 @@
                                 <a href="/pet-info/history/{{$petinfos->pet_id}}"
                                     class="p-2 hover:bg-blue-700 hover:text-white">Pet Training History</a>
                             </li>
+
+
+
+                            <li>
+                                @if($petinfos->book_status == 'pending' || $petinfos->book_status == 'requested')
+                                @else
+                                <label for="disable-modal-{{$petinfos->pet_id}}"
+                                    class="p-2 hover:bg-blue-700 hover:text-white">Delete</label>
+                                @endif
+                            </li>
+
+
+
+
                         </ul>
+
+                        {{-- MODAL FOR PET DISABLE --}}
+                        <form method="POST" action="/pet-info/disable-pet">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="pet_id" value="{{$petinfos->pet_id}}">
+                            <input type="hidden" name="book_status" value="disabled">
+                            <input type="checkbox" id="disable-modal-{{$petinfos->pet_id}}" class="modal-toggle" />
+                            <div class="modal">
+                                <div class="modal-box relative">
+                                    <label for="disable-modal-{{$petinfos->pet_id}}"
+                                        class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                    <h3 class="text-lg font-bold">Confirm Disable pet</h3>
+                                    <p class="py-4">Please confirm that you want to disable your pet. This process
+                                        cannot be undone</p>
+                                    <div class="flex justify-end">
+                                        <button type="submit"
+                                            class="bg-blue-700 text-sm px-3 py-2 text-white rounded">Yes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
 
@@ -78,40 +115,40 @@
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Pet Name</label>
                                         <input type="text" class="border border-gray-200 rounded p-3 bg-gray-100"
-                                            name="pet_name" value="{{$petinfos->pet_name}}">
+                                            name="pet_name" value="{{$petinfos->pet_name}}" required />
                                     </div>
                                 </div>
                                 <div class=" flex flex-col gap-4 my-2">
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Years</label>
                                         <input type="text" class="border border-gray-200 rounded p-3 bg-gray-100"
-                                            name="years" value="{{$petinfos->years}}">
+                                            name="years" value="{{$petinfos->years}}" required />
                                     </div>
                                 </div>
                                 <div class=" flex flex-col gap-4 my-2">
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Months</label>
                                         <input type="text" class="border border-gray-200 rounded p-3 bg-gray-100"
-                                            name="months" value="{{$petinfos->months}}">
+                                            name="months" value="{{$petinfos->months}}" required />
                                     </div>
                                 </div>
                                 <div class=" flex flex-col gap-4 my-2">
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Breed</label>
                                         <input type="text" class="border border-gray-200 rounded p-3 bg-gray-100"
-                                            name="breed" value="{{$petinfos->breed}}">
+                                            name="breed" value="{{$petinfos->breed}}" required />
                                     </div>
                                 </div>
                                 <div class=" flex flex-col gap-4 my-2">
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Weight</label>
                                         <select type="text" class="border border-gray-200 rounded p-3 bg-gray-100 w-44"
-                                            name="weight" value="{{$petinfos->weight}}">
-                                            <option value="1-5">1-5 kgs.</option>
-                                            <option value="5-10">5-10 kgs.</option>
-                                            <option value="10-20">10-20 kgs.</option>
-                                            <option value="10-35">20-35 kgs.</option>
-                                            <option value="30+">30+ kgs.</option>
+                                            name="weight" value="{{$petinfos->weight}}" required />
+                                        <option value="1-5">1-5 kgs.</option>
+                                        <option value="5-10">5-10 kgs.</option>
+                                        <option value="10-20">10-20 kgs.</option>
+                                        <option value="10-35">20-35 kgs.</option>
+                                        <option value="30+">30+ kgs.</option>
                                         </select>
                                     </div>
                                 </div>
@@ -119,7 +156,7 @@
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Vaccine</label>
                                         <select type="text" class="border border-gray-200 rounded p-3 bg-gray-100 w-44"
-                                            name="vaccine" value="{{$petinfos->vaccine}}">
+                                            name="vaccine" value="{{$petinfos->vaccine}}" required>
                                             <option value="Vaccinated">vaccinated</option>
                                             <option value="Unvaccinated">unvaccinated</option>
                                         </select>
@@ -129,7 +166,7 @@
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Vaccine List</label>
                                         <input type="text" class="border border-gray-200 rounded p-3 bg-gray-100"
-                                            name="vaccine_list" value="{{$petinfos->vaccine_list}}">
+                                            name="vaccine_list" value="{{$petinfos->vaccine_list}}" required>
                                     </div>
                                 </div>
                                 <div class="flex flex-col gap-2 my-2">

@@ -168,6 +168,7 @@ Route::middleware(['auth', 'isTrainer', 'checkApproval', 'banned'])->group(funct
 // Owner Routes
 Route::middleware(['auth', 'verified', 'isOwner', 'banned'])->group(function () {
     Route::get('/owner', [OwnerController::class, 'index']);
+    Route::put('/pet-info/disable-pet', [PetInfoController::class, 'updateDisable']);
     Route::get('/pet-info', [PetInfoController::class, 'index']);
     Route::put('/pet-info/{id}', [PetInfoController::class, 'edit']);
     Route::put('/edit/status/{pet_id}', [PetInfoController::class, 'updateStatus']);

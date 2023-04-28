@@ -25,7 +25,9 @@ class PetInfoController extends Controller
     // }
     public function index()
     {
-        $petinfo = PetInfo::where('owner_id', auth()->id())->paginate(3);
+        $petinfo = PetInfo::where('owner_id', auth()->id())
+            ->whereNotIn('book_status', ['disabled'])
+            ->paginate(3);
         return view('owner.pet-info-index', compact('petinfo'));
     }
     public function create()
@@ -67,6 +69,21 @@ class PetInfoController extends Controller
         return redirect('/pet-info')->with('message', 'Pet added successfully!');
     }
 
+    public function updateDisable(Request $request)
+    {
+        $pet = PetInfo::where('pet_id', $request->input('pet_id'))->first();
+
+        $data = $request->validate([
+            'book_status' => 'required',
+            'pet_id' => 'required',
+        ]);
+        $pet->book_status = $request->input('book_status');
+
+        $pet->update($data);
+
+        return redirect()->back()->with('message', 'Successfully disabled your pet');
+    }
+
     public function edit(Request $request, $id)
     {
         $pet_to_update = PetInfo::where('pet_id', $id)->first();
@@ -82,7 +99,7 @@ class PetInfoController extends Controller
 
 
         $pet_to_update->update($formFields);
-        // dd($formFields);
+
 
         return redirect()->back()->with('message', 'Successfully updated!');
     }
