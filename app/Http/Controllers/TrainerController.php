@@ -42,9 +42,6 @@ class TrainerController extends Controller
 
         $avg_rating = $count_ratings > 0 ? round($total_stars / $count_ratings, 2) : 0;
 
-        // $user = User::where('id', auth()->user()->id)->first();
-        // $user()->unreadNotifications->markAsRead();
-        // $user()->notifications()->markAsRead();
 
         return view('trainer.dashboard', [
             'trainer' => $trainer_ratings,
@@ -60,15 +57,20 @@ class TrainerController extends Controller
     public function showPortfolioEdit()
     {
         $portfolio = TrainerModel::where('user_id', auth()->user()->id)->first();
+        $admin_service = AdminService::where('isPosted', '1')->get();
+        $admin_petType = AdminPetType::where('isPosted', '1')->get();
         // dd($portfolio);
 
         return view('trainer.edit-portfolio', [
             'portfolio' => $portfolio,
+            'admin_service' => $admin_service,
+            'admin_petType' => $admin_petType,
         ]);
     }
 
     public function editPortfolio(Request $request)
     {
+
         $trainer = TrainerModel::where('user_id', auth()->user()->id)->first();
         $data = $request->validate([
             'about_me' => 'required',
@@ -529,7 +531,9 @@ class TrainerController extends Controller
 
     public function create()
     {
-        return view('trainer.create-portfolio');
+        $admin_service = AdminService::where('isPosted', '1')->get();
+        $admin_petType = AdminPetType::where('isPosted', '1')->get();
+        return view('trainer.create-portfolio', compact('admin_service', 'admin_petType'));
     }
 
     public function store(Request $request)

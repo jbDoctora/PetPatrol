@@ -24,29 +24,13 @@
                 <div class="pr-5">
                     <div class="m-3 rounded-xl bg-white">
                         <h2 class="p-5 text-xl font-normal"><span class="text-red-500">*</span>Services</h2>
+                        @foreach($admin_service as $service)
                         <div class="mb-4 flex items-center p-2 pl-4">
-                            <input type="checkbox" class="" value="Potty Training" x-model="service" />
-                            <label for="" class="ml-2 text-sm font-medium">Potty Training</label>
+                            <input type="checkbox" class="" value="{{$service->admin_service}}" x-model="service" />
+                            <label for="" class="ml-2 text-sm font-medium">{{$service->admin_service}}</label>
                         </div>
-                        <div class="mb-4 flex items-center p-2 pl-4">
-                            <input type="checkbox" class="" value="Obedience Training" x-model="service" />
-                            <label for="" class="ml-2 text-sm font-medium">Obedience Training</label>
-                        </div>
+                        @endforeach
 
-                        <div class="mb-4 flex items-center p-2 pl-4">
-                            <input type="checkbox" class="d" value="Behavioral Training" x-model="service" />
-                            <label for="" class="ml-2 text-sm font-medium">Behavioral Training</label>
-                        </div>
-
-                        <div class="mb-4 flex items-center p-2 pl-4">
-                            <input type="checkbox" class="" value="Agility Training" x-model="service" />
-                            <label for="" class="ml-2 text-sm font-medium">Agility Training</label>
-                        </div>
-
-                        <div class="mb-4 flex items-center p-2 pl-4 pb-5">
-                            <input type="checkbox" class="" value="Tricks Training" x-model="service" />
-                            <label for="" class="ml-2 text-sm font-medium">Tricks Training</label>
-                        </div>
                         <p class="hidden" x-text="service.join(', ')"></p>
                         <input type="hidden" name="services" x-model="service">
                     </div>
@@ -55,24 +39,13 @@
                 <div class="px-9">
                     <div class="m-3 rounded-xl bg-white">
                         <h2 class="p-5 text-xl font-normal"><span class="text-red-500">*</span>Pet that I train</h2>
+                        @foreach($admin_petType as $pet)
                         <div class="mb-4 flex items-center p-2 pl-4">
-                            <input type="checkbox" class="" value="Dog" x-model="type" />
-                            <label for="" class="ml-2 text-sm font-medium">Dog</label>
+                            <input type="checkbox" class="" value="{{$pet->admin_petType}}" x-model="type" />
+                            <label for="" class="ml-2 text-sm font-medium">{{$pet->admin_petType}}</label>
                         </div>
-                        <div class="mb-4 flex items-center p-2 pl-4">
-                            <input type="checkbox" class="" value="Cat" x-model="type" />
-                            <label for="" class="ml-2 text-sm font-medium">Cat</label>
-                        </div>
+                        @endforeach
 
-                        <div class="mb-4 flex items-center p-2 pl-4">
-                            <input type="checkbox" class="" value="Hamster" x-model="type" />
-                            <label for="" class="ml-2 text-sm font-medium">Hamster</label>
-                        </div>
-
-                        <div class="mb-4 flex items-center p-2 pl-4 pb-5">
-                            <input type="checkbox" class="" value="Parrot" x-model="type" />
-                            <label for="" class="ml-2 text-sm font-medium">Parrot</label>
-                        </div>
                         <p class="hidden" x-text="type.join(', ')"></p>
                         <input type="hidden" name="type" x-model="type">
                     </div>
