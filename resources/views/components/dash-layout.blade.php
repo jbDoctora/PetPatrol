@@ -186,9 +186,9 @@
                                 class="fa-solid fa-circle-question fa-lg"></i></button>
                         <ul tabindex="0"
                             class="dropdown-content menu bg-base-300 rounded w-52 text-black shadow text-sm">
-                            <li><a href="">About us</a></li>
+                            <li><a href="/about-us">About us</a></li>
                             <li><a href="/help-center">Need Help?</a></li>
-                            <li><a href="">Be a Pet Patroller</a></li>
+                            {{-- <li><a href="">Be a Pet Patroller</a></li> --}}
                         </ul>
                     </div>
 

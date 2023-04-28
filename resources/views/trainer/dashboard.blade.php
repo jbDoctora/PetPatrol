@@ -130,7 +130,7 @@
                 <div class="mt-4 space-y-4">
                     <div class="flex flex-col items-center justify-center">
                         <div class="p-3 font-bold text-4xl">{{$services}}</div>
-                        <div class="text-sm">Posted Training Class</div>
+                        <div class="text-sm">Available Training Class</div>
                     </div>
 
                     <div class="flex justify-end">

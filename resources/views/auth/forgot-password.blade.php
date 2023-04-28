@@ -86,7 +86,7 @@
 
 
             <main>
-                <div class="w-full max-w-md mx-auto">
+                <div class="w-full max-w-md mx-auto bg-white rounded m-5 p-5">
                     <div class="text-center mb-6">
                         <h2 class="text-2xl font-semibold text-gray-800">{{ __('Forgot your password?') }}</h2>
                         <p class="text-gray-600">{{ __('No problem. Just let us know your email address and we will
@@ -114,7 +114,7 @@
 
                         <div class="flex items-center justify-between">
                             <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{
+                                class="bg-blue-700 hover:bg-blue-800 text-white font-normal mx-auto py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{
                                 __('Email Password Reset Link') }}</button>
                         </div>
                     </form>

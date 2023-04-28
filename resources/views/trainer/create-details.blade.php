@@ -40,19 +40,19 @@
                                     <label for="edit-modal-{{$details->training_id}}"
                                         class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                     <h3 class="text-lg font-bold">Edit Lesson</h3>
-                                    <input type="hidden" name="training_id" value="{{$details->training_id}}">
+                                    <input type="hidden" name="training_id" value="{{$details->training_id}}" required>
                                     <div class="flex flex-col">
                                         <div>
                                             <label class="text-sm">Lesson</label>
                                             <input type="text" name="lesson"
                                                 class="rounded bg-gray-200 px-3 py-2 text-sm ml-8"
-                                                value="{{$details->lesson}}">
+                                                value="{{$details->lesson}}" required>
                                         </div>
                                         <div class="flex flex-col mt-5">
                                             <label for="" class="text-xs text-justify">Description</label>
                                             <textarea cols="30" name="description"
-                                                class="rounded bg-gray-200 text-sm px-3 py-2"
-                                                rows="5">{{$details->description}}</textarea>
+                                                class="rounded bg-gray-200 text-sm px-3 py-2" rows="5"
+                                                required>{{$details->description}}</textarea>
                                         </div>
                                         <div class="mt-5 flex justify-end">
                                             <button type="submit"
@@ -122,12 +122,13 @@
                 <div class="flex flex-col justify-start">
                     <div class="flex justify-between items-center my-2">
                         <p>Lesson Title</p>
-                        <input type="text" name="lesson" class="rounded border border-gray-300 px-3 py-1 bg-gray-100">
+                        <input type="text" name="lesson" class="rounded border border-gray-300 px-3 py-1 bg-gray-100"
+                            required>
                     </div>
                     <div class="my-2">
                         <p>Description</p>
                         <textarea name="description" id="" cols="10" rows="5"
-                            class="border border-gray-300 bg-gray-100 w-full p-3"></textarea>
+                            class="border border-gray-300 bg-gray-100 w-full p-3" required></textarea>
                     </div>
                     <div class="flex justify-end">
                         <button class="bg-blue-700 text-white text-sm px-3 py-2 rounded" type="submit">Add

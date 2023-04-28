@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="mt-2 min-w-full overflow-hidden rounded-none">
+            <div class="mt-2 min-w-full rounded-none">
                 <table class="w-full text-xs">
                     <thead class="text-center bg-gray-200 text-gray-800">
                         <tr>
@@ -140,7 +140,8 @@
                                                     <div>
                                                         <p class="text-sm text-left">Session</p>
                                                         <textarea name="description" id="" cols="3" rows="3"
-                                                            class="w-full rounded broder border-gray-200 p-2 text-sm"></textarea>
+                                                            class="w-full rounded broder border-gray-200 p-2 text-sm"
+                                                            required>{{$trainings->description}}</textarea>
                                                         @error('description')
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror
@@ -180,8 +181,6 @@
             </div>
         </div>
 
-
-        {{-- Modal that asks user input --}}
         <form method="POST" action="/trainer/service/add-service/addService"
             x-on:submit="price = price.replace(/,/g, '')">
             @csrf
@@ -194,7 +193,8 @@
                         <div>
                             <p class="text-sm">Price</p>
                             <input type="text" x-model="price"
-                                class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs" name="price">
+                                class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs" name="price"
+                                required>
                             @error('price')
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
@@ -228,7 +228,7 @@
                         <div>
                             <p class="text-sm">Training Service Description</p>
                             <textarea name="description" id="" cols="2" rows="3"
-                                class="w-full rounded border border-gray-200"></textarea>
+                                class="w-full rounded border border-gray-200" required></textarea>
                             @error('description')
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
@@ -270,7 +270,7 @@
         </div>
     </div>
 
-    {{-- MODAL FOR CREATING A PORTFOLIO --}}
+    {{-- MODAL FOR CREATING A GCASH ACCOUNT DETAILS --}}
     <input type="checkbox" id="error-modal-2" class="modal-toggle" />
     <div class="modal">
         <div class="modal-box relative rounded">
