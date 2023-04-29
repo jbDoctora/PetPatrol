@@ -245,27 +245,41 @@ class TrainerController extends Controller
 
         $start_date = Carbon::parse($request->input('start_date'));
         $end_date = Carbon::parse($request->input('end_date'));
+        $status = $request->input('status');
 
-        $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
-            ->join('service', 'booking.service_id', '=', 'service.id')
-            ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
-            ->where(function ($query) use ($start_date, $end_date) {
-                $query->where('start_date', '<=', $end_date)
-                    ->where('end_date', '>=', $start_date);
-            })
-            ->where('book_id', '<>', $booking->book_id)
-            ->get();
+        if ($status == 'approved') {
+            $conflicting_bookings = Booking::where('trainer_id', $trainer_id)
+                ->join('service', 'booking.service_id', '=', 'service.id')
+                ->whereNotIn('booking.status', ['declined', 'cancelled', 'pending', 'completed'])
+                ->where(function ($query) use ($start_date, $end_date) {
+                    $query->where('start_date', '<=', $end_date)
+                        ->where('end_date', '>=', $start_date);
+                })
+                ->where('book_id', '<>', $booking->book_id)
+                ->get();
 
-        if ($conflicting_bookings->count() > 0) {
-            return redirect()->back()->with('error', 'You are not available during the selected date range.');
-        } else {
+            if ($conflicting_bookings->count() > 0) {
+                return redirect()->back()->with('error', 'There is a conflict with your schedule.');
+            } else {
 
+                $booking->status = $request->input('status');
+                $booking->payment = $request->input('payment');
+                $booking->reason_reject = $request->input('reason_reject');
+                $booking->save();
+            }
+        } elseif ($status == 'declined') {
             $booking->status = $request->input('status');
             $booking->payment = $request->input('payment');
             $booking->reason_reject = $request->input('reason_reject');
             $booking->save();
-        }
 
+            $pet_id = $request->input('pet_id');
+            $pet = PetInfo::where('pet_id', $pet_id)->first();
+            $pet->book_status = 'inactive';
+            $pet->save();
+
+            return redirect()->back()->with('message', 'Successfully declined');
+        }
 
         //NOTIFY
         $bookingData = [

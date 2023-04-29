@@ -150,7 +150,7 @@
                                                         <p class="text-sm text-left">Days of Training</p>
                                                         <input type="number"
                                                             class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                                            name="days" value="{{$trainings->days}}" required>
+                                                            name="days" value="{{$trainings->days}}" required min="1">
                                                         @error('days')
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror
@@ -160,8 +160,7 @@
                                                 <div class="modal-action flex items-center justify-end">
                                                     <button type="submit"
                                                         class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Update</button>
-                                                    <label for="my-modal"
-                                                        class="bg-neutral-900 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-neutral-800">Close</label>
+
                                                 </div>
                                             </div>
                                         </div>

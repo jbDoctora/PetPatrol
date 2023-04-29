@@ -302,7 +302,7 @@
                             {{-- <img src="/images/placeholder.png" /> --}}
                         </div>
                         <ul tabindex="0" class="dropdown-content menu bg-gray-200 rounded w-52 shadow text-sm">
-                            <li><a>Profile</a></li>
+                            <li><a href="/trainer/profile">Profile</a></li>
                             <li>
                                 <form method="POST" action="/logout"
                                     onsubmit="document.getElementById('logoutButton').disabled = true;">
