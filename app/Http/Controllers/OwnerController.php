@@ -40,7 +40,7 @@ class OwnerController extends Controller
         $request = RequestTrainer::where('request_id', $request_id)->first();
 
         $course = $request->course;
-        // $availability = $request->sessions;
+
         $type = $request->pet_type;
 
         $search = $request_input->input('search');
@@ -48,10 +48,9 @@ class OwnerController extends Controller
         $matched_services = DB::table('request')
             ->join('service', function ($join) use ($course, $type) {
                 $join->on('request.course', '=', 'service.course')
-                    // ->on('request.sessions', '=', 'service.availability')
+
                     ->on('request.pet_type', '=', 'service.pet_type')
                     ->where('request.course', $course)
-                    // ->where('request.sessions', $availability)
                     ->where('request.pet_type', $type)
                     ->where('request.user_id', auth()->id())
                     ->where('service.status', 'available');
