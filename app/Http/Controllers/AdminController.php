@@ -50,12 +50,32 @@ class AdminController extends Controller
             'link' => 'Click here to view',
             'url' => url('/trainer'),
             'endingMessage' => 'Thank you for continued support from PetPatrol',
-            'message' => 'You have been verified by the Admin. Thank you for joining Pet Patrol',
+            'message' => 'Welcome to Pet Patrol Trainer! You can now start creating your training class.',
 
         ];
         $user->notify(new AdminApprovedNotification($userdata));
 
         return redirect()->back()->with('message', 'Updated Successfully!');
+    }
+
+    public function deleteApplication(Request $request, $id)
+    {
+        $user = User::where('id', $id)->first();
+
+        //NOTIFY
+        $userdata = [
+            'body' => 'Hello, ' . $user['name'] . ' We are very sorry but your application has been declined due to ' .  $request->input('reason_reject'),
+            'subject' => 'Application declined by the admin',
+            'link',
+            'url',
+            'endingMessage' => 'Thank you for continued support from PetPatrol',
+            'message' => '',
+
+        ];
+        $user->notify(new AdminApprovedNotification($userdata));
+
+        $user->delete();
+        return redirect()->back()->with('message', 'Application successfully rejected.');
     }
 
     public function showUsers()

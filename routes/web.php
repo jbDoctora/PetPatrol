@@ -218,6 +218,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/help-center', [ReportSuggestionsController::class, 'showHelp']);
     Route::get('/admin/change-password', [AdminController::class, 'showChangePass']);
     Route::put('/admin/{id}/change-password', [AdminController::class, 'updatePassword']);
+    Route::delete('/admin/deleteApplication/{user_id}', [AdminController::class, 'deleteApplication']);
 });
 
 // Default Route

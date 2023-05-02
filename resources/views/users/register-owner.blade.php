@@ -54,8 +54,8 @@
                                 <span class="text-red-400 text-sm">*</span>Phone number
                             </label>
 
-                            <input type="text" name="phone_number" value="{{ old('phone_number') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+                            <input type="tel" name="phone_number" value="{{ old('phone_number') }}"
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" min="11" max="11" />
                             @error('phone_number')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror

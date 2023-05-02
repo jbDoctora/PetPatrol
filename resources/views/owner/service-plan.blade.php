@@ -39,17 +39,23 @@
 
         <div class="flex ml-3">
             <div>
+
+
+
                 <h3 class="font-bold text-lg">Training Package</h3>
-                <p class="text-sm my-1">Trainer Name: {{$service->name}}</p>
+                <p class="text-sm my-1">Course Bundle: {{$trainer_name->name}}</p>
                 <p class="text-sm my-1">Course Bundle: {{$service->course}}</p>
                 <p class="text-sm my-1">Training Days: {{$service->days}}</p>
                 <p class="text-sm my-1">Price: {{$service->price}}</p>
+                <p class="text-sm my-1">Pet Type: {{$service->pet_type}}</p>
+
+
             </div>
         </div>
     </div>
 
     @forelse($trainingDet as $details)
-    <a class="block rounded bg-gray-100 p-4 sm:p-6 lg:p-8 mx-8 my-5" href="#">
+    <a class="block rounded bg-gray-200 p-4 sm:p-6 lg:p-8 mx-8 my-5" href="#">
         <div class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-700" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">

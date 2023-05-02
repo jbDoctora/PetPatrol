@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class AdminApprovedNotification extends Notification implements ShouldQueue
+class NewlyRegisteredNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,11 +16,10 @@ class AdminApprovedNotification extends Notification implements ShouldQueue
      *
      * @return void
      */
-
-    private $userdata;
-    public function __construct($userdata)
+    private $userData;
+    public function __construct($userData)
     {
-        $this->userdata = $userdata;
+        $this->userData = $userData;
     }
 
     /**
@@ -31,7 +30,7 @@ class AdminApprovedNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['database'];
     }
 
     /**
@@ -43,10 +42,10 @@ class AdminApprovedNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line($this->userdata['body'])
-            ->subject($this->userdata['subject'])
-            ->action($this->userdata['link'], $this->userdata['url'])
-            ->line($this->userdata['endingMessage']);
+            ->line($this->userData['body'])
+            ->subject($this->userData['subject'])
+            ->action($this->userData['bookingStatus'], $this->userData['url'])
+            ->line($this->userData['endingMessage']);
     }
 
     /**
@@ -58,7 +57,7 @@ class AdminApprovedNotification extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->userdata['message'],
+            'message' => $this->userData['message'],
         ];
     }
 }

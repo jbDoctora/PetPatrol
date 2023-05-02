@@ -75,8 +75,8 @@
                     <p class="text-sm">Reference #: {{$requests->code}}</p>
                     <p class="text-sm">Pet: {{$requests->pet_name}}</p>
                     <p class="text-sm">Trainer: {{$requests->trainer_name}}</p>
-                    <p class="text-xs">Description: {{$requests->description}}</p>
                     <p class="text-sm">Schedule: {{$requests->start_date}} - {{$requests->end_date}}
+                    <p class="text-xs">Description: {{$requests->description}}</p>
                     </p>
                 </div>
                 <div class="flex items-center justify-center w-80 gap-3">

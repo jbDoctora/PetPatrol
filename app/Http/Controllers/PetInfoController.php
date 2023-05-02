@@ -41,7 +41,17 @@ class PetInfoController extends Controller
         $formFields = $request->validate([
             'pet_name' => 'required|unique:pet_info,pet_name,NULL,id,owner_id,' . auth()->id(),
             'years' => 'required',
-            'months' => 'required',
+            'months' =>
+            [
+                'required',
+                function ($attribute, $value, $fail) use ($request) {
+                    $ageInMonths = ($value + ($request->input('years') * 12));
+
+                    if ($ageInMonths < 2) {
+                        $fail('Pet should be two months above for training');
+                    }
+                },
+            ],
             'breed' => 'required',
             'info' => 'nullable',
             'vaccine' => 'required',
@@ -50,6 +60,7 @@ class PetInfoController extends Controller
             'weight' => 'required',
         ], [
             'name.unique' => 'The pet name already exists on your end.',
+            'months.min' => 'Pet should be two months above for training'
         ]);
 
         if ($request->hasFile('image')) {
@@ -91,7 +102,17 @@ class PetInfoController extends Controller
         //     'image' => 'nullable',
         // ]);
 
-        $formFields = $request->only(['months', 'years', 'breed', 'weight', 'info', 'vaccine', 'vaccine_list', 'pet_name', 'image']);
+        $formFields = $request->valdate([
+            'months' => 'required',
+            'years' => 'required',
+            'breed' => 'required',
+            'weight' => 'required',
+            'info' => 'nullable',
+            'vaccine' => 'required',
+            'vaccine_list' => 'required',
+            'pet_name' => 'required',
+            'image' => 'required',
+        ]);
 
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('pet_photo', 'public');

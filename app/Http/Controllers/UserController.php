@@ -11,9 +11,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
 use App\Jobs\SendEmailVerificationNotification;
+use App\Notifications\AdminApprovedNotification;
+use App\Notifications\NewlyRegisteredNotification;
+use Illuminate\Notifications\Notifiable;
 
 class UserController extends Controller
 {
+    use Notifiable;
     //
     public function create()
     {
@@ -82,17 +86,22 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $formFields = $request->validate([
-            'name' => ['required', 'min:3'],
-            'birthday' => 'required',
-            'sex' => 'required',
-            'address' => 'required',
-            'phone_number' => 'required',
-            'id_verify' => 'required',
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:6',
-            'role' => 'required'
-        ]);
+        $formFields = $request->validate(
+            [
+                'name' => ['required', 'min:3'],
+                'birthday' => 'required',
+                'sex' => 'required',
+                'address' => 'required',
+                'phone_number' => ['required', 'regex:/^(\+63|0)9\d{9}$/'],
+                'id_verify' => 'required',
+                'email' => ['required', 'email', Rule::unique('users', 'email')],
+                'password' => 'required|confirmed|min:6',
+                'role' => 'required'
+            ],
+            [
+                'phone_number.regex' => 'Phone number is invalid'
+            ]
+        );
 
         if ($request->hasFile('id_verify')) {
             $formFields['id_verify'] = $request->file('id_verify')->store('id_verification', 'public');
@@ -105,10 +114,9 @@ class UserController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
-        // delete niya ni
-        // event(new Registered($user));
+        $user_to_notify = $user['id'];
+
         if ($user->role == 0) {
-            // $user->sendEmailVerificationNotification();
             SendEmailVerificationNotification::dispatch($user);
         }
 
@@ -118,6 +126,13 @@ class UserController extends Controller
         $user = auth()->user();
         if ($user->role == 0) {
             auth()->login($user);
+            //DELETE IF MO ERROR
+            $user_to_notify = User::where('id', auth()->user()->id)->first();
+            $userData = [
+                'message' => 'Welcome to Pet Patrol! You can now start requesting a pet trainer.'
+            ];
+            $user_to_notify->notify(new NewlyRegisteredNotification($userData));
+            //END OF DELETION
             return redirect('/owner')->with('message', 'You are now logged in as an owner!');
         } elseif ($user->role == 1) {
             auth()->login($user);

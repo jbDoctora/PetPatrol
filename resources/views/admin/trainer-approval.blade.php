@@ -51,13 +51,48 @@
                             Document</label>
                     </td>
                     <td>
-                        <form method="POST" action="/admin/trainer-approval/{{$user->id}}">
+                        <div class="flex flex-col gap-1">
+                            <div>
+                                <form method="POST" action="/admin/trainer-approval/{{$user->id}}">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="admin_approve" value="1" />
+                                    <button
+                                        class="bg-green-700 rounded text-sm text-center text-white px-2 py-2 md:p-2 md:text-xs hover:bg-green-800 w-full"
+                                        type="submit">Approve</button>
+                                </form>
+                            </div>
+                            <div>
+                                <label for="reject-modal-{{$user->id}}"
+                                    class="bg-red-700 rounded text-sm text-center text-white px-2 py-2 md:p-2 md:text-xs hover:bg-red-800 w-full"
+                                    type="submit">Reject</label>
+
+                            </div>
+                        </div>
+
+                        {{-- MODAL FOR REJECT APPLICATION --}}
+                        <form method="POST" action="/admin/deleteApplication/{{$user->id}}">
                             @csrf
-                            @method('PUT')
-                            <input type="hidden" name="admin_approve" value="1" />
-                            <button
-                                class="bg-green-700 rounded text-sm text-white px-2 py-2 md:p-2 md:text-xs hover:bg-green-800"
-                                type="submit">Approve</button>
+                            @method('DELETE')
+                            <input type="checkbox" id="reject-modal-{{$user->id}}" class="modal-toggle" />
+                            <div class="modal">
+                                <div class="modal-box relative rounded">
+                                    <label for="reject-modal-{{$user->id}}"
+                                        class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                    <h3 class="text-lg font-bold">Confirm Reject</h3>
+                                    <div class="flex flex-col">
+                                        <div class="flex flex-col mt-4">
+                                            <label class="mb-3 text-sm">Reason for reject:</label>
+                                            <textarea name="reason_reject" class="rounded border border-gray-200 p-2"
+                                                cols="30" rows="5"></textarea>
+                                        </div>
+                                        <div class="flex justify-end mt-3">
+                                            <button type="submit"
+                                                class="bg-red-700 hover:bg-red-800 text-white text-sm text-center px-3 py-2 rounded">Reject</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </td>
                 </tr>
