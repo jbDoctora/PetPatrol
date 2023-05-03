@@ -88,8 +88,9 @@
             <main>
                 <div class="w-full max-w-md mx-auto bg-white rounded m-5 p-5">
                     <div class="text-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800">{{ __('Forgot your password?') }}</h2>
-                        <p class="text-gray-600">{{ __('No problem. Just let us know your email address and we will
+                        <h2 class="text-2xl font-normal text-gray-800">{{ __('Forgot your password?') }}</h2>
+                        <p class="text-gray-600 text-sm">{{ __('No problem. Just let us know your email address and we
+                            will
                             email you a password
                             reset link that will allow you to choose a new one.') }}</p>
                     </div>
@@ -98,12 +99,13 @@
                     <x-auth-validation-errors :errors="$errors" /> --}}
 
                     <form method="POST" action="{{ route('password.email') }}"
-                        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        class="bg-white rounded px-8 pt-6 pb-8 mb-4">
                         @csrf
 
                         <!-- Email field -->
                         <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-bold mb-2">{{ __('Email') }}</label>
+                            <label for="email" class="block text-gray-700 font-normal text-sm mb-2">{{ __('Email')
+                                }}</label>
                             <input type="email" name="email" id="email" value="{{ old('email') }}"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror"
                                 autofocus required>

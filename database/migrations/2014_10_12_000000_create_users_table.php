@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('trainer_document')->nullable();
             $table->boolean('isBanned')->default(0);
             $table->float('avg_rating')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

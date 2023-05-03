@@ -33,7 +33,7 @@ class AdminController extends Controller
 
     public function showTrainerApproval()
     {
-        $users = DB::table('users')->where('role', 1)->where('admin_approve', 0)->get();
+        $users = DB::table('users')->where('role', 1)->where('admin_approve', 0)->where('deleted_at', null)->get();
         return view('admin.trainer-approval', compact('users'));
     }
 
@@ -58,7 +58,7 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Updated Successfully!');
     }
 
-    public function deleteApplication(Request $request, $id)
+    public function softDeleteApplication(Request $request, $id)
     {
         $user = User::where('id', $id)->first();
 
@@ -74,7 +74,7 @@ class AdminController extends Controller
         ];
         $user->notify(new AdminApprovedNotification($userdata));
 
-        $user->delete();
+        $user->forceDelete();
         return redirect()->back()->with('message', 'Application successfully rejected.');
     }
 

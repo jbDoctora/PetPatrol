@@ -7,6 +7,7 @@ use App\Models\PetInfo;
 use App\Models\AdminPetType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Input\Input;
 
 class PetInfoController extends Controller
@@ -98,6 +99,7 @@ class PetInfoController extends Controller
     public function edit(Request $request, $id)
     {
         $pet_to_update = PetInfo::where('pet_id', $id)->first();
+        $oldImagePath = $pet_to_update['image'];
 
         $formFields = $request->validate([
             'months' =>
@@ -123,6 +125,9 @@ class PetInfoController extends Controller
 
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('pet_photo', 'public');
+
+            // Delete the old image file
+            Storage::disk('public')->delete($oldImagePath);
         }
 
         $pet_to_update->update($formFields);

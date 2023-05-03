@@ -88,14 +88,14 @@
             <main>
                 <div class="w-full max-w-md mx-auto bg-white rounded m-5 p-5">
                     <div class="text-center mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-800">{{ __('Reset Password') }}</h2>
+                        <h2 class="text-2xl font-normal text-gray-800">{{ __('Reset Password') }}</h2>
                     </div>
                     {{--
                     <!-- Display validation errors -->
                     <x-auth-validation-errors :errors="$errors" /> --}}
 
                     <form method="POST" action="{{ route('password.update') }}"
-                        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        class="bg-white rounded px-8 pt-6 pb-8 mb-4">
                         @csrf
 
                         <!-- Token field -->
@@ -103,9 +103,10 @@
 
                         <!-- Email field -->
                         <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-bold mb-2">{{ __('Email') }}</label>
+                            <label for="email" class="block text-gray-700 font-normal text-sm mb-2">{{ __('Email')
+                                }}</label>
                             <input type="email" name="email" id="email" value="{{ $email ?? old('email') }}"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror"
+                                class="text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror"
                                 autofocus required>
                             @error('email')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -114,10 +115,10 @@
 
                         <!-- Password field -->
                         <div class="mb-4">
-                            <label for="password" class="block text-gray-700 font-bold mb-2">{{ __('Password')
+                            <label for="password" class="block text-gray-700 font-normal text-sm mb-2">{{ __('Password')
                                 }}</label>
                             <input type="password" name="password" id="password"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm @error('password') border-red-500 @enderror"
                                 required>
                             @error('password')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -126,11 +127,12 @@
 
                         <!-- Password confirmation field -->
                         <div class="mb-4">
-                            <label for="password_confirmation" class="block text-gray-700 font-bold mb-2">{{ __('Confirm
+                            <label for="password_confirmation" class="block text-gray-700 font-normal text-sm mb-2">{{
+                                __('Confirm
                                 Password')
                                 }}</label>
                             <input type="password" name="password_confirmation" id="password_confirmation"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password_confirmation') border-red-500 @enderror"
+                                class="text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password_confirmation') border-red-500 @enderror"
                                 required>
                             @error('password_confirmation')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>

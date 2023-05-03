@@ -17,6 +17,16 @@
 
                     <form method="POST" action="/users" class="mt-5 flex flex-col gap-4" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="flex items-center">
+                            <div
+                                class="rounded-full bg-blue-600 text-white text-xs text-center px-3 py-1 font-medium m-1">
+                                1
+                            </div>
+                            <label for="" class="ml-2 text-gray-900 text-xs">Your Basic
+                                Information</label>
+                        </div>
+
                         <div>
                             <label for="name" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Full Name
@@ -60,6 +70,15 @@
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
+                        </div>
+
+                        <div class="flex items-center">
+                            <div
+                                class="rounded-full bg-blue-600 text-white text-xs text-center px-3 py-1 font-medium m-1">
+                                2
+                            </div>
+                            <label for="" class="ml-2 text-gray-900 text-xs">Security
+                                Information</label>
                         </div>
 
                         <div>

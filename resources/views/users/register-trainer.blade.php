@@ -22,7 +22,15 @@
                     <form method="POST" action="/users" class="grid-rows-7 mt-5 grid gap-4"
                         enctype="multipart/form-data">
                         @csrf
-                        <div class="col-span-6">
+                        <div class="flex items-center">
+                            <div
+                                class="rounded-full bg-blue-600 text-white text-xs text-center py-1 w-5 font-medium m-1">
+                                1
+                            </div>
+                            <label for="" class="ml-2 text-gray-900 text-xs">Your Basic
+                                Information</label>
+                        </div>
+                        {{-- <div class="col-span-6">
                             <label for="email" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Email
                             </label>
@@ -34,14 +42,14 @@
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                             @enderror
 
-                        </div>
+                        </div> --}}
 
                         <div class="col-span-6">
                             <label for="name" class="block text-xs font-medium text-gray-700">
                                 <span class="text-red-400 text-sm">*</span>Name
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}"
-                                class="rounded border border-gray-300 py-2 px-3 w-full text-sm" />
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
 
                             @error('name')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -114,7 +122,7 @@
 
                             <div class="relative">
                                 <input type="file" name="id_verify" value="{{ old('id_verify') }}"
-                                    class="rounded border border-gray-300 py-2 px-3 w-full text-xs">
+                                    class="file rounded border border-gray-300 py-2 px-3 w-full text-xs">
 
                                 @error('id_verify')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -138,6 +146,29 @@
                                 @enderror
 
                             </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div
+                                class="rounded-full bg-blue-600 text-white text-xs text-center py-1 w-5 font-medium m-1">
+                                2
+                            </div>
+                            <label for="" class="ml-2 text-gray-900 text-xs">Security
+                                Information</label>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label for="email" class="block text-xs font-medium text-gray-700">
+                                <span class="text-red-400 text-sm">*</span>Email
+                            </label>
+
+                            <input type="email" name="email" value="{{ old('email') }}"
+                                class="rounded border border-gray-300 py-2 px-3 w-96 text-sm" />
+
+                            @error('email')
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
+
                         </div>
 
                         <div class="col-span-6">
