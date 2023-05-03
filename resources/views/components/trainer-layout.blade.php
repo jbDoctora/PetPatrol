@@ -258,12 +258,16 @@
                                     <li
                                         class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300' }} rounded cursor-pointer m-1">
                                         <button type="submit"
-                                            class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">
+                                            class="block px-4 py-4 text-xs hover:bg-blue-400 text-black rounded">
                                             <div class="flex justify-between items-center mt-3">
-                                                <span class="{{ $notification->read_at}}">{{
-                                                    $notification->data['message'] }}</span>
-                                                <span class="text-gray-500 text-xs">{{
-                                                    $notification->created_at->diffForHumans() }}</span>
+                                                <div class="text-left">
+                                                    <span class="{{ $notification->read_at}}">{{
+                                                        $notification->data['message'] }}</span>
+                                                </div>
+                                                <div class="text-right text-gray-500 text-right text-xs">
+                                                    <span>{{
+                                                        $notification->created_at->diffForHumans() }}</span>
+                                                </div>
                                             </div>
                                         </button>
                                     </li>

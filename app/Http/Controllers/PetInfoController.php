@@ -12,18 +12,7 @@ use Symfony\Component\Console\Input\Input;
 
 class PetInfoController extends Controller
 {
-    //
-    // public function index(){
-    //     $petinfo = PetInfo::paginate(9);
-    //     return view('owner.pet-info-index',[
-    //         'petinfo' => $petinfo
-    //     ]);
-    // }
-    // public function index(){
-    //     return view('owner.pet-info-index',[
-    //         'petinfo' => PetInfo::paginate(9)
-    //     ]);
-    // }
+
     public function index()
     {
         $petinfo = PetInfo::where('owner_id', auth()->id())

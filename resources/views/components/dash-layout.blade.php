@@ -144,12 +144,16 @@
                                     <li
                                         class="{{ $notification->read_at ? 'bg-white' : 'bg-blue-300' }} rounded cursor-pointer m-1">
                                         <button type="submit"
-                                            class="block px-4 py-4 text-xs hover:bg-gray-400 text-black text-left">
+                                            class="block px-4 py-4 text-xs hover:bg-blue-400 text-black rounded">
                                             <div class="flex justify-between items-center mt-3">
-                                                <span class="{{ $notification->read_at}}">{{
-                                                    $notification->data['message'] }}</span>
-                                                <span class="text-gray-500 text-xs">{{
-                                                    $notification->created_at->diffForHumans() }}</span>
+                                                <div class="text-left">
+                                                    <span class="{{ $notification->read_at}}">{{
+                                                        $notification->data['message'] }}</span>
+                                                </div>
+                                                <div class="text-right text-gray-500 text-right text-xs">
+                                                    <span>{{
+                                                        $notification->created_at->diffForHumans() }}</span>
+                                                </div>
                                             </div>
                                         </button>
                                     </li>
@@ -227,14 +231,14 @@
                             <div class="hidden md:block">
                                 <div class="ml-10 flex items-baseline space-x-4">
                                     <a href="/owner"
-                                        class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                                        class="text-gray-900 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
                                     <a href="/pet-info"
-                                        class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Pet
+                                        class="text-gray-900 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Pet
                                         Profile</a>
                                     <a href="/request"
-                                        class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Request</a>
+                                        class="text-gray-900 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Request</a>
                                     <a href="/bookings"
-                                        class="text-black hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Bookings</a>
+                                        class="text-gray-900 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Bookings</a>
                                 </div>
                             </div>
                         </nav>

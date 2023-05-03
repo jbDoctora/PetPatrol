@@ -1,13 +1,13 @@
 <x-NoNav>
 
 
-    <div class="grid grid-cols-2 gap-4 border border-gray-200 p-5 mt-5">
+    <div class="grid grid-cols-2 gap-4 border border-gray-200 p-5 mt-5 mb-3 mx-8 bg-blue-600 text-white rounded">
 
-        <h3 class="font-bold text-lg col-span-2">Training Details</h3>
+        <h3 class="font-bold text-lg col-span-2"><i class="fa-solid fa-book-open mr-2"></i>Training Details</h3>
         <p class="text-sm">Trainer Name: {{$trainer_name->name}}</p>
         <p class="text-sm">Course Bundle: {{$service->course}}</p>
         <p class="text-sm">Training Days: {{$service->days}}</p>
-        <p class="text-sm">Price: {{$service->price}}</p>
+        <p class="text-sm">Price: <span class="text-green-400 text-lg font-bold">{{$service->price}}</span></p>
         <p class="text-sm">Pet Type: {{$service->pet_type}}</p>
 
     </div>

@@ -50,10 +50,11 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $data = $request->only(['name', 'sex', 'address', 'phone_number', 'email', 'profile_photo']);
+        $oldImagePath = $user['profile_photo'];
 
         if ($request->hasFile('profile_photo')) {
             // Delete the old file
-            Storage::delete('image/' . $user->profile_photo);
+            Storage::disk('public')->delete($oldImagePath);
 
             // Store the new file
             $data['profile_photo'] = $request->file('profile_photo')->store('profile_photo', 'public');

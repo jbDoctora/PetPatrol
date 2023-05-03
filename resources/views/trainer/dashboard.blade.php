@@ -91,7 +91,7 @@
 
 
             {{-- latest bookings --}}
-            <div class="bg-white m-5 p-3">
+            <div class="bg-white my-5 p-3">
                 <div class="flex justify-between items-center">
                     <h3 class="text-lg">Bookings</h3>
                     <a href="/trainer/bookings" class="text-sm text-blue-600">View All bookings</a>

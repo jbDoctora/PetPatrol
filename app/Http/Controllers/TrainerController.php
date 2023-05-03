@@ -87,6 +87,11 @@ class TrainerController extends Controller
 
         // dd($data);
         if ($request->hasFile('certificates')) {
+            $oldCertificates = unserialize($trainer->certificates);
+            foreach ($oldCertificates as $oldCertificate) {
+                Storage::disk('public')->delete($oldCertificate);
+            }
+
             $certificates = $request->file('certificates');
             $certificatesPaths = [];
             foreach ($certificates as $certificate) {
@@ -97,6 +102,11 @@ class TrainerController extends Controller
         }
 
         if ($request->hasFile('journey_photos')) {
+            $oldPhotos = unserialize($trainer->journey_photos);
+            foreach ($oldPhotos as $oldPhoto) {
+                Storage::disk('public')->delete($oldPhoto);
+            }
+
             $photos = $request->file('journey_photos');
             $photosPaths = [];
             foreach ($photos as $photo) {
@@ -352,10 +362,11 @@ class TrainerController extends Controller
     {
         $user = User::findOrFail($id);
         $data = $request->only(['name', 'sex', 'address', 'phone_number', 'email', 'profile_photo', 'birthday']);
+        $oldImagePath = $user['profile_photo'];
 
         if ($request->hasFile('profile_photo')) {
             // Delete the old file
-            Storage::delete('image/' . $user->profile_photo);
+            Storage::disk('public')->delete($oldImagePath);
 
             // Store the new file
             $data['profile_photo'] = $request->file('profile_photo')->store('profile_photo', 'public');
@@ -389,11 +400,12 @@ class TrainerController extends Controller
     public function updatePayment(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        $oldImagePath = $user['gcash_qr'];
 
         $data = $request->only('gcash_qr', 'gcash_number');
         if ($request->hasFile('gcash_qr')) {
             // Delete the old file
-            Storage::delete('image/' . $user->gcash_qr);
+            Storage::disk('public')->delete($oldImagePath);
 
             // Store the new file
             $data['gcash_qr'] = $request->file('gcash_qr')->store('gcash_qr', 'public');
