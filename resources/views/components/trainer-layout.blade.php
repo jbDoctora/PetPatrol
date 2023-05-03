@@ -153,38 +153,38 @@
             </div>
             <nav
                 class="flex flex-col items-center w-full h-full bg-blue-700 text-xs font-medium subpixel-antialiased border-r border-gray-300">
-                <a href="/trainer" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white indicator">
-                    <span class="material-icons" style="font-size: 25px;">
+                <a href="/trainer" class="flex items-center w-full px-12 py-3 hover:bg-blue-900 text-white indicator">
+                    <span class="material-icons-outlined" style="font-size: 25px;">
                         donut_small
                     </span>
-                    <div class=" ml-9 ">Dashboard</div>
+                    <div class="ml-9 ">Dashboard</div>
                 </a>
-                <a href="/trainer/bookings" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
-                    <span class="material-icons" style="font-size: 25px">
-                        bookmark
+                <a href="/trainer/bookings" class="flex items-center w-full px-12 py-3 hover:bg-blue-900 text-white">
+                    <span class="material-icons-outlined" style="font-size: 25px">
+                        bookmark_border
                     </span>
                     <div class="ml-9">Bookings</div>
                 </a>
-                <a href="/trainer/service/add" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
-                    <span class="material-icons" style="font-size: 25px;">
-                        home_repair_service
+                <a href="/trainer/service/add" class="flex items-center w-full px-12 py-3 hover:bg-blue-900 text-white">
+                    <span class="material-icons-outlined" style="font-size: 25px;">
+                        school
                     </span>
-                    <div class="ml-9">Service</div>
+                    <div class="ml-9">Training Class</div>
                 </a>
-                <a href="/trainer/portfolio" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
-                    <span class="material-icons md-36" style="font-size: 25px;">
+                <a href="/trainer/portfolio" class="flex items-center w-full px-12 py-3 hover:bg-blue-900 text-white">
+                    <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         hub
                     </span>
                     <div class="ml-9">Portfolio</div>
                 </a>
-                <a href="/trainer/report" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
-                    <span class="material-icons md-36" style="font-size: 25px;">
+                <a href="/trainer/report" class="flex items-center w-full px-12 py-3 hover:bg-blue-900 text-white">
+                    <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         assessment
                     </span>
                     <div class="ml-9">Report</div>
                 </a>
-                <a href="/trainer/profile" class="flex items-center w-full px-8 py-3 hover:bg-blue-900 text-white">
-                    <span class="material-icons md-36" style="font-size: 25px;">
+                <a href="/trainer/profile" class="flex items-center w-full px-12 py-3 hover:bg-blue-900 text-white">
+                    <span class="material-icons-outlined md-36" style="font-size: 25px;">
                         settings
                     </span>
 
@@ -198,13 +198,13 @@
                         class="flex items-center w-full px-24 py-6 md:py-3 text-xs text-white border-t-2 border-gray-400"></a>
                 </div>
                 <a class="flex items-center w-full px-8 py-3 text-xs text-yellow-400"></a>
-                <a href="/about-us" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
-                        class="material-icons" style="font-size: 25px;">
+                <a href="/about-us" class="flex items-center w-full px-12 py-3 text-white hover:bg-blue-900"><span
+                        class="material-icons-outlined" style="font-size: 25px;">
                         lightbulb
                     </span>
                     <span class="ml-9">About us</span></a>
-                <a href="/help-center" class="flex items-center w-full px-8 py-3 text-white hover:bg-blue-900"><span
-                        class="material-icons" style="font-size: 25px;">
+                <a href="/help-center" class="flex items-center w-full px-12 py-3 text-white hover:bg-blue-900"><span
+                        class="material-icons-outlined" style="font-size: 25px;">
                         contact_support
                     </span>
                     <span class="ml-9">Need help?</span></a>
@@ -217,7 +217,7 @@
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            class="h-8 w-8 font-bold">
+                            class="h-6 w-6 font-bold">
                             <path x-show="!sidebarOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16" />
                             <path x-show="sidebarOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

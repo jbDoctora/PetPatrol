@@ -7,7 +7,7 @@
         </div>
 
         <div class="mt-2 overflow-hidden rounded-none mx-6">
-            <table class="w-full border border-gray-300 mb-5" id="reportTable">
+            <table class="w-full border border-gray-300 mb-5 text-sm" id="reportTable">
                 <thead class="table-auto">
                     <tr class="font-normal text-sm text-slate-100 bg-blue-700">
                         <th>
