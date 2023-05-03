@@ -98,12 +98,19 @@ class PetInfoController extends Controller
     public function edit(Request $request, $id)
     {
         $pet_to_update = PetInfo::where('pet_id', $id)->first();
-        // $formFields = $request->validate([
-        //     'image' => 'nullable',
-        // ]);
 
-        $formFields = $request->valdate([
-            'months' => 'required',
+        $formFields = $request->validate([
+            'months' =>
+            [
+                'required',
+                function ($attribute, $value, $fail) use ($request) {
+                    $ageInMonths = ($value + ($request->input('years') * 12));
+
+                    if ($ageInMonths < 2) {
+                        $fail('Pet should be two months above for training');
+                    }
+                },
+            ],
             'years' => 'required',
             'breed' => 'required',
             'weight' => 'required',
@@ -111,16 +118,14 @@ class PetInfoController extends Controller
             'vaccine' => 'required',
             'vaccine_list' => 'required',
             'pet_name' => 'required',
-            'image' => 'required',
+            'image' => 'nullable',
         ]);
 
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('pet_photo', 'public');
         }
 
-
         $pet_to_update->update($formFields);
-
 
         return redirect()->back()->with('message', 'Successfully updated!');
     }
@@ -131,7 +136,7 @@ class PetInfoController extends Controller
 
         $data = $pet->book_status = 'deceased';
         $pet->update($data);
-        dd($pet);
+        // dd($pet);
         return redirect()->back()->with('message', 'We are sorry to hear about your pet');
     }
 

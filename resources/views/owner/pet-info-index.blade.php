@@ -132,6 +132,9 @@
                                             name="months" value="{{$petinfos->months}}" required />
                                     </div>
                                 </div>
+                                @error('months')
+                                <p class="text-red-500 text-xs text-center">{{$message}}</p>
+                                @enderror
                                 <div class=" flex flex-col gap-4 my-2">
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Breed</label>
@@ -143,12 +146,12 @@
                                     <div class="flex items-center gap-5 justify-between">
                                         <label for="">Weight</label>
                                         <select type="text" class="border border-gray-200 rounded p-3 bg-gray-100 w-44"
-                                            name="weight" value="{{$petinfos->weight}}" required />
-                                        <option value="1-5">1-5 kgs.</option>
-                                        <option value="5-10">5-10 kgs.</option>
-                                        <option value="10-20">10-20 kgs.</option>
-                                        <option value="20-35">20-35 kgs.</option>
-                                        <option value="30+">30+ kgs.</option>
+                                            name="weight" value="{{$petinfos->weight}}" required>
+                                            <option value="1-5">1-5 kgs.</option>
+                                            <option value="5-10">5-10 kgs.</option>
+                                            <option value="10-20">10-20 kgs.</option>
+                                            <option value="20-35">20-35 kgs.</option>
+                                            <option value="30+">30+ kgs.</option>
                                         </select>
                                     </div>
                                 </div>
@@ -201,7 +204,7 @@
                 <div class="grid grid-cols-2 gap-4 px-4 mb-4">
                     <div class="col-span-2 bg-gray-200 p-4 rounded-md">
                         <i class="fa-solid fa-calendar-day fa-md text-gray-500"></i>
-                        <span class="ml-2 text-gray-500">{{ $petinfos->years }} years {{ $petinfos->months }}
+                        <span class="ml-2 text-gray-500">{{ $petinfos->years }} year {{ $petinfos->months }}
                             months</span>
                     </div>
                     <div class="col-span-2 bg-gray-200 p-4 rounded-md">

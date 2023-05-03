@@ -86,11 +86,12 @@
                             </div>
 
                         </div>
-                        <div class="mt-6 flex justify-end gap-3">
+                        <div class="mt-6 flex justify-center gap-3">
                             <a href="/show-matched/training-plan/{{ $match->service_id }}"
-                                class="text-xs rounded px-3 py-2 bg-blue-700 text-white my-auto hover:bg-blue-800">View
-                                Training Plan</a>
-                            <label class="text-xs rounded px-3 py-2 bg-blue-700 text-white my-auto hover:bg-blue-800"
+                                class="text-xs rounded-full w-full text-center px-3 py-2 bg-blue-700 text-white my-auto hover:bg-blue-800">View
+                                Training Lesson</a>
+                            <label
+                                class="text-xs rounded-full w-full text-center px-3 py-2 bg-blue-700 text-white my-auto hover:bg-blue-800"
                                 for="my-modal-{{ $match->service_id }}">
                                 Book now <i class="fa-solid fa-arrow-right ml-2"></i>
                             </label>
