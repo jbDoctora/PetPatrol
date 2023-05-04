@@ -39,7 +39,7 @@
                                         {{ $match->trainer_name }}</h2>
                                 </a>
                             </div>
-                            <div class="w-20 h-20 rounded-full">
+                            <div class="avatar w-24 h-24 rounded-full overflow-hidden">
                                 <img src="{{ $match->profile_photo ? asset('storage/' . $match->profile_photo) : asset('/images/placeholder.png') }}"
                                     class="rounded-full">
                             </div>

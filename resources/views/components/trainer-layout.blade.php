@@ -107,7 +107,7 @@
         class="flex h-screen overflow-x-hidden">
         <aside class="flex h-screen w-64 flex-shrink-0 flex-col transition-all duration-300"
             :class="{ '-ml-64': !sidebarOpen }">
-            <div class="flex h-28 flex-row items-center justify-center bg-blue-700 text-white border-r border-gray-300">
+            <div class="flex h-28 flex-row items-center justify-center bg-blue-600 text-white border-r border-gray-300">
 
                 <svg version="1.0" class="flex justify-between items-center" xmlns="http://www.w3.org/2000/svg"
                     width="44.000000pt" height="44.000000pt" viewBox="0 0 206.000000 196.000000"
@@ -152,7 +152,7 @@
 
             </div>
             <nav
-                class="flex flex-col items-center w-full h-full bg-blue-700 text-xs font-medium subpixel-antialiased border-r border-gray-300">
+                class="flex flex-col items-center w-full h-full bg-blue-600 text-xs font-medium subpixel-antialiased border-r border-gray-300">
                 <a href="/trainer" class="flex items-center w-full px-12 py-3 hover:bg-blue-900 text-white indicator">
                     <span class="material-icons-outlined" style="font-size: 25px;">
                         donut_small
@@ -212,7 +212,7 @@
         </aside>
         <div class="flex-1 overflow-x-scroll">
             <header class="flex items-center">
-                <div class="navbar bg-blue-700 text-white shadow-lg pr-12">
+                <div class="navbar bg-blue-600 text-white shadow-lg pr-12">
                     <button class="mr-4 rounded-lg border-0 py-3 px-4"
                         @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
                         style="transition: all 0.3s ease;">

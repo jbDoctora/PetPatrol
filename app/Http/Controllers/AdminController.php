@@ -80,7 +80,9 @@ class AdminController extends Controller
 
     public function showUsers()
     {
-        $users = User::whereIn('role', [0, 1])->get();
+        $users = User::whereIn('role', [0, 1])
+            ->where('isBanned', 0)
+            ->get();
 
         return view('admin.view-users', compact('users'));
     }

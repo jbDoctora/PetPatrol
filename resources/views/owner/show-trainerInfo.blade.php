@@ -5,8 +5,8 @@
             <h4 class="text-lg font-medium">Personal Details</h4>
             @foreach ($showInfo as $showInfos)
             <div class="flex">
-                <div class="flex items-center py-5 px-8">
-                    <div class="flex my-auto w-32 h-32">
+                <div class="avatar flex items-center py-5 px-8">
+                    <div class="flex my-auto w-36 rounded-full">
                         <img
                             src="{{ $showInfos->profile_photo ? asset('storage/' . $showInfos->profile_photo) : asset('/images/placeholder.png') }}">
                     </div>
