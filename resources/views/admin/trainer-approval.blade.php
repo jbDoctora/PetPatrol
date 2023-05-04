@@ -84,7 +84,7 @@
                                         <div class="flex flex-col mt-4">
                                             <label class="mb-3 text-sm">Reason for reject:</label>
                                             <textarea name="reason_reject" class="rounded border border-gray-200 p-2"
-                                                cols="30" rows="5"></textarea>
+                                                cols="30" rows="5" required></textarea>
                                         </div>
                                         <div class="flex justify-end mt-3">
                                             <button type="submit"

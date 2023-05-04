@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AdminRejectNotification;
 use App\Notifications\AdminApprovedNotification;
 
 class AdminController extends Controller
@@ -62,17 +64,13 @@ class AdminController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        //NOTIFY
         $userdata = [
             'body' => 'Hello, ' . $user['name'] . ' We are very sorry but your application has been declined due to ' .  $request->input('reason_reject'),
             'subject' => 'Application declined by the admin',
-            'link',
-            'url',
             'endingMessage' => 'Thank you for continued support from PetPatrol',
-            'message' => '',
 
         ];
-        $user->notify(new AdminApprovedNotification($userdata));
+        $user->notify(new AdminRejectNotification($userdata));
 
         $user->forceDelete();
         return redirect()->back()->with('message', 'Application successfully rejected.');
