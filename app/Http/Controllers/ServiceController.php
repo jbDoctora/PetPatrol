@@ -31,16 +31,19 @@ class ServiceController extends Controller
 
         $validatedData = $request->validate($rules, $messages);
         $formFields['course'] = $validatedData['course'];
-        $formFields['pet_type'] = $validatedData['pet_type'];
+        $selectedPetType = $request->input('pet_type');
         $formFields['description'] = $validatedData['description'];
         $formFields['days'] = $validatedData['days'];
         $formFields['price'] = $validatedData['price'];
         $formFields['status'] = $validatedData['status'];
         $formFields['user_id'] = auth()->id() ?? null;
 
+        $pettype_to_implode = implode(',', $selectedPetType);
+        $formFields['pet_type'] = $pettype_to_implode;
+
         Service::create($formFields);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Successfully updated');
     }
 
     public function destroy($id)
@@ -56,6 +59,12 @@ class ServiceController extends Controller
     {
         $service = Service::where('id', $service_id)->first();
         $data = $request->all();
+
+        $selectedPetType = $request->input('pet_type');
+
+        $pettype_to_implode = implode(',', $selectedPetType);
+        $data['pet_type'] = $pettype_to_implode;
+
         $service->update($data);
 
         return redirect()->back()->with('message', 'Service Successfully udpated');

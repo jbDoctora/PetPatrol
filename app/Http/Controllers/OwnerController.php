@@ -46,15 +46,28 @@ class OwnerController extends Controller
         $search = $request_input->input('search');
 
         $matched_services = DB::table('request')
+            // ->join('service', function ($join) use ($course, $type) {
+            //     $join->on('request.course', '=', 'service.course')
+            //         ->on('request.pet_type', '=', 'service.pet_type')
+            //         ->where('request.course', $course)
+            //         ->where('request.pet_type', $type)
+            //         ->where('request.user_id', auth()->id())
+            //         ->where('service.status', 'available');
+            // })
+
+            // DELETE NI IF MO SAYOP
             ->join('service', function ($join) use ($course, $type) {
                 $join->on('request.course', '=', 'service.course')
-
-                    ->on('request.pet_type', '=', 'service.pet_type')
+                    ->where(function ($query) use ($type) {
+                        $query->where('request.pet_type', 'LIKE', "%{$type}%")
+                            ->orWhere('service.pet_type', 'LIKE', "%{$type}%");
+                    })
                     ->where('request.course', $course)
-                    ->where('request.pet_type', $type)
                     ->where('request.user_id', auth()->id())
                     ->where('service.status', 'available');
             })
+            //END OF DELETION
+
             ->join('users', function ($join) {
                 $join->on('service.user_id', '=', 'users.id')
                     ->where('users.role', 1);

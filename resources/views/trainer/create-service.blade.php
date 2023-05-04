@@ -10,17 +10,17 @@
                     <label for="error-modal"
                         class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
                         training
-                        service</label>
+                        class</label>
                     @elseif(empty(auth()->user()->gcash_number || auth()->user()->gcash_qr))
                     <label for="error-modal-2"
                         class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
                         training
-                        service</label>
+                        class</label>
                     @else
                     <label for="my-modal"
                         class="bg-blue-700 px-5 py-3 text-white font-bold rounded text-xs hover:bg-blue-800 cursor-pointer">Add
                         training
-                        service</label>
+                        class</label>
                     @endif
                 </div>
             </div>
@@ -99,7 +99,7 @@
                                                 <label for="update-modal-{{$trainings->id}}"
                                                     class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                                 <h1 class="my-5 text-lg text-left font-bold">Input course details:</h1>
-                                                <div class="grid grid-cols-2 gap-6 items-center">
+                                                <div class="flex flex-col gap-6">
                                                     <div>
                                                         <p class="text-sm text-left">Price</p>
                                                         <input type="text" value="{{$trainings->price}}"
@@ -123,23 +123,28 @@
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror
                                                     </div>
+
                                                     <div>
-                                                        <p class="text-sm text-left">Pet Type</p>
-                                                        <select
-                                                            class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                                            name="pet_type" value="{{$trainings->pet_type}}" required>
-                                                            <option disabled selected>Choose pet type</option>
+
+                                                        <p class="text-sm mb-3 text-left">Pet Type</p>
+                                                        <div class="grid grid-cols-2 justify-start">
+
                                                             @foreach($adminPetType as $petType)
-                                                            <option>{{$petType->admin_petType}}</option>
+                                                            <div class="flex justify-start">
+                                                                <input type="checkbox" name="pet_type[]" class="m-2"
+                                                                    value="{{$petType->admin_petType}}"><label for=""
+                                                                    class="m-1 text-sm">{{$petType->admin_petType}}</label>
+                                                            </div>
                                                             @endforeach
-                                                        </select>
+                                                        </div>
                                                         @error('pet_type')
                                                         <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                                                         @enderror
                                                     </div>
+
                                                     <div>
                                                         <p class="text-sm text-left">Session</p>
-                                                        <textarea name="description" id="" cols="3" rows="3"
+                                                        <textarea name="description" cols="3" rows="3"
                                                             class="w-full rounded broder border-gray-200 p-2 text-sm"
                                                             required>{{$trainings->description}}</textarea>
                                                         @error('description')
@@ -180,6 +185,7 @@
             </div>
         </div>
 
+        {{-- MODAL FOR ADDING TRAINING CLASS --}}
         <form method="POST" action="/trainer/service/add-service/addService"
             x-on:submit="price = price.replace(/,/g, '')">
             @csrf
@@ -188,7 +194,7 @@
                 <div class="modal-box max-w-5xl rounded">
                     <label for="my-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h1 class="my-5 text-lg font-bold">Input course details:</h1>
-                    <div class="grid grid-cols-2 gap-6 items-center">
+                    <div class="flex flex-col gap-6">
                         <div>
                             <p class="text-sm">Price</p>
                             <input type="text" x-model="price"
@@ -211,19 +217,34 @@
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
                         </div>
+
                         <div>
-                            <p class="text-sm">Pet Type</p>
-                            <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs" name="pet_type"
-                                required>
+
+                            {{-- MAKE IT A CHECKBOX --}}
+
+                            {{-- <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
+                                name="pet_type" required>
                                 <option disabled selected>Choose pet type</option>
                                 @foreach($adminPetType as $petType)
                                 <option>{{$petType->admin_petType}}</option>
                                 @endforeach
-                            </select>
+                            </select> --}}
+                            <p class="text-sm mb-3">Pet Type</p>
+                            <div class="grid grid-cols-2">
+
+                                @foreach($adminPetType as $petType)
+                                <div>
+                                    <input type="checkbox" name="pet_type[]" class="m-2"
+                                        value="{{$petType->admin_petType}}"><label for=""
+                                        class="m-1 text-sm">{{$petType->admin_petType}}</label>
+                                </div>
+                                @endforeach
+                            </div>
                             @error('pet_type')
                             <p class="mt-1 text-xs text-red-500">{{$message}}</p>
                             @enderror
                         </div>
+
                         <div>
                             <p class="text-sm">Training Service Description</p>
                             <textarea name="description" id="" cols="2" rows="3"
@@ -246,12 +267,11 @@
                     <div class="modal-action flex items-center justify-end">
                         <button type="submit"
                             class="bg-blue-700 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-blue-800">Create</button>
-                        <label for="my-modal"
-                            class="bg-neutral-900 text-white text-sm text-center rounded px-3 py-2 w-20 hover:bg-neutral-800">Close</label>
                     </div>
                 </div>
             </div>
         </form>
+        {{-- END OF MODAL FOR ADDING TRAINING CLASS --}}
     </div>
 
     {{-- MODAL FOR CREATING A PORTFOLIO --}}

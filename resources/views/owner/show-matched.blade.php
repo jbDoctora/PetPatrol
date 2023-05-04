@@ -139,7 +139,7 @@
                                     <tr>
                                         <th class="px-4 py-2 text-left">Trainer name</th>
                                         <th class="px-4 py-2 text-left">Course package</th>
-                                        <th class="px-4 py-2 text-left">Availability</th>
+                                        <th class="px-4 py-2 text-left">Description</th>
                                         <th class="px-4 py-2 text-left">Price</th>
                                     </tr>
                                 </thead>
@@ -153,10 +153,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="flex flex-col md:flex-row md:justify-between items-center p-5">
+                        {{-- <div class="flex flex-col md:flex-row md:justify-between items-center p-5">
                             <div class="font-bold mb-2 md:mb-0">Total Price:</div>
                             <div class="font-bold">{{$match->price}}</div>
-                        </div>
+                        </div> --}}
                         <div class="flex flex-col gap-4 p-5">
                             <div class="flex items-center">
                                 <input type="checkbox" class="border border-blue-700 mr-3" x-model="checked" />
