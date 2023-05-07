@@ -90,27 +90,32 @@ class PetInfoController extends Controller
         $pet_to_update = PetInfo::where('pet_id', $id)->first();
         $oldImagePath = $pet_to_update['image'];
 
-        $formFields = $request->validate([
-            'months' =>
+        $formFields = $request->validate(
             [
-                'required',
-                function ($attribute, $value, $fail) use ($request) {
-                    $ageInMonths = ($value + ($request->input('years') * 12));
+                'months' =>
+                [
+                    'required',
+                    function ($attribute, $value, $fail) use ($request) {
+                        $ageInMonths = ($value + ($request->input('years') * 12));
 
-                    if ($ageInMonths < 2) {
-                        $fail('Pet should be two months above for training');
-                    }
-                },
+                        if ($ageInMonths < 2) {
+                            $fail('Pet should be two months above for training');
+                        }
+                    },
+                ],
+                'years' => 'required',
+                'breed' => 'required',
+                'weight' => 'required',
+                'info' => 'nullable',
+                'vaccine' => 'required',
+                'vaccine_list' => 'required',
+                'pet_name' => 'required|regex:/^[\pL\s\-]+$/u',
+                'image' => 'nullable',
             ],
-            'years' => 'required',
-            'breed' => 'required',
-            'weight' => 'required',
-            'info' => 'nullable',
-            'vaccine' => 'required',
-            'vaccine_list' => 'required',
-            'pet_name' => 'required',
-            'image' => 'nullable',
-        ]);
+            [
+                'pet_name.regex' => 'invalid pet name',
+            ]
+        );
 
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('pet_photo', 'public');

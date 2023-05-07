@@ -541,18 +541,22 @@ class TrainerController extends Controller
     {
         $service = TrainingDetails::all();
         $training = Service::where('user_id', auth()->id())->get();
-        $adminService = AdminService::where('isPosted', 1)->get();
-        $adminPetType = AdminPetType::where('isPosted', 1)->get();
+        // $adminService = AdminService::where('isPosted', 1)->get();
+        // $adminPetType = AdminPetType::where('isPosted', 1)->get();
         $portfolio = TrainerModel::where('user_id', auth()->user()->id)->get();
+        $portofolio_pettype = TrainerModel::where('user_id', auth()->user()->id)->pluck('type')->first();
+        $portfolio_services = TrainerModel::where('user_id', auth()->user()->id)->pluck('services')->first();
+        $portfolio_services_explode = explode(',', $portfolio_services);
+        $portfolio_pettype_explode = explode(',', $portofolio_pettype);
 
         $portfolio_count = count($portfolio);
 
         return view('trainer.create-service', [
             'service' => $service,
             'training' => $training,
-            'adminService' => $adminService,
-            'adminPetType' => $adminPetType,
-            'portfolio' => $portfolio_count
+            'portfolio' => $portfolio_count,
+            'portfolio_pettype' => $portfolio_pettype_explode,
+            'portfolio_services' => $portfolio_services_explode,
         ]);
     }
 

@@ -115,8 +115,8 @@
                                                             class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
                                                             name="course" value="{{$trainings->course}}" required>
                                                             <option disabled selected>Choose training course</option>
-                                                            @foreach($adminService as $service)
-                                                            <option>{{$service->admin_service}}</option>
+                                                            @foreach($portfolio_services as $service)
+                                                            <option>{{$service}}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('course')
@@ -129,11 +129,11 @@
                                                         <p class="text-sm mb-3 text-left">Pet Type</p>
                                                         <div class="grid grid-cols-2 justify-start">
 
-                                                            @foreach($adminPetType as $petType)
+                                                            @foreach($portfolio_pettype as $petType)
                                                             <div class="flex justify-start">
                                                                 <input type="checkbox" name="pet_type[]" class="m-2"
-                                                                    value="{{$petType->admin_petType}}"><label for=""
-                                                                    class="m-1 text-sm">{{$petType->admin_petType}}</label>
+                                                                    value="{{$petType}}"><label for=""
+                                                                    class="m-1 text-sm">{{$petType}}</label>
                                                             </div>
                                                             @endforeach
                                                         </div>
@@ -209,8 +209,8 @@
                             <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs" name="course"
                                 required>
                                 <option disabled selected>Choose training course</option>
-                                @foreach($adminService as $service)
-                                <option>{{$service->admin_service}}</option>
+                                @foreach($portfolio_services as $service)
+                                <option>{{$service}}</option>
                                 @endforeach
                             </select>
                             @error('course')
@@ -220,23 +220,13 @@
 
                         <div>
 
-                            {{-- MAKE IT A CHECKBOX --}}
-
-                            {{-- <select class="border border-gray-300 rounded px-4 py-3 w-full h-11 text-xs"
-                                name="pet_type" required>
-                                <option disabled selected>Choose pet type</option>
-                                @foreach($adminPetType as $petType)
-                                <option>{{$petType->admin_petType}}</option>
-                                @endforeach
-                            </select> --}}
                             <p class="text-sm mb-3">Pet Type</p>
                             <div class="grid grid-cols-2">
 
-                                @foreach($adminPetType as $petType)
+                                @foreach($portfolio_pettype as $petType)
                                 <div>
-                                    <input type="checkbox" name="pet_type[]" class="m-2"
-                                        value="{{$petType->admin_petType}}"><label for=""
-                                        class="m-1 text-sm">{{$petType->admin_petType}}</label>
+                                    <input type="checkbox" name="pet_type[]" class="m-2" value="{{$petType}}"><label
+                                        for="" class="m-1 text-sm">{{$petType}}</label>
                                 </div>
                                 @endforeach
                             </div>

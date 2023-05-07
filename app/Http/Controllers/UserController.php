@@ -89,7 +89,7 @@ class UserController extends Controller
     {
         $formFields = $request->validate(
             [
-                'name' => ['required', 'min:3'],
+                'name' => 'required|regex:/^[\pL\s\-]+$/u',
                 'birthday' => 'required',
                 'sex' => 'required',
                 'address' => 'required',
@@ -100,7 +100,8 @@ class UserController extends Controller
                 'role' => 'required'
             ],
             [
-                'phone_number.regex' => 'Phone number is invalid'
+                'phone_number.regex' => 'Phone number is invalid',
+                'name.regex' => 'Name should not contain number',
             ]
         );
 
