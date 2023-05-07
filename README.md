@@ -2,15 +2,16 @@
 
 ## Overview
 
-Pet Trainer Matcher is a web application that automatically matches pet trainers with pet owners based on the specific criteria created by the pet owner. This project aims to make the pet owner-trainer booking process easier and more efficient.
+PET PATROL is a web application that automatically matches pet trainers with pet owners based on the specific criteria created by the pet owner. This project aims to make the pet owner-trainer booking process easier and more efficient.
 
 ## Technologies
 
-Pet Trainer Matcher is built using the following technologies:
+PET PATROL is built using the following technologies:
 
 - Laravel
 - TailwindCSS
 - Alpine.js
+- MYSQL
 
 ## Installation and Usage
 
@@ -30,12 +31,12 @@ There are no trainer recommendations in the Trainer Marketplace, unlike a standa
 
 ## Contributing
 
-If you'd like to contribute to Pet Trainer Matcher, please feel free to reach out to me via email (insert email here).
+If you'd like to contribute to PET PATROL, please feel free to reach out to me via email doctorajillbert@gmail.com.
 
 ## Demo
 
-You can explore the Pet Trainer Matcher project on my GitHub repo.
+You can explore the PET PATROL project on my GitHub repo.
 
 ## License
 
-Pet Trainer Matcher is an open-source project and does not have any licensing or copyright information.
+PET PATROL is an open-source project and does not have any licensing or copyright information.
