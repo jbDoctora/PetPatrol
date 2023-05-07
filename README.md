@@ -15,13 +15,13 @@ PET PATROL is a web application that automatically matches pet trainers with pet
 
 To run Pet PATROL on your local machine, follow these steps:
 
-1. Make sure Node.js and composer and XAMPP(version 8.2.4 / PHP 8.2.4 and up) is installed on your device.
+1. Make sure Node.js, composer and XAMPP(version 8.2.4 / PHP 8.2.4 and up) is installed on your device.
 2. Create a table in phpMyAdmin and name it 'petpatrolv2'.
 3. Delete the vendor folder in the public folder.
 4. Run `composer update` or `composer install`.
 5. Run `php artisan migrate` to auto populate the columns in the table you created.
 6. Run `npm run dev`. 
-7. Run `php artisan serve` in a separate terminal.
+7. Run `php artisan serve` in a separate terminal and copy the link it provided and paste to your browser.
 
 ## Known Issues
 
