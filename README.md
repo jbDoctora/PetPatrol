@@ -1,17 +1,17 @@
 # PET PATROL - Pet Trainer Matcher 🐕🐕
 
-## Overview
+## Overview 👀
 
 PET PATROL is a web application that automatically matches pet trainers with pet owners based on the specific criteria created by the pet owner. This project aims to make the pet owner-trainer booking process easier and more efficient.
 
-## Technologies
+## Technologies 💻
 
 * Laravel
 * Alpine.js
 * TailwindCSS
 * MYSQL
 
-## Installation and Usage
+## Installation and Usage 💻
 
 To run Pet PATROL on your local machine, follow these steps:
 
@@ -24,7 +24,7 @@ To run Pet PATROL on your local machine, follow these steps:
 7. Run `php artisan serve` in a separate terminal and copy the link it provided and paste to your browser.
 8. Run `php artisan queue:work` in a separate terminal to make sending email work without affecting user experience.
 
-## Known Issues
+## Known Issues ❌
 
 * There are no trainer recommendations in the Trainer Marketplace, unlike a standard e-commerce site. 
 * You need to configure your own MAIL SMTP credentials in the .env file for the email verification to work.
