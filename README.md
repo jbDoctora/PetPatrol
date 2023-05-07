@@ -6,10 +6,10 @@ PET PATROL is a web application that automatically matches pet trainers with pet
 
 ## Technologies
 
--Laravel
--Alpine.js
--TailwindCSS
--MYSQL
+* Laravel
+* Alpine.js
+* TailwindCSS
+* MYSQL
 
 ## Installation and Usage
 
