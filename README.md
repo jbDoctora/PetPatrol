@@ -6,12 +6,10 @@ PET PATROL is a web application that automatically matches pet trainers with pet
 
 ## Technologies
 
-<div style="display: flex; align-items: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" alt="Laravel Logo" style="width: 200px; height: 200px; margin-right: 20px;">
-  <img src="https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png" alt="TailwindCSS Logo" style="width: 200px; height: 200px; margin-right: 20px;">
-  <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL Logo" style="width: 200px; height: 200px;">
-  Alpine.js
-</div>
+-Laravel
+-Alpine.js
+-TailwindCSS
+-MYSQL
 
 ## Installation and Usage
 
