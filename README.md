@@ -37,7 +37,7 @@ If you'd like to contribute to PET PATROL, please feel free to reach out to me v
 
 ## Demo
 
-Feel free to explore the repo. Teehee
+Feel free to explore the repo. Teehee <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR1-MkwobEa4A7wMB9bw8nG-jMLG5BfP77-OpA35lyrDXpVfRsZ" style="width: 50px; height:50px;">
 
 ## License
 
