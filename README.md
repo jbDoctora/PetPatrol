@@ -14,7 +14,7 @@ Pet Trainer Matcher is built using the following technologies:
 
 ## Installation and Usage
 
-To run Pet Trainer Matcher on your local machine, follow these steps:
+To run Pet PATROL on your local machine, follow these steps:
 
 1. Make sure Node.js is installed on your device.
 2. Create a table in phpMyAdmin and name it 'petpatrolv2'.
